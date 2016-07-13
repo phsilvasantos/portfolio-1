@@ -1,0 +1,85 @@
+{
+    "id": "100002506500866",
+    "bio": "Over the last 10+ years, I have developed and enhanced a wide range of web-based applications and mobile applications.\nEspecially in Wordpress and front-end developlment, I was recognized for my long-term experience and prefound expertise.",
+    "education": [{
+            "school": {
+                "id": "115347731812063",
+                "name": "Laixi No. 1 Senior Middle School"
+            },
+            "type": "High School",
+            "year": {
+                "id": "132393000129123",
+                "name": "2001"
+            }
+        }, {
+            "school": {
+                "id": "110398608988563",
+                "name": "Bicol University College of Agriculture and Forestry"
+            },
+            "type": "College",
+            "year": {
+                "id": "138383069535219",
+                "name": "2005"
+            }
+        }],
+    "email": "changhyang928@gmail.com",
+    "favorite_athletes": [{
+            "id": "109239185769120",
+            "name": "Paolo Guerrero"
+        }],
+    "favorite_teams": [{
+            "id": "371126076406",
+            "name": "FC Basel 1893"
+        }, {
+            "id": "261371855722",
+            "name": "BMC Racing Team"
+        }],
+    "first_name": "延吉",
+    "gender": "male",
+    "hometown": {
+        "id": "108651575832644",
+        "name": "Changchun, China"
+    },
+    "languages": [{
+            "id": "106059522759137",
+            "name": "English"
+        }, {
+            "id": "111735208843636",
+            "name": "Chinese"
+        }, {
+            "id": "103098969730588",
+            "name": "Korea"
+        }],
+    "last_name": "市",
+    "link": "https://www.facebook.com/chang.hyangcho",
+    "location": {
+        "id": "108224092533769",
+        "name": "Yanji"
+    },
+    "locale": "en_US",
+    "name": "市延吉",
+    "timezone": -4,
+    "updated_time": "2015-01-03T16:06:32+0000",
+    "username": "chang.hyangcho",
+    "verified": true,
+    "work": [{
+            "employer": {
+                "id": "756468607746473",
+                "name": "Eden Network Technology Co., LTD."
+            },
+            "location": {
+                "id": "108224092533769",
+                "name": "Yanji"
+            },
+            "position": {
+                "id": "319223428246367",
+                "name": "Yanji, Jilin, China"
+            },
+            "start_date": "0000-00"
+        }, {
+            "employer": {
+                "id": "209428355764782",
+                "name": "Inpung Software Co. LTD."
+            }
+        }]
+}

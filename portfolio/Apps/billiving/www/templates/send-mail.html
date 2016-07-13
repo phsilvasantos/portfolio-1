@@ -1,0 +1,27 @@
+<ion-view cache-view="false">
+  <ion-nav-title>
+    Sending Mail
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="send()">Send</button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="page page-send-mail">
+    <form name="$parent.sendmailForm">
+      <ion-list>
+        <label class="item item-input">
+          <span class="input-label">Mail To</span>
+          <input type="email" placeholder="Mail To ... " ng-model="mailTemp.MailTo">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Subject</span>
+          <input type="text" placeholder="Subject" ng-model="mailTemp.Subject">
+        </label>
+        <label class="item item-separator">
+          <span class="input-label">Body</span>
+          <textarea type="text" placeholder="Mail Body" ng-model="mailTemp.Body"></textarea>
+        </label>
+      </ion-list>
+    </form>
+
+  </ion-content>
+</ion-view>

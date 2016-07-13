@@ -1,0 +1,116 @@
+<style type="text/css">
+    .slider {
+        height: 100%;
+    }
+    .slider-slide {
+        padding-top: 80px;
+        color: #fff;
+        height: 100%  
+        width:100%;
+        text-align: center;
+        text-shadow:1px 1px 9px rgba(102,102,102,1);
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+        font-weight: 300;
+    }
+    h1, h2, h3, p {
+    	color: #fff;
+    	text-shadow:1px 1px 9px rgba(102,102,102,1);
+        font-family: "Oswald","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+        font-weight: 300;
+    }
+    #logo {
+        margin: 30px 0px;
+    }
+
+    #list {
+        width: 170px;
+        margin: 30px auto;
+        font-size: 20px;
+    }
+    #list ol {
+        margin-top: 30px;
+    }
+    #list ol li {
+        text-align: left;
+        list-style: decimal;
+        margin: 10px 0px;
+    }
+</style>
+<ion-view title="Intro">
+    <div class="bg-image-night" id="bg">
+    <!-- <ion-content> -->
+    <!-- <ion-content class="has-header"> -->
+        <ion-slide-box on-slide-changed="slideChanged(index)" does-continue="true" slide-interval="3000" auto-play="true">
+          	<ion-slide>
+	            <h2>Thank you for installing Finder</h2>
+	            <div id="logo">
+	              <img src="img/finder 150px.png">
+	            </div>
+	            <p>
+	              You can track not just your family, friends or colleagues within your team. But you can do more... Thats why we thought different
+	            </p>
+	            
+	            <button class="button button-outline button-light button-light" ui-sref="app.setup">Skip & Get Started</button>
+          	</ion-slide>
+          	<ion-slide>
+	            <h2>We realized you might need Car Pooling</h2>
+	            <div id="logo">
+	              <img src="img/4.png">
+	            </div>
+	            <p>You can share or hire a car at any time anywhere all while tracking</p>
+	            <button class="button button-outline button-light" ui-sref="app.setup">Skip & Get Started</button>
+	            <!-- <div id="list">
+	              <h5>Just three steps:</h5>
+	              <ol>
+	                <li>Be awesome</li>
+	                <li>Stay awesome</li>
+	                <li>There is no step 3</li>
+	              </ol>
+	            </div> -->
+          	</ion-slide>
+			<ion-slide>
+	            <h2>Have you been thinking of managing a rent a car service?</h2>
+	            <div id="logo">
+	              <img src="img/4.png">
+	            </div>
+	            <p>This is it! You can now manage your own rent a car or share a ride with someone too!</p>
+	            <button class="button button-outline button-light" ui-sref="app.setup">Skip & Get Started</button>
+          	</ion-slide>
+			<ion-slide>
+	            <h2>And also thought that you might want to see Traffic Jam</h2>
+	            <div id="logo">
+	              <img src="img/7.png">
+	            </div>
+	            <p>The more you have people using this app the better you will be able to see the congestion!</p>
+	            <button class="button button-outline button-light" ui-sref="app.setup">Skip & Get Started</button>
+          	</ion-slide>
+			<ion-slide>
+	            <h2>You can even use for fleet management!</h2>
+	            <div id="logo">
+	              <img src="img/3.png">
+	            </div>
+	            <p>Nothing counts more in business than getting things done efficiently!</p>
+	            <button class="button button-outline button-light" ui-sref="app.setup">Skip & Get Started</button>
+          	</ion-slide>
+			<ion-slide>
+	            <h2>Post whats happening around you!</h2>
+	            <div id="logo">
+	              <img src="img/8.png">
+	            </div>
+	            <p>There might be a roadwork, a mugging, rally or a fire accident near you, just tap Events and Post!</p>
+	            <button class="button button-outline button-light" ui-sref="app.setup">Skip & Get Started</button>
+          	</ion-slide>
+			<ion-slide>
+	            <h2>Build the Finder Community!</h2>
+	            <div id="logo">
+	              <button class="button button-positive icon ion-social-facebook" onclick="window.plugins.socialsharing.shareViaFacebook('Message via Facebook', null /* img */, 'https://play.google.com/store/apps/details?id=com.finder.gps.tracking' /* url */, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})"></button>
+	              <button class="button button-calm icon ion-social-twitter" onclick="window.plugins.socialsharing.shareViaTwitter('Finder Tracking is awesome', null /* img */, 'https://play.google.com/store/apps/details?id=com.finder.gps.tracking' /* url */, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})"></button>
+	            </div>
+	            <p>Share it with your friends and colleagues! You will enjoy watching it grow!</p>
+	            <button class="button button-assertive" ui-sref="app.setup">Get Started</button>
+          	</ion-slide>
+        </ion-slide-box>
+    <!-- </ion-content> -->
+</ion-view>

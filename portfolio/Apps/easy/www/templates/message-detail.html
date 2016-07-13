@@ -1,0 +1,53 @@
+<ion-view title="MESSAGE DETIAL" ng-controller="MessageDetailCtrl" cache-view="false">
+  <ion-content class="page page-listmain page-gamefeedback has-subheader has-footer" ng-class="{'no-footer':!lineupStatus}">
+    <div class="organizate-divider-nopadding">Details for next game : </div>
+    <div class="organizate-divider-nopadding">Date :  <b>{{tempArr.opponentname}}</b></div>
+    <div class="organizate-split-divider" style="margin: 10px;"></div>
+    <div class="organizate-divider-nopadding">Time :  <b>{{tempArr.opponentname}}</b></div>
+    <div class="organizate-split-divider" style="margin: 10px;"></div>
+    <div class="organizate-divider-nopadding">Opponent :  <b>{{tempArr.opponentname}}</b></div>
+    <div class="organizate-split-divider" style="margin: 10px;"></div>
+    <div class="organizate-divider-nopadding ">Where are we play :  <b>{{tempArr.location_name}}</b></div>
+    <div class="organizate-split-divider" style="margin: 10px;"></div>
+    <div style="text-align: center;position: relative;">
+      <div id ="map" style="width: 90%; height: 100px;background: #ccc;margin: auto;"></div>
+      <img class="centerMarker" src="img/marker.png"/>
+      <div style="position: absolute;top:0px;left: 0px;width: 90%; height: 100px;background: transparent;margin: auto;"></div>
+    </div>
+    <div class="organizate-split-divider" style="margin: 6px;"></div>
+    <div class="organizate-divider-nopadding">Special instructions for the team : </div>
+    <div class="organizate-message-description" >
+      {{message_content}}
+    </div>
+    <div class="organizate-split-divider" style="margin: 10px;"></div>
+    <div style="text-align: center;">
+      <div class="feedback-padding-container-first">
+        <div class="datetime-container-label">Pending</div>
+      </div>
+      <div class="feedback-padding-container-second">
+        <div class="datetime-container-label">In</div>
+      </div>
+      <div class="feedback-padding-container-last" style="">
+        <div class="datetime-container-label">Out</div>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <div class="datetime-container" style="width: 30%;">
+        <div class="feedback-count-container-label">{{messageStatus.pending}}</div>
+      </div>
+      <div class="datetime-container" style="width: 30%;">
+        <div class="feedback-count-container-label">{{messageStatus.in}}</div>
+      </div>
+      <div class="datetime-container" style="width: 30%;">
+        <div class="feedback-count-container-label">{{messageStatus.out}}</div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="organizate-footer" ng-if="lineupStatus">
+    <div class="footer-container">
+      <div class="container-footer">        
+        <div class="button button-clear footer-green-button" ng-click = "goToPage('app.message-game-formation');">See Line up!(if ready)</div> 
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

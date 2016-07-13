@@ -1,0 +1,41 @@
+<ion-view>
+  <ion-nav-title>{{group.get('name')}}</ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="done()">Done</button>
+  </ion-nav-buttons>
+  <ion-content class="page page-group-feed-more">
+    <div class="list icons icons-right">
+      <a class="item item-icon-right" href="" ng-click="openRightSidebar()">
+        Members <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-right" href="#/group-files/{{groupId}}">
+        Files <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-right" href="#/group-feed-photos/{{groupId}}">
+        Photos <i class="icon ion-chevron-right"></i>
+      </a>
+
+      <div class="item item-divider">Notifications</div>
+      <a class="item item-icon-right"
+         ng-click="muteToggle()">
+        Mute Notifications <i class="icon notification-setting-check" ng-class="{'ion-ios-checkmark':notificationSettings.mute,'ion-ios-circle-outline':!notificationSettings.mute}"></i>
+      </a>
+      <div class="item item-icon-right" ng-show="notificationSettings.mute" ng-click="notificationsPeriodPopover.show($event)">
+        <span>Mute notifications for: </span>
+        <a href="" class="dropdown-starter" id="notifications_period_label"></a>
+        <i class="icon ion-chevron-down"></i>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
+
+<script id="notifications-period-popover" type="text/ng-template">
+  <ion-popover-view class="notifications-period-popover">
+  <ion-content>
+  <div class="list">
+  <a ng-click="onSelectNotificationsPeriod(item)" ng-repeat="item in periods" class="item">{{item.label}}</a>
+  </div>
+  </ion-content>
+  </ion-popover-view>
+</script>

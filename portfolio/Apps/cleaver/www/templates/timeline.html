@@ -1,0 +1,107 @@
+<ion-view>
+  <ion-content has-bouncing="false">
+    <!-- <h1 data-translate>cleverbaby.app.search.title</h1> -->
+    <div class="wrapper-tab timeline">
+        <!--
+        <div class="header no-border">
+            <a class="btn left" ui-sref="app.diary"><i class="fa fa-angle-left"></i></a>
+            <h2>CleverBaby <i class="fa fa-angle-down"></i></h2>
+            <a class="btn right" ui-sref="app.diary"><i class="fa fa-dashboard"></i></a>
+        </div>
+        -->
+        <ion-nav-bar class="bar-positive">
+            <div class="header no-border">
+                <ion-nav-buttons side="left">
+                    <a class="btn left" ui-sref="app.diary"><i class="fa fa-angle-left"></i></a>
+                </ion-nav-buttons>
+                <ion-nav-title cb-baby-drop-down></ion-nav-title>
+                <ion-nav-buttons side="right">
+                    <a class="btn right" ui-sref="app.diary"><i class="fa fa-dashboard"></i></a>
+                </ion-nav-buttons>
+            </div>
+        </ion-nav-bar>
+
+
+        <ul class="items-activity">
+        	<li>
+        		<div class="icon diaper"><span class="icon-diaper"></span></div><div class="clearfix"></div>
+	            <span class="text">Diaper</span>
+            </li>
+            <li>
+        		<div class="icon bottle"><span class="icon-bottle"></span></div><div class="clearfix"></div>
+	            <span class="text">Bottle</span>
+            </li>
+            <li>
+        		<div class="icon nurse"><span class="icon-breast-feeding"></span></div><div class="clearfix"></div>
+	            <span class="text">Nurse</span>
+            </li>
+            <li>
+        		<div class="icon solid"><span class="icon-banana-3"></span></div><div class="clearfix"></div>
+	            <span class="text">Solid</span>
+            </li>
+            <li>
+        		<div class="icon pump"><span class="icon-breast-pumper-line"></span></div><div class="clearfix"></div>
+	            <span class="text">Pumping</span>
+            </li>
+            <li>
+        		<div class="icon todo"><span class="icon-book-open"></span></div><div class="clearfix"></div>
+	            <span class="text">To do</span>
+            </li>
+            <li>
+        		<div class="icon moment"><span class="icon-rattle-alias-1"></span></div><div class="clearfix"></div>
+	            <span class="text">Activity</span>
+            </li>
+            <li>
+        		<div class="icon mood"><span class="icon-mood-ok"></span></div><div class="clearfix"></div>
+	            <span class="text">Mood</span>
+            </li>
+            <li>
+        		<div class="icon play"><span class="icon-rattle-alias-3"></span></div><div class="clearfix"></div>
+	            <span class="text">Play</span>
+            </li>
+            <li>
+        		<div class="icon temperature"><span class="icon-temperature"></span></div><div class="clearfix"></div>
+	            <span class="text">Temperature</span>
+            </li>
+            <li>
+        		<div class="icon diary"><span class="icon-diary"></span></div><div class="clearfix"></div>
+	            <span class="text">Diary</span>
+            </li>
+            <li>
+        		<div class="icon milestone"><span class="icon-milestones"></span></div><div class="clearfix"></div>
+	            <span class="text">Milestone</span>
+            </li>
+            <li>
+        		<div class="icon sick"><span class="icon-mood-sad"></span></div><div class="clearfix"></div>
+	            <span class="text">Sickness</span>
+            </li>
+            <li>
+        		<div class="icon doctor"><span class="icon-doctor"></span></div><div class="clearfix"></div>
+	            <span class="text">Dr. Visit</span>
+            </li>
+            <li>
+                <div class="icon vaccination"><span class="icon-injection"></span></div><div class="clearfix"></div>
+                <span class="text">Vaccination</span>
+            </li>
+            <li>
+                <div class="icon growth"><span class="icon-baby-growth"></span></div><div class="clearfix"></div>
+                <span class="text">Baby Growth</span>
+            </li>
+            <li>
+                <div class="icon sleep"><span class="icon-sleepcc"></span></div><div class="clearfix"></div>
+                <span class="text">Sleep</span>
+            </li>
+            <li>
+                <div class="icon allergy"><span class="icon-allergy"></span></div><div class="clearfix"></div>
+                <span class="text">Allergy</span>
+            </li>
+            <li>
+                <div class="icon born"><span class="icon-born"></span></div><div class="clearfix"></div>
+                <span class="text">Born</span>
+            </li>
+        </ul>
+
+        <cb-Time-Line-Chart></cb-Time-Line-Chart>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,16 @@
+<ion-view view-title="Menu" cache-view="false">
+  <ion-header-bar align-title="center" class="bar-assertive">
+    <button class="button button-clear button-icon ion-navicon" menu-toggle="left"></button>
+  </ion-header-bar>
+  <ion-content style="background: #FF5C5D;">
+    <div class="list animate-fade-slide-in-right cate-lv1">
+      <a class="item item-avatar item-icon-right item-background cate-lv1-item" ng-repeat="cate in cates" ui-sref="product_menu({ cateId: cate.id })"
+         style="background: url({{cate.img}}) no-repeat;padding: 0px; margin: 0px;background-size: 100% 100%;">
+        <div class="item-wrapper">
+          <h2>{{cate.name}}</h2>
+          <p>{{cate.lastText}}</p>
+        </div>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

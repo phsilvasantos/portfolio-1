@@ -1,0 +1,40 @@
+<ion-view class="articles" style="background-color:#fafafa;">
+	<ion-nav-title>
+	{{post.title}}
+	</ion-nav-title>
+  <ion-content>
+  
+
+  <div class="article-title item item-text-wrap">
+  		<h2>{{post.title}}</h2>
+  		<!--<h3>Posted on {{post.date | date:"MMMM d, y"}}</h3>-->
+  	</div>
+  <div class="pet-slider slider">
+  	<div class="box" style="background-image:url({{post.featured_image.source}});" />
+  	</div>
+  </div>
+  	
+  	<div style="clear:both;min-height:68px; display:none;" class="padding">
+  		<button style="background:#3b569b; border:none; float:left;width:32%;margin-right:1%;" class="button button-positive" ng-click="facebookShare()">
+  			<i class="icon ion-social-facebook"></i>
+ 		</button>
+		<button style="background:#66abd2; border:none; float:left;width:32%;margin-left:1%;" class="button button-positive" ng-click="twitterShare()">
+  			<i class="icon ion-social-twitter"></i>
+		</button>
+		<button style="background:#51cb5e; border:none; float:left;width:32%;margin-left:1%;" class="button button-positive" ng-click="whatsappShare()"">
+  			<i class="icon ion-social-whatsapp"></i>
+		</button>
+	</div>
+
+  		
+  <div class="card article-card">
+  
+  	<div class="item item-text-wrap">
+  		
+  		<div ng-bind-html="content"></div>
+  		
+  	</div>
+  </div>
+  	
+  </ion-content>
+</ion-view>

@@ -1,0 +1,36 @@
+<ion-view title="Create New Team" ng-controller="MessagePickCtrl">
+  <ion-content class="page page-listmain has-subheader">
+    <div class="organizate-detail-description">
+      Hi, you have been picked to play for <b>{{selectedTeamName}}</b> this coming the {{gamedate}}!<br/>
+      We are playing at {{gamedate}} , so get up early and get ready - try and get there early.
+    </div>
+    <div class="organizate-detail-description">
+      I need to know if you are playing or not - now!
+    </div>
+    <div class="message-pick-buttonbar">
+      <div class="button-bar">
+        <a class="button accept-button" ng-click = "changAcceptFlag(1);">I'm in, pick me!</a>
+        <a class="button decline-button" ng-click = "changAcceptFlag(2);">Sorry, I can't play</a>
+      </div>
+    </div>
+    <div class="organizate-detail-description">
+      Date : {{gamedate}}
+    </div>
+
+    <div class="organizate-detail-description">
+      Location : {{lastGameData.location_name}}
+    </div>
+    <div style="text-align: center;position: relative;">
+      <div id ="map" style="width: 90%; height: 170px;background: #ccc;margin: auto;"></div>
+      <img class="centerMarker" src="img/marker.png"/>
+      <div style="position: absolute;top:0px;left: 0px;width: 90%; height: 170px;background: transparent;margin: auto;"></div>
+    </div>
+    <div class="organizate-detail-description">Special instructions from the coach :</div>
+    <div class="organizate-message-description" >
+      {{lastGameData.message_content}}
+    </div>
+    <div class="organizate-detail-description">So there it is, I will send you the lineup and the formation as soon as people get back to me with their confirmations, do that NOW please!</div>
+    <div class="organizate-detail-description">See you on the pitch</div>
+    <div class="organizate-detail-description">Coach<br/><b>{{selectedTeamName}}</b></div>
+  </ion-content>
+</ion-view>

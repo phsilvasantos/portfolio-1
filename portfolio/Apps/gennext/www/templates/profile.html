@@ -1,0 +1,106 @@
+<ion-view title="Members" hide-back-button="isMyProfile">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon" ng-hide="!isMyProfile"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a ng-click="downloadProfile()" class="button button-clear link download-profile-link" ng-hide="isMyProfile">Download</a>
+    <a href="#/edit-profile" class="button button-clear link edit-profile-link" ng-show="isMyProfile">Edit</a>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-profile" has-header="true">
+    <div class="profile-banner">
+      <div class="picture" background-image="{{profile.get('picture').url()}}"></div>
+    </div>
+
+    <div class="profile-name">
+      {{user.get('firstName')}} {{user.get('lastName')}}
+      <em>Member</em>
+    </div>
+    <!--<div style='margin-top:4px;font-size:0.7em;color:#aaa;' ng-show="profile.get('title')">{{profile.get('title')}}</div>-->
+    <div class="buttons contact-methods" ng-hide="isMyProfile">
+      <a href="mailto:{{user.get('email')}}"><i class='svg-icon email-white'></i>Email</a>
+      <a href="tel:+1{{user.get('username')}}"><i class='svg-icon phone-white'></i>Call</a>
+      <a href="tel:+1{{user.get('username')}}"><i class='svg-icon chat-text-bubble-white'></i>Chat</a>
+    </div>
+
+    <!--<div class="social-block" ng-show="shouldShowSectionBlock('Social Media', profile.get('sections')['Social Media'])">
+      <a ng-repeat="(fieldName, fieldValue) in profile.get('sections')['Social Media']"
+         ng-show="shouldShowSection('Social Media', fieldName, fieldValue)">
+        <i class="fa {{getStyleRule(fieldName).square_icon}}" ng-click="openURL(fieldValue)"></i>
+      </a>
+    </div>-->
+
+    <!-- basic information -->
+    <div class="profile-block basic">
+      <div class="half-block">
+        <div class="content-item" ng-show="profile.get('sections')['Professional Info']['Title'] || profile.get('sections')['Professional Info']['Company Name']">
+          <label>Company</label>
+          {{profile.get('sections')['Professional Info']['Title']}}<i ng-show="profile.get('sections')['Professional Info']['Title'] && profile.get('sections')['Professional Info']['Company Name']">,</i> 
+          {{profile.get('sections')['Professional Info']['Company Name']}}
+        </div>
+        <div class="content-item groups-displayer">
+          <label>Chapter</label>
+          <span ng-hide="groups" style="color:#ddd;" class="groups-placeholder">Loading Groups...</span>
+          {{groups|toSentenceUsing:'name'}}
+        </div>
+      </div>
+      <div class="half-block">
+        <div class="content-item" ng-show="profile.get('sections')['Professional Info']['Location']">
+          <label>Location</label>
+          {{profile.get('sections')['Professional Info']['Location']}}
+        </div>
+        <div class="content-item" ng-show="user.get('joinDate')">
+          <label>Member Since</label>
+          {{user.get('joinDate') | gnYear}}
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-block centeral">
+      <!--personal information -->
+      <div class="half-block">
+        <div class="block-title"><i class="svg-icon personal"></i>Personal Information</div>
+        <div class="content-item"  ng-repeat="(fieldName, fieldValue) in profile.get('sections')['Personal Info']"
+             ng-show="shouldShowSection('Personal Info', fieldName, fieldValue)"
+             ng-init="styleRule = getStyleRule(fieldName)">
+          <label>{{fieldName}}</label>
+          <em ng-bind-html="getDisplayValue(fieldName, fieldValue)" ng-click="openURL(fieldValue)"></em>
+        </div>
+      </div>
+      <!--professional information -->
+      <div class="half-block">
+        <div class="block-title"><i class="svg-icon professional"></i>Professional Information</div>
+        <div class="content-item"  ng-repeat="(fieldName, fieldValue) in profile.get('sections')['Professional Info']"
+             ng-show="shouldShowSection('Professional Info', fieldName, fieldValue)"
+             ng-init="styleRule = getStyleRule(fieldName)">
+          <label>{{fieldName}}</label>
+          <em ng-bind-html="getDisplayValue(fieldName, fieldValue)" ng-click="openURL(fieldValue)"></em>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="profile-block social" ng-show="shouldShowSectionBlock('Social Media', profile.get('sections')['Social Media'])">
+      <div class="block-title">Social Media</div>
+      <div class="list">
+        <a class="item item-icon-right" 
+           ng-click="fieldValue ? openURL(fieldValue) : editProfile()"
+           ng-repeat="(fieldName, fieldValue) in profile.get('sections')['Social Media']"
+           ng-show="isMyProfile || shouldShowSection('Social Media', fieldName, fieldValue)">
+          <i class="fa fa-{{getStyleRule(fieldName).icon}} social-logo"></i>
+          {{fieldName}}
+          <span class="tip">{{fieldValue ? 'Browse' : 'Add'}}</span>
+          <i class="icon ion-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="profile-block" ng-show="profile.get('sections')['Personal Info']['Bio']">
+      <div class="block-title">Member Bio</div>
+      <div class="content-item">
+        <div class="text" ng-bind-html="profile.get('sections')['Personal Info']['Bio'] | nl2br"></div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,46 @@
+<ion-view title="Create New Team" ng-controller="SignupPageCtrl" class="organizate-view">
+
+  <ion-content class="has-header">
+    <div class="main-container" style="margin-top: 30px;">
+      <div class="organizate-title" style="height: 10%;">
+        <div class="organizate-detail-description" style="font-size: 11pt;padding: 0px;">
+          if you have received any invitation mail from this app, you must register with that mail address.
+        </div>
+      </div>
+      <div class="content-container" style="height: 550px;">
+
+        <form name="myForm">
+          <div class="item item-input organizate-input-text">
+            <input type="text" name="user_name" placeholder="Username" ng-model="user.user_name" required/>
+          </div>
+          <div class="item item-input organizate-input-text">
+            <input type="text" name="gender" placeholder="Gender" ng-model="user.user_gender" required/>
+          </div>
+          <div class="item item-input organizate-input-text">
+            <input type="text" name="birthday" placeholder="Birthday" ng-model="user.user_birthday" required/>
+          </div>
+          <div class="item item-input organizate-input-text">
+            <input type="email" name="user_email" placeholder="Email Address" ng-model="user.user_email" required/>
+          </div>
+          <div class="item item-input organizate-input-text">
+            <input type="password" id="password" name="password" placeholder="Password" ng-model="user.password" ng-required =""/>
+          </div>
+          <div class="item item-input organizate-input-text">
+            <input type="password" name="confirm_pass" id="confirm_pass" placeholder="Confirm Password" ng-model="user.conpass" ng-required =""
+                   pw-check="password" />
+          </div>
+          <div style="text-align: center;">
+            <div class="button organizate-lightgreen-btn" ng-click = "register();"
+                 ng-disabled="(myForm.user_name.$dirty && myForm.user_name.$invalid) || myForm.user_name.$error.required ||
+                               (myForm.user_email.$dirty && myForm.user_email.$invalid) || myForm.user_email.$error.required || myForm.user_email.$error.email ||
+                               myForm.confirm_pass.$error.pwmatch || myForm.confirm_pass.$error.pwcontent">Register</div>
+            <div class="button organizate-pink-btn" ng-click = "goToPage('first-page');">Cancel</div>            
+          </div>
+          <div class="item item-input organizate-input">
+            <div class="organizate-facebook-btn" ng-click="facebookLogin();">Sign In with Facebook</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

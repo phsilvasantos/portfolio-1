@@ -1,0 +1,19 @@
+<ion-view title="EDIT TEAM" ng-controller="EditTeamCtrl" class="team-view" cache-view="false">
+  <ion-content class="page page-listmain has-subheader">
+    <ion-list>
+      <div class="custom-item-title">
+        Start filling out these basic of the team you manage   
+      </div>
+      <ion-item class="item item-input">
+        <input type="text" name="volume" placeholder="Team Name" ng-model="teamdetail.name"/>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="organizate-footer">
+    <div class="footer-container">
+      <div class="container-footer">        
+        <div class="button button-clear footer-green-button" ng-click="updateTeam();">Save</div>         
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

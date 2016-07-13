@@ -1,0 +1,51 @@
+<ion-view title="GAME FEEDBACK" ng-controller="GameFeedBackCtrl" cache-view="false">
+  <ion-content class="page page-listmain page-gamefeedback has-subheader">
+    <ion-list>
+      <ion-item class="custom-item-title">
+        Player feedback for game
+      </ion-item>
+      <ion-item>
+        <div class="feedback-padding-container-first">
+          <div class="datetime-container-label">Pending</div>
+        </div>
+        <div class="feedback-padding-container-second">
+          <div class="datetime-container-label">In</div>
+        </div>
+        <div class="feedback-padding-container-last" style="">
+          <div class="datetime-container-label">Out</div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <div class="datetime-container" style="width: 30%;">
+          <div class="feedback-count-container-label" ng-click="seeList('pending')">{{messageStatus.pending}}</div>
+        </div>
+        <div class="datetime-container" style="width: 30%;">
+          <div class="feedback-count-container-label" ng-click="seeList('in')">{{messageStatus.in}}</div>
+        </div>
+        <div class="datetime-container" style="width: 30%;">
+          <div class="feedback-count-container-label" ng-click="seeList('out')">{{messageStatus.out}}</div>
+        </div>
+      </ion-item>
+      <ion-item class="item item-icon-left" ng-click="goToPage('app.game-specific-message');">
+        <i class="icon"><img class="custom-list-icon" src="img/send-email-ico.png"/></i>
+        <p>Send Team Message</p>
+      </ion-item>
+      <ion-item>
+        <!--        <div style="text-align: center;padding: 2px 5px;">
+                  <div class="button feedback-resend-btn" ng-click = "goToPage('app.roster-game-member');">Reinvite to game with new data</div>
+                </div> -->
+        <div style="text-align: center;padding: 2px 0px;">
+          <div class="button feedback-resend-btn" ng-click = "editDatetime();">Change Game Data and Resend</div>
+        </div>
+        <div style="text-align: center;padding: 2px 0px;">
+          <div class="button feedback-cancel-btn" ng-click = "cancelGame();">Cancel Game and Inform Team</div>
+        </div> 
+        <div style="text-align: center;padding: 2px 0px;">
+          <div class="button button-clear footer-green-button" ng-click="goToPage('app.game-formation');">Set and send game formation</div>  
+        </div> 
+      </ion-item>
+    </ion-list>
+
+
+  </ion-content>
+</ion-view>

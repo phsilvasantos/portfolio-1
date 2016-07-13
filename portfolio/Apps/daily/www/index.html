@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html>
+
+	<head>
+
+		<title>Daily Nation</title>
+
+		<script type="text/javascript">
+
+			// call back from DISQUS
+			function handleOpenURL(url) {
+				//alert("handleOpenURL - " + url);
+				console.log("handleOpenURL - " + url);
+				
+				if(url == 'callback_disqus')
+					localStorage['dailynation_callback_disqus'] = Date.now();
+				else
+					localStorage.removeItem('dailynation_callback_disqus');
+			}
+
+			if( /iPad/i.test(navigator.userAgent) ) {
+				window.location='ipad.html';
+			}
+			else {
+				window.location='iphone.html';
+			}
+		
+		</script>
+
+	<body>		
+
+	</body>
+
+</html>

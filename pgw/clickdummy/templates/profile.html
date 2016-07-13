@@ -1,0 +1,25 @@
+<ion-view view-title="Profile">
+  <ion-content class="page page-profile">
+    <div class="info clearfix">
+      <img class="circle avatar" ng-src="{{profile.avatar}}" />
+      <div class="user-info">
+        <div class="name">{{profile.name}}</div>
+        <div class="counters">
+          <span class="space-right">{{profile.yaays}} YAAYs</span>
+          <span>{{profile.followers}} Follower</span>
+        </div>
+      </div>
+      <button class="button follow-button" ng-click="toggleFollow()" ng-class="{followed:profile.followed}">{{profile.followed?'Unfollow':'Follow'}}</button>
+    </div>
+
+    <ul class="photo-list">
+      <li class="photo-list-item" ng-repeat="item in pictures" ng-click="showFullPicture(item)">
+        <div class="image" style="background-image: url({{item.image}});"></div>
+        <div class="gradient-bottom {{item.color}}"></div>
+        <div class="text-wrapper">
+          <div class="title">{{item.comment}}</div>
+        </div><!-- .text-wrapper -->
+      </li>
+    </ul><!-- photo-list-->
+  </ion-content>
+</ion-view>

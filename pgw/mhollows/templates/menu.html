@@ -1,0 +1,74 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-pane ion-side-menu-content platform="{{devicePlatform}}" ng-class="{'no-tabbar': !shouldShowTabs()}">
+    <ion-nav-bar class="bar-stable nav-bar" align-title="center">
+      <ion-nav-back-button class="button-clear"><i class="icon ion-ios-arrow-back"></i> </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right" class="menu-content"></ion-nav-view>
+    <div ng-include="'templates/tabs.html'" ng-if="shouldShowTabs()"></div>
+  </ion-pane>
+
+  <ion-side-menu side="right"
+                 on-swipe-right="onMenuDragRight()"
+                 width="getRightMenuWidth()"
+                 is-enabled="messages.canDragRight() || groupspace.canDragRight()"
+                 class="right-sidemenu">
+    <div ng-include="'templates/messages-partials/messages-room-edit.html'" ng-show="messages.canDragRight()"></div>
+
+    <div ng-include="'templates/group-members.html'" ng-show="groupspace.canDragRight()"></div>
+  </ion-side-menu>
+
+  <ion-side-menu side="left" class="left-sidemenu" width="300">
+    <ion-content on-swipe-left="onMenuDragLeft()">
+      <div class='list'>
+        <a class="userinfo item" href="#/profile/{{shared.user.profile.id}}?from=menu" menu-close>
+          <div class="left-part">
+            <div class="avatar avatar-menu" background-image="{{shared.user.profile.get('thumbImage').url()}}"></div>
+          </div>
+          <div class="right-part">
+            <strong>
+              {{shared.user.get('firstName')}} {{shared.user.get('lastName')}}
+            </strong>
+            <em>View &amp; Edit Your Profile</em>
+          </div>
+          <i class="icon ion-chevron-right icon-arrow-right"></i>
+        </a>
+      </div>
+      <div class="clear"></div>
+      <!--<div class="list-title" ng-bind-html="appConfig.get('organizationName')"></div>
+      <div class="list icons" id='primary-menu-items' ng-if="menuItems.length > 0">
+        <a class="item item-icon-left" menu-close ng-href="#{{item.get('url')}}" ng-repeat="item in menuItems" ng-if="item.get('status')">
+          <i class="icon ion-{{item.get('icon')}}"></i> {{item.get('name')}}
+          <chat-messages-counter ng-if="item.get('url') == '/messages'"></chat-messages-counter>
+          <group-messages-counter ng-if="item.get('url') == '/groups'"></group-messages-counter>
+        </a>
+      </div>-->
+      <div ng-show="!shared.user.isPending">
+        <div class="list-title" ng-if="activeGroups.length > 0">Active Group Feeds</div>
+        <div class="list" ng-if="activeGroups.length > 0">
+          <a class="item" menu-close ng-href="#/group-feed/{{item.id}}?from=menu" ng-repeat="item in activeGroups">
+            {{item.get('name')}}
+            <i class="icon ion-chevron-right icon-arrow-right"></i>
+            <active-group-messages-counter group="{{item}}" ></active-group-messages-counter>
+            <!--<i class="badge badge-assertive">10</i>-->
+          </a>
+        </div>
+      </div>
+
+      <div class="list-title" ng-show="contentPages.length > 0">Pages</div>
+      <div class="list content-pages">
+        <a class="item" ng-click="openContentPageWithTracking(page.get('url'), page.get('name'))" menu-close ng-repeat="page in contentPages">
+          {{page.get('name')}}<i class="icon ion-chevron-right icon-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="list-title">App</div>
+      <div class="list">
+        <a class="item" menu-close href="#/members-new?from=menu" ng-if="shared.user.isAdmin">Add Member<i class="icon ion-chevron-right icon-arrow-right"></i></a>
+        <a class="item" menu-close href="#/settings">Settings<i class="icon ion-chevron-right icon-arrow-right"></i></a>
+        <a class="item" menu-close ng-click="logOut()">Log Out<i class="icon ion-chevron-right icon-arrow-right"></i></a>
+      </div>
+      <div class='version' ng-bind-html="versionString"></div>
+      <br />
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

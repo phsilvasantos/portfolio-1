@@ -1,0 +1,21 @@
+<ion-view view-title="Enter Passcode" hide-nav-bar="true">
+
+  <ion-content class="page page-passcode">
+    <div class="logo"></div>
+    <div class="login-tip-text">
+      Please enter the 4 digit passcode
+      that you received via SMS
+    </div>
+    <form id="passcodeform" name="passcodeform" class="login-form" novalidate ng-submit="submit()">
+      <input type="tel" id="passcode" ng-model="data.passcode" name="passcode" class="login-text" gn-passcode 
+             placeholder="Enter your passcode" required autocomplete="off" maxlength="4">
+      <div><a ng-click="submit()" class="login-button"><i class="svg-icon"></i></a></div>
+    </form>
+  </ion-content>
+  <ion-footer-bar class="login-footer">
+    <div class='login-buttons-wrapper'>
+      <a href="#/login">Cancel</a>
+      <a ng-click='resendPasscode()'>Resend</a>
+    </div>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,50 @@
+<ion-view title="Reminders" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header width-control reminders-page">
+    <div class="list">
+		<div class="item item-toggle select-label">
+		 Daily Reminder
+		 <div class="select-outer" ng-click="datePickerOpen()">
+            <div class="select-time">
+                <h3 ng-model="reminderTimes.selected.real">{{reminderTimes.selected.real}}</h3>
+                <h3 class="select-colon">:</h3>
+                <h3 ng-model="reminderMins.selected.time">{{reminderMins.selected.time}}</h3>
+                <h3 ng-model="reminderTimes.selected.short">{{reminderTimes.selected.short}}</h3>
+            </div>
+        </div>
+        <label class="toggle toggle-calm">
+		   <input type="checkbox" ng-model="reminderTimes.reminder">
+		   <div class="track">
+		     <div class="handle"></div>
+		   </div>
+		</label>
+		</div>
+		<div class="item item-toggle select-label">
+		 After {{inactivityTimes.frequency}} Days of Inactivity
+		 <div class="select-outer" ng-click="datePicker2Open()">
+            <div class="select-time">
+                <h3 ng-model="inactivityTimes.selected.real">{{inactivityTimes.selected.real}}</h3>
+                <h3 class="select-colon">:</h3>
+                <h3 ng-model="inactivityMins.selected.time">{{inactivityMins.selected.time}}</h3>
+                <h3 ng-model="inactivityTimes.selected.short">{{inactivityTimes.selected.short}}</h3>
+            </div>
+        </div>
+        <div style="margin-top:5px">
+	        <p class="frequency-label">Frequency (days): </p>
+            <div class="item-select">
+            <select ng-model="inactivityTimes.frequency" ng-options="numOption for numOption in inactivityOptions">
+            </select>
+            </div>
+        </div>
+        <label class="toggle toggle-calm">
+		   <input type="checkbox" ng-model="inactivityTimes.reminder">
+		   <div class="track">
+		     <div class="handle"></div>
+		   </div>
+		</label>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,50 @@
+<ion-side-menus>
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+  <ion-side-menu side="left" expose-aside-when="large">
+    <header class="bar bar-header bar-stable">
+      <h1 class="title"><img class='title-image' src='img/finder-logo-25.png' /></h1>
+    </header>
+    <ion-content class="has-header">
+      <ion-list>
+        <ion-item nav-clear menu-close ui-sref="app.setup">
+          Home
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="app.event">
+          + Events and Locations
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="app.notifications">
+          Notifications <sup class="assertive" ng-show="numbers>0">{[{numbers}]}</sup>
+        </ion-item>
+        <!-- <ion-item nav-clear menu-close ui-sref="app.fb">
+          Connect to Facebook <i class="icon ion-social-facebook calm"></i> 
+        </ion-item> -->        
+        <ion-item nav-clear menu-close ui-sref="app.messagelist">
+          Messages
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="app.publicmessage">
+          Public Messages
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="app.invitation">
+          Invitations
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="app.traffic" ng-show="has_org && has_device">
+          Traffic Congestion <sup class="assertive">*&szlig;eta</sup>
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="app.shares" ng-show="has_org && has_device">
+          Share & Hire
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="app.useradmin">
+          Manage Users
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="app.order">
+          Order a <span class="assertive">Tracking Device</span>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

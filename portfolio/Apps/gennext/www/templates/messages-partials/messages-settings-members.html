@@ -1,0 +1,8 @@
+<div class="item item-avatar link messages-settings-member" ng-repeat="contact in shared.currentConversationUsers">
+  <div background-image="{{contact.avatarUrl}}" class="messages-avatar"></div>
+  <div class="item-head">
+    <h2>{{contact.fullName}}</h2>
+    <a href="#" class="viewprofile" menu-close>View profile</a>
+    <button class="button button-positive remove-member button-clear"><i class="icon ion-ios7-minus-outline"></i></button>
+  </div>
+</div>

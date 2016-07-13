@@ -1,0 +1,39 @@
+<ion-view cache-view="false">
+  <ion-nav-title>
+    {{!isCreatePage?'Add Item':'Edit Item'}}
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="save()" ng-disabled="!isValidForm()">Save</button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="page page-edit-product">
+    <form name="$parent.productForm">
+      <ion-list>
+        <label class="item item-input">
+          <span class="input-label">Item ID</span>
+          <input type="text" placeholder="Item ID" ng-model="selectedProduct.ItemId">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Full Description</span>
+          <input type="text" placeholder="Enter Description" ng-model="selectedProduct.FullDescription">
+        </label>
+        <label class="item item-input" ng-class="{'required-option-empty':!selectedProduct.ShortDescription}">
+          <span class="input-label">Short Description</span>
+          <input type="text" placeholder="Enter Description" ng-model="selectedProduct.ShortDescription" required>
+        </label>
+        <label class="item item-input" ng-class="{'required-option-empty':!selectedProduct.Price}">
+          <span class="input-label">Price</span>
+          <input type="number" placeholder="Enter Price" ng-model="selectedProduct.Price" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Stock Qty</span>
+          <input type="number" placeholder="Enter Qty" ng-model="selectedProduct.StockQty">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Alert Qty</span>
+          <input type="number" placeholder="Enter Qty" ng-model="selectedProduct.AlertQty">
+        </label>
+      </ion-list>
+    </form>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,36 @@
+<div class="modal modal-photocropper">
+  <header class="bar bar-header nav-bar">
+    <div class="button-clear button back-button" ng-click="photocropperModal.hide()"><i class="icon ion-ios-arrow-back"></i></div>
+    <h1 class="title">profile photo</h1>
+    <div class="buttons right-buttons">
+      <div class="button button-clear" ng-click="finishEditPhoto()">Done</div>
+    </div>
+  </header>
+  <content class="photocropper-content">
+    <div id="image-cropper">
+      <!-- This is where the preview image is displayed -->
+      <div class="cropit-image-preview-wrapper">
+        <div class="cropit-image-preview"></div>
+      </div>
+
+      <!-- This range input controls zoom -->
+      <!-- You can add additional elements here, e.g. the image icons -->
+      <div class="slider-wrapper">
+        <div class="range">
+          <input type="range" class="cropit-image-zoom-input" />
+          <i class="icon ion-ios-minus-empty"></i>
+          <i class="icon ion-ios-plus-empty"></i>
+        </div>
+      </div>
+
+      <!-- This is where user selects new image -->
+      <button class="button btn-select-file">
+        <input type="file" class="cropit-image-input" accept="image/*"/>
+        Choose Photo
+      </button>
+
+      <!-- The cropit- classes above are needed
+           so cropit can identify these elements -->
+    </div>
+  </content>
+</div>

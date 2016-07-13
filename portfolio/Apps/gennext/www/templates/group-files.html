@@ -1,0 +1,23 @@
+<ion-view title="Files">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="done()">Done</button>
+  </ion-nav-buttons>
+  <ion-content class="page page-group-files">
+    <div class="list">
+      <a class="item" 
+         photo-full-view
+         ng-repeat="item in files"
+         photos="[item.fullviewItem]"
+         is-disabled="!isPicture(item)"
+         data-photo-index="0"
+         ng-click="openFile(item)">
+        <i class="thumb" background-image="{{item.thumbImage.url()}}" ng-show="item.thumbImage"></i>
+        <i class="thumb flaticon-{{item.thumbClass}}" ng-show="!item.thumbImage && item.thumbClass"></i>
+        <i class="thumb svg-icon clip-white" ng-show="!item.thumbImage && !item.thumbClass"></i>
+        <span class="filename">{{item.name || item.file.name()}}</span>
+        <span class="info">{{item.author.get('firstName')}} {{item.author.get('lastName')}} - {{getDisplayCreatedDate(item.createdAt)}}</span>
+      </a>
+    </div>
+
+  </ion-content>
+</ion-view>

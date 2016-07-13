@@ -1,0 +1,30 @@
+<ion-view cache-view="false">
+  <ion-nav-title>
+    Setting
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="save()">Save</button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="page page-edit-product">
+    <form name="$parent.productForm">
+      <ion-list>
+        <label class="item item-input">
+          <span class="input-label">Currency : </span>
+          <select ng-options="currency.Id as currency.Description for currency in currencies" ng-model="setting.CurrencyId"></select>
+        </label>
+        <label class="item item-input" ng-class="{'required-option-empty':!setting.LanguageId}">
+          <span class="input-label">Language : </span>
+          <select ng-options="language.Id as language.EnglishName for language in languages" ng-model="setting.LanguageId"></select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Date Format : </span>
+          <select ng-options="dataformat.Id as dataformat.Value for dataformat in dataformats" ng-model="setting.DateFormatId"></select>
+        </label>
+      </ion-list>
+    </form>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+<ion-view view-title="{{'cleverbaby.app.more.measures.title' | translate}}">
+    <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('measureMainScroll')" delegate-handle="measureMainScroll">
+        <div class="wrapper-tab more-page">
+            <ion-nav-bar class="bar-positive">
+                <ion-nav-buttons side="left">
+                    <a class="btn left" ui-sref="app.more"><i class="fa fa-angle-left"></i></a>
+                </ion-nav-buttons>
+                <div class="header no-border">
+                    <ion-nav-title cb-baby-drop-down></ion-nav-title>
+                </div>
+            </ion-nav-bar>
+            <ul class="list">
+                <li class="item" ng-repeat="(key, m) in measures" ng-click="change(key, m)">
+                    {{ m.label }}
+                    <span class="item-note">{{ m.valueName }}</span>
+                </li>
+                <!--<li class="item">
+                    Length inch/ft or cm/m
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                    <span class="item-note">inch/ft</span>
+                </li>
+                <li class="item">
+                    Volume oz/lb or ml/L
+                    <span class="item-note">oz/lb</span>
+                </li>
+                <li class="item">
+                    Temperature C or F
+                    <span class="item-note">c</span>
+                </li>-->
+            </ul>
+        </div>
+    </ion-content>
+</ion-view>

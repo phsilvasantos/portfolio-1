@@ -1,0 +1,47 @@
+<ion-view title="CREATE NEW GAME" ng-controller="DetailGameCtrl" cache-view="false">
+  <ion-content class="page page-listmain has-subheader">
+    <form name="$parent.addLineItemForm">
+      <ion-item class="item item-input">
+        <span class="input-label" style="width: 35%;">Opponent</span>
+        <input type="text" placeholder="Who are we playing" ng-model="lastGameData.opponentname">
+      </ion-item>
+      <ion-item class="item item-input">
+        <span class="input-label" style="width: 35%;">Maximum</span>
+        <input type="number" placeholder="Max players to confirm" ng-model="lastGameData.maxnumber">
+      </ion-item>
+      <ion-item class="item" style="padding:5px 20px;">
+        <span class="input-label semi-title">Reminders and auto triggers: <span class="icon ion-ios-information semi-title"></span></span>
+        
+        <div class="reminder-container" style="">
+          <ion-item class="item" style="left: 0px;">
+            <span class="input-label">For Player(IN):</span>
+            <select ng-model="lastGameData.trigger_in">
+              <option value="24" ng-selected="true">24 hours</option>
+              <option value="72">72 hours</option>
+            </select>
+          </ion-item>
+          <ion-item class="item" style="right: 0px;">
+            <span class="input-label">For Player(OUT):</span>
+            <select ng-model="lastGameData.trigger_out">
+              <option value="24">24 hours</option>
+              <option value="72" ng-selected="true">72 hours</option>
+            </select>
+          </ion-item>
+        </div>
+
+      </ion-item>
+      <ion-item class="item" style="padding:5px 20px;">
+        <span class="input-label semi-title">Message Preview:</span>
+        <textarea name="volume" style="height: 150px;background: #eee;width:100%;" ng-model="lastGameData.instruction"></textarea>
+      </ion-item>
+    </form>
+  </ion-content>
+  <ion-footer-bar class="organizate-footer">
+    <div class="footer-container">
+      <div class="container-footer">        
+        <div class="button button-clear footer-green-button" ng-click="saveGameDetail();
+              goPage();">{{buttonTitle}}</div>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

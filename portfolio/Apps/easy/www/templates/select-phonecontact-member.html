@@ -1,0 +1,26 @@
+<ion-view title="CONTACT USERS" ng-controller="SelectPhoneContactMemberCtrl" cache-view="false">
+  <ion-content class="page page-listmain page-select-team-member has-subheader">
+    <ion-list>      
+      <ion-item ng-repeat="user in contactuser" class="item card contacts-item" ng-if="user.rostername">
+        <div class="contact-item-container">
+          <div style="background:url('{{(user.photourl)?user.photourl:'img/ylblankuser.png'}}')" class ="image-contacts-adapter"></div>
+        </div>
+        <div class="contact-item-container">
+          <p class="contact-item-main">{{user.rostername}}</p>
+          <p class="contact-item-submain">{{user.email}}</p>
+        </div>
+        <div class="contact-item-container right-button-container">
+          <button class="button button-clear list-view-button icon {{isMembers[user.rostername]?'ion-ios-checkmark-outline font-white-color':'ion-ios-circle-outline'}}" 
+                  ng-click="selectMember(user)"></button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="organizate-footer">
+    <div class="footer-container">
+      <div class="container-footer">        
+        <div class="button button-clear footer-green-button" ng-click="import();">Import selected members</div>         
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

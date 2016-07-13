@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Gotham-Medium';
+  src: url('Gotham-Medium.eot'); /* IE9 Compat Modes */
+  src: url('Gotham-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Gotham-Medium.woff') format('woff'), /* Modern Browsers */
+       url('Gotham-Medium.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Gotham-Medium.svg#bdc473fae2f64b1c45b8886bcff81bae') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+

@@ -1,0 +1,31 @@
+<ion-view title="CHOOSE YOUR ROLE" ng-controller="HomePageCtrl" cache-view="false">
+
+  <ion-content class="page page-listmain" style="height: 100%;">
+    <ion-list>
+      <div class="custom-item-title">
+        Hi, welcome to pelotaYA, please choose your role        
+      </div>
+      <ion-item class="item item-icon-left" ng-click="goToPage('app.create-team');">
+        <i class="icon"><img class="custom-list-icon" style="width: 20px;" src="img/create-team-ico.png"/></i>
+        <p>Create New Team</p>
+      </ion-item>
+      <ion-item class="item item-icon-left" ng-click="goToPage('app.manage-team');">
+        <i class="icon"><img class="custom-list-icon" src="img/manage-team-ico.png"/></i>
+        <p>Manage Team</p>
+      </ion-item>
+      <ion-item class="item item-icon-left" ng-click="goToPage('app.personal-team');">
+        <i class="icon"><img class="custom-list-icon" src="img/im-player-ico.png"/></i>
+        <p>I am a player on a team</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="roster-footer" style="height: 68px;">
+    <ion-content class="page page-listmain no-header no-footer">
+      <ion-list>
+        <ion-item class="item item-icon-left" ng-click="logout();">
+          <p>Logout</p>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-footer-bar>
+</ion-view>

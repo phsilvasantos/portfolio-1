@@ -1,0 +1,48 @@
+<ion-view>
+  <ion-nav-title class="rootScreen">
+    eventro
+  </ion-nav-title>
+  <ion-header-bar class="bar-subheader events">
+    <div class="item-input-inset searchbarWrapper">
+      <label class="item-input-wrapper searchBar">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search for events by name" ng-model="input.searchText" ng-minlength="2">
+      </label>
+    </div>
+  </ion-header-bar>
+  <ion-content has-subheader="true" class="events">
+    <div ng-show="isOnline" ng-activity-indicator class="noAnimations activityIndicator ng-hide"></div>
+
+    <ion-list>
+      <ion-item id="{{event.$id}}" ng-class="{'item-remove-animate': true, 'item-icon-right': true, 'highlight': isHighlighted(event.$id)}" ng-repeat="event in filtered = (events | filter:input.searchText | orderBy:predicate:true)" type="item-text-wrap" ng-click="gotoPage('event-schedule', {eventId:event.$id});">
+        <span class="row noPaddingLR">
+          <div class="circleDate col">
+            <span class="day">{{event.start | date:"dd"}}</span>
+            <span class="month">{{event.start | date:"MMM"}}</span>
+          </div>
+          <div class="col">
+            <h2>{{event.name || "Untitled"}}</h2>
+            <p>{{event.start | date:"EEE dd MMMM yy '@' HH:mm"}}</p>
+          </div>
+        </span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+    <!-- No results from filter -->
+    <div class="noResults ng-hide" ng-show="!filtered.length && hasDatabaseValues()">
+      <div class="resultsMessage">
+        <i class="ion-search"></i>
+        <h2>No events could be found</h2>
+        <p>Please try another search</p>
+      </div>
+    </div>
+    <!-- No results from cache and offline -->
+    <div class="noResults ng-hide" ng-show="!isOnline && !events.length">
+      <div class="resultsMessage">
+        <i class="ion-ios-cloud-outline"></i>
+        <h2>No Network Connection</h2>
+        <p>Please connect to the internet</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

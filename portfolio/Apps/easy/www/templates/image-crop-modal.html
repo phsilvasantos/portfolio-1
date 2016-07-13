@@ -1,0 +1,15 @@
+<ion-view title="">
+  <ion-content class="no-header" scroll="false" style="background: #000 !important;">
+    <div class="cropArea big-cropImg">
+      <img-crop image="myImage"
+                result-image="myCroppedImage"
+                area-type="square"
+                area-min-size="30"
+                result-image-format="image/jpeg"
+                ></img-crop>
+    </div>
+    <div style="width: 100%; text-align: center;">
+      <div class="button organizate-black-btn" ng-click="hideCropmodal(myCroppedImage)">DONE</div>
+    </div>    
+  </ion-content>
+</ion-view>

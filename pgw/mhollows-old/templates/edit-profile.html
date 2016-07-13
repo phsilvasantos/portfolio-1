@@ -1,0 +1,110 @@
+<ion-view title="Edit Profile">
+  <!--<ion-nav-buttons side="left">
+    <button class="button icon-left ion-chevron-left button-clear button-dark" onclick="history.back()"></button>
+  </ion-nav-buttons>-->
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="saveChanges()">Save</button>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-editprofile">
+    <ng-form name="frmprofile" id="frmprofile">
+      <div class="profile-banner">
+        <div class="picture" background-image="{{profile.get('picture').url()}}">
+          <i class="icon ion-camera" ng-click="photocropperModal.show()"></i>
+        </div>
+      </div>
+
+      <div class="profile-name">
+        {{user.get('firstName')}} {{user.get('lastName')}}
+        <em>Member</em>
+      </div>
+      
+      <span class="right-label">Visibility</span>
+      <div class="content-block editprofile-block"
+           ng-repeat="(key, value) in profileSections"
+           ng-init="isSocialBlock=(key=='Social Media')">
+        <div class="content-block-title has-icon" ng-show="key=='Personal Info'">
+          <i class="svg-icon personal"></i> Personal<br>Information
+        </div>
+        <div class="content-block-title has-icon" ng-show="key=='Professional Info'">
+          <i class="svg-icon professional"></i> Professional<br>Information
+        </div>
+        <div class="content-block-title" ng-show="key!='Professional Info' && key!='Personal Info'">
+          {{key|friendlySectionTitle|capitalize:true}}
+        </div>
+        <div class="list-block" ng-class="{'social': isSocialBlock}">
+          <ul>
+            <li ng-repeat="(innerKey, innerValue) in value"
+                ng-switch="innerKey | lowercase"
+                ng-init="styleRule = getStyleRule(innerKey)">
+              <div class="item-content bio" ng-switch-when="bio">
+                <div class="item-inner">
+                  <label>{{innerKey| capitalize:true}}</label>
+                  <a href="javascript:void(0)" class="item-text" ng-click="openBioEdit()">{{profileSections[key][innerKey]
+                    | htmlToPlaintext}} <u>(Click to edit)</u></a>
+                  <input type="hidden" name="bio" ng-model="profileSections[key][innerKey]">
+                </div>
+              </div>
+              <div class="item-content" ng-switch-default>
+                <div class="item-inner">
+                  <div class="item-input" ng-class="{'has-icon': innerKey.toLowerCase().indexOf('phone')===0}">
+                    <label>{{innerKey| capitalize:true}}</label>
+                    <i class="icon ion-ios7-telephone" ng-if="innerKey.toLowerCase().indexOf('phone')===0"></i>
+                    <input type="{{isSocialBlock?'url':styleRule.type}}" ng-model="profileSections[key][innerKey]">
+                  </div>
+                </div>
+                <div class="item-after" ng-if="innerKey!='First Name' && innerKey!='Last Name'">
+                  <ion-toggle ng-model="visibilities[key][innerKey]"></ion-toggle>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </ng-form>
+  </ion-content>
+</ion-view>
+
+<script id="bioedit-modal-html" type="text/ng-template">
+  <div class="modal modal-bioedit">
+    <header class="bar bar-header nav-bar">
+      <div class="button-clear button back-button" ng-click="bioeditModal.hide()"><i class="icon ion-ios7-arrow-back"></i></div>
+      <h1 class="title">Bio Edit</h1>
+      <div class="buttons right-buttons">
+        <div class="button button-clear" ng-click="doneBioEdit()">Done</div>
+      </div>
+    </header>
+    <content padding="true">
+      <textarea ng-model="data.bioeditText"></textarea>
+    </content>
+  </div>
+</script>
+
+<script id="photocropper-modal-html" type="text/ng-template">
+  <div class="modal modal-photocropper">
+    <header class="bar bar-header nav-bar">
+      <div class="button-clear button back-button" ng-click="photocropperModal.hide()"><i class="icon ion-ios7-arrow-back"></i></div>
+      <h1 class="title">profile photo</h1>
+      <div class="buttons right-buttons">
+        <div class="button button-clear" ng-click="finishEditPhoto()">Done</div>
+      </div>
+    </header>
+    <content class="photocropper-content">
+      <div id="image-cropper">
+        <!-- This is where the preview image is displayed -->
+        <div class="cropit-image-preview"></div>
+
+        <!-- This range input controls zoom -->
+        <!-- You can add additional elements here, e.g. the image icons -->
+        <input type="range" class="cropit-image-zoom-input" />
+
+        <!-- This is where user selects new image -->
+        <input type="file" class="cropit-image-input" />
+
+        <!-- The cropit- classes above are needed
+             so cropit can identify these elements -->
+      </div>
+    </content>
+  </div>
+</script>

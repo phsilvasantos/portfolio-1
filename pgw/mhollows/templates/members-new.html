@@ -1,0 +1,37 @@
+<ion-view view-title="Add New Member">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon" ng-show="isFromMenu"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-disabled="frmProfile.$invalid" ng-click="save()">Save</button>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-members-new">
+    <form name="$parent.frmProfile" id="frmprofile">
+      <div class="profile-banner">
+        <div class="picture" background-image="{{data.picture.url}}">
+          <i class="icon ion-camera" image-cropper="cropOption"></i>
+        </div>
+      </div>
+      <div class="list">
+        <label class="item item-input item-stacked-label" ng-class="{invalid: frmProfile.firstName.$dirty && frmProfile.firstName.$invalid}">
+          <span class="input-label">First Name</span>
+          <input type="text" ng-model="data.firstName" name="firstName" required>
+        </label>
+        <label class="item item-input item-stacked-label" ng-class="{invalid: frmProfile.lastName.$dirty && frmProfile.lastName.$invalid}">
+          <span class="input-label">Last Name</span>
+          <input type="text" ng-model="data.lastName" name="lastName" required>
+        </label>
+        <label class="item item-input item-stacked-label" ng-class="{invalid: frmProfile.phoneNumber.$dirty && frmProfile.phoneNumber.$invalid}">
+          <span class="input-label">Phone Number</span>
+          <input type="tel" ng-model="data.phoneNumber" name="username" required>
+        </label>
+        <label class="item item-input item-stacked-label" ng-class="{invalid: frmProfile.email.$dirty && frmProfile.email.$invalid}">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="data.email" name="email" required>
+        </label>
+      <ion-checkbox ng-model="data.admin" class="item-checkbox-left">Administrative Access</ion-checkbox>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

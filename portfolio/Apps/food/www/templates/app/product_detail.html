@@ -1,0 +1,36 @@
+<ion-modal-view>
+    <ion-content class="header-background">
+        <ion-header-bar align-title="center">
+            <h1 class="title">{{cate.name}}</h1>
+            <button class="button button-clear button-icon icon ion-android-close" ng-click="closeModal()"></button>
+        </ion-header-bar>
+
+        <form>
+            <div class="product-header" style="background: url({{product.imgLg}}) no-repeat; background-size: cover;">
+                <h2 class="product-name">{{product.name}}</h2>
+                <div class="product-price">{{product.price}}</div>
+                <div class="product-like">
+                    <button class="button button-clear" style="height: 44px;width: 44px; min-height: 50px;" ng-click="doLike()">
+                        <i class="ion-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="product-body">
+                <div class="product-info">
+                    Dramatically conceptualize high-quality results with professional materials. Competently negotiate innovative information through interdependent customer service. Efficiently customize corporate sources after user-centric internal or "organic".
+                </div>
+                <ion-md-input type="text" placeholder="Enter Quantity Here..." highlight-color="energized"></ion-md-input>
+                <div class="add-to-cart">
+                    <button class="button button-block button-balanced" ng-click="doOrder()">
+                        Add to Cart
+                    </button>
+                </div>
+                <div class="add-to-favorites">
+                    <button class="button button-block button-dark">
+                        Add to Favorites
+                    </button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

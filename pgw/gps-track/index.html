@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
+        <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+        <!-- <link href='http://fonts.googleapis.com/css?family=Oswald:700,400,300' rel='stylesheet' type='text/css'> -->
+        <link href="css/app.css" rel="stylesheet">
+        <link href="css/leaflet.css" rel="stylesheet">
+        <link href="css/leaflet.draw.css" rel="stylesheet">
+        <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+        <link href="css/ionic.app.css" rel="stylesheet">
+        -->
+        <style type="text/css">
+          .css-form input.ng-invalid.ng-dirty {
+            /*background-color: #FA787E;*/
+              outline: none;
+              box-shadow:0px 0px 7px #FA787E;
+              border-color:#FA787E;
+          }
+
+          .css-form input.ng-valid.ng-dirty {
+            /*background-color: #78FA89;*/
+              outline: none;
+              box-shadow:0px 0px 7px #78FA89;
+              border-color:#78FA89;
+          }
+
+        </style>
+        <!-- ionic/angularjs js -->
+        <script src="js/leaflet.js"></script>
+        
+        <script src="js/GALocalStorage.js"></script>
+        
+        <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+        <script src="js/ng-cordova.js"></script>
+        <script src="js/geolocation.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/angles.js"></script>
+        <script src="js/angular-cookies.js"></script>
+
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/angular-leaflet-directive.min.js"></script>
+        <script src="js/leaflet.draw.js"></script>
+        <script src="js/LaunchMyApp.js"></script>
+        <title>Finder GPS Tracking</title>
+    </head>
+    <body ng-app="starter" onload="onDocLoad()" onresize="onResize()">
+
+            <ion-nav-view animation="slide-left-right-ios7">
+            </ion-nav-view>
+        
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <script type="text/javascript" src="deviceinfo.js"></script>
+        <script type="text/javascript" src="telephonenumber.js"></script>
+        <script type="text/javascript" src="sharedprefs.js"></script>
+        <!--<script type="text/javascript" src="js/facebookConnectPlugin.js"></script>-->
+        <script type="text/javascript" src="js/SocialSharing.js"></script>
+        <!-- your app's js -->
+        <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/app.js"></script>
+        <script type="text/javascript" src="js/geolib.js"></script>
+        <script type="text/javascript" src="js/moment.min.js"></script>
+        <script type="text/javascript">
+        Date.prototype.deductHours= function(h){
+            this.setHours(this.getHours()-h);
+            return this;
+        }
+        Date.prototype.addHours= function(h){
+            this.setHours(this.getHours()+h);
+            return this;
+        }
+        </script>
+
+    <script>
+    // var _gaq = _gaq || [];
+    // _gaq.push(['_setAccount', 'UA-7185940-1']);
+    // _gaq.push(['_setDomainName', 'none']);
+    // _gaq.push(['_trackPageview', 'FinderGPSTracking App']);
+    ga_storage._setAccount('UA-7185940-1'); //Replace with your own
+
+    console.log("Analytics testing");
+    </script>
+
+        <script>
+        function onDocLoad() {
+            console.log("User is Paid?"+window.localStorage['user_is_paid']);
+            if(window.localStorage['user_is_paid']!='true'){
+                // if(( /(ipad|iphone|ipod|android)/i.test(navigator.userAgent) )) {
+                //     document.addEventListener('deviceready', initApp, false);
+                // } else {
+                    initApp();                    
+                    
+                // }
+            }
+        }
+        function handleOpenURL(url) {
+            console.log("FINDER received url: " + url);
+            var url_data = url.split("#");
+            //location.href = "index.html#/app/detail/5410216efd0d851f32f42ac3";
+            //location.href = "findergpstracking://gpstracking/index.html#/message";
+            var u = "index.html#"+url_data[1];
+            console.log("FINDER Converted url: " + u);
+            location.href = u;
+        }
+        function initApp() {
+            initAd();
+
+            // display the banner at startup
+            window.plugins.AdMob.createBannerView();
+        }
+        function initAd(){
+            if ( window.plugins && window.plugins.AdMob ) {
+                var ad_units = {
+                    ios : {
+                        banner: 'ca-app-pub-2899535788334936/6458250207',
+                        interstitial: 'ca-app-pub-2899535788334936/3672907408'
+                    },
+                    android : {
+                        banner: 'ca-app-pub-2899535788334936/6458250207',
+                        interstitial: 'ca-app-pub-2899535788334936/3672907408'
+                    }
+                };
+                var admobid = ( /(android)/i.test(navigator.userAgent) ) ? ad_units.android : ad_units.ios;
+
+                window.plugins.AdMob.setOptions( {
+                    publisherId: admobid.banner,
+                    interstitialAdId: admobid.interstitial,
+                    bannerAtTop: false, // set to true, to put banner at top
+                    overlap: false, // set to true, to allow banner overlap webview
+                    offsetTopBar: false, // set to true to avoid ios7 status bar overlap
+                    isTesting: false, // receiving test ad
+                    autoShow: true // auto show interstitial ad when loaded
+                });
+
+                registerAdEvents();
+                
+            } 
+            // else {
+            //     alert( 'admob plugin not ready' );
+            // }
+        }
+        // optional, in case respond to events
+        function registerAdEvents() {
+            document.addEventListener('onReceiveAd', function(){});
+            document.addEventListener('onFailedToReceiveAd', function(data){});
+            document.addEventListener('onPresentAd', function(){});
+            document.addEventListener('onDismissAd', function(){ });
+            document.addEventListener('onLeaveToAd', function(){ });
+            document.addEventListener('onReceiveInterstitialAd', function(){ });
+            document.addEventListener('onPresentInterstitialAd', function(){ });
+            document.addEventListener('onDismissInterstitialAd', function(){ });
+        }
+        function onResize() {
+            var msg = 'web view: ' + window.innerWidth + ' x ' + window.innerHeight;
+            document.getElementById('sizeinfo').innerHTML = msg;
+        }
+        // alert(document.getElementById("bg").style.background);
+        // document.getElementById("bg").style.background = "url('img/bg-1.jpg') no-repeat center";
+        </script>
+        <script type="text/javascript" charset="utf-8" src="inappbilling.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            function successHandler (result) {
+                var strResult = "";
+                if(typeof result === 'object') {
+                    strResult = JSON.stringify(result);
+                } else {
+                    strResult = result;
+                }
+                console.log("SUCCESS: \r\n"+strResult );
+            }
+            
+            function errorHandler (error) {
+                console.log("ERROR: \r\n"+error );
+            }
+
+            // Click on init button
+            function init(){
+                // Initialize the billing plugin
+                inappbilling.init(successHandler, errorHandler, {showLog:true});
+            }
+
+            // Click on purchase button
+            function buy(){
+                // make the purchase
+                inappbilling.buy(successHandler, errorHandler,"gas");
+                
+            }
+            
+            // Click on ownedProducts button
+            function ownedProducts(){
+                // Initialize the billing plugin
+                inappbilling.getPurchases(successHandler, errorHandler);
+                
+            }
+
+            // Click on Consume purchase button
+            function consumePurchase(){
+
+                inappbilling.consumePurchase(successHandler, errorHandler, "gas");
+            }
+
+            // Click on subscribe button
+            function subscribe(){
+                // make the purchase
+                inappbilling.subscribe(successHandler, errorHandler,"infinite_gas");
+
+            }
+            
+            // Click on Query Details button
+            function getDetails(){
+                // Query the store for the product details
+                inappbilling.getProductDetails(successHandler, errorHandler, ["gas","infinite_gas"]);
+                
+            }
+            
+            // Click on Get Available Products button
+            function getAvailable(){
+                // Get the products available for purchase.
+                inappbilling.getAvailableProducts(successHandler, errorHandler);
+                
+            }                       
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<ion-view view-title="Shopping cart" cache-view="false">
+    <ion-header-bar align-title="center">
+        <ion-nav-bar align-title="center" class="bar-assertive">
+            <ion-nav-buttons>
+                <button class="button button-clear button-icon" ng-click="goBack()" ><i class="ion-chevron-left"></i></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+    </ion-header-bar>
+    <ion-content>
+      <div class="cate-lv2">
+        <div class="item card-item" ng-repeat="product in carts">
+          <div class="card stable-bg ink ink-dark cate-lv2-item">
+            <div class="item item-thumbnail-left item-text-wrap" ng-click="productDetail({{product.id}})">
+              <img ng-src={{product.img}}>
+              <h2>{{product.name}}</h2>
+              <p>{{product.lastText}}</p>
+                <div class="product-info">
+                    <div class="price">{{product.price}}</div>
+                    <p>x</p>
+                    <input type="number" class="input-qty" placeholder="" value="{{product.qty}}" />
+                    <a class="product-delete"><i class="ion-android-delete"></i></a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="total-prices">
+            <strong>Subtotal</strong>
+            <span>$453</span>
+            <div class="clearfix"></div>
+        </div>
+        <div class="total-prices">
+            <strong>Shipping</strong>
+            <span>$5</span>
+            <div class="clearfix"></div>
+        </div>
+        <div class="total-prices">
+            <strong>Total</strong>
+            <span>$458</span>
+            <div class="clearfix"></div>
+        </div>
+        <div class="btn-checkout">
+            <button class="button button-block button-balanced">
+                Checkout
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,135 @@
+<ion-view title="" hide-back-button="true">
+    <ion-nav-buttons side="left">
+	  <button class="button button-clear button-primary end-button"ng-click="endWorkout()">End</button>
+    </ion-nav-buttons>
+	<ion-nav-buttons side="right">
+	  <button class="button-icon icon ion-android-mixer mixer-button" ng-click="showTiming()" ng-if="!yogaSelection"></button>
+	  <button class="button-icon icon mixer-button" ng-class="{'ion-volume-high' : extraSettings.audioOption, 'ion-volume-mute' : !extraSettings.audioOption }" ng-click="toggleAudio()" ng-if="yogaSelection"></button>
+	</button>
+  </ion-nav-buttons>
+  <ion-content class="has-header workout-page" scroll="false">
+  	<div class="box">
+		<div id="exercise" class="A flex-timers">
+	    	<h2>{{currentExercise.name}}</h2>
+	    </div>
+		<div id="linkto" class="B flex-timers" on-swipe-left="swipeLeftSkip()" on-swipe-right="swipeRightBack()">
+			<div ng-show="nextExercise.status" class="next-exercise">
+				<p class="next-text">{{nextExercise.status ? 'Next: ' + nextExercise.name : currentExercise.name}}</p>
+			</div>
+			<img ng-src="img/exercises/{{currentExercise.image}}" id="image-only" ng-if="!advancedTiming.autoPlay"/>
+			<div style="position:relative">
+				<!-- <img ng-src="img/exercises/{{currentExercise.image}}" id="video-background" ng-if="advancedTiming.autoPlay"/> -->
+				<img ng-src="img/frames/{{nextExercise.image}}" id="video-background" ng-if="advancedTiming.autoPlay"/>
+				<!-- <video ng-src="{{videoAddress}}" ng-click="toggleVideo()" loop="" muted="" webkit-playsinline="" preload="" ng-if="advancedTiming.autoPlay && androidPlatform" id="inline-video" type="video/mp4">
+				</video> -->
+				<video ng-src="{{videoAddress}}" loop="" muted="" webkit-playsinline="" preload="" autoplay="" ng-if="advancedTiming.autoPlay && !androidPlatform" id="inline-video">
+				</video>
+				<video id="inlinevideo" ng-if="advancedTiming.autoPlay && androidPlatform" type="video/mp4" loop muted>
+				</video>
+				
+			</div>
+	    </div>
+	  	<div class="button-bar C">
+		 	<a class="button flex-buttons" id="startpause" ng-click="toggleTimer()" ng-class="{'transition-pause-active': transitionStatus, 'orange-text':!totalTimer.status}"><p><span ng-model="totalTimer.status" ng-hide="transitionStatus">{{!hasStarted ? 'START' : (totalTimer.status ? 'PAUSE' : 'RESUME')}}</span><span ng-show="transitionStatus" ng-model="transitionTimer"><span style="color:#767676">BEGIN IN:</span> <span>{{transitionTimer}}</span></span></p></a>
+		</div>
+	    <div class="item D flex-timers">
+	    	<h2 id="singlecounter" ng-model="singleTimer.displayText" ng-class="{'grey-icon':!totalTimer.status}">{{singleTimer.displayText}}</h2>
+	    </div>
+	  	<div class="button-bar E ">
+	  		<a class="button button icon ion-minus flex-buttons" ng-click="decreaseTempo()" ng-if="yogaSelection"></a>
+			<a class="button button icon ion-ios7-videocam flex-buttons" ng-if="!advancedTiming.autoPlay" ng-click="openVideoModal()"></a>
+			<a class="button button icon ion-ios7-rewind flex-buttons" ng-class="{'grey-icon':!previousExercise}" ng-click="backExercise()" ng-if="advancedTiming.autoPlay && !yogaSelection"></a>
+			<a class="button button icon ion-ios7-fastforward flex-buttons" ng-click="skipExercise()" ng-if="!yogaSelection"></a>
+			<a class="button button icon ion-plus flex-buttons" ng-click="increaseTempo()" ng-if="yogaSelection"></a>
+		</div>
+	    <div class="item F flex-timers">
+	    	<h2 id="totalcounter" ng-model="totalTimer.displayText" ng-class="{'grey-icon':!totalTimer.status}">{{totalTimer.displayText}}</h2>
+	    </div>
+	</div>
+  </ion-content>
+</ion-view>
+
+<script id="workout-complete.html" type="text/ng-template">
+  <div class="modal end-workout-page modal-colors">
+    <ion-header-bar>
+      <h1 class="title">GREAT SWORK!</h1>
+
+      <div class="nav-buttons right-buttons" ng-show="sessionMCount.count && sessionMCount.mPointsAvailable" ng-click="launchMPoints()">
+	    <span class="badge badge-assertive rewards-badge" ng-model="sessionMCount.count">{{sessionMCount.count}}</span>
+	    <button class="button button-icon rewards-icon">
+	    	<img src="img/extras/gift.png" class="home-gift" />
+    	</button> 
+	 </div>
+
+    </ion-header-bar>
+    <ion-content has-bouncing="false" class="width-control-lite">
+    	<ion-slide-box show-pager="true">
+		  <ion-slide>
+		   <div class="box sceen1">
+		       	<div class="stats-view">
+		    	    <div class="row">
+					  <div class="col table-label"><p>CURRENT</p><p>WORKOUT</p></div>
+					  <div class="col"><p class="stat-number">{{timeToAdd}}</p><p class="stat-label">minutes</p></div>
+					</div>
+					<div class="row">
+					  <div class="col table-label"><p>TOTAL</p><p>TODAY</p></div>
+					  <div class="col"><p class="stat-number">{{totals.todayMinutes}}</p><p class="stat-label">minutes</p>
+					  </div>
+					  </div>
+				</div>
+		    </div>
+		  </ion-slide>
+		  <ion-slide class="temp-height">
+		    <div class="box screen2">
+		       	<div class="stats-view">
+		    	    <div class="row">
+					  <div class="col table-label"><p>CURRENT</p><p>WORKOUT</p></div>
+					  <div class="col"><p class="stat-number">{{burn}}</p><p class="stat-label">calories</p></div>
+					</div>
+					<div class="row">
+					  <div class="col table-label"><p>TOTAL</p><p>TODAY</p></div>
+					  <div class="col"><p class="stat-number">{{totals.todayCalories}}</p><p class="stat-label">calories</p></div>
+					</div>
+				</div>
+		    </div>
+		   </ion-slide>
+		</ion-slide-box>
+		<div class="end-workout-buttons">
+			<div class="button-bar">
+		        <button class="button button-stable condense" ng-click="cancelModal()" ng-hide="workoutComplete">
+				  CONTINUE
+				</button>
+				<button class="button button-energized nexercise-orange condense" ng-click="mainMenu()">
+				  MAIN MENU
+				</button>
+			</div>
+			<button class="button button-block button-positive nexercise-blue condense" id="challenge-friend" ng-click="challengeFriend()">
+			  	  SHARE THIS WORKOUT
+			</button>
+		</div>
+
+		<div class="end-workout-health padding" ng-show="healthKitData.showHealthKitOption">
+			<button class="button button-block button-assertive" ng-click="enableHealthKit()">
+				ENABLE HEALTHKIT?
+			</button>
+		</div>
+		<p class="centered health-red-text extra-top" ng-model="healthKitData.healthKitStatus">{{healthKitData.healthKitStatus}}</p>
+    </ion-content>
+  </div>
+</script>
+
+<script id="show-video.html" type="text/ng-template">
+  <div class="modal video-modal modal-colors">
+    <ion-header-bar class="bar bar-header bar-positive">
+    	<button class="button button-clear button-primary left-button icon ion-android-close" ng-click="cancelVideoModal()"></button>
+    </ion-header-bar>
+    <ion-content has-bouncing="false">
+    	<div id='videoplayer' style="background-color:black">
+            <video id="modal-video-player" ng-src="{{videoAddressModal}}" preload="" webkit-playsinline="" autoplay="" controls="" loop="" muted="" ng-if="showVideo && !androidPlatform">
+			</video>
+			<video id="modalvideoplayer" style="opacity:0.00001" loop muted ng-if="showVideo && androidPlatform">
+			</video>
+    	</div>
+    </ion-content>
+  </div>
+</script>

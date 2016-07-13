@@ -1,0 +1,26 @@
+<div class="modal transparent-super" ng-controller="DropdownCtrl" ng-click="closeModal()">
+    <div class="wrapper-dropdown">
+        <div class="header">
+            <h2>
+                Select Baby
+            </h2>
+            <a ng-click="cancel()" class="btn left"><i class="fa fa-close"></i></a>
+        </div>
+        <div class="kotak autoheight">
+            <div class="item" ng-repeat="baby in storage.babies">
+                <div class="baby-img-name-con" ng-click="select(baby)">
+                    <div class="thumb-baby circular" ><img ng-src="{{ baby.displayImage | babyImage }}"></div>
+                    <h2>{{ baby.name }}</h2>
+                </div>
+                <a class="edit" ng-click="newBaby(baby)"><span class="icon-note"></span> Edit</a>
+            </div>
+            <div class="item">
+                <div class="baby-img-name-con" ng-click="newBaby()">
+                    <a class="btn-add circular" ><i class="fa fa-plus"></i> </a>
+                    <h2>Add Another Baby</h2>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

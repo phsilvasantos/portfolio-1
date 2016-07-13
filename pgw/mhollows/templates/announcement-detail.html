@@ -1,0 +1,47 @@
+<ion-view view-title="Announcement Comments" cache-view="false">
+  <ion-content class="page page-group-feed page-announcement">
+    <div class="feeds">
+      <div class="feed-item item">
+        <a href="javascript:void(0)"
+           photo-full-view
+           photos="[announcement.imageInfo]"
+           category="'announcement'"
+           background-image="{{announcement.get('image').url()}}" ng-show="announcement.get('image').url()" class="announcement-image"></a>
+
+        <div class="announcement-view">
+          <h1 class="announcement-title">{{announcement.get('title')}}</h1>
+          <div class="meta-info">
+            <span class="posted-by">
+              <label>Posted by</label>
+            </span>
+            <span class="posted-by">
+              <em>&nbsp; {{announcement.get('author').get('firstName')}} {{announcement.get('author').get('lastName')}}</em>
+            </span>
+            <span class="posted-on">
+              {{announcement.displayPublishDate}}
+            </span>
+          </div>
+
+          <div class='announcement-body' ng-bind-html="announcement_body" open-inapp-browser></div>
+
+        </div>
+        <div class="comments list">
+          <div class="item-divider heading" ng-show="comments.length">
+            <a>Comments List</a>
+          </div>
+          <!-- <div class="item-divider heading">Comments</div> -->
+          <div class="comment-items" ng-show="announcement.get('commentCount')">
+            <div class="comment-item like-item item" ng-repeat="comment in comments">
+              <a ng-href="#/profile/{{comment.get('author').get('profile').id}}"><img class="avatar" ng-src="{{comment.get('author').get('profile').get('thumbImage').url()}}"></a>
+              <a class="poster-name" ng-href="#/profile/{{comment.get('author').get('profile').id}}">
+                {{comment.get('author').get('firstName')}} {{comment.get('author').get('lastName')}}
+              </a>
+              <span ellipsis-text="comment.get('body')"></span>
+              <div class="posted-date">{{getDisplayPostDate(comment.createdAt)}}</div>
+            </div><!-- /.comment-item -->
+          </div>
+        </div>
+      </div><!-- /.feed-item -->
+    </div>
+  </ion-content>
+</ion-view>

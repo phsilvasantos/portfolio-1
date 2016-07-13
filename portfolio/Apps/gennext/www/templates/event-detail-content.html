@@ -1,0 +1,99 @@
+<div class="list-block media-list events-list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title-row">
+            <div class="item-title">{{event.get('title')}}</div>
+          </div>
+          <div class="item-subtitle clock"><i class="svg-icon clock-black"></i> {{eventUtils.displayEventDate(event.get('startAt'))}}</div>
+          <div class="item-subtitle location" ng-show="eventUtils.getLocationString(event)"><i class="svg-icon pin-black"></i> {{eventUtils.getLocationString(event)}}</div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<div ng-include="'templates/event-detail-content-more.html'" ng-if="!isRegisterPage"></div>
+<div ng-include="'templates/event-detail-content-register.html'" ng-if="isRegisterPage"></div>
+
+<script id="templates/event-detail-content-more.html" type="text/ng-template">
+  <div class="list-block media-list events-list" style="margin-top: -10px;">
+    <ul>
+      <li>
+        <div class="button-row" ng-show="!eventUtils.isAttended(event) && !eventUtils.isPast(event)">
+          <a href="#/event-register/{{event.id}}" class="btn">Will you attend?</a>
+        </div>
+        <div class="button-row {{eventUtils.getResponse(event).get('response')}}" 
+             ng-show="eventUtils.isAttended(event) && !eventUtils.isPast(event)">
+          <a class="btn" href="#/event-register/{{event.id}}">
+            <span class="response-type">
+              {{eventUtils.attendingTense(event)}}
+              <i class="svg-icon"></i>
+            </span>  
+            Update
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+    
+  <div class="attendees-list">
+    <thumbnails-list 
+      total="attendeeThumbnails.length" 
+      items="attendeeThumbnails"
+      title="attendeeThumbnails.length + ' RSVPS'"
+      more-label="'Members'"
+      more-callback="selectTab('attendees')"></thumbnails-list>
+  </div>
+  <div class="abouts-list">
+    <div class="about-item" ng-show="event.get('speaker')">
+      <strong>Speakers</strong>
+      {{event.get('speaker')}}
+    </div>
+    <div class="about-item" ng-show="event.get('description') && !eventRecap">
+      <strong>About the event:</strong>
+      <div ng-bind-html="event.get('description') | plain2html"></div>
+    </div>
+    <div class="about-item" ng-show="eventRecap">
+      <strong>Recap:</strong>
+      <div ng-bind-html="eventRecap.get('description') | plain2html"></div>
+    </div>
+  </div>
+  <div class="addtocal-wrapper">
+    <a href="javascript:void(0)" ng-click="showAddToCalendarConfirm()"
+       class="button-addto-calendar"
+       ng-show="!eventUtils.isPast(event)">
+      <i class="icon ion-ios7-plus-outline"></i> Add to Calendar
+    </a>
+  </div>
+</script>
+
+<script id="templates/event-detail-content-register.html" type="text/ng-template">
+  <div class="additional-guess" ng-show="!eventUtils.isPast(event)">
+    <div class="dropdown-container input-item" ng-click="responsePopover.show($event)">
+      <label id="attend_type">{{getResponseLabel(data.response)}}</label>
+      &nbsp;<i class="svg-icon response {{data.response}}"></i>
+    </div>
+    <div class="dropdown-container input-item" ng-show="event.get('maxGuestCount')>0 && data.response==='yes'">
+      <div ng-click="guestsPopover.show($event)">
+        <label>Additional Guests</label><span id="guest_count">{{data.guests.length}}</span>
+        &nbsp;<i class="icon ion-arrow-down-b"></i>
+      </div>
+      <div class="guest-names" ng-show="data.guests.length">
+        <div class="guest-item" ng-repeat="g in data.guests">
+          <span class="num">{{$index+1}}</span> <input type="text" value="{{g}}" class="guest-name" placeholder="Enter guest name">
+        </div>
+      </div>
+    </div>
+    <div class="textarea-container input-item">
+      <label>Special Requests</label>
+      <textarea ng-model="data.note" name="note"></textarea>
+    </div>
+    <div class="button-row" dng-hide="registeredAttendee && event.get('maxGuestCount')==0">
+      <a href="javascript:void(0)" ng-click="registerEvent()" class="button">{{registeredAttendee?'Update Response':'Send Response'}}</a>
+    </div>
+  </div>
+  <div class="button-row cancel-registration" ng-show="registeredAttendee && !eventUtils.isPast(event)">
+    <button class="button" ng-click="cancelRegistration()">Cancel Registration</button>
+  </div>
+</script>

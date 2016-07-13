@@ -1,0 +1,71 @@
+<ion-view title="SWORKIT" class="home-title" hide-back-button="true">
+<!-- LITE -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon" style="margin-left: -20px;"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button ng-click="launchMPoints()" class="button button-icon ng-hide" id="home-points" ng-show="{{sessionMAvailable && rewardSettings.mPoints}}" >
+		<img src="img/extras/gift.png" class="home-gift" />
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="has-header home-view" has-bouncing="true">
+  	<div class="category-view">
+  		<div class="inner-category-view" ng-class="{'nexercise-installed' : nexerciseInstalled, 'rate-shown' : showRateOption}">
+		  	<div class="category-card category-rate item-icon-right" id="rate-box" ng-show="showRateOption">
+		  		<a ng-click="rateApp()">
+		  			<div class="category-flex">
+		  			<!-- LITE -->
+		  				<h3 style="margin-left:0px;">RATE SWORKIT</h3>
+		  				<ul><li></li><li></li><li></li></ul>
+                        <p style="margin-left:0px;">ENJOYING YOUR WORKOUTS? LET US KNOW</p>
+                    </div>
+		  			<i class="icon ion-chevron-right icon-accessory"></i>
+		  		</a>
+		  	</div>
+		  	<div class="category-card category-strength" id="strength-box" ng-class="{'group-two': timesUsedVar % 2 == 0}">
+		  		<a href="#/app/home/0">
+		  			<div class="category-flex" style="text-align:center">
+			  			<h3 style="margin-left:0px;">STRENGTH & CARDIO</h3>
+			  			<p style="margin-left:0px;">PICK AN AREA TO TONE AND IMPROVE</p>
+		  			</div>
+		  		</a>
+		  	</div>
+		  	<div class="category-card category-stretch" id="stretch-box" ng-class="{'group-two': timesUsedVar % 2 == 0}">
+		  		<a href="#/app/home/1">
+		  			<div class="category-flex" style="text-align:center">
+		  				<h3 style="margin-left:0px;">YOGA & STRETCHING</h3>
+		  				<p style="margin-left:0px;">CALM, FLEXIBLE AND ENERGIZED</p>
+		  			</div>
+		  		</a>
+		  	</div>
+		  	<div class="category-card category-custom" id="custom-box" ng-class="{'group-two': timesUsedVar % 2 == 0}">
+		  		<a href="#/app/custom">
+		  			<div class="category-flex" style="text-align:center">
+		  				<h3 style="margin-left:0px;">CUSTOM WORKOUTS</h3>
+		  				<p style="margin-left:0px;">DESIGN YOUR OWN WORKOUT</p>
+		  			</div>
+		  		</a>
+		  	</div>
+		  	<div class="category-card category-nexercise" id="sworkitpro-box">
+		  		<a href="#/app/sworkitpro">
+		  			<div class="category-flex" style="text-align:center">
+		  				<h3 style="margin-left:0px;">UPGRADE TO PRO</h3>
+		  				<ul><li></li><li></li><li></li></ul>
+		  			<p style="margin-left:0px;">UNLOCK ALL OF YOUR POTENTIAL</p>
+		  					  			</div>
+		  		</a>
+		   </div>
+		  	<div class="category-card category-nexercise" id="nexercise-box" ng-hide="nexerciseInstalled">
+		  		<a ng-click="downloadNexercise()">
+		  			<div class="category-flex" style="text-align:center">
+		  				<h3 style="margin-left:0px;">DOWNLOAD NEXERCISE</h3>
+		  				<ul><li></li><li></li><li></li></ul>
+		  			<p style="margin-left:0px;">GET EVEN MORE MOTIVATION AND REWARDS</p>
+		  			</div>
+		  		</a>
+		  </div>
+	  	</div>
+
+  	</div>
+  </ion-content>
+</ion-view>

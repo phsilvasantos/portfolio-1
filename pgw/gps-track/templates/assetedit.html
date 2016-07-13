@@ -1,0 +1,42 @@
+<ion-view title="Edit Details">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>    
+    <ion-content class="has-header">
+    <ion-list class="list list-inset">
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-document-text assertive"></i> {[{details_of_asset.0.asset_detail.name}]}
+            </div>
+            <div class="item item-text-wrap">
+                <label class="item">
+                    Device ID: {[{details_of_asset.0.asset_detail.device_number}]}
+                </label>
+                <label class="item">
+                    Name:
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Asset Name" ng-model="details_of_asset.0.asset_detail.name" required>
+                </label>
+                <label class="item">
+                    Sim Number:
+                </label>
+                <label class="item item-input">
+                    <!--Sim Number: {[{asset.sim_number}]}-->
+                    <input type="text" placeholder="Sim Number" ng-model="details_of_asset.0.asset_detail.sim_number" required>
+                </label>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="saveEdit()">
+                    <i class="icon ion-android-archive positive"></i>
+                    Save
+                </a>
+            </div>
+        </div>
+
+    </ion-list>
+    </ion-content>
+</ion-view>
+

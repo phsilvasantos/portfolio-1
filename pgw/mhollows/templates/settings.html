@@ -1,0 +1,54 @@
+<ion-view view-title="Settings" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-content class="page page-settings page-settings-index">
+
+    <!--
+    <div class="list icons icons-right">
+      <div class="item item-divider">Account &amp; Notification Settings</div>
+      <a class="item item-icon-right" href="#/edit-profile">
+        Edit my profile <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-right" href="#/settings-notification">
+        Notification Settings <i class="icon ion-chevron-right"></i>
+      </a>
+    </div>
+    -->
+
+    <div class="list icons icons-right">
+      <div class="item item-divider">Notifications</div>
+      <a class="item item-icon-right" ui-sref="app.settings-chat-notifications">
+        Chat Notifications
+        <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a class="item item-icon-right" ui-sref="app.settings-group-notifications">
+        Group Notifications
+        <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+    </div>
+
+    <div class="list icons icons-left">
+      <div class="item item-divider">App Support</div>
+      <a class="item item-icon-left" ng-click="openContentUrl(aboutThisAppURL)" ng-if="aboutThisAppURL">
+        <i class="icon ion-star"></i> About this App
+      </a>
+      <a class="item item-icon-left" ng-click="openContentUrl(helpURL)" ng-if="helpURL">
+        <i class="icon ion-help-circled"></i> Help
+      </a>
+      <a class="item item-icon-left" href="#/settings/log">
+        <i class="icon ion-alert-circled"></i> Log Messages
+      </a>
+      <a class="item item-icon-left" ng-click="openContentUrl(downloadURL)" ng-if="versionIsOutOfDate">
+        <i class="icon ion-arrow-down-a"></i> Download Latest
+      </a>
+      <a class="item item-icon-left" ng-click="checkVersion()" ng-if="shared.devicePlatform!='android'">
+        <i class="icon ion-checkmark-circled"></i> Check for Updates
+      </a>
+      <a class="item item-icon-left" ng-click="openContentUrl(changeLogURL)" ng-if="changeLogURL">
+        <i class="icon ion-information-circled"></i> What's New
+      </a>
+    </div>
+    <br />
+  </ion-content>
+</ion-view>

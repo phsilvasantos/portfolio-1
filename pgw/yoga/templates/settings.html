@@ -1,0 +1,178 @@
+<ion-view title="Settings" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header settings-page width-control">
+    <div class="list help-list">
+        <div class="item item-divider">
+		   <h5>CALORIE TRACKING</h5>
+	    </div>
+	    <div class="item item-input settings-padding">
+	        <div class="input-label">
+		      <h2>Weight</h2>
+		    </div>
+			<input class="settings-input" type="tel" ng-model="displayWeight.data" integer>
+		</div>
+        <label class="item item-input item-select">
+		    <div class="input-label">
+		      <h2>Units</h2>
+		    </div>
+		    <select ng-model="selectedType.data" ng-options="weightType.title for weightType in weightTypes">
+		    </select>
+		</label>
+        <div class="item item-divider">
+        	<h5>DAILY AND WEEKLY GOALS</h5>
+        </div>
+        <div class="item item-input settings-padding">
+	        <div class="input-label">
+		      <a href="#/app/sworkitpro" class="unlock-pro"><i class="icon ion-locked"></i><h2>Available only in Sworkit Pro</h2></a>
+		    </div>
+		</div>
+        <div class="item item-divider">
+        	<h5>CONNECTIONS</h5>
+        </div>
+        <div ng-if="healthKitAvailable">
+	        <div class="connect-mfp item-icon-right item healthkit-red">
+		      <div ng-hide="userSettings.healthKit" ng-click="connectHealthKit()">
+		          <img src="img/healthkit.png"/>Connect to Health App
+		      </div>
+		      <div ng-show="userSettings.healthKit" ng-click="reconnectHealthKit()">
+		          <img src="img/healthkit.png"/>Update Health App Settings
+		      </div>      
+		      <i class="icon ion-chevron-right icon-accessory mfp-arrow"></i>
+		    </div>
+		    <div class="mfp-status">
+	        	<h6 ng-show="userSettings.healthKit"><span><i class="icon ion-ios7-circle-filled green-status"></i></span>HEALTH APP SYNCING: Enabled</h6>
+	        	<h6 ng-hide="userSettings.healthKit"><span><i class="icon ion-ios7-circle-filled red-status"></i></span>HEALTH APP SYNCING: Disabled</h6>
+	        </div>
+        </div>
+        <div class="connect-mfp item-icon-right item nexercise-blue">
+	      <div ng-hide="userSettings.mfpStatus" ng-click="connectMFP()">
+	          <img src="img/myfitnesspal.png"/>Connect to MyFitnessPal
+	      </div>
+	      <div ng-show="userSettings.mfpStatus" ng-click="reconnectMFP()">
+	          <img src="img/myfitnesspal.png"/>Update Connection
+	      </div>      
+	      <i class="icon ion-chevron-right icon-accessory mfp-arrow"></i>
+	    </div>
+	    <div class="mfp-status">
+        	<h6 ng-show="userSettings.mfpStatus"><span><i class="icon ion-ios7-circle-filled green-status"></i></span>MYFITNESSPAL SYNCING: Enabled</h6>
+        	<h6 ng-hide="userSettings.mfpStatus"><span><i class="icon ion-ios7-circle-filled red-status"></i></span>MYFITNESSPAL SYNCING: Disabled</h6>
+        </div>
+		<div class="item item-toggle" ng-show="userSettings.mfpStatus">
+	     <h2>MyFitnessPal weight?</h2>
+	     <label class="toggle toggle-calm">
+	       <input type="checkbox" ng-model="mfpWeightStatus.data" ng-click="syncWeight()">
+	       <div class="track">
+	         <div class="handle"></div>
+	       </div>
+	     </label>
+	     <p class="under-toggle">Sync weekly from MyFitnessPal.</p>
+  		</div>
+  		<div class="item item-divider">
+		   <h5>VIDEO SETTINGS</h5>
+	    </div>
+	    <div class="item item-toggle item-text-wrap" ng-if="!androidPlatform">
+	    	<h2>Autoplay Videos</h2>
+	    	<p>Pictures only when disabled.</p>
+	       <label class="toggle toggle-energized">
+			   <input type="checkbox" ng-model="timeSettings.autoPlay">
+			   <div class="track">
+			     <div class="handle"></div>
+			   </div>
+			</label>
+		</div>
+		<div class="item item-toggle item-text-wrap" ng-if="androidPlatform">
+	    	<h2>Download Videos</h2>
+	    	<p>Enables autoplay of videos. (Retry if missing a video)</p>
+	       <label class="toggle toggle-energized">
+			   <input type="checkbox" ng-model="userSettings.videosDownloaded" ng-change="downloadVideosChange()">
+			   <div class="track">
+			     <div class="handle"></div>
+			   </div>
+			</label>
+		</div>
+  		<div class="item item-divider">
+		   <h5>ADVANCED AUDIO</h5>
+	    </div>
+	    <div class="item item-toggle item-text-wrap">
+	    	<h2>Next Exercise Cues</h2>
+	    	<p>Announce next exercise when there are 10 seconds remaining.</p>
+	       <label class="toggle toggle-energized">
+			   <input type="checkbox" ng-model="timeSettings.warningAudio">
+			   <div class="track">
+			     <div class="handle"></div>
+			   </div>
+			</label>
+		</div>
+		<div class="item item-toggle item-text-wrap">
+	    	<h2>Next Exercise Countdown</h2>
+	    	<p>Three second countdown before the start of the next exercise.</p>
+	       <label class="toggle toggle-energized">
+			   <input type="checkbox" ng-model="timeSettings.countdownBeep">
+			   <div class="track">
+			     <div class="handle"></div>
+			   </div>
+			</label>
+		</div>
+		<div class="item item-toggle item-text-wrap">
+	    	<h2>Countdown Style: Voice</h2>
+	    	<p>Alternative is bells when disabled.</p>
+	       <label class="toggle toggle-energized">
+			   <input type="checkbox" ng-model="timeSettings.countdownStyle">
+			   <div class="track">
+			     <div class="handle"></div>
+			   </div>
+			</label>
+		</div>
+		<div class="item item-toggle item-text-wrap">
+	    	<h2>Spoken Exercise Names</h2>
+	    	<p>Alternative is bell tone when disabled.</p>
+	       <label class="toggle toggle-energized">
+			   <input type="checkbox" ng-model="timeSettings.audioOption">
+			   <div class="track">
+			     <div class="handle"></div>
+			   </div>
+			</label>
+		</div>
+		<div class="item item-divider">
+		   <h5>ENJOYING SWORKIT?</h5>
+	    </div>
+		<a class="item" ng-click="rateSworkit()">
+          Rate the App
+        </a>
+  		<div class="item item-divider item-text-wrap">
+        	<h5>Tip: Toggle on the transition pause from the Minutes selection screen. Pro users have full control of all interval lengths.</h5>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>
+
+<script id="healthkit-help.html" type="text/ng-template">
+  <div class="modal health-modal">
+    <ion-header-bar>
+      <button class="button button-clear button-primary" ng-click="closeHealthModal()">Close</button>
+      <h1 class="title">Health Settings</h1>
+    </ion-header-bar>
+    <ion-content class="width-control-lite">
+    	<p class="page-instructions">Adjustments to data being shared by Sworkit must be made in the Health app.<p>
+    	<div class="health-instructions">
+    		<div><img src="img/healthkit.png"/></div>
+    		<div class="health-text"><p>Launch the Health app</p></div>
+    	</div>
+    	<div class="health-instructions">
+    		<div><img src="img/extras/sources.png"/></div>
+    		<div class="health-text"><p>Tap on the Sources icon</p></div>
+    	</div>
+    	<div class="health-instructions">
+    		<div><img src="img/extras/sworkit.png"/></div>
+    		<div class="health-text"><p>Select Sworkit</p></div>
+    	</div>
+    	<div>
+		    <h3 class="health-share">Sharing Options</h3>
+    		<p>To sync workouts automatically, allow Sworkit Write permissions to Active Calories and Workouts.</p>
+    		<p>To sync weight automatically each week, allow Read permissions for Weight.</p>
+    	</div>
+    </ion-content>
+  </div>
+</script>

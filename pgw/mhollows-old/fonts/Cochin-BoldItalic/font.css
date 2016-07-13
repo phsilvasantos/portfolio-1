@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Cochin';
+  src: url('Cochin-BoldItalic.eot'); /* IE9 Compat Modes */
+  src: url('Cochin-BoldItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Cochin-BoldItalic.woff') format('woff'), /* Modern Browsers */
+       url('Cochin-BoldItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Cochin-BoldItalic.svg#2d25787d0bda030ec2b41031029202b6') format('svg'); /* Legacy iOS */
+       
+  font-style:   italic;
+  font-weight:  700;
+}
+

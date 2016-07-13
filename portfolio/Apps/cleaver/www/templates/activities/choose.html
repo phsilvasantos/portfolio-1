@@ -1,0 +1,164 @@
+<ion-modal-view ng-controller="activityCtrl">
+    <ion-header-bar class="bar-energized">
+        <div class="buttons">
+            <button class="button icon-left ion-chevron-left button-clear button-dark activated" ng-click="closeActivity()"></button>
+        </div>
+        <h1 class="title" data-translate>cleverbaby.app.activity.add.title</h1>
+    </ion-header-bar>
+    <ion-content>
+            <div class="row addnew_nurse">
+                <div class="col">
+                    <div class="row container-center">
+                        <div class="col col-50 addnew_nurse_icon center-block">
+                            <i class="smallicon flaticon-mother19" data-translate>
+                                cleverbaby.app.activity.add.nursing
+                            </i>
+                        </div>
+                        <div class="col col-50 center-block" style="text-align:right">
+                            <ion-toggle ng-model="nurse.timeit" toggle-class="toggle-positive" data-translate>
+                                cleverbaby.app.activity.add.timeit
+                            </ion-toggle>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <button ng-click="addNurse('left',0)" 
+                                    class="button button-outline button-light"
+                                    data-translate>
+                                cleverbaby.app.activity.add.left
+                            </button>
+                        </div>
+                        <div class="col col-50">
+                            <button ng-click="addNurse('right',0)" 
+                                    class="button button-outline button-light" 
+                                    style="color:#ffffff;"
+                                    data-translate>
+                                cleverbaby.app.activity.add.right
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="button button-block button-outline button-light" 
+                                    ng-click="addNurse()"
+                                    data-translate>
+                               cleverbaby.app.activity.add.both
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row addnew_feed">
+                <div class="col">
+                    <div class="row container-center">
+                        <div class="col addnew_nurse_icon center-block">
+                            <i class="smallicon flaticon-baby1"></i>
+                            <span data-translate>cleverbaby.app.activity.add.feed</span>
+                            <div class="range">
+                              <i class="icon">0oz</i>
+                              <input type="range" min="0" max="12" value="{{bottle.value}}" step="1" ng-model="bottle.value">
+                              <i class="icon">{{bottle.value}} oz</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <button class="button button-outline button-light"
+                                    ng-click="addBottle()"
+                                    data-translate>
+                                cleverbaby.app.activity.add.formula
+                            </button>
+                        </div>
+                        <div class="col col-50">
+                            <button class="button button-outline button-light"
+                                    ng-click="addBottle()"
+                                    data-translate>
+                                cleverbaby.app.activity.add.milk
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row addnew_diaper">
+                <div class="col">
+                    <div class="row container-center">
+                        <div class="col addnew_nurse_icon center-block">
+                            <i class="smallicon flaticon-nappy1"></i>
+                            <span data-translate>cleverbaby.app.activity.add.diaper</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <ion-checkbox ng-model="diaper.wet" name="wet" data-translate>
+                                cleverbaby.app.activity.add.wet
+                            </ion-checkbox>
+                        </div>
+                        <div class="col col-50">
+                            <ion-checkbox ng-model="diaper.solid" data-translate>
+                                cleverbaby.app.activity.add.solid
+                            </ion-checkbox>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col">
+                                
+                                <ion-radio ng-model="choice" 
+                                            ng-value="''"
+                                            ng-click="addDiapers('tiny')"
+                                            data-translate>
+                                    cleverbaby.app.activity.add.tiny
+                                </ion-radio>
+                            </div>
+                            <div class="col">
+                                <ion-radio ng-model="choice"
+                                            ng-value="''"
+                                            ng-click="addDiapers('medium')"
+                                            data-translate>
+                                    cleverbaby.app.activity.add.medium
+                                </ion-radio>
+                            </div>
+                            <div class="col">
+                                <ion-radio ng-model="choice"
+                                            ng-value="''"
+                                            ng-click="addDiapers('XXL')"
+                                            data-translate>
+                                    cleverbaby.app.activity.add.big
+                                </ion-radio>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row addnew_nap">
+                <div class="col">
+                    <div class="row container-center">
+                        <div class="col col-50 addnew_nurse_icon center-block">
+                            <i class="smallicon flaticon-moon19"
+                                data-translate>
+                                cleverbaby.app.activity.add.nap
+                            </i>
+                        </div>
+                        <div class="col col-50 center-block" style="text-align:right">
+                            <ion-toggle ng-model="napToogle" 
+                                        toggle-class="toggle-positive"
+                                        data-translate>
+                                cleverbaby.app.activity.add.timeit
+                            </ion-toggle>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="button button-block button-outline button-light"
+                                    ng-click="addNap()"
+                                    data-translate>
+                                cleverbaby.app.activity.add.start
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </ion-content>
+</ion-modal-view>

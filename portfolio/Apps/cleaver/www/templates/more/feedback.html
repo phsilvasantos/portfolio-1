@@ -1,0 +1,122 @@
+<ion-view view-title="{{'cleverbaby.app.more.feedback.title' | translate}}">
+    <ion-content has-bouncing="false" class="content-superfill" on-scroll="dynamicStatusBar('feedbackMainScroll')" delegate-handle="feedbackMainScroll">
+        <div class="wrapper-tab more-page">
+            <ion-nav-bar class="bar-positive">
+                <div class="header no-border">
+                    <ion-nav-buttons side="left">
+                        <a class="btn left" ui-sref="app.more"><i class="fa fa-angle-left"></i></a>
+                    </ion-nav-buttons>
+                    <ion-nav-title cb-baby-drop-down></ion-nav-title>
+                </div>
+            </ion-nav-bar>
+            <form novalidate id="feedbackForm" class="feedbackForm" name="myForm">
+                <div class="input-container padding-vertical">
+                    <div class="description padding">
+                        {{'cleverbaby.app.more.feedback.text' | translate}}
+                    </div>
+                    <div class="message-alert assertive" role="alert" >
+                        <span class="error" ng-show="!myForm.feedbacktext.$pristine && myForm.feedbacktext.$error.required">Required!</span>
+                    </div>
+                    <label class="message item item-input">
+                        <textarea class="feedbackMessage" name="feedbacktext" placeholder="Hi Clever Baby, Here's what I think:" required="required" ng-model="feedbackMessage"></textarea>
+                    </label>
+                    <div class="email-alert assertive" role="alert" >
+                        <span class="error" ng-show="!myForm.emailtext.$pristine && myForm.emailtext.$error.email">Should be email address</span>
+                    </div>
+                    <label class="email item item-input" style="max-height: 52px;">
+                        <input type="email" class="email" placeholder="Type your email here if you would like a response" name="emailtext" ng-model="emailtext" ng-model-options="{ updateOn: 'blur' }">
+                    </label>
+                </div>
+            </div>
+            <div class="wrapper add">
+                <div class="kotak autoheight gutter">
+                    <div class="xs-3">
+                        <button class="btn small-text" ng-click="cancel()" type="button">Cancel</button>
+                    </div>
+                    <div class="xs-7">
+                        <button class="btn small-text" ng-click="submit()" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>
+<style>
+.content-superfill .scroll {
+    min-height: 100%;
+    height: 100%;
+}
+
+.content-superfill .wrapper-tab {
+    min-height: 100%;
+    height: 100%;
+}
+
+.feedbackForm {
+    height: calc(100% - 59px);
+}
+
+.feedbackForm .input-container {
+    height: calc(100% - 62px);
+}
+
+.feedbackForm label {
+    border: 1px solid rgba(221, 221, 221, 1);
+}
+
+.feedbackForm .item-input {
+    
+}
+
+.feedbackForm .item-input textarea {
+    padding-top: 12px
+}
+
+.feedbackForm .description {
+    max-height: 80px;
+    min-height: 80px;
+    height: 80px
+}
+
+.feedbackForm .message-alert {
+    position: absolute;
+    z-index: 10;
+    padding-left: 10px;
+}
+
+.feedbackForm .message {
+    min-height: calc(100% - 122px);
+    height: calc(100% - 122px);
+}
+
+.feedbackForm .message .feedbackMessage {
+    height: 100%;
+}
+
+.feedbackForm .email-alert {
+    position: absolute;
+    z-index: 10;
+    padding-left: 10px;
+}
+
+.feedbackForm .email {
+
+}
+
+.feedbackForm .button-cancel {
+    max-width: 30%;
+    color: #999;
+}
+
+.feedbackForm .button-submit {
+    max-width: 70%;
+    color: #999;
+}
+
+::-webkit-scrollbar {   display: block; }
+::-webkit-input-placeholder {   color: #999 !important; opacity: .6 !important }
+:-moz-placeholder {   color: #999 !important; opacity: .6 !important  }
+::-moz-placeholder {    color: #999 !important; opacity: .6 !important  }
+:-ms-input-placeholder { color: #999 !important; opacity: .6 !important }
+</style>

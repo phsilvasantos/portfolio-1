@@ -1,0 +1,67 @@
+<ion-view view-title="YAAY or NAAY?">
+  <div class="bar bar-subheader page-cards">
+    Most beautiful Pic of the week?!
+  </div>
+  <ion-content class="page page-cards has-subheader" scroll="false">
+    <td-cards>
+      <td-card
+        ng-repeat="card in cards"
+        on-destroy="cardDestroyed($index)"
+        on-swipe-left="cardSwipedLeft($index)"
+        on-swipe-right="cardSwipedRight($index)"
+        on-partial-swipe="cardPartialSwipe(amt)"
+        on-snap-back="cardSnapBack()"
+        class="card-{{$index}}">
+        <div class="image">
+          <div class="img" style="background-image: url({{card.image}})"></div>
+          <div class="gradient gradient-top {{card.color}}"></div>
+          <div class="gradient gradient-bottom"></div>
+
+          <div class="no-text">YAAY <div class="left-arrow"></div></div>
+          <div class="yes-text"><div class="right-arrow"></div> NAAY</div>
+
+          <div class="info">
+            <img class="circle avatar" ng-src="{{card.profile.avatar}}" />
+            <a class="user-info" href="#/profile/{{card.profile.id}}">
+              <div class="name">{{card.profile.name}}</div>
+              <div class="counters">
+                <span class="space-right">{{card.profile.yaays}} YAAYs</span>
+                <span>{{card.profile.followers}} Follower</span>
+              </div>
+            </a>
+            <button class="button follow-button" ng-click="toggleFollow(card)" ng-class="{followed:card.followed}">{{card.followed?'Unfollow':'Follow'}}</button>
+          </div>
+
+          <div class="comment">
+            {{card.comment}}
+          </div>
+          <div class="copyright">via YAAYorNAAY.com</div>
+        </div>
+      </td-card>
+    </td-cards>
+    <div class="tooltip limited-category">
+      This category is for Girls only!
+    </div>
+  </ion-content>
+  <ion-footer-bar class="page-cards">
+    <a class="stats" href="#/myresults">
+      <cup type="'bronze'" fill="0.5"></cup>
+      <div class="counters">
+        <div><em>{{myProfile.yaays | number}}</em> Ys</div>
+        <div><em>{{myProfile.followers | number}}</em> Fs</div>
+      </div>
+    </a>
+    <button class="camera-button" ng-disabled="uploadDisabled" ng-click="onClickCamera()">
+      <input type="file" id="profile_photo_r" onchange="onCardPhotoSelected(this)" accept="image/*" ng-if="!uploadDisabled">
+      <i class="icon ion-ios-camera-outline"></i>
+    </button>
+    <div class="buttons pull-right social">
+      <a class="circle whatsapp">
+        <i class="icon ion-social-whatsapp-outline"></i>
+      </a>
+      <a class="circle facebook">
+        <i class="icon ion-social-facebook"></i>
+      </a>
+    </div>
+  </ion-footer-bar>
+</ion-view>

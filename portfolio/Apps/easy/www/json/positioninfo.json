@@ -1,0 +1,604 @@
+{
+    "4-4-2": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "left-defender",
+            "playertype": 3,
+            "position": [20, 2],
+            "user": {}
+        },
+        {
+            "name": "center-left-defender",
+            "playertype": 3,
+            "position": [20, 25],
+            "user": {}
+        },
+        {
+            "name": "center-right-defender",
+            "playertype": 3,
+            "position": [20, 47],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": 3,
+            "position": [20, 67],
+            "user": {}
+        },
+        {
+            "name": "left-midfielder",
+            "playertype": 2,
+            "position": [50, 2],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 2,
+            "position": [38, 25],
+            "user": {}
+        },
+        {
+            "name": "center-right-midfielder",
+            "playertype": 2,
+            "position": [38, 50],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 2,
+            "position": [50, 70],
+            "user": {}
+        },
+        {
+            "name": "right-attacker",
+            "playertype": 4,
+            "position": [65, 20],
+            "user": {}
+        },
+        {
+            "name": "left-attacker",
+            "playertype": 4,
+            "position": [65, 50],
+            "user": {}
+        }
+    ],
+    "4-3-3": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "left-defender",
+            "playertype": 3,
+            "position": [20, 2],
+            "user": {}
+        },
+        {
+            "name": "center-left-defender",
+            "playertype": 3,
+            "position": [20, 25],
+            "user": {}
+        },
+        {
+            "name": "center-right-defender",
+            "playertype": 3,
+            "position": [20, 47],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": 3,
+            "position": [20, 67],
+            "user": {}
+        },
+        {
+            "name": "left-midfielder",
+            "playertype": 2,
+            "position": [38, 10],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 2,
+            "position": [38, 35],
+            "user": {}
+        },
+        {
+            "name": "center-right-midfielder",
+            "playertype": 2,
+            "position": [38, 60],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 4,
+            "position": [60, 20],
+            "user": {}
+        },
+        {
+            "name": "right-attacker",
+            "playertype": 4,
+            "position": [60, 50],
+            "user": {}
+        },
+        {
+            "name": "left-attacker",
+            "playertype": 4,
+            "position": [60, 35],
+            "user": {}
+        }
+    ],
+    "4-5-1": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "left-defender",
+            "playertype": 3,
+            "position": [20, 2],
+            "user": {}
+        },
+        {
+            "name": "center-left-defender",
+            "playertype": 3,
+            "position": [20, 25],
+            "user": {}
+        },
+        {
+            "name": "center-right-defender",
+            "playertype": 3,
+            "position": [20, 47],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": 3,
+            "position": [20, 67],
+            "user": {}
+        },
+        {
+            "name": "right-attacker",
+            "playertype": 2,
+            "position": [37, 35],
+            "user": {}
+        },
+        {
+            "name": "left-midfielder",
+            "playertype": 2,
+            "position": [47, 0],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 2,
+            "position": [40, 15],
+            "user": {}
+        },
+        {
+            "name": "center-right-midfielder",
+            "playertype": 2,
+            "position": [40, 55],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 2,
+            "position": [47, 70],
+            "user": {}
+        },
+        {
+            "name": "left-attacker",
+            "playertype": 4,
+            "position": [65, 35],
+            "user": {}
+        }
+    ],
+    "5-3-2": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": 3,
+            "position": [17, 35],
+            "user": {}
+        },
+        {
+            "name": "left-midfielder",
+            "playertype": 3,
+            "position": [27, 0],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 3,
+            "position": [20, 15],
+            "user": {}
+        },
+        {
+            "name": "center-right-midfielder",
+            "playertype": 3,
+            "position": [20, 55],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 3,
+            "position": [27, 70],
+            "user": {}
+        },
+        {
+            "name": "left-defender",
+            "playertype": 2,
+            "position": [40, 10],
+            "user": {}
+        },
+        {
+            "name": "center-left-defender",
+            "playertype": 2,
+            "position": [40, 35],
+            "user": {}
+        },
+        {
+            "name": "center-right-defender",
+            "playertype": 2,
+            "position": [40, 60],
+            "user": {}
+        },
+        
+        {
+            "name": "right-attacker",
+            "playertype": 4,
+            "position": [65, 20],
+            "user": {}
+        },
+        {
+            "name": "left-attacker",
+            "playertype": 4,
+            "position": [65, 50],
+            "user": {}
+        }
+    ],
+    "3-5-2": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "left-defender",
+            "playertype": 3,
+            "position": [20, 10],
+            "user": {}
+        },
+        {
+            "name": "center-left-defender",
+            "playertype": 3,
+            "position": [20, 35],
+            "user": {}
+        },
+        {
+            "name": "center-right-defender",
+            "playertype": 3,
+            "position": [20, 60],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": 2,
+            "position": [37, 35],
+            "user": {}
+        },
+        {
+            "name": "left-midfielder",
+            "playertype": 2,
+            "position": [47, 0],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 2,
+            "position": [40, 15],
+            "user": {}
+        },
+        {
+            "name": "center-right-midfielder",
+            "playertype": 2,
+            "position": [40, 55],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 2,
+            "position": [47, 70],
+            "user": {}
+        },
+        {
+            "name": "right-attacker",
+            "playertype": 4,
+            "position": [65, 20],
+            "user": {}
+        },
+        {
+            "name": "left-attacker",
+            "playertype": 4,
+            "position": [65, 50],
+            "user": {}
+        }
+    ],
+    "3-4-3": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "left-defender",
+            "playertype": 3,
+            "position": [22, 10],
+            "user": {}
+        },
+        {
+            "name": "center-left-defender",
+            "playertype": 3,
+            "position": [19, 35],
+            "user": {}
+        },
+        {
+            "name": "center-right-defender",
+            "playertype": 3,
+            "position": [22, 60],
+            "user": {}
+        },
+        {
+            "name": "left-midfielder",
+            "playertype": 2,
+            "position": [47, 0],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 2,
+            "position": [40, 20],
+            "user": {}
+        },
+        {
+            "name": "center-right-midfielder",
+            "playertype": 2,
+            "position": [40, 50],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 2,
+            "position": [47, 70],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": 4,
+            "position": [65, 35],
+            "user": {}
+        },
+        {
+            "name": "right-attacker",
+            "playertype": 4,
+            "position": [65, 20],
+            "user": {}
+        },
+        {
+            "name": "left-attacker",
+            "playertype": 4,
+            "position": [65, 50],
+            "user": {}
+        }
+    ],
+    "3-3-1": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "center-left-defender",
+            "playertype": 3,
+            "position": [19, 35],
+            "user": {}
+        },
+        {
+            "name": "right-attacker",
+            "playertype": 3,
+            "position": [20, 15],
+            "user": {}
+        },
+        {
+            "name": "left-attacker",
+            "playertype": 3,
+            "position": [20, 55],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 2,
+            "position": [40, 10],
+            "user": {}
+        },
+        {
+            "name": "center-right-midfielder",
+            "playertype": 2,
+            "position": [40, 60],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 2,
+            "position": [40, 35],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": 4,
+            "position": [65, 35],
+            "user": {}
+        }
+    ],
+    "2-4-1": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "right-attacker",
+            "playertype": 3,
+            "position": [20, 20],
+            "user": {}
+        },
+        {
+            "name": "left-attacker",
+            "playertype": 3,
+            "position": [20, 50],
+            "user": {}
+        },
+        {
+            "name": "left-midfielder",
+            "playertype": 2,
+            "position": [42, 2],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 2,
+            "position": [38, 25],
+            "user": {}
+        },
+        {
+            "name": "center-right-midfielder",
+            "playertype": 2,
+            "position": [38, 50],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 2,
+            "position": [42, 70],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": "attaker",
+            "position": [65, 35],
+            "user": {}
+        }
+
+    ]
+    ,
+    "2-3-1": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "right-attacker",
+            "playertype": 3,
+            "position": [20, 20],
+            "user": {}
+        },
+        {
+            "name": "left-attacker",
+            "playertype": 3,
+            "position": [20, 50],
+            "user": {}
+        },
+        {
+            "name": "left-midfielder",
+            "playertype": 2,
+            "position": [42, 2],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 2,
+            "position": [38, 35],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 2,
+            "position": [42, 70],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": 4,
+            "position": [65, 35],
+            "user": {}
+        }
+
+    ],
+    "1-4-1": [
+        {
+            "name": 1,
+            "playertype": 1,
+            "position": [3, 35],
+            "user": {}
+        },
+        {
+            "name": "right-attacker",
+            "playertype": 3,
+            "position": [20, 35],
+            "user": {}
+        },
+        {
+            "name": "left-midfielder",
+            "playertype": 2,
+            "position": [42, 2],
+            "user": {}
+        },
+        {
+            "name": "center-left-midfielder",
+            "playertype": 2,
+            "position": [38, 25],
+            "user": {}
+        },
+        {
+            "name": "center-right-midfielder",
+            "playertype": 2,
+            "position": [38, 50],
+            "user": {}
+        },
+        {
+            "name": "right-midfielder",
+            "playertype": 2,
+            "position": [42, 70],
+            "user": {}
+        },
+        {
+            "name": "right-left-defender",
+            "playertype": 4,
+            "position": [65, 35],
+            "user": {}
+        }
+
+    ]
+
+}

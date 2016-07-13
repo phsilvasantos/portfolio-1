@@ -1,0 +1,104 @@
+<ion-view style="background-color:#eaeaea;">
+	<ion-nav-title>
+	{{post.title}}
+	</ion-nav-title>
+  <ion-content>
+  
+  
+  
+  <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true" class="pet-slider">
+	<ion-slide ng-repeat="slide in catSlides">
+		<!--<div class="box" photo-full-view photos="catSlides" data-photo-index="{{$index}}" ng-style="{'background-image':'url({{slide.thumb[0]}})'}">
+		</div>-->
+		<div class="box">
+		<img photo-full-view photos="catSlides" data-photo-index="{{$index}}" src="{{slide.thumb[0]}}"/>
+		</div>
+	</ion-slide>
+</ion-slide-box>
+  	
+  	<div style="clear:both;min-height:68px; display:none;" class="padding social">
+  		<button style="background:#3b569b; border:none; float:left;width:32%;margin-right:1%;" class="button button-positive" ng-click="facebookShare()">
+  			<i class="icon ion-social-facebook"></i>
+ 		</button>
+		<button style="background:#66abd2; border:none; float:left;width:32%;margin-left:1%;" class="button button-positive" ng-click="twitterShare()">
+  			<i class="icon ion-social-twitter"></i>
+		</button>
+		<button style="background:#51cb5e; border:none; float:left;width:32%;margin-left:1%;" class="button button-positive" ng-click="whatsappShare()"">
+  			<i class="icon ion-social-whatsapp"></i>
+		</button>
+	</div>
+
+  
+  <div class="card pet-card" class="padding" style="margin-top:0px;">
+  	<div class="item item-text-wrap">
+  		<div class="pet-title">
+  			<h2 ng-bind-html="post.title"></h2>
+  			<h3>{{post.date | date:"dd/MM/yy"}}</h3>
+  		</div>
+  		
+  		<hr />
+  		
+  		<div class="pet-info">
+  			<span class="info-title">Gender: </span><span class="info-description"> {{post.terms.gendercats[0].name}}</span>
+  		</div>
+  			
+  		<div class="pet-info">
+  			<span class="info-title">Adoption fee: </span><span class="info-description">{{post.extra.fee}}  </span>
+  		</div>
+  		
+  		<div class="pet-info">
+  			<span class="info-title">Centre: </span><span class="info-description"> {{post.author.name}}</span>
+  		</div>
+  		
+  		<div class="pet-info" style="border-bottom:0px">
+  			<span class="info-title">County: </span><span class="info-description"> {{post.terms.locationcats[0].name}}</span>
+  		</div>
+  		
+  		<!--<div class="pet-info">
+  			<span class="info-title">More Info: </span><span class="info-description"> {{post.extra.moreInfo}}</span>
+  		</div>-->
+  		
+  	</div>
+  </div>
+  		
+  <div class="card pet-card" class="padding" style="margin-bottom:10px;">
+  	<div class="item item-text-wrap">
+  		<h2 style="border-bottom:1px solid #dadada;padding-bottom:5px;">Description</h2>
+  		<div ng-bind-html="content"></div>
+  		
+  	</div>
+  </div>
+  	
+  	
+  	<div style="clear:both;min-height:68px;" class="padding">
+  		<a ng-href="tel: {{post.contactinfo.telephone}}" style="float:left;width:49%;margin-right:1%;" class="button button-positive">
+  			Call Now
+ 		</a>
+ 		
+ 		<a ng-href="mailto: {{post.contactinfo.email}}?bcc=hello@adoptapet.ie&subject=Adopt%20A%20Pet%20App%20Query%20about%20{{post.contactinfo.posttitle}}" style="float:left;width:49%;margin-right:1%;" class="button button-positive">
+  			Email Now
+ 		</a>
+		<!--<button style="float:left;width:49%;margin-left:1%;" class="button button-positive" ng-click="modal.show()">
+  			Email Now
+		</button>-->
+	</div>
+
+  <div class="card pet-card" class="padding" style="margin-top:10px;">
+  	<div class="item item-text-wrap rescueinfo">
+  		
+  		<div class="rescueinfo-image">
+  			<img ng-src="{{post.author.avatar}}" />
+  		</div>
+  		
+  		<div class="rescueinfo-details">
+  			<h2>{{post.author.name}}</h2>
+			<div class="clear clearfix"></div>
+  			{{post.contactinfo.rescuedescription}}
+  		
+  		</div>
+  	</div>
+  </div>
+  
+  	
+  </ion-content>
+</ion-view>

@@ -1,0 +1,75 @@
+<ion-view title="RSVP">
+  <ion-content class="page page-events page-event-register">
+    <div class="list-block media-list events-list">
+      <ul>
+        <li>
+          <div class="item-content">
+            <div class="item-media">
+              <img ng-cache ng-src="{{event.get('image').url()}}">
+              <span class="btn-attended" ng-show="registeredAttendee && eventUtils.isPast(event)">
+                <i class="icon ion-checkmark-circled"></i>
+                {{eventUtils.attendingTense(event)}}
+              </span>
+            </div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">{{event.get('title')}}</div>
+              </div>
+              <div class="item-subtitle clock"><i class="icon ion-clock"></i> {{eventUtils.displayEventDate(event.get('startAt'))}}</div>
+              <div class="item-subtitle location" ng-show="eventUtils.getLocationString(event)"><i class="icon ion-location"></i> {{eventUtils.getLocationString(event)}}</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="additional-guess" ng-show="!eventUtils.isPast(event)">
+      <div class="dropdown-container input-item" ng-click="responsePopover.show($event)">
+        <label id="attend_type">{{data.response}}</label>
+        &nbsp;<i class="icon ion-chevron-down"></i>
+      </div>
+      <div class="dropdown-container input-item" ng-show="event.get('maxGuestCount')>0 && data.response==='yes'">
+        <div ng-click="guestsPopover.show($event)">
+          <label>Additional Guests</label><span id="guest_count">{{data.guests.length}}</span>
+          &nbsp;<i class="icon ion-chevron-down"></i>
+        </div>
+        <div class="guest-names" ng-show="data.guests.length">
+          <div class="guest-item" ng-repeat="g in data.guests">
+            <span class="num">{{$index+1}}</span> <input type="text" value="{{g}}" class="guest-name" placeholder="Enter guest name">
+          </div>
+        </div>
+      </div>
+      <div class="textarea-container input-item">
+        <label>Special Requests</label>
+        <textarea ng-model="data.note" name="note"></textarea>
+      </div>
+      <div class="button-row" dng-hide="registeredAttendee && event.get('maxGuestCount')==0">
+        <a href="javascript:void(0)" ng-click="registerEvent()" class="button button-assertive">{{registeredAttendee?'Update Response':'Send Response'}}</a>
+      </div>
+    </div>
+    <div class="button-row cancel-registration" ng-show="registeredAttendee && !eventUtils.isPast(event)">
+      <button class="button" ng-click="cancelRegistration()">Cancel Registration</button>
+    </div>
+  </ion-content>
+</ion-view>
+
+<script id="additionalguests-popover" type="text/ng-template">
+  <ion-popover-view class="additionalguests-popover">
+    <ion-content>
+      <div class="list">
+        <a ng-click="onSelectGuestCount(c)" class="item" ng-repeat="c in guestCountList">{{c}}</a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+<script id="response-popover" type="text/ng-template">
+  <ion-popover-view class="response-popover">
+    <ion-content>
+      <div class="list">
+        <a ng-click="onSelectResponse('yes')" class="item">Yes</a>
+        <a ng-click="onSelectResponse('no')" class="item">No</a>
+        <a ng-click="onSelectResponse('maybe')" class="item">Maybe</a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

@@ -1,0 +1,35 @@
+<ion-modal-view class="add-members-modal">
+  <ion-header-bar class="bar-stable nav-title-slide-ios7 nav-bar" style="z-index: 11;">
+    <div class="buttons left-buttons">
+      <button class="button-clear button back-button" ng-click="messagesRoomSettings.hideMembersModal()">Cancel</button>
+    </div>
+    <h2 class="title">Add Members</h2>
+  </ion-header-bar>
+  <ion-header-bar align-title="left" class="bar-positive bar-messages-new">
+    <div class="bar bar-subheader item-input-inset">
+      <p>To:</p>
+        <a href="" ng-repeat="receiver in messagesRoomSettings.receivers|limitTo:3">
+          <span>{{ receiver.firstName }}</span>
+          <span ng-if="messagesRoomSettings.receivers.length < 3"> {{ receiver.lastName }}</span>
+        </a>
+      <a href="" ng-if="messagesRoomSettings.receivers.length > 3" class="wide">+{{ messagesRoomSettings.receivers.length - 3 }}</a>
+      <input type="search" ng-change="messagesRoomSettings.search()" ng-model="messagesRoomSettings.searchQuery">
+    </div>
+  </ion-header-bar>
+  <ion-content class="page page-messages page-messages-new has-subheader">
+    <div class="list">
+      <a class="item item-avatar link messages-new-link" ng-class="{checked: messagesRoomSettings.alreadyReceiverIndex(contact) > -1 }" href="" ng-click="messagesRoomSettings.addContactToReceivers(contact)" ng-repeat="contact in messagesRoomSettings.users" ng-hide="messagesRoomSettings.alreadyParticipant(contact)">
+        <div background-image="{{contact.avatarUrl}}" class="messages-avatar"></div>
+        <div class="item-head">
+          <h2>{{contact.firstName}} <strong>{{contact.lastName}}</strong></h2>
+          <span class="icon ion-checkmark-circled"></span>
+        </div>
+      </a>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left">
+      <button class="button button-full button-dark" ng-click="messagesRoomSettings.addUsers()">
+        Add
+      </button>
+  </ion-footer-bar>
+</ion-modal-view>

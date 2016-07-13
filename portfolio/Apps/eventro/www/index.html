@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="starter" ng-controller="ApplicationCtrl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- <meta http-equiv="Content-Security-Policy" content="
+        style-src * 'unsafe-inline'; 
+        script-src 'self' geo: maps: http://fonts.googleapis.com https://cdn.firebase.com https://maxcdn.bootstrapcdn.com http://fonts.gstatic.com http://maps.googleapis.com http://maps.gstatic.com http://csi.gstatic.com http://localhost https://eventro-development.firebaseio.com https://s-dal5-nss-21.firebaseio.com wss://s-dal5-nss-21.firebaseio.com 'unsafe-inline' 'unsafe-eval' http://localhost:35729
+    "> -->
+
+    <title></title>
+    <!-- poppins font -->
+    <link href="http://fonts.googleapis.com/css?family=Poppins%3A400%2C300%2C500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.min.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-service-core/ionic-core.js"></script>
+    <script src="lib/ionic-service-analytics/ionic-analytics.js"></script>
+    <script src="lib/angular-ios9-uiwebview-patch/angular-ios9-uiwebview-patch.js"></script>
+
+
+
+    <!-- sticky -->
+    <script src="lib/ion-sticky/ion-sticky.js"></script>
+
+    <!-- ngCordova -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- Firebase -->
+    <script src="lib/firebase/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="lib/firebase/angularfire.min.js"></script>  
+
+    <!--list divider-->
+    <script src="lib/listdivider/ionic-ion-autoListDivider.js"></script>
+
+    <!-- AngularJS Google places - https://github.com/arunisrael/angularjs-google-places --> 
+    
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
+  
+    <!-- <script type="text/javascript" src="lib/google/jsplacesnosensor.js"></script> -->
+    <script type="text/javascript" src="lib/angularjs-google-places/src/angularjs-google-places.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/events_ctrl.js"></script>
+    <script src="js/event_schedule_ctrl.js"></script>
+    <script src="js/event_location_ctrl.js"></script>
+    <script src="js/event_map_ctrl.js"></script>
+    <script src="js/event_arview_ctrl.js"></script>
+    <script src="js/application_ctrl.js"></script>
+    <script src="js/testdata_ctrl.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/ngActivityIndicatorService.js"></script>
+    <script src="lib/angular-filter/dist/angular-filter.min.js"></script>
+
+  </head>
+  <body ng-class="getSectionClass()">
+
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar" isroot="true">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <!-- <dz-no-connection-model msinterval='3000'></dz-no-connection-model> -->
+    
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

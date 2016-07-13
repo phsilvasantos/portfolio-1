@@ -1,0 +1,79 @@
+<ion-view title="{{group.get('name')}}">
+  <ion-nav-buttons side="right">
+    <a ng-href="#/group-feed-more/{{groupId}}" class="button button-clear">Settings</a>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-group-feed feed-list"
+               delegate-handle="mainScroll"
+               on-scroll="onScrollContent()">
+    <ion-refresher
+      refreshing-text="Refreshing posts..."
+      on-refresh="pullToRefresh()">
+    </ion-refresher>
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="group-members-list">
+        <thumbnails-list
+          total="groupMembersCount"
+          items="thumbMembers"
+          title="groupMembersCount + ' Members'"
+          more-label="'Members'"
+          more-callback="viewGroupMembers()"></thumbnails-list>
+      </div>
+
+      <div class="header-buttons">
+        <a ng-href="#/group-feed-new/{{groupId}}" class="btn"><i class="svg-icon pencil-white"></i> <label>Write Post</label></a>
+        <a href="" class="btn"><i class="svg-icon clip-white"></i> <label>Share File</label></a>
+      </div>
+
+      <div class="horiz-list-line" ng-if="recentFiles.length"></div>
+
+      <div class="recent-files-list" ng-if="recentFiles.length">
+        <thumbnails-list
+          total="groupFilesCount"
+          items="recentFiles"
+          title="'Recent Files'"
+          more-label="'Files'"></thumbnails-list>
+      </div>
+
+      <div class="feeds list">
+        <div class="feed-item item" ng-repeat="p in posts" ng-init="detailUrl = '#/group-feed-detail/' + p.post.id;">
+          <a class="remove" ng-click="deletePost(p.post)"
+             ng-show="isModeratable"><i class="svg-icon close-black"></i></a>
+          <div class="poster-info">
+            <img class="avatar" ng-src="{{p.post.get('author').get('profile').get('thumbImage').url()}}">
+            <span class="poster-name">{{p.post.get('author').get('firstName')}} {{p.post.get('author').get('lastName')}}</span>
+            <span class="posted-date">{{getDisplayPostDate(p.post.createdAt)}}</span>
+            <span class="badge badge-messages badge-assertive" ng-show="badgeCounter(p.post)">{{badgeCounter(p.post)}}</span>
+          </div>
+          <div class="post-content">
+            <span class="content-body" ng-bind-html="p.post.get('body')"></span>
+          </div>
+          <div class="images" ng-show="p.images.length > 0">
+            <a photo-full-view
+              photos="p.images"
+              category="'group-feed'"
+              ng-repeat="img in p.images">
+              <img ng-cache ng-src="{{img.thumbImageUrl ? img.thumbImageUrl : img.imageUrl}}">
+            </a>
+          </div>
+          <div class="meta-info">
+            <a href="{{detailUrl}}">{{p.post.get('likedBy').length || 0}} Likes</a>
+            <a href="{{detailUrl}}">{{p.post.get('commentCount') || 0}} Comments</a>
+          </div>
+          <div class="actions">
+            <a class="btn btn-like liked" ng-show="isLiked(p.post)" disabled="disabled"><i class="svg-icon like-light-005fb8"></i> Liked</a>
+            <a ng-click="likePost(p.post)" class="btn btn-like" ng-show="!isLiked(p.post)">
+              <i class="svg-icon like-light-black"></i> Like
+            </a>
+            <a ng-href="#/group-feed-detail/{{p.post.id}}" class="btn"><i class="svg-icon comment2-black"></i> Comment</a>
+          </div>
+        </div><!-- /.feed-item -->
+      </div>
+
+    </div>
+
+    <ion-infinite-scroll on-infinite="fetchMorePosts()" distance="1%" ng-if="isMorePosts"></ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

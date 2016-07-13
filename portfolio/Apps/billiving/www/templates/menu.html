@@ -1,0 +1,58 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-dark nav-title-slide-ios7" align-title="left" >
+      <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <!--<ion-header-bar class="bar-stable">
+      <h1 class="title">Left</h1>
+    </ion-header-bar>-->
+    <ion-content>
+      <ion-list>
+        <ion-item nav-clear class="item-icon-left item-icon-right" menu-close href="#/dashboard">
+          <i class="icon ion-plus-circled"></i>
+          New
+          <i class="icon ion-ios7-arrow-right"></i>
+        </ion-item>
+        <ion-item nav-clear class="item-icon-left item-icon-right" menu-close href="#/clients">
+          <i class="icon ion-ios-people"></i>
+          Clients
+          <i class="icon ion-ios7-arrow-right"></i>
+        </ion-item>
+        <ion-item nav-clear class="item-icon-left item-icon-right" menu-close href="#/estimates">
+          <i class="icon ion-android-document"></i>
+          Estimates
+          <i class="icon ion-ios7-arrow-right"></i>
+        </ion-item>
+        <ion-item nav-clear class="item-icon-left item-icon-right" menu-close href="#/invoices">
+          <i class="icon ion-document-text"></i>
+          Invoices
+          <i class="icon ion-ios7-arrow-right"></i>
+        </ion-item>
+        <ion-item nav-clear class="item-icon-left item-icon-right" menu-close href="#/items">
+          <i class="icon ion-cube"></i>
+          Catalog
+          <i class="icon ion-ios7-arrow-right"></i>
+        </ion-item>
+        <ion-item nav-clear class="item-icon-left item-icon-right" menu-close href="#/setting">
+          <i class="icon ion-ios-gear"></i>
+          Settings
+          <i class="icon ion-ios7-arrow-right"></i>
+        </ion-item>
+        <ion-item nav-clear class="item-icon-left item-icon-right" menu-close href="#" onclick = 'window.open("http://www.billiving.com/help", "_system", "location=yes");'>
+          <i class="icon ion-help-circled"></i>
+          Help
+          <i class="icon ion-ios7-arrow-right"></i>
+        </ion-item>
+        <ion-item nav-clear class="item-icon-left item-icon-right" href="#" menu-close ng-click="logOut()">
+          <i class="icon ion-power"></i>
+          Sign out
+          <i class="icon ion-ios7-arrow-right"></i>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

@@ -1,0 +1,65 @@
+<ion-view view-title="Post a message" class="post-new-message" hide-back-button="true" cache-view="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear icon ion-ios-arrow-back" ng-click="back()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="createPost()" ng-disabled="!isValidForm() || isSending">Post</button>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-group-feed feed-new">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">To: </span>
+          <input type="text" value="{{group.get('name')}}" readonly="readonly">
+        </label>
+      </div>
+      <div class="feed-textbox-wrapper">
+        <ion-scroll class="mentions-list-wrapper" direction="y"
+                    ng-show="isMentionList" 
+                    delegate-handle="feed-posting-mentions">
+          <div class="list mentions-list">
+            <a ng-repeat="user in groupFeedNew.mentionUsersList()" class="item">
+              <input type="text" class="mention-virtual-input" ng-click="groupFeedNew.addUserToMentions(user)"/>
+              <img ng-src="{{user.avatarUrl}}"><span>@{{user.firstName}} {{user.lastName}}</span>
+            </a>
+          </div>
+        </ion-scroll>
+        <textarea class="feed-textbox" ng-model="data.body" ng-change="messageInputChanged();" placeholder="Write your message..."></textarea>
+      </div>
+      <div class="images feed-images-wrapper">
+        <div ng-repeat="img in data.images">
+          <div class="img-item" ng-if="isPicture(img)">
+            <img ng-src="{{img.thumbUrl|| img.fileUrl}}" ng-if="isPicture(img)"/>
+            <a class="remove" ng-click="removeImage(img.fileUrl)"><i class="fa fa-close"></i></a>
+          </div>
+          <div class="feed-new-files" ng-if="!isPicture(img)">
+            <div class="feed-item">
+              <a class="item">
+                <span class="thumb" ng-show="true"><i class="thumb filetype-icon {{getFileTypeClass(img)}}"></i></span>
+                <span class="filename">{{img.name}}</span>
+                <span class="remove" ng-click="removeImage(img.fileUrl)"><i class="fa fa-close"></i></span>
+              </a>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar bar-light" footer-keyboard>
+    <button class="button button-clear" ng-class="{'textarea-editable':isEdit}" ng-click="editMessage()">
+      <i class="svg-icon type-character"></i>
+    </button>
+    <button class="button button-clear" ng-click="groupFeedNew.takePhoto()">
+      <i class="svg-icon white-camera"></i>
+    </button>
+    <button class="button button-clear" ng-click="groupFeedNew.useExistingPhoto()">
+      <i class="svg-icon image-gallery"></i>
+    </button>
+    <button class="button button-clear" ng-click="groupFeedNew.showPhotoModal()">
+      <i class="svg-icon clip-black"></i>
+    </button>
+    <button class="button button-clear"></button>
+  </ion-footer-bar>
+</ion-view>

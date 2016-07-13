@@ -1,0 +1,24 @@
+<div class="tabs tabbs-main tabs-icon-top">
+  <a href="#/feed" nav-clear class="tab-item" ng-class="{'tab-item-active':isTabActive('app.feed')}">
+    <i class="svg-icon menu-updates"></i><span class="tab-title">Updates</span>
+  </a>
+  <a href="#/events" nav-clear class="tab-item" ng-class="{'tab-item-active':isTabActive('app.events')}">
+    <i class="svg-icon menu-events"></i><span class="tab-title">Programs</span>
+  </a>
+  <a href="#/groups" nav-clear class="tab-item" ng-class="{'tab-item-active':isTabActive('app.groups')}">
+    <i class="svg-icon menu-groups"></i><span class="tab-title">Groups</span>
+    <group-messages-counter></group-messages-counter>
+  </a>
+  <a href="#/messages" nav-clear class="tab-item" ng-class="{'tab-item-active':isTabActive('app.messages')}">
+    <i class="svg-icon menu-chat"></i><span class="tab-title">Chat</span>
+    <chat-messages-counter></chat-messages-counter>
+  </a>
+  <a href="#/members" nav-clear class="tab-item tab-members" ng-class="{'tab-item-active':isTabActive('app.members') || isTabActive('app.profile')}">
+    <i class="svg-icon menu-members"></i><span class="tab-title">Members</span>
+  </a>
+  <!--
+  <a href="#/profile/{{shared.user.get('profile').id}}" nav-clear class="tab-item" ng-class="{'tab-item-active':isTabActive('app.profile')}">
+    <i class="icon ion-person"></i><span class="tab-title">Profile</span>
+  </a>
+  -->
+</div>

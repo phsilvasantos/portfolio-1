@@ -1,0 +1,23 @@
+<ion-view view-title="Enter Phone Number" hide-nav-bar="true">
+  <ion-content class="page page-login">
+    <div class="logo" style="background-image: url({{appConfig.get('logoLarge').url()}});"></div>
+    <div class="login-tip-text">
+      <p>Welcome</p>
+      Please enter the mobile phone number you have on file with
+      <span ng-bind="appConfig.get('organizationName')"></span> to receive your passcode.
+    </div>
+    <form id="loginform" name="loginform" class="login-form" ng-submit="submit()" novalidate>
+      <input type="tel" ng-model="data.telnum" id="telnum" name="telnum" class="login-text" gn-tel
+             placeholder="Enter your mobile number" required autocomplete="off" ng-keyup="onPhoneNumberChanged()">
+      <div><a ng-click="submit()" class="login-button"><i class="svg-icon"></i></a></div>
+    </form>
+  </ion-content>
+  <a href="{{supportEmailURL()}}" class="contact-admin" ng-if="signupEnabled"><i class="icon ion-ios-help-outline"></i> Need Help?</a>
+  <ion-footer-bar class="login-footer">
+    <div class='login-buttons-wrapper'>
+      <a href="#/signup" ng-if="signupEnabled">Sign Up</a>
+      <a href="{{supportEmailURL()}}" ng-if="!signupEnabled">Need Help?</a>
+      <a ng-click='knownPin()' class='known-pin-button'>I know my passcode</a>
+    </div>
+  </ion-footer-bar>
+</ion-view>

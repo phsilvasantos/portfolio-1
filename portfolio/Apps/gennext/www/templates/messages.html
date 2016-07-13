@@ -1,0 +1,31 @@
+<ion-view title="Messages" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a href="#/messages/new" class="button button-clear">New</a>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-messages page-messages-list" ng-class="{'empty': messagesListCtrl.listEmpty()}">
+    <div class="list">
+      <a class="item item-avatar link messages-room-link" href="#/messages/{{ messageListItem.data.conversationId }}" ng-repeat="messageListItem in messagesListCtrl.conversations | sortByLastMessageDate:messagesListCtrl.spinner">
+        <div background-image="{{ messageListItem.data.avatarUrl }}" class="messages-avatar"></div>
+        <div class="item-head">
+          <h2>
+            {{ messageListItem.data.conversationTopic }}
+          </h2>
+          <p ng-bind-html="messageListItem.data.lastMessageText"></p>
+          <span class="badge badge-messages badge-assertive" ng-show="messageListItem.data.notReadMessages">{{messageListItem.data.notReadMessages}}</span>
+        </div>
+        <span class="item-time">
+          {{ messageListItem.data.lastMessageDate | messageListDate }}
+        </span>
+      </a>
+    </div>
+    <h5 class="empty-notification">
+      <span>You have no conversations for now</span>
+      <br>
+      Please tap <i class="icon ion-ios7-plus-outline"></i> to create conversation
+    </h5>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,50 @@
+<div class="modal transparent" ng-controller="activityCtrl" ng-click="closeActivity()">
+    <div class="wrapper vaccination" ng-click="$event.stopPropagation()">
+        <form ng-submit="hideKeyboard()">
+            <div class="header">
+                <h2 class="title">
+                    <span class="icon-injection"></span>
+                    <span data-translate>cleverbaby.app.activity.vaccination.title</span>
+                </h2>
+                <a ng-click="closeActivity()" class="btn pull-left"><i class="fa fa-close"></i></a>
+                <a ng-if="modal.mode == 'add'" ng-click="submitActivityCheck()" class="btn pull-right"><i class="fa fa-check"></i></a>
+                <a ng-if="modal.mode != 'add'" ng-click="deleteActivity('vaccination')" class="btn pull-right"><i class="fa fa-trash-o"></i></a>
+            </div>
+            <div class="content">
+                <div class="kotak">
+                    <label class="default">
+                        <span class="icon-clock"></span> <span data-translate>cleverbaby.app.activity.vaccination.time</span>
+                    </label>
+                    <div mobiscroll-datetime="" mobiscroll-model="modal.data.time" class-child="form-control"></div>
+                </div>
+                <div class="kotak">
+                    <label class="default">
+                        <span data-translate>cleverbaby.app.activity.vaccination.vaccination_type</span>
+                    </label>
+                    <input type="text" ng-model="modal.data.vaccination_type" placeholder="{{ 'cleverbaby.app.activity.vaccination.vaccination_type.placeholder' | translate}}" class="form-control">
+                </div>
+            </div>
+            <!-- addpic/addnote -->
+            <div class="kotak no-border autoheight" ng-if="modal.data.note">
+                <a class="delete" ng-click="deleteNote()"><i class="fa fa-trash"></i></a>
+                <div ng-click="addNote(modal.data.note)">
+                    <label class="small" data-translate>cleverbaby.app.activity.comment.click</label>
+                    <p>{{ modal.data.note }}</p>
+                </div>
+            </div>
+
+            <div class="kotak no-border autoheight" ng-repeat="media in modal.data.media | filter:{ type: '!del'}">
+                <a class="delete" ng-click="deletePhoto(media)"><i class="fa fa-trash"></i></a>
+                <div class="thumb">
+                    <img ng-src="{{ media.displayImage | babyImage }}">
+                </div>
+            </div>
+            <div class="footer">
+                <a class="pull-left" ng-click="addNote()"><span class="icon-book-open"></span><span data-translate>cleverbaby.app.activity.add_note</span></a>
+                <a class="btn-mid" ng-click="saveActivity('vaccination')"><i class="fa fa-check"></i> &nbsp;<span data-translate>cleverbaby.app.activity.save_close</span></a>
+                <a class="pull-right" choose-photo="captureImageOption"><span class="icon-camera"></span><span data-translate>cleverbaby.app.activity.photo</span></a>
+            </div>
+            <input type="submit" value="submit" class="hidden-submit">
+        </form>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<ion-view title="ROSTERS" ng-controller="RosterMemberCtrl" cache-view="false" cache-view="false">
+  <ion-content class="page page-listmain page-roster-member has-subheader">
+    <ion-list>
+      <ion-item class="item item-input">
+        <span class="input-label">Team Name :</span>
+        <input type="text" name="volume" placeholder="Team Name" ng-model="teamdetail.name"/>
+        <button class="button" ng-click="updateTeam();">Change</button>
+      </ion-item>
+      <ion-item ng-repeat="user in rosterinfo" class="item card contacts-item" ng-if="user.rostername">
+        <div class="contact-item-container">
+          <div style="background:url('{{(user.photourl)?user.photourl:'img/ylblankuser.png'}}')" class ="image-contacts-adapter" ng-click="userModal(user.rosterid)"></div>
+        </div>
+        <div class="contact-item-container">
+          <p class="contact-item-main">{{user.rostername}}</p>
+          <p class="contact-item-submain">{{user.email}}</p>
+        </div>
+        <div class="contact-item-container right-button-container">
+          <button class="button button-clear list-view-button icon ion-ios-information-outline" ng-click="editUser(user.rosterid)"></button>
+          <button class="button button-clear list-view-button icon ion-ios-close-outline" ng-click="deleteUser(user.rosterid)"></button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="roster-footer">
+    <ion-content class="page page-listmain no-header no-footer">
+      <ion-list>
+        <ion-item class="item item-icon-left" ng-click="goToPage('app.select-phonecontact-member');">
+          <i class="icon"><img class="custom-list-icon" src="img/phone-contact-ico.png"/></i>
+          <p>Import From Phone Contacts</p>
+        </ion-item>
+        <ion-item class="item item-icon-left" ng-click="selectEmail();">
+          <i class="icon"><img class="custom-list-icon" src="img/create-email-ico.png"/></i>
+          <p>Import From Email</p>
+        </ion-item>
+        <ion-item class="item item-icon-left" ng-click="goToPage('app.user-profile');">
+          <i class="icon"><img class="custom-list-icon" src="img/create-scratch-ico.png"/></i>
+          <p>Create From Scratch</p>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-footer-bar>
+</ion-view>

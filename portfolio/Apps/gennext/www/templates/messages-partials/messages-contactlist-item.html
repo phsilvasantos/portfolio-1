@@ -1,0 +1,7 @@
+<a class="item item-avatar link messages-new-link" ng-class="{checked: messagesNewCtrl.alreadyReceiverIndex(contact) > -1 }" href="" ng-click="messagesNewCtrl.addContactToReceivers(contact)" ng-repeat="contact in messagesNewCtrl.users" ng-hide="messagesNewCtrl.currentUserId === contact.id">
+  <div background-image="{{contact.avatarUrl}}" class="messages-avatar"></div>
+  <div class="item-head">
+    <h2>{{contact.firstName}} <strong>{{contact.lastName}}</strong></h2>
+    <span class="icon ion-checkmark-circled"></span>
+  </div>
+</a>

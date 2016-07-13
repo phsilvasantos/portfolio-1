@@ -1,0 +1,67 @@
+.bg-image1 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background: url('../img/app_bg_day.jpg') no-repeat center;
+}
+.bg-image-night {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background: url('../img/app_bg_night.jpg') no-repeat center;
+}
+.bg-image {
+  position: fixed;
+  width: 115%;
+  height: 115%;
+  background-size: cover;
+  background: url('../img/bg-1.jpg') no-repeat center;
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url('../fonts/Oswald-Regular.eot');
+    src: url('../fonts/Oswald-Regular.eot') format('embedded-opentype'),
+         url('../fonts/Oswald-Regular.woff') format('woff'),
+         url('../fonts/Oswald-Regular.ttf') format('truetype'),
+         url('../fonts/Oswald-Regular.svg#OswaldRegular') format('svg');
+}
+@font-face {
+    font-family: 'Arvo';
+    src: url('../fonts/Arvo-Regular.eot');
+    src: url('../fonts/Arvo-Regular.eot') format('embedded-opentype'),
+         url('../fonts/Arvo-Regular.woff') format('woff'),
+         url('../fonts/Arvo-Regular.ttf') format('truetype'),
+         url('../fonts/Arvo-Regular.svg#ArvoRegular') format('svg');
+}
+html, body {
+    font-family: 'Oswald',"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif cursive !important;
+    font-size: 21px;
+    color: #fff;
+}
+
+a.tab-item {
+    font-family: 'Arvo',"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif cursive !important;
+    color: #000;
+}
+h4 {
+    font-family: 'Arvo',"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif cursive !important;
+    color: #000;
+}
+.title{
+    font-family: 'Arvo',"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif cursive !important;
+    font-size: 21px;
+    color: #fff;
+}
+ a .tab-item {
+    font-family: 'Arvo',"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif cursive !important;
+    font-size: 21px;
+    color: #fff;
+}
+.side-menus {
+    font-family: 'Oswald',"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif cursive !important;
+    font-size: 21px;
+    font-weight: 400;
+    color: #fff;
+}

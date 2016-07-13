@@ -1,0 +1,48 @@
+<ion-view view-title="{{'cleverbaby.app.more.youraccount.title' | translate}}">
+    <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('inviteMainScroll')" delegate-handle="inviteMainScroll">
+        <div class="wrapper-tab more-page">
+            <ion-nav-bar class="bar-positive">
+                <div class="header no-border">
+                    <ion-nav-buttons side="left">
+                        <a class="btn left" ui-sref="app.more"><i class="fa fa-angle-left"></i></a>
+                    </ion-nav-buttons>
+                    <ion-nav-title cb-baby-drop-down></ion-nav-title>
+                </div>
+            </ion-nav-bar>
+            <div class="row responsive-sm page-con">
+                <div class="loggedin-info col">
+                    You can share your data with others and let them view and edit and add new data. Perfect to share the workload with your significant other or your relatives or nanny!
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="sub-head-text">Manage settings for</div>
+                            <div class="combo-box">
+                                <select ng-change="changeSelectedBaby(selectedBaby)" ng-options="baby.name for (key , baby) in babies" ng-model="selectedBaby" class="ng-pristine ng-untouched ng-valid">
+                                </select>
+                            </div>
+                    </form>
+                </div>
+                <div class="add">
+                    <div class="kotak autoheight gutter">
+                        <button class="btn small-text" ng-click="invite('admin')">
+                        Click here to invite someone to View, Add and Edit this baby's data as well as allow this person to invite others
+                        </button>
+                        <button class="btn small-text" ng-click="invite('write')">
+                            Click here to invite someone to View, Add and Edit this baby's data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="btm-btns">
+        <div class="col">
+            <div class="sub-head-text" ng-if="userList.length > 0">Others who currently have access to "Baby 1"</div>
+            <div class="allowed-list" ng-repeat="user in userList">
+                <div class="allowed-list-desc" ng-if="user.permission == '1'">{{ user.name }} ({{ user.role }}) can View, Add and Edit and Invite Others</div>
+                <div class="allowed-list-desc" ng-if="user.permission == '2'">{{ user.name }} ({{ user.role }}) can View, Add and Edit</div>
+                <div class="remove-x" ng-click="removeUser($index)">X</div>
+            </div>
+        </div>
+    </div>
+</ion-view>

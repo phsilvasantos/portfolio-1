@@ -1,0 +1,17 @@
+<ion-view title="Photos">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="done()">Done</button>
+  </ion-nav-buttons>
+  <ion-content class="page page-group-feed-photos">
+    <div class="photos-wrapper">
+      <a class="photo-item" 
+         photo-full-view
+         ng-repeat="item in photos"
+         category="'group-feed'"
+         photos="photos">
+        <span class="thumb" background-image="{{item.thumbImageUrl}}"></span>
+      </a>
+    </div>
+
+  </ion-content>
+</ion-view>

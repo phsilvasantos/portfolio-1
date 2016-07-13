@@ -1,0 +1,73 @@
+<ion-view view-title="{{'cleverbaby.app.more.youraccount.title' | translate}}">
+    <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('pinMainScroll')" delegate-handle="pinMainScroll">
+        <div class="wrapper-tab activate-baby-pin-page">
+            <ion-nav-bar class="bar-positive">
+                <div class="header no-border">
+                    <ion-nav-buttons side="left">
+                        <a class="btn left" ui-sref="app.more"><i class="fa fa-angle-left"></i></a>
+                    </ion-nav-buttons>
+                    <ion-nav-title cb-baby-drop-down></ion-nav-title>
+                </div>
+            </ion-nav-bar>
+            <div class="row responsive-sm page-con">
+                <div class="loggedin-info col">
+                    Please enter the information you have received below to get access to the babys data:
+                </div>
+                <div class="col">
+                    <form class="access-baby-pin-form form-inline">
+                        <div class="kotak autoheight">
+                            <div class="xs-2">
+                                <label for="yourname" class="form-label-short">
+                                    Your Name
+                                <div class="label-subtext">This is the name the other person will see</div>
+                                </label>
+                            </div>
+                            <div class="xs-2">
+                                <input id="yourname" type="text" ng-model="data.yourname">
+                            </div>
+                        </div>
+                        <div class="kotak">
+                            <div class="xs-2">
+                                <label for="babyName" class="form-label-short">
+                                    Baby Name
+                                </label>
+                            </div>
+                            <div class="xs-2">
+                                <input id="babyName" class="rightValue" type="text" ng-model="data.name">
+                            </div>
+                        </div>
+                        <div class="kotak">
+                            <div class="xs-2">
+                                <label for="babyBday" class="form-label-short">
+                                    Baby Birthdate
+                                </label>
+                            </div>
+                            <div class="xs-2">
+                                <input id="babyBday" class="rightValue" type="text" ng-model="data.birthday">
+                            </div>
+                        </div>
+                        <div class="kotak">
+                            <div class="xs-2">
+                                <label for="babyPin" class="form-label-short">
+                                    PIN
+                                </label>
+                            </div>
+                            <div class="xs-2">
+                                <input id="babyPin" class="rightValue" type="text" ng-model="data.pin">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="add">
+                    <div class="kotak autoheight gutter">
+                        <button class="btn small-text submit-baby-access-pin" ng-click="submitBabyAccessPin()">
+                            Get Access to Baby Data
+                        </button>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

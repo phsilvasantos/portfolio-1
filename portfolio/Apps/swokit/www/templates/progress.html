@@ -1,0 +1,31 @@
+<ion-view title="Progress">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header settings-view width-control">
+    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+	  <ion-slide>
+	    <div class"progress-box">
+	    	<div class="row">
+			  <div class="col table-label"><p>TOTAL</p><p>TODAY</p></div>
+			  <div class="col"><p class="stat-number">{{totals.todayMinutes}}</p><p class="stat-label">minutes</p></div>
+			  <div class="col"><p class="stat-number">{{totals.todayCalories}}</p><p class="stat-label">calories</p></div>
+			</div>
+			<h4 class="padding centered">You Swork'd It {{totals.totalMonthMin}} out of the past 30 days!</h4>
+	    </div>
+	    <a href="#/app/sworkitpro"><div class="upgrade-box">
+	    	<div class="upgrade-header">
+	    		<h4>Want More Stats and History?</h4>
+	    	</div>
+	    	<div class="upgrade-body">
+	    		<p>Unlock additional insights and a complete workout log when you upgrade to Pro.</p>
+	    		<p><i class="icon ion-stats-bars"></i>Track your progress by week and month.</p>
+	    		<p><i class="icon ion-arrow-graph-up-right"></i>Set and meet your daily and weekly goal.</p>
+	    		<p><i class="icon ion-ribbon-a"></i>Track and beat your own records.</p>
+	    		<a class="get-pro" href="#/app/sworkitpro"><h4>Get Sworkit Pro Now</h4></a>
+	    	</div>
+	    </div></a>
+	  </ion-slide>
+	</ion-slide-box>
+  </ion-content>
+</ion-view>

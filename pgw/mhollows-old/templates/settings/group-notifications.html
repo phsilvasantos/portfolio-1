@@ -1,0 +1,38 @@
+<ion-view title="Group Notifications" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon save-button" ng-click="groupNotifSettings.saveOptions()">Save</button>
+  </ion-nav-buttons>
+  <ion-content class="page page-settings page-settings-chat-notifications">
+    <div class="list">
+      <div class="item item-divider">
+        <br />
+        Send me push notifications:
+      </div>
+      <label class="item item-radio" ng-repeat="(key, value) in groupNotifSettings.settings.push.options">
+        <input type="radio" name="{{ groupNotifSettings.settings.push.groupName }}" value="{{ key }}" ng-checked="key == groupNotifSettings.settings.push.checked" ng-model="groupNotifSettings.pushChecked">
+        <div class="item-content">
+          {{ value }}
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+    </div>
+
+    <div class="list">
+      <div class="item item-divider">
+        <br />
+        Send me email notifications:
+        <p>When you're busy or not online, we can send you email notifications for any new messages
+      </div>
+      <label class="item item-radio" ng-repeat="(key, value) in groupNotifSettings.settings.mail.options">
+        <input type="radio" name="{{ groupNotifSettings.settings.mail.groupName }}" value="{{ key }}" ng-checked="key == groupNotifSettings.settings.mail.checked" ng-model="groupNotifSettings.mailChecked">
+        <div class="item-content">
+          {{ value }}
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,10 @@
+<ion-view view-title="Log Messages">
+  <ion-content class="page page-settings page-settings-log">
+    <div class="list">
+      <div class="item item-divider">Log Messages</div>
+      <div class='item' ng-repeat="logMessage in logMessages">
+        {{logMessage.message}}
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

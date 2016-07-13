@@ -1,0 +1,18 @@
+<ion-view view-title="Liked By" cache-view="false">
+  <ion-content class="page page-group-feed page-announcement">
+    <div class="feeds">
+      <div class="comments list">
+        <!-- <div class="item-divider heading">Comments</div> -->
+        <div class="comment-items" ng-show="announcement.get('likeCount')">
+          <div class="comment-item like-item item" ng-repeat="like in likes">
+            <a ng-href="#/profile/{{like.get('user').get('profile').id}}"><img class="avatar" ng-src="{{like.get('user').get('profile').get('thumbImage').url()}}"></a>
+            <a class="poster-name" ng-href="#/profile/{{like.get('user').get('profile').id}}">
+              {{like.get('user').get('firstName')}} {{like.get('user').get('lastName')}}
+            </a>
+            <div class="posted-date">{{getDisplayPostDate(like.createdAt)}}</div>
+          </div><!-- /.comment-item -->
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,35 @@
+<ion-view title="MANAGE GAME" ng-controller="ManageGameMacroCtrl" cache-view="false">
+  <ion-content class="page page-listmain has-subheader">
+    <ion-list ng-if="gameinfo">
+      <div class="custom-item-title">
+        Select one of your created games to manage. See who has confirmed that they are playing and start working on your formation!
+      </div>
+      <ion-item ng-repeat="game in gameinfo" class="item card contacts-item" ng-click="selectGame(game.id)">
+        <div class="contact-item-container">
+          <p class="contact-item-main">{{ changeDate(game.gamedate)}} ( {{game.opponentname|| 'Unknow Team'}} )</p>
+          <p class="contact-item-submain">Player : {{game.in + game.out + game.pending}},   In : {{game.in}},   Out : {{game.out}},   Pending : {{game.pending}} </p>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div style="position: relative;width: 100%;height: 100%;" ng-if="!gameinfo">
+      <div class="custom-item-title">
+        Hi, welcome to pelotaYA, please choose your role
+      </div>
+      <div class="contact-item-container" style="height: 60%;">
+        <a class="button create-game-btn" ng-click="goToPage('app.create-game');">Organize a new game</a>
+      </div>
+      
+    </div>
+
+  </ion-content>
+  <ion-footer-bar class="manage-game-footer" style="height: 68px;">
+    <ion-content class="page page-listmain no-header no-footer">
+      <ion-list>
+        <div class="custom-footer-title">
+          <p class="manage-game-footer-title">See Tutorial Video</p>
+          <p class="manage-game-footer-subtitle">Link to VIMEO video(not yet upload)</p>
+        </div>
+      </ion-list>
+    </ion-content>
+  </ion-footer-bar>
+</ion-view>

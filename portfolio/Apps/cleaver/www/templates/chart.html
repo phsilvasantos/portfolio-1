@@ -1,0 +1,22 @@
+<ion-view>
+  <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('chartMainScroll')" delegate-handle="chartMainScroll">
+  <div class="wrapper-tab timeline">
+    <ion-nav-bar class="bar-positive">
+        <div class="header no-border">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-title cb-baby-drop-down></ion-nav-title>
+        </div>
+    </ion-nav-bar>
+  </div>
+  <div class="padding combo-box">
+      <select ng-model="activeActivityType" ng-change="changeActivityType(activeActivityType)">
+          <option value="growth" selected>Growth</option>
+          <option value="bottle">Feeding</option>
+          <option value="diaper">Diaper</option>
+          <option value="sleep">Sleep</option>
+          <option value="pump">Pumping</option>
+      </select>
+  </div>
+  <div class="row responsive-sm trend-chart-include" ng-include="trendTemplate"></div>
+  </ion-content>
+</ion-view>

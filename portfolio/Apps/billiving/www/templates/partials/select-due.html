@@ -1,0 +1,20 @@
+<ion-view hide-back-button="true" cache-view = "false">
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Select Due</h1>
+    <button class="button button-clear" ng-click="dueModal.hide()">Cancel</button>
+  </ion-header-bar>
+  <div class="bar bar-subheader bar-stable item-input-inset clients-search-bar" id="search-box">
+    <div class="item-input-wrapper">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="search" placeholder="Search" ng-model="data.searchDueQuery">
+      <i class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i>
+    </div>
+  </div>
+  <ion-content class="has-subheader page page-select-clients">
+    <ion-list>
+      <ion-item class="ion-item-custom" ng-repeat="d in dues | filter: data.searchDueQuery" ng-click="selectDue(d)">
+        <h2>{{d.Text}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

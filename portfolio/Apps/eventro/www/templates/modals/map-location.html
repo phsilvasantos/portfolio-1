@@ -1,0 +1,35 @@
+  <ion-modal-view class="mapModal" ng-click="closeModal()">
+    <div class="mapLocation" >
+      <div class="relative whiteBg">
+        <!--categoryOverhangIcon START-->
+        <div class="categoryOverhangIcon">
+          <!--TODO: setup this icon dynamically-->
+          <img src="{{icon}}">
+        </div>
+        <!--categoryOverhangIcon END-->
+        <!--modalContent START-->
+        <div class="modalContent padding">
+          <h2 ng-cloak>{{locationName ? locationName : 'Location Name'}}</h2>
+          <p ng-cloak>{{subtitle}}</p>
+        </div>
+        <!--modalContent END-->
+        <!--modalOptions START-->
+        <div class="modalOptions row">
+          <!--information button START-->
+          <div ng-show="isEventLocation" class="col">
+            <button ng-click="gotoLocationDetail(); gotoPage('event-location', {'locationId': locationId, 'locationName': locationName});" class="button fa fa-info"></button>
+          </div>
+          <!--information button END-->
+          <!--directions button START-->
+          <div class="col">
+            <button ng-click="getDirections(position.lat, position.lng)" class="button button-icon directionsButton ion-android-compass"></button>
+          </div>
+          <!--directions button END-->
+        </div>
+        <!--modalOptions END-->
+        <div class="modalFooter">
+          <button class="button icon fa fa-close" ng-click="closeModal()"></button>
+        </div>
+      </div>
+    </div>
+</ion-modal-view>

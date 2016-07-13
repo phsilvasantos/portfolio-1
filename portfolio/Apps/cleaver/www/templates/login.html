@@ -1,0 +1,50 @@
+<ion-modal-view  class="loginbg">
+  
+  <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('loginMainScroll')" delegate-handle="loginMainScroll">
+    <ion-header-bar class="bar-positive">
+    <h1 class="title" data-translate>cleverbaby.auth.modal.signin.title</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()" data-translate>
+        cleverbaby.auth.modal.signin.close
+      </button>
+    </div>
+  </ion-header-bar>
+    <div class="loginlogo">
+      <img src="img/logo.png" class="logo">
+    </div>
+    <form ng-submit="doLogin()" class="loginbg">
+      <div class="list">
+        <label class="item loginform item-input">
+          <span class="input-label" data-translate>cleverbaby.auth.modal.signin.email</span>
+          <input type="text" ng-model="loginData.username">
+        </label>
+        <label class="item loginform item-input">
+          <span class="input-label" data-translate>cleverbaby.auth.modal.signin.password</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+        <label class="item loginform">
+          <div class="row">
+            <div class="col col-30"></div>
+            <div class="col col-40">
+              
+              <button class="button button-block button-positive" type="submit">
+                cleverbaby.auth.modal.signin.submit
+              </button>
+            </div>
+            <div class="col col-30"></div>
+          </div>
+         
+        </label>
+      </div>
+    </form>
+    <div class="signup padding">
+      <div class="row">
+        <div class="col col-60">
+          <p>cleverbaby.auth.modal.message1</p>
+          <button class="button button-block button-square" type="submit">cleverbaby.auth.modal.signin.signup</button>
+        <div class="col col-20"></div>
+      </div>
+      
+    </div>
+  </ion-content>
+</ion-modal-view>

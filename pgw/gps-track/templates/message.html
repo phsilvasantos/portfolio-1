@@ -1,0 +1,60 @@
+<ion-view title="Message">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>    
+    <ion-content class="has-header">
+    <ion-list class="list list-inset">
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-document-text assertive"></i> {[{asset_details.asset_detail.name}]}
+            </div>
+            <div class="item item-text-wrap">
+                <label class="item item-input">
+                    <input type="datetime-local" placeholder="Scheduled Time" ng-model="message_time" required>
+                </label>
+                <label class="item item-input">
+                    <!--Sim Number: {[{asset.sim_number}]}-->
+                    <textarea ng-model="message" placeholder="e.g. Pick me up @ the time mentioned above" required></textarea>
+                </label>
+            </div>
+            <div class="item item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="sendMessage(asset_details.asset_detail._id.$oid,message,message_time)">
+                    <i class="icon ion-archive positive"></i>
+                    Send Message
+                </a>
+                <a class="tab-item" ng-click="sendOpenMessage(asset_details.asset_detail._id.$oid,message,message_time)">
+                    <i class="icon ion-archive positive"></i>
+                    Message Publicly
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-android-location calm"></i> Map View
+            </div>
+            <div class="item item-image">
+                <div class="map" data-tap-disabled="true">
+                   <leaflet defaults="defaults" layers="layers" paths="paths" geojson="geojson" center="london" markers="markers" width="100%" height="300" id="map"></leaflet>
+                </div>
+            </div>
+
+            <!-- <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-email positive"></i>
+                    Message
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-paper-airplane calm"></i>
+                    Route
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-share balanced"></i>
+                    Share
+                </a>
+            </div> -->
+        </div>
+    </ion-list>
+    </ion-content>
+</ion-view>
+

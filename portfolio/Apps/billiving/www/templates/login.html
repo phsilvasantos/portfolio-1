@@ -1,0 +1,38 @@
+<ion-view hide-back-button="true">
+  <ion-nav-title>
+    <img src="http://www.billiving.com/favicon.ico"> BILLIVING
+  </ion-nav-title>
+
+  <ion-content class="page page-login">
+    <form name="loginForm">
+      <div class="list">
+        <div class="descriptions">  
+          <label class="item item-input">
+            <span class="input-label">Enter E-mail</span>
+            <input type="email" ng-model="loginData.Email" required>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Password</span>
+            <input type="password" ng-model="loginData.Password" required>
+          </label>
+        </div
+        <label class="item">
+          <button class="button button-block button-positive" 
+                  ng-click="doLogin()"
+                  ng-disabled="loginForm.$invalid || isLogingin">{{isLogingin ? 'Loging in...': 'Log in'}}</button>
+        </label>
+        <label class="item item-assertive" ng-show="isInvalidLogin">
+          Incorrect email address or password
+        </label>
+      </div>
+    </form>
+
+    <div class="descriptions">  
+      <p class="bottom-bordered small">
+        <i class="fa fa-lock"></i> This application is certificated & protected by SSL security
+      </p>
+      <p><a href="#" onclick = 'window.open("http://www.billiving.com/Login/ForgotPassword", "_system", "location=yes");'>Can't access your account?</a></p>
+      <p><a href="#" onclick = 'window.open("http://www.billiving.com/Signup", "_system", "location=yes");'>Not Registered? Click here</a></p>
+    </div>
+  </ion-content>
+</ion-view>

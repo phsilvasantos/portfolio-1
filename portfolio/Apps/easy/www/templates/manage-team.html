@@ -1,0 +1,13 @@
+<ion-view title="MANAGE TEAM" ng-controller="ManageTeamCtrl" cache-view="false">
+  <ion-content class="page page-listmain">
+    <ion-list>
+      <div class="custom-item-title">
+        Select Team to Manage   
+      </div>
+      <ion-item class="item item-icon-left" ng-repeat="team in teaminfo track by $index" ng-if="team.name" ng-click="selectTeam(team);">
+        <i class="icon"><img class="custom-list-icon" src="img/team-ico.png"/></i>
+        <p>{{team.name}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

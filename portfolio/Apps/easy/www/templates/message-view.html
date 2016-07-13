@@ -1,0 +1,21 @@
+<ion-view title="MANAGE LIST" ng-controller="MessageViewCtrl" cache-view="false">
+  <ion-content class="page page-listmain page-message-view has-subheader">
+    <ion-list>
+      <ion-item ng-repeat="message in messagelist" class="item message-item" ng-class="{'unread-message-view':(message.read_flag == 0)}" ng-if="message.user_name" ng-click="selectMessage(message);">
+        <div class="contact-item-container" ng-show="message.read_flag==0">
+          <div class ="unread-mark" ng-click="userModal(user.rosterid)"></div>
+        </div>
+        <div class="contact-item-container">
+          <p class="message-item-main">{{message.message_title}}</p>
+          <p class="message-item-body" ng-if="!message.opponentname">Team Name:{{message.name}}</p>
+          <p class="message-item-body" ng-if="message.opponentname">Opponent Name:{{message.opponentname}}</p>
+        </div>
+        <div class="contact-item-container right-button-container time-mark">
+          <span ng-if="!message.gamedate">{{changeDateTimeToDate(message.change_date)}}</span>
+          <span ng-if="message.gamedate">{{ changeDate(message.gamedate)}}</span>
+          <p ng-if="message.flag == 2">{{gameplyStatus[message.accept_flag]}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

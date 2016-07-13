@@ -1,0 +1,18 @@
+<div class="thumbnails-list-wrapper" ng-show="total>0">
+  <div class="thumbnails-list-header" ng-show="title">{{title}}</div>
+  <div class="thumbnails-list">
+    <a class="list-item" ng-repeat="m in items" 
+       ng-hide="visibleCount < total && $index > visibleCount - 2">
+      <img class="picture" ng-src="{{m.thumbUrl}}" ng-if="!m.icon">
+      <div class="filetype-icon {{m.icon}}" ng-if="m.icon"></div>
+    </a>
+    <a href="javascript:void(0)" class="viewmore"
+       ng-click="moreCallback()"
+       ng-show="visibleCount < total">
+      <div class="inner">
+        <em>{{total - visibleCount + 1}}+</em>
+        <span ng-bind-html="moreLabel"></span>
+      </div>
+    </a>
+  </div>
+</div>

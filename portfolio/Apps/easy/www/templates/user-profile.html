@@ -1,0 +1,66 @@
+<ion-view title="EDIT PLAYER" ng-controller="UserProfileCtrl">
+  <ion-content class="page page-list has-subheader">
+    <ion-list>
+      <form name="$parent.rosterProfileForm">
+        <div style="text-align: center;margin: 5px;">
+          <div style="background:url('{{(rosterData.photourl)?rosterData.photourl:'img/ylblankuser.png'}}')" class ="image-contacts-adapter" ng-click="takePicture()"></div>
+        </div>
+        <ion-item class="item item-input">
+          <span class="input-label">Name <em style="color: red;"> * </em>:</span>
+          <input type="text" placeholder="" ng-model="rosterData.rostername" required>
+        </ion-item>
+        <ion-item class="item item-input">
+          <span class="input-label">Gender <em style="color: red;"> * </em>:</span>
+          <select ng-model="rosterData.gender" required>
+            <option value="1" ng-selected="true">Male</option>
+            <option value="2">Female</option>
+          </select>
+        </ion-item>
+        <ion-item class="item item-input">
+          <span class="input-label">Email <em style="color: red;">*</em>:</span>
+          <input type="email" placeholder="" ng-model="rosterData.email" required>
+        </ion-item>
+        <ion-item class="item item-input">
+          <span class="input-label">Phone Number :</span>
+          <input type="number" placeholder="" ng-model="rosterData.phonenumber">
+        </ion-item>
+        <ion-item class="item item-input">
+          <span class="input-label">Shirt Number :</span>
+          <input type="number" placeholder="" ng-model="rosterData.shirtnumber">
+        </ion-item>
+        <ion-item class="item item-input">
+          <span class="input-label">Position :</span>
+          <select ng-model="rosterData.position">
+            <option value="4" ng-selected="true">Striker</option>
+            <option value="2">Midfielder</option>
+            <option value="3">Defender</option>
+            <option value="1">Goalie</option>
+          </select>
+        </ion-item>
+        <ion-item class="item item-input">
+          <span class="input-label">Speciality :</span>
+          <select ng-model="rosterData.speciality">
+            <option value="1" ng-selected="true">Tank Centerforward</option>
+            <option value="2">Sweeper</option>
+            <option value="3">Dripler</option>
+          </select>
+        </ion-item>
+        <ion-item class="item item-input">
+          <span class="input-label">Favored foot :</span>
+          <select ng-model="rosterData.favoredfoot">
+            <option value="1" ng-selected="true">Right Foot</option>
+            <option value="2">Left Foot</option>
+            <option value="3">Both Foots</option>
+          </select>
+        </ion-item>
+      </form>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="organizate-footer">
+    <div class="footer-container">
+      <div class="container-footer">        
+        <div class="button button-clear footer-green-button" ng-click="saveRoster();" ng-disabled="invoiceEstimateForm.$invalid">Save Roster</div>         
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

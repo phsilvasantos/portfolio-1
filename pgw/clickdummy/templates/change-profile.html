@@ -1,0 +1,63 @@
+<ion-view view-title="Change Profile">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear">Save</button>
+  </ion-nav-buttons>
+  <ion-content class="page page-change-profile">
+
+    <form name="profileForm">
+
+      <div class="photobox" style="background-image: url({{data.photo}})">
+        <input type="file" id="profile_photo_s" onchange="onSettingsProfilePhotoSelected(this)" accept="image/*">
+        <div ng-show="!data.photo">
+          <i class="icon ion-ios-camera-outline"></i>
+          <label>Add Photo</label>
+        </div>
+      </div>
+      <a class="delete-photo ng-hide" ng-show="data.photo" ng-click="clearPhoto()"></a>
+
+      <div class="list">
+        <label class="item item-input">
+          <input type="email" ng-model="data.email" name="email" required placeholder="Email">
+        </label>
+        <div class="item item-input item-select" ng-click="langPopover.show($event)">
+          {{findVal(languages, data.language).name}}
+          <em ng-show="!findVal(languages, data.language)">Language</em>
+        </div>
+      </div>
+      
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-model="data.name" name="name" required placeholder="Name">
+        </label>
+        <div class="item item-input item-select" ng-click="genderPopover.show($event)">
+          {{findVal(genders, data.gender).name}}
+          <em ng-show="!findVal(genders, data.gender)">Gender</em>
+        </div>
+        <div class="item item-input">
+          <input type="text" ng-model="data.birthday" placeholder="Birth Date">
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
+
+
+<script id="gender-popover" type="text/ng-template">
+  <ion-popover-view class="gender-popover">
+    <ion-content>
+      <div class="list">
+        <a ng-click="onSelectGender(g, $event)" class="item" ng-repeat="g in genders">{{g.name}}</a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+<script id="lang-popover" type="text/ng-template">
+  <ion-popover-view class="lang-popover">
+    <ion-content>
+      <div class="list">
+        <a ng-click="onSelectLanguage(g, $event)" class="item" ng-repeat="g in languages">{{g.name}}</a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

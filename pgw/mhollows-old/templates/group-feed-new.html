@@ -1,0 +1,32 @@
+<ion-view title="Post a message">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="createPost()" ng-disabled="!isValidForm() || isSending"><i class="fa fa-send"></i></button>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-group-feed feed-new">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">To: </span>
+          <input type="text" value="{{group.get('name')}}">
+        </label>
+      </div>
+
+
+      <textarea auto-grow-height class="feed-textbox" ng-model="data.body" ng-change="messageInputChanged();" placeholder="Write your message..."></textarea>
+      <div class="list mentions-list" ng-show="groupFeedNew.showMention()">
+        <a ng-repeat="user in groupFeedNew.mentionUsersList()" class="item" href="" ng-click="groupFeedNew.addUserToMentions(user)">
+          <img ng-src="{{user.avatarUrl}}"><span>@{{user.firstName}} {{user.lastName}}</span>
+        </a>
+      </div>
+      <div class="images">
+        <div ng-repeat="img in data.images" style="background-image: url({{img.url}})" class="img-item">
+          <a class="remove" ng-click="removeImage(img.id)"><i class="fa fa-close"></i></a>
+        </div>
+      </div>
+
+      <button class="button btn-addimg"><input type="file" id="new_post_image"><i class="fa fa-camera"></i></button>
+    </div>
+  </ion-content>
+</ion-view>

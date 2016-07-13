@@ -1,0 +1,30 @@
+<ion-view title="SELECT PLAYERS" ng-controller="SelectMemberCtrl" class="organizate-view">
+  <ion-header-bar class="bar-subheader organizate-subheader">
+    <div class="organizate-title">
+      Select Player to import to your team
+    </div>
+  </ion-header-bar>
+  <ion-content class="organizate-body content-stable" scroll="false">
+    <list>
+    <div ng-repeat="user in contactuser" class="item card safecab-contacts-item" ng-if="user.rostername">
+      <div class="contact-item-container con-avatar-container">
+        <div style="background:url('{{(user.photourl)?user.photourl:'img/ylblankuser.png'}}')" class ="image-contacts-adapter"></div>
+      </div>
+      <div class="contact-item-container">
+        <p class="contact-item-container-username">{{user.rostername}}</p>
+        <p class="contact-item-container-phonenum">{{user.email}}</p>
+      </div>
+      <div class="contact-item-container con-button-container">
+        <div class="org-custom-button con-button icon {{isMembers[user.rostername]?'ion-ios-checkmark-outline font-white-color':'ion-ios-circle-outline'}}" ng-click="selectUser(user)"></div>
+      </div>
+    </div>
+    </list>
+  </ion-content>
+  <ion-footer-bar class="organizate-footer">
+    <div class="footer-container">
+      <div class="container-footer">        
+        <div class="button button-clear footer-green-button" ng-click="createRoster();">Import invite select team members</div>         
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

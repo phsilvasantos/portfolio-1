@@ -1,0 +1,78 @@
+<ion-view title="Invitation List">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+    <ion-list class="list list-inset">
+
+        <div class="card">
+            <div class="item item divider">
+                <label class="item item-input">
+                    <input type="text" placeholder="Search" ng-model="qdata" ng-change="init_specs(qdata)">
+                </label>
+            </div>
+            <div class="item item divider">
+                <div class="button button-block button-energized" ng-click="call_google()">Invite From Google Contacts</div>
+            </div>
+            <div class="item item divider"> 
+                <div class="button button-assertive" ng-click="prev_google()" ng-show="prev_is_true">previous</div>
+                <div class="button button-assertive" ng-click="next_google()">next</div>
+                <div class="button button-balanced" ng-click="invite_users()">invite</div>
+            </div>
+            <div class="item item-text-wrap">
+                <ion-checkbox ng-repeat="i in contacts.feed.entry | filter: qdata"
+                    ng-model="i.checked"
+                    ng-checked="i.checked">
+                    {[{i.title.$t}]} 
+                    <p ng-repeat="email in i.gd$email">{[{email.address}]}</p>
+                </ion-checkbox>
+            </div>
+            <div class="item item divider"> 
+                <div class="button button-assertive" ng-click="prev_google()" ng-show="prev_is_true">previous</div>
+                <div class="button button-assertive" ng-click="next_google()">next</div>
+                <div class="button button-balanced" ng-click="invite_users()">invite</div>
+            </div>
+        </div>
+        <!-- <div class="card">
+            <div class="item item-text-wrap">
+                Testing of Invitations...
+                {[{invitation_list}]}
+            </div>
+        </div> -->
+        <div class="card" ng-repeat="invitations in invitation_list">
+            <div class="item item divider">
+                {[{invitations.organization}]}
+            </div>
+            <div class="item item-text-wrap">
+                <i class="icon ion-android-chat assertive"></i> {[{invitations.sender}]}<br />
+                <p class="text-right"><small>Created 
+                    <i class="icon ion-at dark">
+                    {[{invitations.created_on.$date| date:'yyyy-MM-dd HH:mm:ss Z'}]}
+                    </i></small></p>
+            </div>
+            <div class="item item-text-wrap">
+                <ion-checkbox
+                    ng-model="invitations.accepted"
+                    ng-checked="invitations.accepted" 
+                    ng-change="accept(invitations._id.$oid,invitations.organization,invitations.accepted,invitations.declined)">
+                    Accept?
+                </ion-checkbox>
+                <ion-checkbox
+                    ng-model="invitations.declined"
+                    ng-checked="invitations.declined" 
+                    ng-change="accept(invitations._id.$oid,invitations.organization,invitations.accepted,invitations.declined)">
+                    Decline?
+                </ion-checkbox>
+            </div>
+            <div class="item tabs tabs-icon-right item-divider">
+                <a class="tab-item" ui-sref="app.messageView({ messageId: message._id.$oid})">
+                <!--<a class="tab-item" ng-click="viewOnMap(message._id.$oid,message.loc,message.message,message_list[$index]['delivered'],message.accepted)">-->
+                    <i class="icon ion-earth positive"></i>
+                    View On Map
+                </a>
+            </div>
+        </div>
+    </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,8 @@
+<div class="item item-avatar link messages-settings-member" ng-repeat="contact in shared.currentConversationUsers">
+  <div background-image="{{chatService.getAvatarById(contact.id)}}" class="messages-avatar"></div>
+  <div class="item-head">
+    <h2>{{chatService.getUserDisplayNameById(contact.id)}}</h2>
+    <a ng-href="#/profile/{{chatService.getUserProfileById(contact.id).id}}" class="viewprofile" menu-close>View profile</a>
+    <button class="button button-positive remove-member button-clear" ng-show="canDeleteUser(contact)" ng-click="dropUserFromConversation(contact)"><i class="icon ion-ios-minus-outline"></i></button>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<ion-view title="Traffic Congestion">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons> 
+
+    <ion-content class="has-header">
+    <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list class="list list-inset">
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-android-location calm"></i> Traffic View 
+            </div>
+            <div class="item item-text-wrap">
+                <label>The more user uses Finder the better results you will see here. We have given you the tools, the power is now in your hands</label>
+            </div>
+            <div class="item item-image">
+                <div class="map">
+                   <leaflet defaults="defaults" layers="layers" paths="paths" geojson="geojson" center="london" markers="markers" width="100%" height="300" id="map"></leaflet>
+                </div>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" onclick="window.plugins.socialsharing.shareViaFacebook('Message via Facebook', null /* img */, 'https://play.google.com/store/apps/details?id=com.finder.gps.tracking' /* url */, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})"><i class="icon ion-social-facebook positive"></i></a>
+                <a class="tab-item" onclick="window.plugins.socialsharing.shareViaTwitter('Finder Tracking is awesome', null /* img */, 'https://play.google.com/store/apps/details?id=com.finder.gps.tracking' /* url */, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})"><i class="icon ion-social-twitter calm"></i></a>
+            </div>
+        </div>
+    </ion-list>
+    </ion-content>
+</ion-view>

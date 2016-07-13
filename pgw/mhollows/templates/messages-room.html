@@ -1,0 +1,43 @@
+<ion-view view-title="Chat" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button-clear button back-button button-icon icon ion-ios-arrow-back" ui-sref="app.messages"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+      <button menu-toogle="right" class="button messages-room-settings-button button-clear" ng-click="messagesRoom.toggleRoomSettings()" ng-show="messages.room">Edit</button>
+  </ion-nav-buttons>
+  <ion-header-bar align-title="left" class="bar-messages-new room">
+    <div class="bar bar-subheader item-input-inset" ng-class="{'no-button': !messages.room}">
+      <p>To:</p>
+      <span>{{ shared.currentConversationTopic }}</span>
+      <button class="button button-clear button-positive add-member" ng-click="messagesRoom.addMembers()" ng-if="messages.room">
+        <i class="icon ion-ios-plus-outline"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="page page-messages page-messages-room auto-resize has-subheader" delegate-handle="messages-room">
+    <messages-room-conversation></messages-room-conversation>
+    <div class="item item-avatar message-item user-typing" ng-show="messagesRoom.somebodyTyping()">
+      <a background-image="{{messagesRoom.typingUsersAvatar}}" class="messages-avatar"></a>
+      <div class="item-head">
+        <div class="message-body">{{messagesRoom.typingUsersAnounce}}</div>
+      </div>
+    </div>
+	</ion-content>
+  <ion-footer-bar align-title="left" class="page-messages-room">
+    <i class='icon ion-camera add-image-to-message' image-uploader="uploadOption">
+      <input type="file" id="new_message_image" accept="image/*">
+    </i>
+    <div class="list mentions-list" ng-show="messagesRoom.showMention()">
+      <a ng-repeat="user in messagesRoom.mentionUsersList()" class="item" href="" ng-click="messagesRoom.addUserToMentions(user, angular.element().find('textarea'))">
+        <div background-image="{{user.avatarUrl}}" class="picture"></div><span>@{{user.firstName}} {{user.lastName}}</span>
+      </a>
+    </div>
+
+    <label>
+      <!--<input type="text" id="message-input-box" placeholder="Type Message..." ng-model="messagesRoom.message" ng-change="messagesRoom.messageInputChanged();" ng-click="messagesRoom.sendMessage($event)"/>-->
+      <textarea auto-grow-height id="message-input-box" class="feed-post-comment-input mention-input-feed-detail" ng-model="messagesRoom.message" ng-change="messagesRoom.messageInputChanged();" ng-click="messagesRoom.sendMessage($event)"  placeholder="Type Message..."></textarea>
+      <button class="button-send">Send <i class="fa fa-send"></i></button>
+    </label>
+
+  </ion-footer-bar>
+</ion-view>

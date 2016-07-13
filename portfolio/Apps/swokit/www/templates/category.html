@@ -1,0 +1,26 @@
+<ion-view title="{{categoryTitle}}">
+  <ion-nav-buttons side="right">
+  	<button class="button button-icon icon ion-ios7-information-outline right" ng-click="data.showInfo = !data.showInfo"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header width-control full-length" scrollbar-y="false">
+  <div id="category-header" ng-class="{'strength-back': thisCategory == 0,'stretch-back': thisCategory == 1,'group-two': timesUsedVar % 2 == 0}">
+    <span>
+      <h3>{{thisCategory == 0 ? 'GET TO SWORK!' : 'SWORK IT OUT'}}</h3>
+    </span>
+  </div>
+  	<div class="list workout-type-list padding-top">
+	  	<p class="page-instructions">Select a workout type</p>
+      <a class="item item-content item-icon-right item-text-wrap" ng-repeat="type in categories" type="item-text-wrap" href="#/app/home/{{thisCategory}}/{{type}}">
+        <span class="extra-color-left nexercise-orange" ></span>
+      	<span class="extra-left">{{workoutTypes[type].activityNames}}</span>
+      	<p class="extra-left" ng-show="data.showInfo">{{workoutTypes[type].description}}</p>
+      	<i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+      <a class="item item-content item-icon-right item-text-wrap" type="item-text-wrap" href="#/app/sworkitpro" ng-show="thisCategory == 0">
+        <span class="extra-color-left nexercise-orange" ></span>
+        <span class="extra-left">7-Minute Workout (Pro only)<span>
+        <i class="icon ion-locked icon-accessory"></i>
+      </a>
+	</div>
+  </ion-content>
+</ion-view>

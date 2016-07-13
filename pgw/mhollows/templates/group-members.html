@@ -1,0 +1,60 @@
+<div class="sidemenu-group-members" ng-controller="GroupMembersController">
+  <div class="group-members-header">
+    <div class="heading">
+      {{group.get('name')}}
+      <!--<a class="btn" ng-click="filterModal.show()"><i class="fa fa-sort-alpha-asc"></i></a>-->
+    </div>
+    <div class="group-members-cnt">{{group.get('memberCount')}} Group Members</div>
+    <form class="searchbar searchbar-group-members">
+      <div class="item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="fa fa-search placeholder-icon"></i>
+          <input type="search" placeholder="" id="txt_search_group_members">
+        </label>
+      </div>
+    </form>
+  </div>
+
+  <ion-content class="group-members-content" delegate-handle="group-members">
+    <div class="list" delegate-handle="memberList">
+      <div id="{{divider}}" class="item-divider" ng-repeat-start="divider in dividers" ng-if="dividedMembers[divider].length > 0">
+        {{divider}}
+      </div>
+
+      <div class="item" ng-repeat="m in dividedMembers[divider]">
+        <a ng-href="#/profile/{{m.get('profile').id}}" class="picture" background-image="{{m.get('profile').get('thumbImage').url()}}" menu-close></a>
+        <h2 class="member-name">
+          <a ng-href="#/profile/{{m.get('profile').id}}" menu-close>
+            <span ng-if="filterBy == 'firstName'">
+              <strong>{{m.get('firstName')}}</strong><br/> {{m.get('lastName')}}
+            </span>
+            <span ng-if="filterBy == 'lastName'">
+              {{m.get('firstName')}}<br/> <strong>{{m.get('lastName')}}</strong>
+            </span>
+          </a>
+        </h2>
+        <a ng-href="#/profile/{{m.get('profile').id}}" class="viewprofile" menu-close>View profile</a>
+        <a ng-href="#/messages/new/{{m.id}}" class="btn-chat" menu-close ng-if="!isCurrentUser(m) && isChatAvailableForUser(m)"><i class="svg-icon chat-text-bubble-white"></i></a>
+        <a ng-href="sms:{{m.get('username') | actualPhoneNumber}}" class="btn-sms" ng-if="!isCurrentUser(m) && !isChatAvailableForUser(m)"><i class="svg-icon sms-white"></i></a>
+      </div>
+      <div ng-repeat-end></div>
+    </div>
+  </ion-content>
+</div>
+
+<script id="filter-modal-html" type="text/ng-template">
+  <div class="modal modal-filter-members">
+    <header class="bar bar-header">
+      <h1 class="title">Sort/Filter Members</h1>
+      <!-- <div class="button button-clear" ng-click="filterModal.hide()"><span class="icon ion-close"></span></div> -->
+    </header>
+    <content padding="true">
+      <div class="list sortby">
+        <div class="item item-divider">Sort By</div>
+        <ion-radio ng-model="filterBy" ng-value="'firstName'" ng-click="sortMembers('firstName')">First Name</ion-radio>
+        <ion-radio ng-model="filterBy" ng-value="'lastName'" ng-click="sortMembers('lastName')">Last Name</ion-radio>
+        <!-- <ion-radio ng-model="filterBy" ng-value="'joinDate'" ng-click="sortMembers('joinDate')">Join Date</ion-radio> -->
+      </div>
+    </content>
+  </div>
+</script>

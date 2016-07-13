@@ -1,0 +1,22 @@
+<ion-view hide-back-button="true" cache-view = "false">
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Select Client</h1>
+    <button class="button button-clear" ng-click="clientsmodal.remove()">Cancel</button>
+  </ion-header-bar>
+  <div class="bar bar-subheader bar-stable item-input-inset clients-search-bar">
+    <form class="item-input-wrapper" id="clientsSearchForm">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="search" placeholder="Search" ng-model="clientSearchOptions.FreeText" dng-change="loadClients()" id="txt_clients_search">
+    </form>
+    <button class="button button-clear" ng-show="clientSearchOptions.FreeText !== ''" ng-click="clearClientSearch()"><i class="icon ion-ios7-close-outline"></i></button>
+  </div>
+  <ion-content class="has-subheader page page-select-clients">
+    <ion-list>
+      <ion-item class="ion-item-custom" ng-repeat="c in clients" ng-click="select(c)">
+        <h2>{{c.OrganizationName|| c.Email}}</h2>
+        <p>{{c.ContactName}}</p>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll on-infinite="loadMoreClientsEstimate()" distance="1%" ng-if="isMoreClients"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

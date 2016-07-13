@@ -1,0 +1,247 @@
+<script id="alarm" type="text/template" >
+    <div class="page-content">
+    <div class="list-block alarm-items-list theme-gray alarm-clock-container">
+      <div class="alarm-clock alarm-hours">00</div>
+      <div class="alarm-clock alarm-separator">:</div>
+      <div class="alarm-clock alarm-minute">00</div>
+    </div>
+    <div class="list-block">
+      <ul>
+        <li>
+          <div class="item-content">
+            <div class="item-inner"> 
+              <div class="item-title label">Alarm Name</div>
+              <div class="item-content alarm-task-name">{{model.Alarmtitle}}</div>
+            </div>
+          </div>
+          <div class="item-content">
+            <div class="item-inner"> 
+              <div class="item-title label">Alarm Time</div>
+              <div class="item-content alarm-task-time">{{model.time}}</div>
+            </div>
+          </div>
+          <div class="item-content">
+            <div class="item-inner"> 
+              <div class="item-title label">Alarm Week</div>
+              <div class="item-content alarm-task-time">
+                {{#if model.sunday}}<span>&nbsp;Su&nbsp;</span>{{/if}}
+                {{#if model.monday}}<span>&nbsp;Mo&nbsp;</span>{{/if}}
+                {{#if model.tuesday}}<span>&nbsp;Tu&nbsp;</span>{{/if}}
+                {{#if model.wednesday}}<span>&nbsp;We&nbsp;</span>{{/if}}
+                {{#if model.thursday}}<span>&nbsp;Th&nbsp;</span>{{/if}}
+                {{#if model.friday}}<span>&nbsp;Fr&nbsp;</span>{{/if}}
+                {{#if model.saturday}}<span>&nbsp;Sa&nbsp;</span>{{/if}}
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">Status</div>
+              <div class="item-content alarm-task-status">{{model.status}}</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-button-bar">
+    <a href="#" class="button icon-only open-popup alarm-set-button">Test Alarm</a>
+  </div>
+</script>
+<script id="alarmActive" type="text/template" >
+    <div class="popup">
+  <div class="view view-popup navbar-fixed">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="center sliding">
+          Active Alarm
+        </div>
+      </div>
+    </div>
+    <div class="page">
+      <div class="page-content alarm-edit-form">
+        <div class="list-block alarm-items-list theme-gray alarm-clock-container">
+          <div class="alarm-clock alarm-hours">00</div>
+          <div class="alarm-clock alarm-separator">:</div>
+          <div class="alarm-clock alarm-minute">00</div>
+        </div>
+        <div class="list-block alarm-items-list theme-gray">
+          <div class="alarm-active-title">{{model.Alarmtitle}}</div>
+        </div>
+        <div class="footer-button-bar">
+          <a href="#" class="button alarm-set-button alarm-confirm-button">OK</a>
+        </div>
+      </div>
+    </div>	
+  </div>
+</div>
+</script>
+<script id="alarmEdit" type="text/template" >
+    <div class="popup">
+    <div class="view view-popup navbar-fixed">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left"><a href="#" class="link close-popup">Cancel</a></div>
+          <div class="center sliding">
+            {{#if state.isNew}}
+            New Alarm
+            {{else}}
+            Edit Alarm
+            {{/if}}
+          </div>
+          <div class="right alarm-save-link"><a href="#" class="link">Save Alarm</a></div>
+        </div>
+      </div>
+      <div class="page">
+        <div class="page-content alarm-edit-form">
+          <div class="list-block">
+            <ul>
+              <li>
+                <div class="item-content">
+                  <div class="item-inner"> 
+                    <div class="item-input">
+                      <input type="text" placeholder="Date Time" readonly id="time">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div id="picker-date-container"></div>
+                </div>
+                <div class="item-content">
+                  <div class="item-inner"> 
+                    <p class="buttons-row">
+                      <a href="#" class="button alarm-week-segment alarm-week-sun {{#if model.sunday}} active{{/if}}" data-id="sunday">Sun</a>
+                      <a href="#" class="button alarm-week-segment alarm-week-mon {{#if model.monday}} active{{/if}}" data-id="monday">Mon</a>
+                      <a href="#" class="button alarm-week-segment alarm-week-tue {{#if model.tuesday}} active{{/if}}" data-id="tuesday">Tue</a>
+                      <a href="#" class="button alarm-week-segment alarm-week-wen {{#if model.wednesday}} active{{/if}}" data-id="wednesday">Wed</a>
+                      <a href="#" class="button alarm-week-segment alarm-week-sur {{#if model.thursday}} active{{/if}}" data-id="thursday">Thu</a>
+                      <a href="#" class="button alarm-week-segment alarm-week-fri {{#if model.friday}} active{{/if}}" data-id="friday">Fri</a>
+                      <a href="#" class="button alarm-week-segment alarm-week-sat {{#if model.saturday}} active{{/if}}" data-id="saturday">Sat</a>
+                    </p>
+                  </div>
+                </div>
+                <div class="item-content">
+                  <div class="item-inner">
+                    <div class="item-media"><i class="icon edit-name-item ion-ios-information-outline"></i></div>
+                    <div class="item-title label" style="margin-left:10px;"> Name</div>
+                    <div class="item-input">
+                      <input type="text" name="title" id="Alarmtitle" value="{{model.Alarmtitle}}">
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        {{#if state.isNew}}
+          {{else}}
+          <div class="footer-button-bar">
+            <a href="#" class="button alarm-set-button alarm-delete-button">Delete</a>
+          </div>
+      {{/if}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</script>
+<script id="home" type="text/template" >
+    <div class="page-content">
+  <div class="list-block alarm-items-list theme-gray alarm-clock-container">
+    <div class="alarm-clock alarm-hours">00</div>
+    <div class="alarm-clock alarm-separator">:</div>
+    <div class="alarm-clock alarm-minute">00</div>
+  </div>
+  {{#if isData}}
+  <div class="list-block media-list alarms-list searchbar-found">
+    <div class="list-group">
+      <ul>
+        <li data-id="{{model.id}}" class="contact-item">
+          <div class="item-link">
+            <div class="item-content">
+              <a href="#" class="item-media alarm-list-link"><i class="icon ion-ios-alarm-outline list-left-icon"></i></a>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <a href="#" class="item-title alarm-list-link">{{model.time}}</a>
+                  <div class="item-input alarm-items-list-onoff">
+                    <label class="label-switch">
+                      <input type="checkbox" id="status" {{#if model.status}}checked{{/if}}>
+                      <div class="checkbox" data-id="{{model.id}}" data-status="{{model.status}}"></div>
+                    </label>
+                  </div>
+                </div>
+                <a href="#" class="item-title alarm-list-link">{{model.Alarmtitle}}</a>
+                <p class="item-subtitle">
+                  {{#if model.sunday}}<span> Sun </span>{{/if}}
+                  {{#if model.monday}}<span> Mon </span>{{/if}}
+                  {{#if model.tuesday}}<span> Tue </span>{{/if}}
+                  {{#if model.wednesday}}<span> Wed </span>{{/if}}
+                  {{#if model.thursday}}<span> Thu </span>{{/if}}
+                  {{#if model.friday}}<span> Fri </span>{{/if}}
+                  {{#if model.saturday}}<span> Sat </span>{{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-button-bar">
+    <div href="#" class="button icon-only open-popup alarm-set-button go-list-button"><i class="icon ion-ios-list-outline list-left-icon"></i></div>
+    <div href="#" class="button icon-only open-popup alarm-set-button alarm-test-button">Test Alarm</div>
+  </div>
+  {{else}}
+  {{#if isActive}}
+  <div class="list-block alarm-items-list theme-gray">
+    <div class="alarm-active-title">{{model.Alarmtitle}}</div>
+  </div>
+  <div class="footer-button-bar">
+    <a href="#" class="button alarm-set-button alarm-ok-button">OK</a>
+  </div>
+  {{else}}
+  <div class="content-block">
+    Nothing found.
+  </div>
+  <div class="footer-button-bar">
+    <div class="button icon-only open-popup alarm-set-button alarm-add-button">Add Alarm</div>
+  </div>
+  {{/if}}  
+  {{/if}}
+</div>
+</script>
+<script id="list" type="text/template" >
+	{{#each list}}
+		<li data-id="{{id}}" class="contact-item">
+			<div class="item-link">
+				<div class="item-content">
+					<a data-alarmid="{{id}}" id="alarm-item" class="item-media alarm-edit-link"><i class="icon ion-ios-alarm-outline list-left-icon"></i></a>
+					<div class="item-inner">
+						<div class="item-title-row">
+							<a class="item-title alarm-edit-link">{{time}}</a>
+              <div class="item-input alarm-items-list-onoff">
+                <label class="label-switch">
+                  <input type="checkbox" id="status" {{#if status}}checked{{/if}}>
+                  <div class="checkbox" data-id="{{id}}" data-status="{{status}}"></div>
+                </label>
+              </div>
+						</div>
+						<a data-alarmid="{{id}}" class="item-title alarm-edit-link">{{Alarmtitle}}</a>
+						<p class="item-subtitle alarm-edit-link">
+              {{#if sunday}}<span> Sun </span>{{/if}}
+              {{#if monday}}<span> Mon </span>{{/if}}
+              {{#if tuesday}}<span> Tue </span>{{/if}}
+              {{#if wednesday}}<span> Wed </span>{{/if}}
+              {{#if thursday}}<span> Thu </span>{{/if}}
+              {{#if friday}}<span> Fri </span>{{/if}}
+              {{#if saturday}}<span> Sat </span>{{/if}}
+            </p>
+					</div>
+				</div>
+			</div>
+		</li>
+	{{/each}}
+</script>

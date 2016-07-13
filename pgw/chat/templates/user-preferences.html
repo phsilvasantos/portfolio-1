@@ -1,0 +1,27 @@
+<div class="item item-divider">
+  <h3>Preferences</h3>
+</div>
+<div class="item item-text-wrap">
+  <h4>Music, Books, and Movies</h4>
+  <p>{{user.music}}</p>
+</div>
+<div class="item item-text-wrap">
+  <h4>Interests and Hobbies</h4>
+  <p>{{user.interests}}</p>
+</div>
+<div class="item item-divider">
+  <h3>Doesn't Mind</h3>
+</div>
+<div class="item item-icon-left" ng-show="user.allows_eating"><i class="icon ion-fork"></i> Eating</div>
+<div class="item item-icon-left" ng-show="user.allows_music"><i class="icon ion-music-note"></i> Music</div>
+<div class="item item-icon-left" ng-show="user.allows_smoking"><i class="icon ion-smoking"></i> Smoking</div>
+<div class="item item-divider">
+  <h3>Verifications</h3>
+</div>
+<div class='item item-icon-left' ng-hide="user.facebook_uid"><i class="icon ion-social-facebook"></i> Facebook</div>
+<div class='item item-icon-left' ng-show="user.facebook_uid" ng-click="openFacebook()"><i class="icon ion-social-facebook"></i> Facebook Profile</div>
+<div class="item item-icon-left" ng-show="user.confirmed"><i class="icon ion-email"></i> Email</div>
+<div class="item item-icon-left"><i class="icon ion-iphone"></i> App</div>
+<div class="item item-icon-left" ng-show="user.has_credit_card"><i class="icon ion-card"></i> Card</div>
+<div class="item item-icon-left" ng-show="user.phone"><i class="icon ion-ios7-telephone"></i> Phone</div>
+<div class="item item-icon-left" ng-show="user.student"><i class="icon ion-pizza"></i> Student</div>

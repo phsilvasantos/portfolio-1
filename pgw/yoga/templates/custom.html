@@ -1,0 +1,132 @@
+<ion-view title="My Custom Workout">
+    <ion-nav-buttons side="right">
+        <button class="button-icon icon ion-edit mixer-button" ng-click="editAll()" ng-if="customWorkouts.savedWorkouts.length"></button>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header custom-workout-page width-control full-length">
+        <div class="padding-top">
+            <p class="page-instructions">{{customWorkouts.savedWorkouts.length == 0 ? 'Design or download a custom workout' : 'Swipe to Edit'}}</p>
+            <ion-list class="workout-type-list">
+                <div class="my-customs">
+                    <div ng-repeat="myWorkout in customWorkouts.savedWorkouts track by $index">
+                        <ion-item class="item-text-wrap item-icon-right">
+                            <div ng-click="selectCustom(myWorkout)">
+                                <h2>{{myWorkout.name}}</h2>
+                                <!--<span ng-repeat="myExercises in myWorkout.workout">
+                                 {{myExercises}},
+                                 </span> -->
+                                <span>{{myWorkout.total}}</span>
+                                <i class="icon ion-chevron-right icon-accessory"></i>
+                            </div>
+                            <ion-option-button class="button-calm"
+                                ng-click="editCustom($index, myWorkout.name)">
+                                Edit
+                            </ion-option-button>
+                        </ion-item>
+                    </div>
+                </div>
+            </ion-list>
+            
+            <div class="center padding-20">
+                <button class="button nexercise-orange icon-left ion-ios7-plus-outline nexercise-button" ng-click="createCustom()">  Design Custom Workout</button>
+            </div>
+            <div class="centered item-content item-text-wrap padding-bottom"><a href="#/app/sworkitpro" class="unlock-pro"><i class="icon ion-locked"></i><h4>Save multiple custom workouts</h4></a></div>
+            <div class="list workout-type-list">
+                <p ng-hide="downloadedWorkouts.length === 0" class="page-instructions">{{customWorkouts.savedWorkouts.length == 0 ? 'Or, ' : ''}}Tap <i class="icon ion-plus"></i> to add a workout</p>
+                <div class="item item-divider nexercise-grey-light item-icon-right white-text">
+                    <h3>Custom Workouts by Nexercise</h3>
+                    <i class="icon ion-refresh icon-accessory" ng-click="updateDownloads()"></i>
+                    <p></p>
+                </div>
+                <p ng-show="downloadedWorkouts.length === 0" class="page-instructions extra-top">Connection Unavailable. Try Again.</p>
+                <div class="downloadable-customs">
+                    <div ng-repeat="workout in downloadedWorkouts|orderBy:'priority':true track by $index">
+                        <div class="item item-text-wrap item-icon-right">
+                            <h3 ng-click="toggleExercises(workout, $index)">{{workout.name}}</h3>
+                            <span ng-click="toggleExercises(workout, $index)">{{workout.description}}</span>
+                            <p ng-show="workout.show" ng-click="toggleExercises(workout, $index)"><span>{{workout.exercises_view}}</span></p>
+                            <p class="show-exercises" ng-click="showExercises(workout, $index)" ng-hide="workout.show">View Exercises</p>
+                            <p class="show-exercises" ng-click="hideExercises(workout)" ng-show="workout.show">Hide Exercises</p>
+                            <p class="share-exercises" ng-click="shareWorkout(workout.shortURI)">Share</p>
+                            <i class="icon ion-plus icon-accessory" ng-click="addCustomWorkout(workout.shortURI, $index)" id="{{'item' + $index}}"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+<script id="custom-workout.html" type="text/ng-template">
+    <div class="modal custom-modal">
+    <ion-header-bar class="bar bar-stable">
+    <button class="button button-clear button-primary" ng-click="cancelCreateCustom()">Cancel</button>
+    <h1 class="title">Create Workout</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+    <div class="button-bar padding">
+    <a class="button button-stable" ng-click="resetCustom()">Reset</a>
+    <a class="button button-energized nexercise-orange" ng-click="saveCustom()">Save</a>
+    </div>
+    <h4 class="center">Select exercises and tap Save</h4>
+    <ion-list class="padding">
+    <div ng-repeat="exerciseCat in exerciseCategories track by $index" id="{{'cat' + $index}}">
+    <div class="item item-divider nexercise-orange">
+    <h3>{{exerciseCat.longName}}</h3>
+    <p class="all-button" ng-click="toggleAll(exerciseCat.shortName, $index)">All</p>
+    </div>
+    <div ng-repeat="exerciseEl in exerciseCat.exercises track by $index">
+    <ion-checkbox class="item-text-wrap item-checkbox-right" name="selectedExercises[]" value="{{exerciseEl.name}}" ng-model="exerciseEl.selected">
+    <h3>{{exerciseEl.name}}</h3>
+    </ion-checkbox>
+    </div>
+    </div>
+    </ion-list>
+    <div class="button-bar padding-bottom">
+    <a class="button button-stable" ng-click="resetCustom()">Reset</a>
+    <a class="button button-energized nexercise-orange" ng-click="saveCustom()">Save</a>
+    </div>
+    </ion-content>
+    </div>
+    </script>
+
+<script id="custom-workout-reorder.html" type="text/ng-template">
+    <div class="modal custom-modal reorder-modal">
+    <ion-header-bar class="bar bar-stable">
+    <button class="button button-clear button-primary" ng-click="cancelReorderCustom()">Cancel</button>
+    <h1 class="title">Reorder Workout</h1>
+    <button class="button button-icon icon ion-ios7-minus-outline" ng-click="data.showDelete = !data.showDelete"></button>
+    </ion-header-bar>
+    <ion-content class="padding-20">
+    <div class="margin-bottom-20">
+    <div class="button-bar padding">
+    <a class="button button-energized nexercise-orange" ng-click="saveReorder()">Save Order</a>
+    </div>
+    <p class="page-instructions">Drag exercises into preferred order</p>
+    <ion-list class="padding" show-reorder="data.showReorder" show-delete="data.showDelete">
+    <ion-item ng-repeat="exerciseEls in reorderWorkout track by $index">
+    <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(exerciseEls)"></ion-delete-button>
+    <h3>{{exerciseEls}}</h3>
+    <ion-reorder-button class="ion-navicon" on-reorder="moveItem(exerciseEls, $fromIndex, $toIndex)">
+    </ion-reorder>
+    </ion-item>
+    </ion-list>
+    <div>
+        <p class="page-instructions">Add an exercise</p>
+        <div class="center">
+            <select class="add-options" ng-model="selectedExerciseAdd.selected" ng-options="exerciseAdd for exerciseAdd in allExercises">
+            </select>
+        </div>
+        <div class="center padding-20">
+            <button class="button nexercise-orange icon-left ion-ios7-plus-outline nexercise-button" ng-click="addExercise()">  Add Exercise</button>
+        </div>
+    </div>
+    <div class="item item-divider item-text-wrap">
+    <h4>Tip: To run your workout in this specific order, remember to turn off Randomization in the Advanced Timing options.</h4>
+    </div>
+    <div style="margin-top:20px;margin-bottom:40px">
+    </div>
+    </div>
+    </ion-content>
+    </div>
+    </script>

@@ -1,0 +1,33 @@
+<ion-side-menus>
+    <ion-side-menu-content drag-content="false">
+        <ion-nav-view name="menuAppContent" animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <ion-content style="background: #212121;">
+            <div class="side-menu-logo">
+                <img src="img/profile_logo.jpg" alt="avatar" />
+                <div class="logo-user-name">Tetyana Fytsyak</div>
+                <div class="logo-user-detail">Ionic Expert</div>
+            </div>
+            <ion-list class="sidebar animate-fade-slide-in-right">
+                <ion-item menu-close class="item-icon-left" ui-sref="app.category">
+                    <i class="icon ion-home"></i>
+                    Home
+                </ion-item>
+                <ion-item menu-close class="item-icon-left" ui-sref="app.category">
+                    <i class="icon ion-clipboard"></i>
+                    Menu
+                </ion-item>
+                <ion-item menu-close class="item-icon-left" ui-sref="app.category">
+                    <i class="icon ion-star"></i>
+                    Favorites
+                </ion-item>
+                <ion-item menu-close class="item-icon-left" ui-sref="app.profile">
+                    <i class="icon ion-person"></i>
+                    Profile
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

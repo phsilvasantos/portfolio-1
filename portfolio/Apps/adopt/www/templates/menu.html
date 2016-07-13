@@ -1,0 +1,70 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    
+    <ion-side-menu-content>
+        <drawer side="right" id="drawer-container" class="right-menu">
+        <ion-header-bar align-title="center" class="right-menu-header">
+            <div class="buttons">
+                <button class="button button-clear" ng-click="clearFilter()">Clear</button>
+            </div>
+            <div class="drawer-title">
+                <p class="main-title">Refine</p>
+                <p class="sub-title">{{totalDisplay}}</p>
+            </div>
+            <div class="buttons">
+                <button class="button button-clear button-orange" ng-click="searchFilter();
+                    closeDrawer();">Apply</button>
+            </div>
+        </ion-header-bar>
+        <ion-content class="draw-content has-header-filter">
+            <ion-list class="bet-type-list">
+                <ion-item ng-repeat="key in notSorted(petsTermsInfo)" bind-html-unsafe="petsTermsInfo[key]"></ion-item>
+            </ion-list>
+        </ion-content>
+    </drawer>
+        <ion-nav-bar class="bar-stable" style="position: absolute; z-index: 1000; width: 100%;">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="closeDrawer()" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button class="button button-clear right-menu-toggle refine-button" ng-click="toggleDrawer()"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+        
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left" class="side-menu">
+
+        <ion-content class="no-header" style="top:0px;">
+            <div class="menu-image"><img src="img/splashscreen_app_landscape.jpg" /></div>
+            <ion-list>
+                <ion-item nav-clear menu-close href="#/app/intro" class="nav-item">
+                    <i class="ion-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;Home
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/dogs" class="nav-item">
+                    <i class="ion-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;Browse Dogs
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/cats" class="nav-item">
+                    <i class="ion-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;Browse Cats
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/others" class="nav-item">
+                    <i class="ion-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;Browse Other Pets
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/news" class="nav-item">
+                    <i class="ion-quote"></i>&nbsp;&nbsp;&nbsp;&nbsp;Latest News
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/how-to-adopt" class="nav-item">
+                    <i class="ion-help-circled"></i>&nbsp;&nbsp;&nbsp;&nbsp;How To Adopt
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/about-us" class="nav-item">
+                    <i class="ion-information-circled"></i>&nbsp;&nbsp;&nbsp;&nbsp;About Adopt A Pet
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+    
+</ion-side-menus>

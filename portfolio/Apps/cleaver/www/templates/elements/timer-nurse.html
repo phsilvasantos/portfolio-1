@@ -1,0 +1,26 @@
+<div class="fixed-outside nurse timer-nurse timer-counter" ng-if="isShown">
+  <div class="row">
+      <div class="col" style="text-align:left;">
+        <span class="icon-breast-feeding"></span>
+        Nursing Timer
+
+        <span ng-click="stop()">Stop</span>
+      </div>
+      <div class="col" style="text-align:right;"><i class="icon-close" ng-click="close()"></i></div>
+  </div>
+  <div class="row">
+      <div class="col">
+          <div>{{timeLeftF}}</div>
+          <button class="btn" ng-click="left()">{{leftButton}}</button>
+      </div>
+      <div class="col container-center counter">
+          <p class="text-center center-block">
+            {{timeBothF}}
+          </p>
+      </div>
+      <div class="col">
+          <div>{{timeRightF}}</div>
+          <button class="btn" ng-click="right()">{{rightButton}}</button>
+      </div>
+  </div>
+</div>

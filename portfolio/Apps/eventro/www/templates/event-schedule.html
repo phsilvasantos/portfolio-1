@@ -1,0 +1,98 @@
+<ion-view ng-cloak>
+  <ion-nav-buttons side="right">
+    <button class="navBtn button button-icon ion-share" ng-click="showShareOptions(eventObj)"></button>
+  </ion-nav-buttons>
+  <ion-nav-title align-title="center">
+    {{ eventObj.name }}
+  </ion-nav-title>
+  <ion-header-bar class="bar-subheader">
+    <!--filter at top of map START-->
+    <div class="categoryFilter row ">
+      <div class="filterIcon col">
+        <i class="ion-funnel"></i>
+      </div>
+      <div class="list col">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            &nbsp;
+          </div>
+          <select ng-model="categoryFilter" ng-change="categoryFilterChange()">
+            <option value="">All Categories</option>
+            <option ng-repeat="scheduledEventCategory in scheduledEventCategories" value="{{scheduledEventCategory.name}}">{{scheduledEventCategory.name}}</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <!--filter at top of map END--> 
+    <button class="button button-clear ion toggleButton icon-right" ng-click="toggleShowFavOnly()" ng-class="{'ion-android-radio-button-off' : !$root.showFavOnly, 'ion-android-checkmark-circle' : $root.showFavOnly }">
+      Show only events on my schedule
+    </button>
+  </ion-header-bar>
+  <ion-content has-subheader="true" has-footer class="schedule" delegate-handle="scheduleScroll">
+    <ion-list ng-hide="$root.showFavOnly && isFavouriteEmpty()">
+
+      <div ng-show="isOnline" ng-activity-indicator class="noAnimations activityIndicator ng-hide"></div>
+
+      <!-- Outer repeat for the date section headers -->
+      <div ng-repeat-start='(key, value) in filtered = (scheduledEvents | filter: {category: categoryFilter} | groupBy: "start_date" | toArray:true | orderBy:filtering)' class='item item-divider' ng-show="showSectionHeader(value)">
+        {{value[0].start | date:"EEEE dd MMM yy"}}
+      </div>
+
+        <!-- Inner repeat for the events that occur within each section -->
+        <ion-item ng-class="{'item-remove-animate': true, 'item-icon-right': true, 'highlight': isHighlighted(event.$id)}" ng-repeat="scheduledEvent in value | orderBy:predicate" type="item-text-wrap" ng-hide="!shouldDisplayEvent(scheduledEvent.$id)">
+
+          <div class="row noPaddingLR">
+            <div class="col rowPrefix noPaddingLR">
+              <button class="button button-clear" ng-click="toggleFavScheduledEvent(scheduledEvent)">
+                <i ng-class="{'ion-android-checkmark-circle' : isScheduledEventFavourited(scheduledEvent.$id), 'ion-android-radio-button-off' : !isScheduledEventFavourited(scheduledEvent.$id)}"></i>
+              </button>
+            </div>
+            <!-- clickable event to see schedule -->
+            <div class ="col" ng-click="gotoPage('event-location', {'locationId': scheduledEvent.locationId, 'locationName': scheduledEvent.location.name, 'fragment': scheduledEvent.$id});">
+
+              <!-- first row is for the name -->
+              <div>
+                <h2>{{scheduledEvent.name}}</h2>
+                <p class="eventCategory" ng-show="scheduledEvent.category">{{ scheduledEvent.category }}</p>
+                <p class="eventText">{{ scheduledEvent.location.name }}</p>
+                <p class="eventDate">{{ scheduledEvent.start | date:"EEE dd MMM',' HH:mm" }} - {{ scheduledEvent.end | date:"HH:mm" }}</p>
+              </div>
+            </div>
+          </div>
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+      <div ng-repeat-end></div>
+    </ion-list>
+    <!-- No items have been marked for the users schedule -->
+    <div class="noResults ng-hide" ng-show="$root.showFavOnly && isFavouriteEmpty()">
+      <div class="resultsMessage">
+        <i class="ion-android-checkmark-circle"></i>
+        <h2>Nothing on your schedule</h2>
+        <p>Create your own schedule by ticking what you want to attend at each event</p>
+      </div>
+    </div>
+    <!-- No results -->
+    <div class="noResults ng-hide" ng-show="!scheduledEvents.length && !$root.showFavOnly && $root.showNoResults">
+      <div class="resultsMessage">
+        <i class="ion-search"></i>
+        <h2>No events could be found</h2>
+        <p>Please try another filter</p>
+      </div>
+    </div>   
+    <!-- No results from cache and offline -->
+    <div class="noResults ng-hide" ng-show="!isOnline && !scheduledEvents.length">
+      <div class="resultsMessage">
+        <i class="ion-ios-cloud-outline"></i>
+        <h2>No Network Connection</h2>
+        <p>Please connect to the internet</p>
+      </div>
+    </div>    
+  </ion-content>
+  <ion-footer-bar align-title="left" class="">
+    <div class="button-bar">
+      <button class="button selected button-clear icon-left ion-calendar">Schedule</button>
+      <!--<button class="button button-clear icon-left ion-ios-world" nav-transition="none" ng-click="gotoPage('event-arview', {'eventId': eventObj.$id});">AR view</button>-->
+     <button class="button button-clear icon-left ion-ios-location"  nav-transition="none" ng-click="gotoPage('event-map', {'eventId': eventObj.$id});">Street Map</button>
+    </div>
+  </ion-footer-bar>
+</ion-view>

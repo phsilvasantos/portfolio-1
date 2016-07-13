@@ -1,0 +1,15 @@
+<ion-view title="Player List" ng-controller="RosterMemberMessageCtrl" cache-view="false">
+  <ion-content class="page page-listmain has-subheader">
+    <ion-list>
+      <ion-item ng-repeat="user in rosterinfo track by $index" class="item card contacts-item" ng-if="user.rostername">
+        <div class="contact-item-container">
+          <div style="background:url('{{(user.photourl)?user.photourl:'img/ylblankuser.png'}}')" class ="image-contacts-adapter" ng-click="userModal(user.roster_id)"></div>
+        </div>
+        <div class="contact-item-container">
+          <p class="contact-item-main">{{user.rostername}}</p>
+          <p class="contact-item-submain">{{user.email}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

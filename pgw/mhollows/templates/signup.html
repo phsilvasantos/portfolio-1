@@ -1,0 +1,48 @@
+<ion-view view-title="Sign Up">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-disabled="frmProfile.$invalid" ng-click="save()" ng-show="!isSaved">Submit</button>
+    <a href="#/login" class="button button-clear" ng-show="isSaved">Done</a>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-signup" ng-class="{'saved':isSaved}">
+    <form name="$parent.frmProfile" id="frmprofile">
+      <div class="profile-banner">
+        <div class="picture" background-image="{{data.picture.url}}">
+          <i class="icon ion-camera" image-cropper="cropOption"></i>
+        </div>
+      </div>
+      <div class="list">
+        <label class="item item-input item-stacked-label" ng-class="{invalid: frmProfile.firstName.$dirty && frmProfile.firstName.$invalid}">
+          <span class="input-label">First Name</span>
+          <input type="text" ng-model="data.firstName" name="firstName" required>
+        </label>
+        <label class="item item-input item-stacked-label" ng-class="{invalid: frmProfile.lastName.$dirty && frmProfile.lastName.$invalid}">
+          <span class="input-label">Last Name</span>
+          <input type="text" ng-model="data.lastName" name="lastName" required>
+        </label>
+        <label class="item item-input item-stacked-label" ng-class="{invalid: frmProfile.phoneNumber.$dirty && frmProfile.phoneNumber.$invalid}">
+          <span class="input-label">Phone Number</span>
+          <input type="tel" ng-model="data.phoneNumber" name="username" required>
+        </label>
+        <label class="item item-input item-stacked-label" ng-class="{invalid: frmProfile.email.$dirty && frmProfile.email.$invalid}">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="data.email" name="email" required>
+        </label>
+      </div>
+    </form>
+    
+    <div class="success-notification">
+      <p>
+        You've successfully signed up for the {{organizationName}} application.
+      </p>
+      <p>
+        The organization administrator is verifying your membership and you will be notified when this has been completed.
+      </p>
+      <p>
+        In the meantime please fill out your {{organizationName}}.
+      </p>
+      
+      <button ng-click="takeIntoApp()" class="button button-stable">Take me to the app <i class="fa fa-long-arrow-right"></i></button>
+    </div>
+  </ion-content>
+</ion-view>

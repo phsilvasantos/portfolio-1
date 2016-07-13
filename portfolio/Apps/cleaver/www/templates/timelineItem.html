@@ -1,0 +1,14 @@
+<div class="kotak timeline" ng-click="openModal(activity)">
+    <div class="item">
+        <div class="datetime-tl"><span timeline-date="activity.time"></span></div>
+        <div class="activity-icon">
+            <div class="item-activity" ng-class="activity.type">
+                <span ng-class="activity.type | iconOfActivity"></span>
+            </div>
+        </div>
+        <div class="desc">
+            <h3 ng-class="activity.type+'-color'">{{ activity.type | nameOfActivity}}</h3>
+            <p>{{ activity | showActivity }}</p>
+        </div>
+    </div>
+</div>

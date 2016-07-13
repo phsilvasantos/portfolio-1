@@ -1,0 +1,6 @@
+<div class="receivers-list">
+  <a href="" ng-repeat="receiver in messagesNewCtrl.receivers|limitTo:3">
+    <span>{{ receiver.firstName}}</span>
+    <span ng-if="messagesNewCtrl.receivers.length < 2"> {{ receiver.lastName}}</span>
+  </a>
+</div>

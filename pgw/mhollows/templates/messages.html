@@ -1,0 +1,40 @@
+<ion-view view-title="Messages" hide-back-button="true" id="view-messages">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a href="#/messages/new/0" class="button button-clear">New</a>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-messages page-messages-list" ng-class="{'empty': messagesListCtrl.listEmpty()}" on-swipe-left="onSwipeLeft()" on-swipe-right="onSwipeRight()" >
+    <ion-list>
+      <ion-item class="item item-avatar link messages-room-link"
+                ng-href="#/messages/{{ messageListItem.data.conversationId}}"
+                ondragstart="onDragstartMessageListItem(event)"
+                ng-class="{'disable-swipe':messageListItem.data.room}"
+                ng-repeat="messageListItem in messagesListCtrl.conversations| visibleConversations | sortByLastMessageDate:messagesListCtrl.spinner">
+        <div background-image="{{ chatService.getAvatarById(messageListItem.data.authorId)}}" class="messages-avatar"></div>
+        <div class="item-head">
+          <h2>
+            {{chatService.getConversationTopic(messageListItem.data)}}
+          </h2>
+          <p class="message-preview-list" ng-bind-html="(messageListItem.data.room ? (chatService.getUserDisplayNameById(messageListItem.data.authorId) + ': ') : '') +
+                    messageListItem.data.lastMessageText"></p>
+          <span class="badge badge-messages badge-assertive" ng-show="messageListItem.data.notReadMessages">{{messageListItem.data.notReadMessages}}</span>
+        </div>
+        <span class="item-time">
+          {{ messageListItem.data.lastMessageDate | messageListDate }}
+        </span>
+        <ion-option-button class="button button-assertive button-del" 
+                           ng-click="confirmDeleteConversation(messageListItem, $event)">
+          <i class="icon ion-ios-close-outline"></i>Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+    <h5 class="empty-notification">
+      <span>You have no conversations for now</span>
+      <br>
+      Please tap <i class="icon ion-ios-plus-outline"></i> to create conversation
+    </h5>
+  </ion-content>
+</ion-view>

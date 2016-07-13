@@ -1,0 +1,61 @@
+<ion-view view-title="{{'cleverbaby.app.more.youraccount.title' | translate}}">
+    <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('accountMainScroll')" delegate-handle="accountMainScroll">
+        <div class="wrapper-tab more-page">
+            <ion-nav-bar class="bar-positive">
+                <div class="header no-border">
+                    <ion-nav-buttons side="left">
+                        <a class="btn left" ui-sref="app.more"><i class="fa fa-angle-left"></i></a>
+                    </ion-nav-buttons>
+                    <ion-nav-title cb-baby-drop-down></ion-nav-title>
+                </div>
+            </ion-nav-bar>
+            <div class="row responsive-sm page-con">
+               <div class="loggedin-info col">You are logged in with your Facebook Account:
+               <br> "myfacebook@monkey.com"
+               </div>
+               <form class="access-baby-pin-form form-inline add">
+                    <div class="kotak">
+                        <div class="xs-7">
+                            <label>
+                                <span ng-show="!inputDisabled">Edit</span> Your Profile Information
+                            </label>
+                        </div>
+                        <div class="xs-3">
+                            <button class="btn small-text" ng-click="activateEdit()" ng-show="inputDisabled">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                    <div class="kotak autoheight">
+                        <div class="xs-2">
+                            <label for="name" class="form-label-short">
+                                Your Name
+                            <div class="label-subtext">This is the name the other person will see</div>
+                            </label>
+                        </div>
+                        <div class="xs-2">
+                            <input id="name" type="text" ng-model="data.name" ng-disabled="inputDisabled">
+                        </div>
+                    </div>
+               </form>
+            </div>
+        </div>
+    </ion-content>
+    <div class="btm-btns">
+        <div class="add" ng-show="inputDisabled">
+            <button class="btn small-text">
+                Log Out
+            </button>
+        </div>
+        <div class="pair-btn-con add" ng-hide="inputDisabled">
+            <div class="kotak autoheight gutter">
+                <div class="xs-2">
+                    <button ng-click="cancelEdit()" class="btn small-text">Cancel</button>
+                </div>
+                <div class="xs-2">
+                    <button ng-click="saveEdit()" class="btn small-text">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-view>

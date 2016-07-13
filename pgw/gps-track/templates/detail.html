@@ -1,0 +1,264 @@
+<ion-view title="Details">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>    
+    <ion-content class="has-header">
+    <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list class="list list-inset">
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-android-location calm"></i>{[{asset_details.asset_detail.name}]}
+            </div>
+            <div class="item item-image">
+                <div class="map" data-tap-disabled="true">
+                   <leaflet defaults="defaults" layers="layers" paths="paths" geojson="geojson" center="london" markers="markers" width="100%" height="300" id="map"></leaflet>
+                </div>
+            </div>
+            <div class="item item-text-wrap">
+                <div class="row">
+                    <div class="col">
+                        <span class="assertive" style="font-size:1.5em">
+                            {[{asset_details.last_data.speed | number:0 }]}
+                        </span><br/>
+                        <span class="dark" style="font-size:1em">
+                            kmph
+                        </span>
+                    </div>
+                    <div class="col col-80">
+                        <label><i class="icon ion-clock positive"></i> {[{time_of_data| date:'yyyy-MM-dd HH:mm:ss Z'}]}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ui-sref="app.message({ assetId:asset_details.asset_detail._id.$oid })">
+                    <i class="icon ion-email positive"></i>
+                    Message
+                </a>
+                <a class="tab-item" ui-sref="app.subscribe({ assetId:asset_details.asset_detail._id.$oid })" ng-show="is_asset_in_org && !asset_pay.has_paid">
+                    <i class="icon ion-ios7-cart"></i>
+                    Subscribe
+                </a>
+                <!--<a class="tab-item" href="#">
+                    <i class="icon ion-paper-airplane calm"></i>
+                    Route
+                </a>-->
+                <a class="tab-item" href="tel:{[{asset_details.asset_detail.sim_number}]}" ng-show="user_pay.allow_trial">
+                    <i class="icon ion-ios7-telephone"></i>
+                    
+                </a>
+                <a class="tab-item" href="tel:0000" ng-show="!user_pay.allow_trial">
+                    <i class="icon ion-ios7-telephone"></i>
+                    Paid Users only
+                </a>
+                <a class="tab-item" ui-sref="app.viewers({ assetId:asset_details.asset_detail._id.$oid })" ng-show="is_asset_in_org">
+                    <i class="icon ion-share"></i>
+                    Viewers
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item divider">
+                Speed Graph
+            </div>
+            <div class="item item-image">
+                <div id="chart-area" data-tap-disabled="true">
+                    <canvas linechart options="options" data="chart" responsive="true"></canvas>    
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-document-text assertive"></i> {[{asset_details.asset_detail.name}]}
+            </div>
+            <div class="item item divider">
+                <label><i class="icon ion-clock positive"></i> {[{time_of_data| date:'yyyy-MM-dd HH:mm:ss Z'}]}</label>
+            </div>
+            <div class="item item-text-wrap">
+                <div class="row">
+                    <div class="col">
+                        <span class="assertive" style="font-size:1.5em">
+                            {[{asset_details.last_data.speed | number:0 }]}
+                        </span><br/>
+                        <span class="dark" style="font-size:1em">
+                            kmph
+                        </span>
+                    </div>
+                    <div class="col col-80">
+                        <label ng-repeat="nlm in asset_details.nlm">
+                            <i class="icon ion-flag balanced"></i> {[{nlm.name}]} <br/>
+                        </label><br/>
+                    </div>
+                </div>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ui-sref="app.assetedit({ assetId:asset_details.asset_detail._id.$oid })" ng-show="is_asset_in_org"><i class="icon ion-edit assertive"></i>Edit</a>
+                <a class="tab-item" ui-sref="app.message({ assetId:asset_details.asset_detail._id.$oid })">
+                    <i class="icon ion-email positive"></i>
+                    Message
+                </a>
+                <!--<a class="tab-item" href="#">
+                    <i class="icon ion-paper-airplane calm"></i>
+                    Route
+                </a>-->
+                <a class="tab-item" href="tel:{[{asset_details.asset_detail.sim_number}]}" ng-show="user_pay.allow_trial">
+                    <i class="icon ion-ios7-telephone"></i>
+                    
+                </a>
+                <a class="tab-item" href="tel:0000" ng-show="!user_pay.allow_trial">
+                    <i class="icon ion-ios7-telephone"></i>
+                    Paid Users only
+                </a>
+                <a class="tab-item" ng-click="modal.show()" ng-show="is_asset_in_org"><i class="icon ion-android-share positive"></i></a>
+                <a class="tab-item" onclick="window.plugins.socialsharing.shareViaTwitter('@findertracking is awesome', null /* img */, 'https://play.google.com/store/apps/details?id=com.finder.gps.tracking' /* url */, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})"><i class="icon ion-social-twitter calm"></i></a>
+            </div>
+        </div>
+        <div class="card" ng-show="is_asset_in_org">
+            <div class="item item divider">
+                <label>
+                    Select Date Range
+                </label>
+            </div>
+            <div class="item item-text-wrap">
+                <label class="item item-input">
+                    Start Time
+                    <input type="datetime-local" ng-model="start_time">
+                </label>
+                <label class="item item-input">
+                    End Time
+                    <input type="datetime-local" ng-model="end_time">
+                </label>
+            </div>
+            <div class="item item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="showRoute(asset_details.asset_detail._id.$oid,start_time,end_time)" ng-show="asset_pay.allow_trial">
+                    <i class="icon ion-archive positive"></i>
+                    Animate (Paid)
+                </a>
+                <label ng-show="!asset_pay.allow_trial">Animate (Paid Users)</label>
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item divider">
+                More Reports?
+            </div>
+            <div class="item item-text-wrap">
+                <label>You can view more detailed reports (paid version for this asset) based on historical data if you visit our website <a href="#" onclick="window.open('http://www.finder-lbs.com');">www.finder-lbs.com</a>.</label>
+                <label ng-show="!asset_pay.has_paid">Animation and Phone Call Feature are provided as Free Trial only</label>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ui-sref="app.subscribe({ assetId:asset_details.asset_detail._id.$oid })" ng-show="is_asset_in_org && !asset_pay.has_paid">
+                    <i class="icon ion-ios7-cart"></i>
+                    Subscribe
+                </a>
+            </div>
+        </div>
+        <div class="card" ng-show="is_asset_in_org">
+            <div class="item item divider">
+                Actions
+            </div>
+            <div class="item item-text-wrap">
+                <ion-checkbox
+                    ng-model="share.checked"
+                    ng-checked="share.checked" 
+                    ng-change="shareChange(share.checked)">
+                    Available for Hire
+                </ion-checkbox>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                      Asset Type
+                    </div>
+                    <select ng-model="asset_details.asset_detail.asset_type" ng-options="d.id as d.name for d in types_of_asset" ng-change="typeChange()"></select>
+                </label>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item divider">
+                Show More?
+            </div>
+            <div class="item item-text-wrap">
+                <ion-checkbox
+                    ng-model="traffic.checked"
+                    ng-checked="traffic.checked" 
+                    >
+                    Traffic Jam
+                </ion-checkbox>
+                <ion-checkbox
+                    ng-model="events.checked"
+                    ng-checked="events.checked" 
+                    >
+                    Whats Happening Around?
+                </ion-checkbox>
+                <ion-checkbox
+                    ng-model="shares.checked"
+                    ng-checked="shares.checked" 
+                    >
+                    Want a Hire?
+                </ion-checkbox>
+                <ion-checkbox
+                    ng-model="private_msg.checked"
+                    ng-checked="private_msg.checked" 
+                    ng-show="is_asset_in_org">
+                    Private Messages for {[{asset_details.asset_detail.name}]}
+                </ion-checkbox>
+                <ion-checkbox
+                    ng-model="public_msg.checked"
+                    ng-checked="public_msg.checked" 
+                    >
+                    Public Messages near {[{asset_details.asset_detail.name}]}
+                </ion-checkbox>
+                <ion-checkbox
+                    ng-model="custom_location.checked"
+                    ng-checked="custom_location.checked" 
+                    >
+                    Saved Locations
+                </ion-checkbox>
+            </div>
+        </div>
+        <!-- <div class="card">
+            <div class="item item divider">
+                Test Shares
+            </div>
+            <div class="item item-text-wrap">
+                <div class="row">
+                    Assets Shared 
+                    <label ng-repeat="i in share_list.shared_list">{[{i}]}</label>
+                </div>
+            </div>
+        </div> -->
+    </ion-list>
+    </ion-content>
+</ion-view>
+<script id="modal.html" type="text/ng-template">
+  <div class="modal">
+    <content has-header="true" padding="true">
+        <div class="list">
+            <div class="item range item-text-wrap">
+                <label class="item">Select a lifetime for this link. After the time period, the link will expire and the viewers will no longer will be able to view in realtime.
+                </label>
+            </div>
+            <div class="item range range-positive">
+                <i class="icon ion-ios7-clock-outline"></i>
+                <input type="range" name="hrs" min="0" max="23" value="8" ng-model="hrs">
+                <i class="icon ion-ios7-clock assertive"></i>
+                {[{hrs}]} hrs
+            </div>
+            <div class="item range range-positive">
+                <i class="icon ion-ios7-calendar-outline"></i>
+                <input type="range" name="dys" min="0" max="365" value="0" ng-model="dys">
+                <i class="icon ion-ios7-calendar assertive"></i>
+                {[{dys}]} days
+            </div>
+            <div class="item range item-text-wrap">
+                <button class="button button-full button-assertive" ng-click="callShares(hrs,dys)">Share Realtime Location
+                </button>
+            </div>
+        </div>
+    </content>
+  </div>
+</script>
+

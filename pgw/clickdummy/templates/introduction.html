@@ -1,0 +1,15 @@
+<ion-view view-title="Introduction" hide-nav-bar="true">
+  <ion-content class="page page-introduction">
+
+    <ion-slide-box class="slidebox" on-slide-changed="slideHasChanged($index)">
+      <ion-slide ng-repeat="item in introductions">
+        <div class="intro-item">
+          <div class="tip-text">{{item.text}}</div>
+          <div class="image" style="background-image: url('img/intro-{{$index + 1}}.jpg')"></div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <a class="button btn-start button-green" ng-href="#/{{fromSettings?'settings':'categories'}}">Let's Start</a>
+  </ion-content>
+</ion-view>

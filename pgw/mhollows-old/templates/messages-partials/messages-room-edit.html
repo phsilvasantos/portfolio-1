@@ -1,0 +1,48 @@
+<ion-view ng-controller="MessagesRoomSettingsController as messagesRoomSettings">
+  <ion-header-bar class="bar-stable nav-title-slide-ios7 nav-bar">
+    <div class="buttons left-buttons">
+      <button class="button-clear button back-button button-icon icon ion-ios7-arrow-back" ng-click="messagesRoomSettings.closeSettings()"></button>
+    </div>
+    <h2 class="title">Details</h2>
+    <div class="buttons right-buttons">
+      <button class="button-clear button" ng-click="messagesRoomSettings.done()">Done</button>
+    </div>
+  </ion-header-bar>
+  <ion-header-bar align-title="center" class="bar-room-edit">
+    <input type="text" placeholder="Enter Group Name" class="topic-name" ng-model="shared.currentConversationTopic" />
+  </ion-header-bar>
+  <ion-content class="page-messages">
+    <div class="list" ui-view="room-settings">
+      <messages-settings-members></messages-settings-members>
+      <button class="button button-clear button-positive add-member" id="btn_add_chat_member" ng-click="messagesRoomSettings.addMembersModal()">
+        <i class="icon ion-ios7-plus-outline"></i> Add Contact
+      </button>
+    </div>
+
+    <div class="list notifications-toggle" ui-view="room-settings">
+      <h5><strong>Notifications</strong></h5>
+      <div class="item item-toggle">
+        Mute Notifications
+        <label class="toggle toggle-assertive">
+          <input type="checkbox" ng-model="messagesRoomSettings.muteToggle" ng-click="messagesRoomSettings.toggleMute()">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+      <div class="item item-select item-input notifications-select animate-show" ng-show="messagesRoomSettings.muteToggle">
+        <div class="input-label">
+          Mute Notifications for:
+        </div>
+        <select ng-model="messagesRoomSettings.mutePeriod" ng-change="messagesRoomSettings.chooseMutePeriod(messagesRoomSettings.mutePeriod)" required ng-options="c.value as c.name for c in messagesRoomSettings.mutePeriods">
+
+        </select>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-assertive">
+    <button class="button button-full button-assertive" ng-click="messagesRoomSettings.leaveRoom()">
+      Leave Group
+    </button>
+  </ion-footer-bar>
+</ion-view>

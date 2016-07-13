@@ -1,0 +1,66 @@
+<div class="modal transparent" ng-controller="BabyCtrl" ng-click="closeModal()">
+	<div class="wrapper add-edit-baby">
+			<div class="bar bar-header">
+				<button class="button button-clear" ng-click="cancel()">Cancel</button>
+				<div class="h1 title" ng-if="!modal.edit">Add New</div>
+				<div class="h1 title" ng-if="modal.edit">Edit Profile</div>
+				<button class="button button-clear" ng-click="update()" ng-if="modal.edit">Save</button>
+				<button class="button button-clear" ng-click="save()" ng-if="!modal.edit">Save</button>
+			</div>
+			<div class="cover-img" background="baby.displayImage">
+				<div class="edit circular"><img ng-src="{{ baby.displayImage | babyImage }}"></div>
+				<a class="edit-btn" choose-photo="captureImageOption"><span class="icon-note"></span> Select Photo</a>
+			</div>
+			<div class="content">
+				<div class="kotak">
+					<label class="default">
+						Name
+					</label>
+					<form ng-submit="$root.hideKeyboard()">
+						<input ng-model="baby.name" type="text" class="form-control">
+					</form>
+				</div>
+				<div class="kotak">
+					<label class="default">
+						Birthdate
+					</label>
+					<div mobiscroll-datetime="" mobiscroll-model="baby.born" class-child="form-control" calendar-format="false"></div>
+				</div>
+				<div class="kotak">
+					<label class="default">
+						Gender
+					</label>
+					<div mobiscroll-predefined="" mobiscroll-mode="predefined" mobiscroll-model="baby.gender" mobiscroll-values="gender" class="form-control"></div>
+				</div>
+				<div class="kotak">
+                    <label class="default">
+                        Birth Weight
+                    </label>
+                    <div mobiscroll-weight="" mobiscroll-model-value="baby.weight" mobiscroll-model-unit="baby.weight_unit" mobiscroll-id="baby_weight" cat="1" class="form-control" default-value="3400000">
+                    </div>
+                </div>
+                <div class="kotak">
+                    <label class="default">
+                        Birth Length
+                    </label>
+                    <div mobiscroll-length="" mobiscroll-model-value="baby.height" mobiscroll-model-unit="baby.height_unit" mobiscroll-id="baby_height" class="form-control" default-value="50000">
+                    </div>
+                </div>
+                <div class="kotak last-border">
+                    <label class="default">
+                        Birth Head Circumference
+                    </label>
+                    <div mobiscroll-length="" mobiscroll-model-value="baby.headsize"  mobiscroll-model-unit="baby.headsize_unit" mobiscroll-id="baby_headsize" class="form-control" default-value="35000">
+                    </div>
+                </div>
+			</div>
+			<div class="to-bottom" ng-if="showFooter">
+				<div class="kotak no-border" ng-if="edit">
+					<button class="btn">Share Baby Data with others</button>
+				</div>
+				<div class="" ng-if="modal.edit">
+					<button class="button button-light button-block" ng-click="delete()">Delete</button>
+				</div>
+			</div>
+    </div>
+</div>

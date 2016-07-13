@@ -1,0 +1,99 @@
+﻿.opacity { opacity: .9; filter: alpha(opacity=60); }
+#boxbutton { text-align: center; padding: 9px; }
+	.link { font-size: 12px; color: #ffffff; text-decoration: none; background: #0066cc; padding: 5px 10px; -webkit-border-radius: .5em; -moz-border-radius: .5em; border-radius: .5em; }
+	.link.index { font-size: 24px; color: #ffffff; text-decoration: none; background: #0066cc; padding: 10px 15px; -webkit-border-radius: .5em; -moz-border-radius: .5em; border-radius: .5em; margin-left: 180px; }
+	.link:hover { background: #999; }
+
+h2 { color: #0066cc; width: 300px; margin: 30px auto; }
+#index h2 { height: 130px;  margin-top: 70px; }
+footer p { clear:both; color: #999; width: 525px; margin: 0 auto; margin-top: 30px; }
+
+#game-page,#gallery-page,#about-page { 
+    background: url(../img/bg-header-subpage.gif);
+	width: 100% !important;
+    height: auto !important;
+    background-repeat: repeat;
+    position: absolute;
+    //z-index: -1;
+}
+#about-page  p{	
+	margin: 0px;	
+}
+.app-title { color: #fff; font-size: 2.2em; }
+.app-author { color: #fff; font-size: 0.9em; }
+.app-info { color: #fff; font-size: 1.2em; }
+#home-page ,#main-page,#high-score { 
+  background: url(../images/mahesh2.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+html, body {
+    height : 100%;
+}
+.ui-mobile .ui-page, .ui-mobile .ui-page .ui-content {
+    height : 100%;
+}
+.ui-mobile .ui-page .ui-content .ui-listview {
+    position : relative;
+    top      : 50%;
+	opacity  : 0.7;
+}
+#game_table {
+	//margin: 10px auto;
+	width: 100%;
+}
+#game_table div {
+	border: 1px solid #07c;
+	height: auto;
+	cursor: pointer;
+}
+#game_table img{
+max-width: 100%;
+height: auto;
+z-index: 3;
+}
+
+.gallery { list-style: none; padding: 0; margin: 0; }
+.gallery:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+.gallery li { float: left; width: 31.33333333%; margin: 2px; }
+.gallery li a { display: block; margin: 5px; border: 1px solid #3c3c3c; }
+.gallery li img { display: block; width: 100%; height: auto; 	-webkit-box-shadow: 0px 0px 20px 0.1em #222;
+	-moz-box-shadow: 0px 0px 20px 0.1em #222;
+	box-shadow: 0px 0px 20px 0.1em #222;}
+
+.ui-listview .ui-li-icon {
+max-height: 25px;
+max-width: 25px;
+}
+
+.ui-li-heading {
+padding-left: 20px;
+font-size: 18px;
+margin: .2em 0;
+}
+.ui-dialog  .ui-header .ui-btn-icon-notext	{ display:none;} 
+
+.rotate-div {
+    -webkit-animation: rotation 1s;
+}
+
+@-webkit-keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to   {-webkit-transform: rotate(359deg);}
+}
+
+@media screen and (min-width: 480px) and (max-width: 800px) {
+.ui-li-heading {
+font-size: 25px;
+font-weight: bold;
+display: block;
+margin: .2em 0;
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+padding-left: 98px;
+}
+}

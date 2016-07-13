@@ -1,0 +1,109 @@
+<div class="modal transparent" ng-controller="activityCtrl" ng-click="closeActivity()">
+    <div class="wrapper diaper" ng-click="$event.stopPropagation()">
+        <form ng-submit="hideKeyboard()">
+            <div class="header">
+                <h2 class="title">
+                    <span class="icon-diaper"></span>
+                    <span data-translate>cleverbaby.app.activity.diaper.change.title</span>
+                </h2>
+                <a ng-click="closeActivity()" class="btn pull-left"><i class="fa fa-close"></i></a>
+                <a ng-if="modal.mode == 'add'" ng-click="submitActivityCheck()" class="btn pull-right"><i class="fa fa-check"></i></a>
+                <a ng-if="modal.mode != 'add'" ng-click="deleteActivity('diaper')" class="btn pull-right"><i class="fa fa-trash-o"></i></a>
+            </div>
+            <div class="content">
+                <div class="kotak">
+                    <label class="default">
+                        <span class="icon-clock"></span> <span data-translate>cleverbaby.app.activity.diaper.change.time</span>
+                    </label>
+                    <div mobiscroll-datetime="" mobiscroll-model="modal.data.time" class-child="form-control"></div>
+                </div>
+                <div class="kotak no-border">
+                    <label class="small" data-translate>cleverbaby.app.activity.diaper.change.content</label>
+                    <div class="clearfix"></div>
+                    <div class="rumah-radio">
+                        <ion-radio ng-model="modal.data.diaper_type" value="Empty" name="diaper_type" class="xs-4 border-right tab-style"><span data-translate>cleverbaby.app.activity.diaper.change.content.empty</span></ion-radio>
+                        <ion-radio ng-model="modal.data.diaper_type" value="Wet" name="diaper_type" class="xs-4 border-right tab-style" ><span data-translate>cleverbaby.app.activity.diaper.change.content.wet</span></ion-radio>
+                        <ion-radio ng-model="modal.data.diaper_type" value="Solid" name="diaper_type" class="xs-4 border-right tab-style" ><span data-translate>cleverbaby.app.activity.diaper.change.content.solid</span></ion-radio>
+                        <ion-radio ng-model="modal.data.diaper_type" value="Mixed" name="diaper_type" class="xs-4 border-right tab-style"><span data-translate>cleverbaby.app.activity.diaper.change.content.mixed</span></ion-radio>
+                    </div>
+                </div>
+                <div class="kotak no-border">
+                    <label class="small" data-translate> cleverbaby.app.activity.diaper.change.size</label>
+                    <div class="clearfix"></div>
+                    <div class="rumah-radio">
+                        <ion-radio ng-model="modal.data.diaper_amount" value="Tiny" name="size" class="xs-3 border-right tab-style"><span data-translate>cleverbaby.app.activity.diaper.change.size.tiny</span></ion-radio>
+                        <ion-radio ng-model="modal.data.diaper_amount" value="Medium" name="size" class="xs-3 border-right tab-style"><span data-translate>cleverbaby.app.activity.diaper.change.size.medium</span></ion-radio>
+                        <ion-radio ng-model="modal.data.diaper_amount" value="Xxl" name="size" class="xs-3 border-right tab-style"><span data-translate>cleverbaby.app.activity.diaper.change.size.xxl</span></ion-radio>
+                    </div>
+                </div>
+                <div class="kotak no-border double-height">
+                    <label class="small" data-translate>cleverbaby.app.activity.diaper.change.color</label>
+                    <div class="rumah-radio no-border ">
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Yellow" name="content" class="color-selection yellow"><span data-translate>cleverbaby.app.activity.diaper.change.color.yellow</span></ion-radio>
+                        </div>
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Lime" name="content" class="color-selection lime"><span data-translate>cleverbaby.app.activity.diaper.change.color.lime</span></ion-radio>
+                        </div>
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Evergreen" name="content" class="color-selection evergreen"><span data-translate>cleverbaby.app.activity.diaper.change.color.evergreen</span></ion-radio>
+                        </div>
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Red" name="content" class="color-selection red"><span data-translate>cleverbaby.app.activity.diaper.change.color.red</span></ion-radio>
+                        </div>
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Brown" name="content" class="color-selection brown"><span data-translate>cleverbaby.app.activity.diaper.change.color.brown</span></ion-radio>
+                        </div>
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Black" name="content" class="color-selection black"><span data-translate>cleverbaby.app.activity.diaper.change.color.black</span></ion-radio>
+                        </div>
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Gray" name="content" class="color-selection gray"><span data-translate>cleverbaby.app.activity.diaper.change.color.gray</span></ion-radio>
+                        </div>
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Other" name="content" class="color-selection other"><span data-translate>cleverbaby.app.activity.diaper.change.color.other</span></ion-radio>
+                        </div>
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Pink" name="content" class="color-selection pink"><span data-translate>cleverbaby.app.activity.diaper.change.color.pink</span></ion-radio>
+                        </div>
+                        <div class="xs-5">
+                            <ion-radio ng-model="modal.data.diaper_color" value="Custom" name="content" class="color-selection diapers"><span data-translate>cleverbaby.app.activity.diaper.change.color.custom</span></ion-radio>
+                        </div>
+                    </div>
+                </div>
+                <div class="kotak no-border">
+                    <label class="small" data-translate>cleverbaby.app.activity.diaper.change.consistency</label>
+                    <div class="clearfix"></div>
+                    <div class="rumah-radio">
+                        <ion-radio ng-model="modal.data.diaper_texture" value="Runny" name="consistency" class="xs-3 border-right tab-style"><span data-translate>cleverbaby.app.activity.diaper.change.consistency.runny</span></ion-radio>
+                        <ion-radio ng-model="modal.data.diaper_texture" value="Mushy" name="consistency" class="xs-3 border-right tab-style"><span data-translate>cleverbaby.app.activity.diaper.change.consistency.mushy</span></ion-radio>
+                        <ion-radio ng-model="modal.data.diaper_texture" value="Hard" name="consistency" class="xs-3 border-right tab-style"><span data-translate>cleverbaby.app.activity.diaper.change.consistency.hard</span></ion-radio>
+                    </div>
+                </div>
+                <!-- addpic/addnote -->
+                <div class="kotak no-border autoheight" ng-if="modal.data.note">
+                    <a class="delete" ng-click="deleteNote()"><i class="fa fa-trash"></i></a>
+                    <div ng-click="addNote(modal.data.note)">
+                        <label class="small" data-translate>cleverbaby.app.activity.comment.click</label>
+                        <p>{{ modal.data.note }}</p>
+                    </div>
+                </div>
+
+                <div class="kotak no-border autoheight" ng-repeat="media in modal.data.media | filter:{ type: '!del'}">
+                    <a class="delete" ng-click="deletePhoto(media)"><i class="fa fa-trash"></i></a>
+                    <div class="thumb">
+                        <img ng-src="{{ media.displayImage | babyImage }}">
+                    </div>
+                </div>
+
+                <!-- end addpic/addnote -->
+            </div>
+            <div class="footer">
+                <a class="pull-left" ng-click="addNote()"><span class="icon-book-open"></span><span data-translate>cleverbaby.app.activity.add_note</span></a>
+                <a class="btn-mid" ng-click="saveActivity('diaper')"><i class="fa fa-check"></i> &nbsp;<span data-translate>cleverbaby.app.activity.save_close</span></a>
+                <a class="pull-right" choose-photo="captureImageOption"><span class="icon-camera"></span><span data-translate>cleverbaby.app.activity.photo</span></a>
+            </div>
+            <input type="submit" value="submit" class="hidden-submit">
+        </form>
+    </div>
+</div>

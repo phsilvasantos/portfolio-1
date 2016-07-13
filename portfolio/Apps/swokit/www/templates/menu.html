@@ -1,0 +1,142 @@
+<ion-side-menus>
+
+  <ion-nav-bar align-title="left" class="bar-stable nav-title-android">
+    <ion-nav-back-button class="button-icon icon ion-ios7-arrow-back">
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-pane ion-side-menu-content>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left">
+    <header class="bar bar-header bar-stable menu-bar">
+    </header>
+    <ion-content class="has-header header-menu">
+      <ion-list>
+        <ion-item nav-clear menu-close ng-click="clickHome()" class="clickable item-icon-left" ng-class="{'current': isItemActive('home')}">
+          <i class="icon ion-home"></i> Home
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/progress" class="clickable item-icon-left" ng-class="{'current': isItemActive('prog')}">
+          <i class="icon ion-arrow-graph-up-right"></i> Progress
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/settings" class="clickable item-icon-left" ng-class="{'current': isItemActive('sett')}">
+          <i class="icon ion-gear-b"></i> Settings
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/exercises" class="clickable item-icon-left" ng-class="{'current': isItemActive('exer')}">
+          <i class="icon ion-clipboard"></i> Exercise List
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/rewards" class="clickable item-icon-left" ng-class="{'current': isItemActive('rewa')}">
+          <i class="icon ion-ios7-star"></i> Rewards <span class="badge badge-assertive menu-badge" ng-show="mPointsTotal > 0 && showPointsBadge && sessionMAvailable" style="margin-right:40px">{{mPointsTotal}}</span>
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/reminders" class="clickable item-icon-left" ng-class="{'current': isItemActive('remi')}">
+          <i class="icon ion-android-reminder"></i> Reminders
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/help" class="clickable item-icon-left" ng-class="{'current': isItemActive('help')}">
+          <i class="icon ion-help-circled"></i> Help Center
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/sworkitpro" class="clickable item-icon-left pro-menu-option" ng-class="{'current': isItemActive('swor')}">
+          <img src="img/sworkitpro-small.png"/> <span>Get Sworkit Pro</span>
+        </ion-item>
+        <ion-item nav-clear menu-close ng-click="downloadNexerciseMenu()" class="nexercise-menu">
+          by <img src="img/nexercise-banner.png"/> 
+          <ul><li></li><li></li><li></li></ul>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+
+
+<script id="advanced-timing.html" type="text/ng-template">
+  <div class="modal timing-page modal-colors">
+    <ion-header-bar>
+      <button class="button button-clear button-primary" ng-click="closeModal()">Close</button>
+      <h1 class="title">Workout Settings</h1>
+      <button class="button button-clear button-primary" ng-click="resetDefaults()"  ng-show="{{toggleOptions.data}}">Reset</button>
+    </ion-header-bar>
+    <ion-content has-bouncing="false">
+      <div class="list">
+        <div class="item item-toggle extra-top">
+          <p>Transition Pause</p>
+          <label class="toggle toggle-energized">
+             <input type="checkbox" ng-model="advancedTiming.transition">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </div>
+    </ion-content>
+  </div>
+</script>
+
+<script id="welcome.html" type="text/ng-template">
+ <div class="modal timing-page welcome-modal">
+  <ion-view class="welcome-page ">
+    <ion-header-bar class="bar-stable">
+      <button class="button button-clear button-primary" ng-click="closeModal()">Close</button>
+    </ion-header-bar>
+        <ion-slide-box on-slide-changed="slideChanged(index)">
+          <ion-slide class="slide1">
+          <ion-content  has-bouncing="false">
+            <div class="over-div">
+              <h2 style="font-weight:400;margin-top: 0px;">Welcome to</h2><h1 style="color:#FF8614;margin-top:-15px;">Sworkit!</h1>
+              <p >
+                To begin, simply choose a workout category:
+              </p>
+              <h2 class="orange-text">Strength & Cardio</h2>
+              <h2 class="green-text">Yoga & Stretching</h2>
+              <p>Or design your own</p>
+              <h2 class="blue-text">Custom Workouts</h2>
+              <p>Then choose your workout length. That's it!</p>
+            </div>
+          </ion-content>
+          </ion-slide>
+          <ion-slide class="slide2">
+          <ion-content  has-bouncing="false">
+            <div class="over-div">
+              <h3>Become a Power User</h3>
+              <p>Looking for even more control?</p>
+              <div class="list-of">
+                <ol>
+                  <i class="icon ion-gear-b orange-text"></i><h4 class="orange-text">Settings:</h4>
+                  <li>Adjust weight</li>
+                  <li>Set daily and weekly goals</li>
+                  <li>Connect to Apps</li>
+                  <li>Control vocal cues</li>
+                  <li>Configure Video Settings</li>
+                </ol>
+              </div>
+              <div class="list-of">
+                <ol>
+                  <i class="icon ion-clock orange-text"></i><h4 class="orange-text">Advanced timing:</h4>
+                  <p>(Found on Minutes screen)</p>
+                  <li>Change exercise interval</li>
+                  <li>Change transition time</li>
+                  <li>Change rest interval</li>
+                  <li>Adjust randomization</li>
+                </ol>
+              </div>
+            </div>
+            </ion-content>
+          </ion-slide>
+          <ion-slide class="slide3">
+          <ion-content  has-bouncing="false">
+            <div class="over-div">
+              <h3>Earn Rewards</h3>
+              <p>
+                Earn real rewards for completing workouts and reaching your goals.
+              </p>
+              <h3 class="orange-text"><i class="icon ion-ios7-star"></i> Want even more rewards and motivation?</h3>
+              <p>
+                Check out our Partner app <a class="blue-text" href="#/app/nexercise" ng-click="closeOpenNexercise()">Nexercise</a> to track all of your fitness activities in one place. You'll find motivation through competing with friends and earn extra rewards. 
+              </p> 
+              <h4 class="grey-text"><i class="icon ion-ios7-star"></i> Want more info on rewards?</h4>
+              <p>Visit the Rewards section in the menu.</p>
+              <p>Reward availability varies by location</p>
+            </div>
+            </ion-content>
+          </ion-slide>
+        </ion-slide-box>
+      </ion-view>
+ </div>
+</script>

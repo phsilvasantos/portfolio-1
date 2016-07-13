@@ -1,0 +1,42 @@
+<ion-view view-title="{{'cleverbaby.app.more.youraccount.title' | translate}}">
+    <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('invite2MainScroll')" delegate-handle="invite2MainScroll">
+        <div class="wrapper-tab more-page">
+            <ion-nav-bar class="bar-positive">
+                <div class="header no-border">
+                    <ion-nav-buttons side="left">
+                        <a class="btn left" ui-sref="app.more"><i class="fa fa-angle-left"></i></a>
+                    </ion-nav-buttons>
+                    <ion-nav-title cb-baby-drop-down></ion-nav-title>
+                </div>
+            </ion-nav-bar>
+            <div class="row responsive-sm page-con">
+                <div class="loggedin-info col">
+                    You are inviting someone to View, Add and Edit and invote others to "{{selectedBaby.name}}"'s data.
+                </div>
+                <div class="loggedin-info col">
+                    Please share the following information with the other person. They can enter this information when they first start CleverBaby
+                    and select "I have an invitation PIN" or by going to "More"/"I have an invitation PIN"
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="input-row">
+                            <div class="leftLabel">Name</div>
+                            <div class="rightValue">{{baby.name}}</div>
+                        </div>
+                        <div class="input-row">
+                            <div class="leftLabel">Birthdate</div>
+                            <div class="rightValue"> {{baby.birthday }}</div>
+                        </div>
+                        <div class="input-row">
+                            <div class="leftLabel">PIN</div>
+                            <div class="rightValue">{{baby.pin}}</div>
+                        </div>
+                    </form>
+                </div>
+                <button class="button button-small button-positive" ng-click="s">
+                    Share this information via E-Mail or Text Message
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,18 @@
+<div class="modal image-modal transparent modal-photoview">
+  <ion-pane style="background: #000;">
+    <content class="modal-content">
+      <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="photoModalService.activeSlide">
+        <ion-slide ng-repeat="photo in photoModalService.photos">
+          <div class="photo-scroller">
+            <div class="photo-table">
+              <div class="photo-cell">
+                <img ng-cache ng-src="{{photoModalService.getImgUrl(photo)}}" class="photo-lg">
+              </div>
+            </div>
+          </div>
+          <button class="btn-close button-clear" ng-click="photoModal.hide()"><i class="icon ion-ios-close-outline"></i></button>
+        </ion-slide>
+      </ion-slide-box>
+    </content>
+  </ion-pane>
+</div>

@@ -1,0 +1,26 @@
+'use strict';
+
+organizate.constant('AppConfig', {
+  serverturl: "http://54.94.192.27",
+//  backendurl: "http://172.16.1.75/easyfutbolapi/service/",
+  backendurl: "http://54.94.192.27/easyfutbolapi/index.php/service/",
+  organizationName: 'Easy.Futbol\'s says',
+  gamestate: false,
+  unreadMessage: 0,
+  dateFormatString : "DD-MM-YYYY",
+  messagestate: false,
+  tabStatus: "game-home",
+  loadingStatus: false,
+  selectedIndex: false,
+  selectedGameIndex: false,
+  loginUserId: 5,
+  colorinfo: {'red': '#c71717', 'green': '#18cf00', 'pink': '#cf0061', 'blue': '#0005cf', 'purple': '#681fbb'},
+  formationinfo: [],
+  teaminfo: [],
+  gameinfo: [],
+  rosterinfo: [],
+  cameraimage: '',
+  contactuser: [],
+  myImage: '',
+  myCroppedImage: '',
+});

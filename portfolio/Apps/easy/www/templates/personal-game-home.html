@@ -1,0 +1,19 @@
+
+<ion-view title="SELECT GAME" ng-controller="PersonalGameHomeCtrl" cache-view="false">
+  <ion-content class="page page-listmain has-subheader">
+    <ion-list>
+      <div class="custom-item-title">
+       See Team Detail and Data For Next Game!
+      </div>
+      <ion-item ng-repeat="game in tempData" ng-if="game.opponentname" class="item card contacts-item" ng-click="selectPersonalGame(game.id)">
+        <div class="contact-item-container">
+          <p class="contact-item-main">{{ changeDate(game.gamedate)}} ( {{game.opponentname}} )</p>
+          <!--<p class="contact-item-container-phonenum">Player : {{game.in + game.out + game.pending}},   In : {{game.in}},   Out : {{game.out}},   Pending : {{game.pending}} </p>-->
+          <p class="contact-item-submain">Player : {{game.in + game.out + game.pending}},   In : {{game.in}},   Out : {{game.out}},   Pending : {{game.pending}} </p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+

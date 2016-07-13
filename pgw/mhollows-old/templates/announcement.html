@@ -1,0 +1,28 @@
+<ion-view title="Announcement">
+  <ion-content class="page page-announcement">
+
+    <a href="javascript:void(0)"
+       photo-full-view
+       photos="[announcement.imageInfo]"
+       category="'announcement'"
+       background-image="{{announcement.get('image').url()}}" ng-show="announcement.get('image').url()" class="announcement-image"></a>
+
+    <div class="announcement-view">
+
+      <h1 class="announcement-title">{{announcement.get('title')}}</h1>
+
+      <div class="meta-info">
+        <span class="posted-by">
+          <label>Posted by</label>
+          <em>{{announcement.get('author').get('firstName')}} {{announcement.get('author').get('lastName')}}</em>
+        </span>
+        <span class="posted-on">
+          {{announcement.displayPublishDate}}
+        </span>
+      </div>
+
+      <div class='announcement-body' ng-bind-html="announcement.get('body') | nl2br" open-inapp-browser></div>
+
+    </div>
+  </ion-content>
+</ion-view>

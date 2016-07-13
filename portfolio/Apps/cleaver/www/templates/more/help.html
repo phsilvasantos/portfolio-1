@@ -1,0 +1,32 @@
+<ion-view view-title="{{'cleverbaby.app.more.help.title' | translate}}">
+    <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('helpMainScroll')" delegate-handle="helpMainScroll">
+        <div class="wrapper-tab more-page">
+            <ion-nav-bar class="bar-positive">
+                <ion-nav-buttons side="left">
+                    <a class="btn left" ui-sref="app.more"><i class="fa fa-angle-left"></i></a>
+                </ion-nav-buttons>
+                <div class="header no-border">
+                    <ion-nav-title cb-baby-drop-down></ion-nav-title>
+                </div>
+            </ion-nav-bar>
+            <div ng-hide="hasTopic">
+                <div class="padding">
+                    {{'cleverbaby.app.more.help.text' | translate}}
+                </div>
+                <div class="padding">
+                    {{'cleverbaby.app.more.help.contact' | translate}} <a href="mailto:support@mycleverbaby.com">support@mycleverbaby.com</a>
+                </div>
+                <ul class="list">
+                    <li class="item" ng-click="goHelp(1)"> How do I Sign In?</li>
+                </ul>
+            </div>
+            <div ng-show="hasTopic">
+                <div class="padding">
+                    {{topic.title}}
+                </div>
+                <div class="padding" ng-bind-html="topic.text">
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

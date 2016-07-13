@@ -1,0 +1,108 @@
+<ion-view cache-view="false">
+  <ion-nav-title>
+    {{!isCreatePage?'Create Client':'Edit Client'}}
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="save()" ng-disabled="!isValidForm()">Save</button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="page page-edit-client">
+    <form name="$parent.clientForm">
+      <div class="list card is-pad">
+        <div class="item item-divider">Client Detail</div>
+        <div class="item item-body">
+          <ion-list>
+            <label class="item item-input">
+              <span class="input-label">Organization</span>
+              <input type="text" placeholder="Organization" maxlength="80" ng-model="selectedClient.OrganizationName">
+            </label>
+			
+			<label class="item item-input">
+              <span class="input-label">Tax ID</span>
+              <input type="text" placeholder="TaxID" maxlength="30" ng-model="selectedClient.TaxId">
+              <!--<select ng-options="item.Id as item.Name+' '+item.Number for item in taxes" ng-model="selectedClient.TaxId"></select>-->
+              <!--<input type="tel" placeholder="Country" maxlength="20" ng-model="selectedClient.Country" readonly ng-click = "editCountry()">-->
+            </label>
+			
+            <label class="item item-input" ng-class="{'required-option-empty':!selectedClient.Email}">
+              <span class="input-label">Email Address</span>
+              <input type="email" placeholder="Email Address" maxlength="80" ng-model="selectedClient.Email" required>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Contact Name</span>
+              <input type="text" placeholder="Contact Name" maxlength="80" ng-model="selectedClient.ContactName">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Telephone 1</span>
+              <input type="tel" placeholder="Telephone 1" maxlength="20" ng-model="selectedClient.Telephone1">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Telephone 2</span>
+              <input type="tel" placeholder="Telephone 2" maxlength="20" ng-model="selectedClient.Telephone2">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Mobile</span>
+              <input type="tel" placeholder="Mobile" maxlength="20" ng-model="selectedClient.Cell">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Fax</span>
+              <input type="tel" placeholder="Fax" maxlength="20" ng-model="selectedClient.Fax">
+            </label>
+            
+			
+			  <label class="item item-input">
+              <span class="input-label">Website</span>
+              <input type="text" placeholder="Website" maxlength="150" ng-model="selectedClient.Website">
+            </label>
+			
+			
+          </ion-list>
+        </div>
+      </div>
+      <div class="list card is-pad">
+        <div class="item item-divider">Client Address & Terms</div>
+        <div class="item item-body">
+          <ion-list>
+            <label class="item item-input">
+              <span class="input-label">Address #1</span>
+              <input type="text" placeholder="Address #1" maxlength="150" ng-model="selectedClient.Address1">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Address #2</span>
+              <input type="text" placeholder="Address #2" maxlength="150" ng-model="selectedClient.Address2">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">City</span>
+              <input type="text" placeholder="City" maxlength="80" ng-model="selectedClient.City">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">State/Province</span>
+              <input type="text" placeholder="State/Province" maxlength="50" ng-model="selectedClient.State">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Postal Code</span>
+              <input type="tel" placeholder="Postal Code" maxlength="20" ng-model="selectedClient.ZipCode">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Country</span>
+              <select ng-options="country.Id as country.Name for country in countries" ng-model="selectedClient.CountryId">
+                <option value='' disabled selected>Select Country</option>
+              </select>
+              <!--<input type="tel" placeholder="Country" maxlength="20" ng-model="selectedClient.Country" readonly ng-click = "editCountry()">-->
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Payment Due</span>
+              <select ng-options="due.Value as due.Text for due in dues" ng-model="selectedClient.Due"></select>
+              <!--<input type="tel" placeholder="Country" maxlength="20" ng-model="selectedClient.Country" readonly ng-click = "editCountry()">-->
+            </label>
+          
+            <label class="item item-input">
+              <span class="input-label">Internal Notes</span>
+              <input type="text" placeholder="Internal Notes" maxlength="250" ng-model="selectedClient.InternalNotes">
+            </label>
+          </ion-list>
+        </div>
+      </div>
+    </form>
+
+  </ion-content>
+</ion-view>

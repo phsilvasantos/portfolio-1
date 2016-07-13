@@ -1,0 +1,81 @@
+<ion-view>
+  <ion-nav-title>{{post.get('group').get('name')}}</ion-nav-title>
+  <ion-nav-buttons side="right">
+    <!--<a ng-href="" class="button button-clear">Edit</a>-->
+  </ion-nav-buttons>
+
+  <ion-content class="page page-group-feed feed-detail has-footer" delegate-handle="group-feed-detail">
+    <ion-refresher
+      refreshing-text="Refreshing post..."
+      on-refresh="pullToRefresh()">
+    </ion-refresher>
+    <!-- Scrollable page content-->
+    <div class="page-content">
+
+      <div class="feeds list">
+        <div class="feed-item item">
+          <div class="poster-info">
+            <a ng-href="#/profile/{{post.get('author').get('profile').id}}"><img class="avatar" ng-src="{{post.get('author').get('profile').get('thumbImage').url()}}"></a>
+            <a class="poster-name" ng-href="#/profile/{{post.get('author').get('profile').id}}">
+              {{post.get('author').get('firstName')}} {{post.get('author').get('lastName')}}
+            </a>
+            <span class="posted-date">{{getDisplayPostDate(post.createdAt)}}</span>
+          </div>
+          <div class="post-content">
+            <div class="content-body" ng-bind-html="post.get('body')|linkConvert"></div>
+          </div>
+          <div class="files" ng-show="post.files.length > 0" ng-repeat="file in post.files" ng-click="openFile(file)">
+            <a class="item">
+              <span class="thumb" ng-show="true"><i class="thumb filetype-icon {{file.icon}}"></i></span>
+              <span class="filename">{{file.name}}</span>
+            </a>
+          </div>
+          <div class="images" ng-show="post.images.length > 0">
+            <a photo-full-view
+              photos="post.images"
+              category="'group-feed'"
+              class="image-item"
+              ng-repeat="img in post.images">
+                <img ng-cache ng-src="{{img.imageUrl}}">
+            </a>
+          </div>
+          <div class="meta-info">
+            <a ng-href="#/group-feed-detail-liked-by/{{post.id}}"><em>{{post.get('likedBy').length || 0}} Likes</em></a>
+            <em>{{post.comments.length}} Comments</em>
+          </div>
+
+
+        </div><!-- /.feed-item -->
+      </div>
+
+      <div class="comments list">
+        <div class="item-divider heading" ng-show="post.get('likedBy').length">
+          <em>{{likedByInString(post)}}</em>
+        </div>
+        <!-- <div class="item-divider heading">Comments</div> -->
+        <div class="comment-item item" ng-repeat="comment in post.comments">
+          <a ng-href="#/profile/{{comment.get('author').get('profile').id}}"><img class="avatar" ng-src="{{comment.get('author').get('profile').get('thumbImage').url()}}"></a>
+          <a class="poster-name" ng-href="#/profile/{{comment.get('author').get('profile').id}}">
+            {{comment.get('author').get('firstName')}} {{comment.get('author').get('lastName')}}
+          </a>
+          <span ellipsis-text-mention="comment"></span>
+          <div class="posted-date">{{getDisplayPostDate(comment.createdAt)}}</div>
+        </div><!-- /.comment-item -->
+      </div>
+
+    </div>
+  </ion-content>
+  <div class="commentbox-detail" footer-keyboard>
+    <div class="comment-textbox-wrapper">
+      <div class="list mentions-list" ng-show="showMention()">
+        <a ng-repeat="user in mentionUsersList()" class="item" id="group_feed_detail_mention_users" href="">
+          <input type="text" class="mention-virtual-input" ng-click="addUserToMentions(user)"/>
+          <img ng-src="{{user.avatarUrl}}"><span>@{{user.firstName}} {{user.lastName}}</span>
+        </a>
+      </div>
+
+      <textarea auto-grow-height id="txt_comment" class="feed-post-comment-input mention-input-feed-detail" ng-model="newCommentText" ng-change="messageInputChanged();"  placeholder="Add a comment"></textarea>
+      <button class="sender" ng-click="addComment()" ng-disabled="!newCommentText || isSending">Send</button>
+    </div>
+  </div>
+</ion-view>

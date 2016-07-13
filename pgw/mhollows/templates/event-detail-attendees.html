@@ -1,0 +1,15 @@
+<div class="content-block-title" ng-show="attendees.length">
+  <strong>{{attendees.length}} members</strong> are attending this event
+</div>
+<div ng-hide="attendees.length" class="content-block-title">There are no members that are attending this event.</div>
+<div class="members-list fluid">
+  <div class="member-item" ng-repeat="m in attendees">
+    <a ng-href="#/profile/{{m.get('user').get('profile').id}}" class="picture" 
+       background-image="{{m.get('user').get('profile').get('picture').url()}}"></a>
+    <div class="info">
+      <span class="name">{{m.get('user').get('firstName')}} <strong>{{m.get('user').get('lastName')}}</strong></span>
+      <a ng-href="#/messages/new/{{m.get('user').id}}" class="btn-chat" ng-if="!isCurrentUser(m.get('user')) && isChatAvailableForUser(m.get('user'))"><i class="svg-icon chat-text-bubble-white"></i></a>
+      <a ng-href="sms:{{m.get('user').get('username') | actualPhoneNumber}}" class="btn-sms" ng-if="!isCurrentUser(m.get('user')) && !isChatAvailableForUser(m.get('user'))"><i class="svg-icon sms-white"></i></a>
+    </div>
+  </div>
+</div>

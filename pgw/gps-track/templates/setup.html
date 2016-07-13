@@ -1,0 +1,145 @@
+<ion-view title="Tracking">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+    <ion-list class="list list-inset">
+        <div class="card" ng-show="!has_org && internet">
+            <div class="item item divider">
+                Add an Organization
+            </div>
+            <div class="item item-text-wrap">
+                <form novalidate class="css-form">
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="text" placeholder="Name" ng-model="org.name" required>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Address" ng-model="org.address" required>
+                        </label>
+                        <!--<label class="item item-input">
+                            <input type="text" placeholder="City" ng-model="org.city" required>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Country[XX]" ng-model="org.country" required>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Telephone" ng-model="org.tel" required>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Website['http://xxx.xxx.com']" ng-model="org.web" required>
+                        </label>-->
+                    </div>
+                </form>
+            </div>
+            <a class="item item-icon-left assertive" ng-click="saveOrg()">
+                <i class="icon ion-archive"></i>
+                Save
+            </a>
+        </div>
+
+        <div class="card" ng-show="!has_device && has_org && internet">
+            <div class="item item divider">
+                Add a device
+            </div>
+            <div class="item item-text-wrap">
+                <form novalidate class="css-form">
+                    <div class="list">
+                        <label class="item">
+                            Device ID: {[{device_id}]}
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Asset Name" ng-model="asset.name" required>
+                            {[{asset.name}]}
+                        </label>
+                        <label class="item item-input">
+                            <!--Sim Number: {[{asset.sim_number}]}-->
+                            <input type="text" placeholder="Sim Number" ng-model="asset.sim_number" required>
+                            {[{asset.sim_number}]}
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <a class="item item-icon-left assertive" ng-click="saveAsset()">
+                <i class="icon ion-chatbox"></i>
+                Save
+            </a>
+        </div>
+        <div class="card" ng-show="has_device && has_org && internet">
+            <div class="item item divider">
+                Settings
+            </div>
+            <div class="item item-text-wrap">
+                <ion-checkbox ng-repeat="item in settingsList"
+                    ng-model="item.checked"
+                    ng-checked="item.checked" 
+                    ng-change="saveChange($index)">
+                    {[{ item.text }]}
+                </ion-checkbox>
+                <ion-checkbox
+                    ng-model="share.checked"
+                    ng-checked="share.checked" 
+                    ng-change="shareChange(share.checked)">
+                    Available for Hire
+                </ion-checkbox>
+            </div>
+        </div>
+        <!--<div class="card" ng-show="has_device && has_org">-->
+        <div class="card" ng-show="internet">
+            <div class="item item divider">
+                Select Assets
+            </div>
+            <!-- <div class="item item divider">
+                <a class="item" ng-click="modal.show()"><i class="icon ion-chatbox positive"></i> Request Migration</a>
+            </div> -->
+            <div class="item item-text-wrap">
+                <div class="list">
+                    <a class="item item-icon-left item-icon-right" ui-sref="app.detail({ assetId:asset.0._id.$oid })" ng-repeat="asset in data">
+                        <i class="icon ion-model-s calm"></i>
+                        {[{asset.0.name}]}
+                        <i class="icon ion-map assertive"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card" ng-show="!internet">
+            <div class="item item divider">
+                <i class="icon ion-alert"></i> Hello!
+            </div>
+            <div class="item item-text-wrap">
+                <div class="row">
+                    Your internet connection is unavailable. Please turn it on to experience the app.
+                </div>
+            </div>
+        </div>
+    </ion-list>
+    </ion-content>
+</ion-view>
+<script id="modalRequest.html" type="text/ng-template">
+  <div class="modal">
+    <content has-header="true" padding="true">
+        <div class="list">
+            <div class="item item divider">
+                Request Migration for users of previous FINDER Users
+            </div>
+            <div class="item item-text-wrap">
+                <form novalidate class="css-form">
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="text" placeholder="Client ID" ng-model="client_id" required>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Number Plate" ng-model="number_plate">
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <a class="item item-icon-left assertive" ng-click="requestMigration()">
+                <i class="icon ion-chatbox"></i>
+                Request
+            </a>
+        </div>
+    </content>
+  </div>
+</script>

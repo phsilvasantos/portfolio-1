@@ -1,0 +1,54 @@
+<ion-view title="{{organizationName}}" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear feedtypes-selector" ng-click="typePopover.show($event)">
+      <span id="selected_typename">All</span> <i class="icon ion-chevron-down"></i>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-feed">
+    <ion-refresher
+      pulling-text="Pull to refresh feeds..."
+      on-refresh="loadData(false)">
+    </ion-refresher>
+    <div class="feed-list">
+      <ul>
+        <li class="{{fd.class}}" ng-repeat="fd in feeds| gnFeedsSearch:{type:filters.type} | orderBy:'publishOn':true">
+          <!--<div class="feed-info">
+            <span class="feed-icon"><i class="icon {{getFeedIcon(fd)}}"></i></span>
+            <em class="feed-type">{{fd.category}}</em>
+          <!-- <em class="feed-type" ng-show="acm.get('url')">{{acm.get('category').get('name')||'Link'}}</em> 
+          <em class="feed-date">{{getFeedDisplayDate(fd.publishOn)}}</em>
+        </div>-->
+          <a class="feed-content" href="javascript:void(0)" ng-click="openFeed(fd)">
+            <div class="feed-media">
+              <div background-image="{{feedImage(fd.image, fd.author)}}" class="feed-image"></div>
+            </div>
+            <div class="feed-inner">
+              <div class="feed-type">{{fd.category}}</div>
+              <div class="feed-title">
+                {{fd.title}}
+              </div>
+              <div class="feed-subtitle" ng-show="fd.subtitle">{{fd.subtitle}}</div>
+              <div class="feed-date">{{getFeedDisplayDate(fd.publishOn)}}</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>
+
+<script id="feedtypes-popover" type="text/ng-template">
+  <ion-popover-view class="feedtypes-popover">
+    <ion-content>
+      <div class="list">
+        <a ng-click="onSelectFeedType('', $event)" class="item">All</a>
+        <a ng-click="onSelectFeedType('event', $event)" class="item">Programs</a>
+        <a ng-click="onSelectFeedType('announcement', $event)" class="item">News</a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

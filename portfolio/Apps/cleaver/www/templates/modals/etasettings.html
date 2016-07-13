@@ -1,0 +1,41 @@
+<div class="modal transparent-super eta-settings-modal" ng-controller="EtaSettingsCtrl" ng-click="closeModal()">
+    <!-- mode = feed -->
+    <div class="wrapper-dropdown">
+        <div class="header">
+            <h2 class="title" ng-if="etaSettingsModal.mode == 'feed'" translate>cleverbaby.app.modal.etasettings.feed.title</h2>
+            <h2 class="title" ng-if="etaSettingsModal.mode == 'diaper'" translate>cleverbaby.app.modal.etasettings.diaper.title</h2>
+            <a ng-click="cancel()" class="btn left"><i class="fa fa-close"></i></a>
+        </div>
+        <div class="kotak autoheight">
+            <div ng-if="etaSettingsModal.mode == 'feed'" translate>cleverbaby.app.modal.etasettings.feed.desc</div>
+            <div ng-if="etaSettingsModal.mode == 'diaper'" translate>cleverbaby.app.modal.etasettings.diaper.desc</div>
+            
+
+            <div ng-if="etaSettingsModal.mode == 'feed'" translate>cleverbaby.app.modal.etasettings.feed.estimate</div>
+            <div ng-if="etaSettingsModal.mode == 'diaper'" translate>cleverbaby.app.modal.etasettings.diaper.estimate</div>
+
+            <div class="text-right padding">
+                {{modalEtaTime}}
+            </div>
+            
+
+            <div ng-if="etaSettingsModal.mode == 'feed'" translate>cleverbaby.app.modal.etasettings.feed.desc_schedule</div>
+            <div ng-if="etaSettingsModal.mode == 'diaper'" translate>cleverbaby.app.modal.etasettings.diaper.desc_schedule</div>
+
+            <div ng-if="etaSettingsModal.mode == 'feed'" translate>cleverbaby.app.modal.etasettings.feed.schedule</div>
+            <div ng-if="etaSettingsModal.mode == 'diaper'" translate>cleverbaby.app.modal.etasettings.diaper.schedule</div>
+
+            <div style="float: right">
+                <div mobiscroll-predefined="" mobiscroll-values="eta_fixed_duration" mobiscroll-mode="predefined" mobiscroll-model="etaSettingsModal.eta_fixed_duration"></div>
+            </div>
+            
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    .eta-settings-modal .title {
+        font-size: small;
+    }
+</style>

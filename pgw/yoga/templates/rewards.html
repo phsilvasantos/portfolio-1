@@ -1,0 +1,39 @@
+<ion-view title="Rewards" class="rewards-view">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header width-control">
+    <div class="list card" ng-show="sessionmStatus">
+      <div class="item item-text-wrap">
+          <div class="item-content">
+              <h2 class="centered">mPOINTS*</h2>
+          </div>
+          <p class="under-toggle">Earn redeemable mPOINTS for exercise, etc.</p>
+          <p class="under-toggle no-margin-top">See in-app FAQ for more details. (*US only.)</p>
+          <div class="padding-top padding-left padding-right" style="position:relative">
+            <span class="badge badge-assertive rewards-badge" ng-show="sessionMCount.count">{{sessionMCount.count}}</span>
+            <button class="button button-block button-balanced nexercise-green" ng-click="launchSessionM()">
+                Claim Your mPOINTS
+            </button>     
+          </div>
+      </div>
+    </div>  
+    <div class="list card">
+  	  <div class="item item-text-wrap ">
+  	  	  <div class="item-content">
+              <h2 class="centered">Instant Rewards</h2>
+          </div>
+          <p class="under-toggle">After a workout, there's a chance to win an Instant Reward from Kiip. (Conditions apply)</p>
+  	  </div>
+    </div>
+
+    <div class="padding">
+      <button class="button button-block button-balanced nexercise-green" ng-click="rewardsFAQ()">
+          Frequently Asked Questions
+      </button>     
+    </div>
+    <p class="diff-instructions padding" ng-hide="sessionmStatus">*Some rewards may not by available in your country at this time.</p>
+    <div class="centered item-content padding-bottom"><a href="#/app/sworkitpro" class="unlock-pro"><i class="icon ion-locked"></i><h4>Rewards Optional in Sworkit Pro</h4></a></div>
+
+  </ion-content>
+</ion-view>

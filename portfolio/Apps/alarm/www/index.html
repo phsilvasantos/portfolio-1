@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="with-statusbar-overlay">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>My Alarm</title>
+    <link rel="stylesheet" href="lib/css/framework7.min.css">
+    <link rel="stylesheet" href="lib/css/framework7.themes.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link href="img/favicon.png" rel="shortcut icon">
+  </head>
+  <body class="layout-dark">
+    <!-- Views-->
+    <div class="views">
+      <div class="view view-main navbar-fixed">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="center sliding alarms-home-header">Next Alarm</div>
+          </div>
+        </div>
+        <div class="pages">
+          <div data-page="home" class="page home-page"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script type="text/javascript" src="cordova.js"></script>
+<script src="lib/moment.min.js"></script>
+<script type="text/javascript" src="lib/lodash.js"></script>
+<script type="text/javascript" src="lib/framework7.js"></script>
+<script data-main="app" src="lib/require.js"></script>
+<script type="text/javascript" src="js/media.js"></script>

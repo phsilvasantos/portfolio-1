@@ -1,0 +1,29 @@
+<div class="wrapper relative trend-chart-on" ng-controller="GrowthCtrl">
+    <div class="kotak no-border">
+        <div class="clearfix"></div>
+        <div class="rumah-radio on-white">
+            <ion-radio ng-model="growthType" value="weight" name="type-view" class="xs-4 border-right tab-style"><span>Weight</span></ion-radio>
+            <ion-radio ng-model="growthType" value="height" name="type-view" class="xs-4 border-right tab-style" ><span>Height</span></ion-radio>
+            <ion-radio ng-model="growthType" value="headCircumference" name="type-view" class="xs-4 border-right tab-style" ><span>Head Circumference</span></ion-radio>
+            <ion-radio ng-model="growthType" value="bmi" name="type-view" class="xs-4 border-right tab-style"><span>BMI</span></ion-radio>
+        </div>
+    </div>
+    <div class="kotak no-border">
+        <div class="clearfix"></div>
+        <div class="rumah-radio on-white">
+            <ion-radio ng-model="periodTypeGrowth" value="weekly" name="time-view" class="xs-4 border-right tab-style"><span>Week</span></ion-radio>
+            <ion-radio ng-model="periodTypeGrowth" value="monthly" name="time-view" class="xs-4 border-right tab-style" ><span>Month</span></ion-radio>
+            <ion-radio ng-model="periodTypeGrowth" value="3month" name="time-view" class="xs-4 border-right tab-style" ><span>3 Month</span></ion-radio>
+            <ion-radio ng-model="periodTypeGrowth" value="all" name="time-view" class="xs-4 border-right tab-style"><span>All</span></ion-radio>
+        </div>
+    </div>
+    <div class="">
+        <div class="kotak autoheight bar-chart">
+            <h4 class="text-center">{{growthTypeTitle}} Chart</h4>
+            <!-- <canvas id="line" class="chart chart-line" data="data" labels="labels" legend="true" series="series" click="onClick"></canvas> -->
+            <div class="chart-con growth-chart-con">
+                <nvd3 options="options" data="data" class="with-3d growth-nvd3" config="config" api="api"></nvd3>
+            </div>
+        </div>
+    </div>
+</div>

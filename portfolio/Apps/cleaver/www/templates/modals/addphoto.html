@@ -1,0 +1,15 @@
+<div class="modal transparent" ng-controller="activityCtrl" ng-click="closeAddPhotoModal()">
+	<div class="wrapper add" ng-click="$event.stopPropagation()">
+        <div class="kotak no-border" ng-click="selectCaptureImage('SAVEDPHOTOALBUM')">
+            <button class="btn">Photo Library</button>
+        </div>
+        <div class="kotak no-border" ng-click="selectCaptureImage('CAMERA')">
+            <button class="btn">Take Photo</button>
+        </div>
+        <div class="kotak no-border" ng-click="closeAddPhotoModal()">
+            <button class="btn">Cancel</button>
+        </div>
+        <div class="kotak no-border">
+        </div>
+    </div>
+</div>

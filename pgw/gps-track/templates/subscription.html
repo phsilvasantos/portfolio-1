@@ -1,0 +1,52 @@
+<ion-view title="Subscription">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>    
+    <ion-content class="has-header">
+    <ion-list class="list list-inset">
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-document-text assertive"></i> 
+                Organization Plan Status
+            </div>
+            <div class="item item-text-wrap">
+                <label class="item">
+                    <strong>Organization Name</strong>
+                    <h4>Balance</h4>
+                    <h4>Plan End Date</h4>
+                    <h4>Plan Start Date</h4>
+                    <h4>Assets in the Plan</h4>
+                </label>
+            </div>
+        </div>
+
+        <div class="card" ng-repeat="p in plans">
+            <div class="item item divider">
+                <i class="icon ion-document-text assertive"></i> 
+                {[{p.plan_name}]}
+            </div>
+            <div class="item item-text-wrap">
+                <label class="item">
+                    <h4>This plan is priced at <span style="color:red">{[{p.currency}]} {[{p.price}]}</span> for 
+                            <span style="color:red">{[{p.number_of_users}]}</span> number of users with a plan validity period of 
+                            <span style="color:red">{[{p.plan_validity_period_days}]}</span> days.</h4>
+                    <h4> For <input type="number" ng-model="p.number_of_devices"></input> devices
+                            the total price is <span style="color:red">{[{p.currency}]} {[{p.number_of_devices*p.price}]}</span></h4>
+                </label>
+            </div>
+            <div class="item item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="sendMessage(asset_details.asset_detail._id.$oid,message,message_time)" ng-if="!ifForeign(p.currency)">
+                    <i class="icon ion-archive positive"></i>
+                    Pay via Bkash
+                </a>
+                <a class="tab-item" ng-click="sendOpenMessage(asset_details.asset_detail._id.$oid,message,message_time)" ng-if="!ifForeign(p.currency)">
+                    <i class="icon ion-archive positive"></i>
+                    Pay from Bkash Balance
+                </a>
+            </div>
+        </div>
+
+    </ion-list>
+    </ion-content>
+</ion-view>

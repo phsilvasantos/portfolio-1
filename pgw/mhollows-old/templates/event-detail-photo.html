@@ -1,0 +1,15 @@
+<div class="photos-wrapper">
+  <a photo-full-view
+    photo-id="photo.id"
+    photos="photos"
+    category="'event'"
+    class="photo-item" 
+    ng-repeat="photo in photos">
+      <img ng-cache ng-src="{{photo.thumbImageUrl}}" class="event-photo">
+      <!--<div class="actions">
+        <div class="action-item">
+          <label>325</label><i class="svg-icon comment-white"></i>
+        </div>
+      </div>-->
+    </a>
+</div>

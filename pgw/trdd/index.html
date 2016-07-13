@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="with-statusbar-overlay">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <title>Trdd</title>
+        <!-- Path to Framework7 Library CSS-->
+        <link rel="stylesheet" href="css/framework7.css">
+        <!-- Path to your custom app styles-->
+        <link rel="stylesheet" href="css/trdd.css">
+
+        <!-- TODO: Trdd Icons -->
+        <!-- Favicon-->
+        <link href="img/icon-57.png" rel="shortcut icon"> 
+        <!-- iOS 7 iPad (retina) -->
+        <link href="img/icon-152.png" sizes="152x152" rel="apple-touch-icon">
+        <!-- iOS 6 iPad (retina) -->
+        <link href="img/icon-144.png" sizes="144x144" rel="apple-touch-icon">
+        <!-- iOS 7 iPhone (retina) -->
+        <link href="img/icon-120.png" sizes="120x120" rel="apple-touch-icon">
+        <!-- iOS 6 iPhone (retina) -->
+        <link href="img/icon-114.png" sizes="114x114" rel="apple-touch-icon">
+        <!-- iOS 7 iPad -->
+        <link href="img/icon-76.png" sizes="76x76" rel="apple-touch-icon">
+        <!-- iOS 6 iPad -->
+        <link href="img/icon-72.png" sizes="72x72" rel="apple-touch-icon">
+        <!-- iOS 6 iPhone -->
+        <link href="img/icon-57.png" sizes="57x57" rel="apple-touch-icon">
+
+    </head>
+    <body>
+        <!-- Status bar overlay for fullscreen mode-->
+        <div class="statusbar-overlay"></div>
+
+        <!-- TODO: Panel?? -->
+        <!-- Panels overlay-->
+        <div class="panel-overlay"></div>
+        <!-- Right panel with cover effect-->
+        <div class="panel panel-right panel-reveal">
+            <div class="content-block">
+                <p>Right panel content goes here</p>
+            </div>
+        </div>
+
+
+        <!-- Main views-->
+        <div class="views">
+            <!-- Your main view, should have "view-main" class-->
+            <div class="view view-main navbar-through">
+                <!-- Top Navbar-->
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <a href="#"  class="refresh-click link clusters">
+                                <i class="icon ios7-reload"></i>
+                            </a>
+                        </div>
+                        <!-- We have home navbar without left link-->
+                        <div class="center sliding">Stories</div>
+                        <!--<div class="right">
+                            <a href="#" data-panel="right" class="link icon-only open-panel"><i class="icon icon-bars-white"></i></a>
+                        </div>-->
+                    </div>
+                </div>
+                <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+                <div class="pages">
+                    <!-- Page, data-page contains page name-->
+                    <div data-page="index" class="page">
+                        <!-- Scrollable page content-->
+                        <div class="page-content pull-to-refresh-content">
+                            <div class="pull-to-refresh-layer">
+                                <div class="preloader preloader-white"></div>
+                                <div class="pull-to-refresh-arrow"></div>
+                            </div>
+                            <div class="list-block clusters-list media-list">
+                                <ul></ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Templates-->
+        <script id="story-item-template" type="template">      
+            <li data-clusterId="{{cluster_id}}">
+                <a href="details.html?{{cluster_id}}" data-clusterId="{{cluster_id}}" class="item-content item-link cluster">
+                    <div class="item-media"><img src="{{image}}"></div>
+                    <div class="item-inner">
+                        <div class="item-title-row">
+                            <div class="title">{{title}}</div>
+                            <div class="item-after"></div>
+                        </div>
+                        <div class="item-subtitle">{{description}}</div>
+                        <div class="item-text">
+                            <span class="total-articles"></span>
+                            <span class="badge">{{total_articles}}</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </script>
+        
+        <script id="article-item-template" type="template">      
+            <li data-articleId="{{_id}}">
+                <a href="#" data-link="{{link}}" target="_blank" class="item-content item-link article">
+                    <div class="item-media"><img src="{{image}}" width="80"></div>
+                    <div class="item-inner">
+                        <div class="item-title">
+                            <div class="title">{{title}}</div>
+                            <div class="description">{{description}}</div>
+                            <div class="info-line">
+                                <span class="keywords"><strong>Keywords:</strong> {{t_keywords}}</span>
+                                <span class="last-update">{{last_update}}&deg;</span>
+                            </div>
+                        </div>
+                        <!--<div class="item-after">{{last_update_date}}<br/>{{last_update_time}}&deg;</div>-->
+                    </div>
+                </a>
+            </li>
+        </script>
+        <!-- Path to Framework7 Library JS-->
+        <script type="text/javascript" src="js/framework7.js"></script>
+        <script type="text/javascript" src="js/mustache.js"></script>
+        <!-- Path to your app js-->
+        <script type="text/javascript" src="js/trdd.js"></script>
+    </body>
+</html>

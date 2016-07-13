@@ -1,0 +1,41 @@
+<ion-modal-view class="capture-modal" ng-controller="CaptureModalCtrl">
+  <ion-content scroll="false" class="{{areaShown}}">
+    <div class="image" style="background-image: url({{data.photoContent}});">
+      <div class="gradient gradient-top"></div>
+      <div class="gradient gradient-bottom"></div>
+      <div class="title">{{data.category.name}}</div>
+      <div class="list list-inset form-skin1" ng-if="areaShown === 'edit'">
+        <label class="item item-input with-placeholder-icon">
+          <i class="icon ion-edit placeholder-icon"></i>
+          <input type="text" placeholder="Add a comment here" ng-model="data.commentVal">
+        </label>
+      </div>
+      <div class="comment-text" ng-if="areaShown === 'completed'">
+        {{data.comment}}
+      </div>
+    </div>
+
+    <div class="bottom-bar" ng-if="areaShown === 'edit'">
+      <div class="bar-inner">
+        <div class="left"><button class="button button-clear" ng-click="service.close()"><i class="icon ion-ios-close-empty"></i></button></div>
+        <div><a class="image-action" ng-click="doImageFilter('action0')"></a></div>
+        <div><a class="image-action" ng-click="doImageFilter('action1')"></a></div>
+        <div><a class="image-action" ng-click="doImageFilter('action2')"></a></div>
+        <div class="right"><button class="button button-clear" ng-click="addComment()" ng-disabled="!data.commentVal"><i class="icon ion-ios-checkmark-empty"></i></button></div>
+      </div>
+    </div>
+
+    <div class="bottom-bar" ng-if="areaShown === 'completed'">
+      <div class="notification">Your picture is online now!<br>Share it to get more YAAYs</div>
+      <div class="buttons social">
+        <a class="circle whatsapp">
+          <i class="icon ion-social-whatsapp-outline"></i>
+        </a>
+        <a class="circle facebook">
+          <i class="icon ion-social-facebook"></i>
+        </a>
+        <button class="button button-clear apply-button" ng-click="apply()"><i class="icon ion-ios-checkmark-empty"></i></button>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>My App</title>
+        <!-- Path to Framework7 Library CSS-->
+        <link rel="stylesheet" href="vendors/framework7/css/framework7.min.css">
+        <!-- Path to your custom app styles-->
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body ng-app="myApp">
+        <!-- Status bar overlay for fullscreen mode-->
+        <div class="statusbar-overlay"></div>
+        <!-- Views-->
+        <div class="views">
+            <!-- Your main view, should have "view-main" class-->
+            <div class="view view-main">
+                <!-- Top Navbar-->
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <!-- We have home navbar without left link-->
+                        <div class="center sliding">My App</div>
+                    </div>
+                </div>
+                <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+                <div class="pages navbar-through">
+
+                    <div data-page="index" class="page" ng-controller="MainController">
+                        <!-- Scrollable page content-->
+                        <div class="page-content">
+                            <div class="list-block media-list items-list">
+                                <ul>
+                                    <li ng-repeat="item in itemsData">
+                                        <a href="views/detail.html" ng-click="onSelectItem(item.id)" class="item-link item-content">
+                                            <div class="item-media"><img ng-src="{{item.location.cover}}" width="100" onerror="$(this).addClass('broken');"></div>
+                                            <div class="item-inner">
+                                                <div class="item-title-row">
+                                                    <div class="item-title">{{item.location.name}}</div>
+                                                </div>
+                                                <div class="item-text">{{item.message}}</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="vendors/jquery/jquery.min.js"></script>
+        <script src="vendors/angular/angular.js"></script>
+        <!-- Path to Framework7 Library JS-->
+        <script type="text/javascript" src="vendors/framework7/js/framework7.min.js"></script>
+
+        <script src="scripts/app.js"></script>
+        <script src="scripts/constants/constants.js"></script>
+        <script src="scripts/directives/directives.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/detail.js"></script>
+        <script type="text/javascript" src="scripts/f7-app.js"></script>
+    </body>
+</html>

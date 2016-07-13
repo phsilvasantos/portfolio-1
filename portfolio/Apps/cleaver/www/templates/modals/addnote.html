@@ -1,0 +1,16 @@
+<div class="modal transparent" ng-click="modal.comment = null; modal.hide()">
+	<div class="wrapper add" ng-click="$event.stopPropagation()">
+        <div class="header">
+            <h2 class="title">
+                <span data-translate>cleverbaby.app.activity.comment.add</span>
+            </h2>
+            <a ng-click="modal.comment = null; modal.hide()" class="btn pull-left"><i class="fa fa-close"></i></a>
+            <a ng-click="modal.hide()" href="" class="btn pull-right"><i class="fa fa-check"></i></a>
+        </div>
+        <div class="content">
+            <div class="kotak autoheight">
+                <textarea ng-model="modal.comment" placeholder="{{ 'cleverbaby.app.activity.comment.placeholder' | translate }}"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

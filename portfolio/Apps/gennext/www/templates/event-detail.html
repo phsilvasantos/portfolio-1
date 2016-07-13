@@ -1,0 +1,48 @@
+<ion-view title="Event">
+  <ion-nav-buttons side="right">
+    
+  </ion-nav-buttons>
+
+  <ion-content class="page page-events page-event-detail">
+    <div class="etabbar">
+      <a class="etab-item" href="javascript:void(0)" ng-class="{active: activeTab=='content'}"
+         ng-click="selectTab('content')">{{eventRecap ? 'Recap' : 'Details'}}</a>
+      <a class="etab-item" href="javascript:void(0)" ng-class="{active: activeTab=='photo'}"
+         ng-click="selectTab('photo')" ng-show="event.get('photoCount')>0">Photos</a>
+      <a class="etab-item" href="javascript:void(0)" ng-class="{active: activeTab=='attendees'}"
+         ng-click="selectTab('attendees')">Attendees</a>
+    </div>
+    <div ng-include="'templates/event-detail-' + activeTab + '.html'" class="etab-content {{activeTab}}"></div>
+  </ion-content>
+</ion-view>
+
+<script id="tpl-addtocal-confirm" type="text/ng-template">
+  <div class="mdl-addtocal-confirm">
+    <div class="buttons-container">
+      <input type="button" class="button" value="Add to Calendar" id="btn_addtocalendar">
+      <input type="button" class="button" value="Cancel" id="btn_hidecalendar">
+    </div>
+  </div>
+</script>
+
+<script id="additionalguests-popover" type="text/ng-template">
+  <ion-popover-view class="additionalguests-popover">
+    <ion-content>
+      <div class="list">
+        <a ng-click="onSelectGuestCount(c)" class="item" ng-repeat="c in guestCountList">{{c}}</a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+<script id="response-popover" type="text/ng-template">
+  <ion-popover-view class="response-popover">
+    <ion-content>
+      <div class="list">
+        <a ng-click="onSelectResponse('yes')" class="item">Yes</a>
+        <a ng-click="onSelectResponse('no')" class="item">No</a>
+        <a ng-click="onSelectResponse('maybe')" class="item">Maybe</a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

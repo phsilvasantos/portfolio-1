@@ -1,0 +1,25 @@
+<ion-view title="LIKED BY">
+  <ion-content class="page page-group-feed page-announcement" delegate-handle="group-feed-detail-liked-by">
+    <ion-refresher
+      refreshing-text="Refreshing list..."
+      on-refresh="pullToRefresh()">
+    </ion-refresher>
+    <!-- Scrollable page content-->
+    <div class="feeds"> 
+
+      <div class="comments list">
+        
+        <div class="comment-items" ng-show="users.length">
+          <div class="comment-item like-item item" ng-repeat="user in users">
+            <a ng-href="#/profile/{{like.get('user').get('profile').id}}"><img class="avatar" ng-src="{{user.get('profile').get('thumbImage').url()}}"></a>
+            <a class="poster-name" ng-href="#/profile/{{user.get('profile').id}}">
+              {{user.get('firstName')}} {{user.get('lastName')}}
+            </a>
+          </div><!-- /.comment-item -->
+        </div>
+        
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

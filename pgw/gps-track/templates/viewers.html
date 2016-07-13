@@ -1,0 +1,55 @@
+<ion-view title="Details">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>    
+    <ion-content class="has-header">
+    <ion-list class="list list-inset">
+        <div class="card" ng-show="asset_pay.has_paid">
+            <div class="item item divider">
+                <i class="icon ion-ios7-people"></i> Users in Organization
+            </div>
+            <div class="item item-text-wrap">
+                <div class="row">
+                    Select the Users who will be able to view {[{details_of_asset.0.asset_detail.name}]}
+                </div>
+            </div>
+            <div class="item item-text-wrap" ng-show="asset_pay.org_admin">
+                <ion-checkbox
+                    ng-model="user.checked"
+                    ng-checked="user.checked"
+                    ng-change="shareWithUser(user)"
+                    ng-repeat="user in user_list" 
+                    ng-show="email!=user.email">
+                    {[{user.name}]} {[{user.email}]}
+                </ion-checkbox>
+                <label ng-show="user_list.length==1">Sorry, there are no other users other than you</label>
+            </div>
+            <div class="item item-text-wrap" ng-show="!asset_pay.org_admin">
+                <label>You need to be an Admin to edit User Permissions</label>
+                <label
+                    ng-repeat="user in user_list" >
+                    {[{user.name}]} {[{user.email}]}
+                </label>
+            </div>
+        </div>
+        <div class="card" ng-show="!asset_pay.has_paid">
+            <div class="item item divider">
+                <i class="icon ion-ios7-people"></i> Users in Organization
+            </div>
+            <div class="item item-text-wrap">
+                <div class="row">
+                    Sorry, your asset is not under a paid subscription. You will have to subscribe to a paid subscription to assign permissions to users who will or will not be able to view this asset
+                </div>
+            </div>
+            <div class="item item-text-wrap">
+                <label
+                    ng-repeat="user in user_list" >
+                    {[{user.name}]} {[{user.email}]}
+                </label>
+            </div>
+        </div>
+    </ion-list>
+    </ion-content>
+</ion-view>
+

@@ -1,0 +1,8 @@
+body, #sidebar, #copyright, .blog-entry-date, p.blog-entry-tags a, .photo-navigation a:link, .photo-navigation a:visited, .movie-page-title, {
+    font-family: Geneva, Tahoma, Verdana, sans-serif;
+}
+
+#siteHeader h1, #siteHeader h2, #sidebar h3, #navcontainer, h1.blog-entry-title, p.blog-entry-tags, .blog-entry-comments a, .blog-entry-category a:link,
+.blog-entry-category a:visited, .blog-read-more a:link, .blog-read-more a:visited, .album-title, .photo-background p.photo-title, .form-input-field, #contentContainer {
+    font-family: Georgia, "Times New Roman", Times, serif;
+}

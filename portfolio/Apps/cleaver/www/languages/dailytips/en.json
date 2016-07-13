@@ -1,0 +1,37 @@
+[
+    {
+        "fromAge": 0,
+        "toAge": 3,
+        "gender": "f",
+        "text": "blah blah blah",
+        "route": "/auth/signin"
+    },
+    {
+        "fromAge": 0,
+        "toAge": 50,
+        "gender": "a",
+        "text":"blah blah blah",
+        "route": "/auth/signin"
+    },
+    {
+        "fromAge": 0,
+        "toAge": 3,
+        "gender": "f",
+        "text":"blah blah blah",
+        "route": "/auth/signin"
+    },
+    {
+        "fromAge": 2,
+        "toAge": 90,
+        "gender": "m",
+        "text":"blah blah blah",
+        "route": "/auth/signin"
+    },
+    {
+        "fromAge": 100,
+        "toAge": 300,
+        "gender": "m",
+        "text":"blah blah blah",
+        "route": "/auth/signin"
+    }
+]

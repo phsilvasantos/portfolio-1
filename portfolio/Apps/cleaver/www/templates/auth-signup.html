@@ -1,0 +1,43 @@
+<ion-content has-bouncing="false" class="loginbg padding" on-scroll="dynamicStatusBar('signupMainScroll')" delegate-handle="signupMainScroll">
+    <ion-header-bar class="bar-positive">
+      <h1 class="title" data-translate>cleverbaby.auth.signup.title</h1>
+    </ion-header-bar>
+    <div class="loginlogo">
+      <img src="img/logo.png" class="logo">
+    </div>
+    <div class="list loginbg">
+        <label class="item item-input with-input">
+            <!-- <span class="input-label" data-translate>cleverbaby.auth.signup.name</span> -->
+            <input type="text" ng-model="user.name" placeholder="Name">
+        </label>
+        <label class="item item-input with-input">
+            <!-- <span class="input-label" data-translate>cleverbaby.auth.signup.email</span> -->
+            <input type="text" ng-model="user.email" placeholder="Email">
+        </label>
+        <label class="item item-input with-input">
+            <!-- <span class="input-label" data-translate>cleverbaby.auth.signup.password</span> -->
+            <input type="password" ng-model="user.password" placeholder="Password">
+        </label>
+        <label class="item item-input">
+            <button class="button button-block button-positive"
+                    ng-click="createUser()" data-translate>
+                cleverbaby.auth.signup.submit
+            </button>
+        </label>
+        <div class="item item-divider text-center">or</div>
+        <label class="item item-input">
+            <button class="button button-block button-positive social-media social-facebook"
+                    ng-click="createWithOAuth('facebook')"
+                    data-translate>
+                cleverbaby.auth.signup.facebook
+            </button>
+        </label>
+        <label class="item item-input last-item">
+            <button class="button button-block button-positive social-media social-google" 
+                    ng-click="createWithOAuth('google')"
+                    data-translate>
+                cleverbaby.auth.signup.google
+            </button>
+        </label>
+    </div>
+</ion-content>

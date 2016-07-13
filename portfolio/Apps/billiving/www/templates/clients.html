@@ -1,0 +1,36 @@
+<ion-view hide-back-button="true">
+  <ion-nav-title>
+     Clients
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-ios-plus-empty" ng-click="add()"></button>
+    <button class="button button-icon button-clear ion-ios7-refresh-empty" ng-click="refresh()"></button>
+  </ion-nav-buttons>
+  <div class="bar bar-subheader bar-stable item-input-inset clients-search-bar">
+    <form class="item-input-wrapper" id="clientsSearchForm">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="search" placeholder="Search" ng-model="options.FreeText" dng-change="divideClients()" id="txt_clients_search">
+    </form>
+    <button class="button button-clear" ng-show="options.FreeText!==''" ng-click="clearSearch()"><i class="icon ion-ios7-close-outline"></i></button>
+  </div>
+  <ion-content class="has-subheader page page-clients">
+    <ion-list>
+      <div id="{{divider}}" class="item item-divider" ng-repeat-start="divider in dividers track by $index" ng-if="dividedClients[divider].length > 0">
+        <strong>{{divider}}</strong>
+      </div>
+            
+      <ion-item class="ion-item-custom" ng-repeat="c in dividedClients[divider] track by $index" ng-click="edit(c.Id)">
+        <h2>{{c.OrganizationName|| c.Email}}</h2>
+        <p>{{c.ContactName}}</p>
+        <ion-option-button class="button-balanced ion-edit ion-option-button custom-font" ng-click="edit(c.Id)"></ion-option-button>
+        <ion-option-button class="button-energized ion-close ion-option-button custom-font" ng-click="delete(c.Id)"></ion-option-button>
+      </ion-item>
+      <div ng-repeat-end></div>
+    </ion-list>
+    
+    <ion-infinite-scroll on-infinite="loadMoreClients()" distance="1%" ng-if="isMoreClients"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

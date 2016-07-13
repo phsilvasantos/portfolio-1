@@ -1,0 +1,31 @@
+<ion-view title="Create New Team" ng-controller="MessagePickCtrl" class="organizate-view">
+  <ion-content class="no-header">
+    <div class="organizate-detail-description">
+      Hey, you haven't told me if you play or not yet - I need you to tell me now please.
+    </div>
+    <div style="text-align: center;">
+      <div class="button organizate-lightgreen-btn" ng-click = "changVenue();">I'm in, pick me!</div>
+      <div class="button organizate-pink-btn" ng-click = "changVenue();">Sorry, I can't play</div>
+    </div>
+    <div class="organizate-detail-description">
+      Date : 7th of December 2014<br/>
+      Time : 09:00
+    </div>
+
+    <div class="organizate-detail-description">
+      Location : 
+    </div>
+    <div style="text-align: center;">
+      <div id ="map" style="width: 90%; height: 100px;;background: #ccc;margin: auto;"></div>
+    </div>
+    <div class="organizate-detail-description">Special instructions from the coach :</div>
+    <div class="item item-input organizate-input-text">
+      <input type="text" name="volume" placeholder="Free text form" ng-model="lastGameData.opponentname"/>
+    </div>
+    <div class="organizate-detail-description">
+      I will send you the lineup and the formation as soon as people get back to me with their confirmations, do that NOW please!
+    </div>
+    <div class="organizate-detail-description">See you on the pitch</div>
+    <div class="organizate-detail-description">Coach<br/><b>Team name</b></div>
+  </ion-content>
+</ion-view>

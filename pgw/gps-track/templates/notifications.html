@@ -1,0 +1,34 @@
+<ion-view title="Message">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>    
+    <ion-content class="has-header">
+    <ion-list class="list list-inset">
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-document-text assertive"></i> Invitations
+            </div>
+            <div class="item item-text-wrap" ng-repeat="invitation in invitation_list">
+                <label class="item">
+                    {[{invitation.sender}]}
+                    <p>{[{invitation.organization}]}</p>
+                </label>
+                <button class="button button-assertive" ng-click="acceptInvitation(invitation._id.$oid,invitation.organization,true,false)">Accept</button><button class="button button-energetic" ng-click="acceptInvitation(invitation.id.$oid,invitation.organization,false,true)">Decline</button>
+            </div>
+            <!--<div class="item item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="sendMessage(asset_details.asset_detail._id.$oid,message,message_time)">
+                    <i class="icon ion-archive positive"></i>
+                    Send Message
+                </a>
+                <a class="tab-item" ng-click="sendOpenMessage(asset_details.asset_detail._id.$oid,message,message_time)">
+                    <i class="icon ion-archive positive"></i>
+                    Send Message
+                </a>
+            </div>-->
+        </div>
+
+    </ion-list>
+    </ion-content>
+</ion-view>
+

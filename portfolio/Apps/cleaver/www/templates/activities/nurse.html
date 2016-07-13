@@ -1,0 +1,92 @@
+<div class="modal transparent" ng-controller="activityCtrl" ng-click="closeActivity()">
+    <div class="wrapper nurse" ng-click="$event.stopPropagation()">
+        <form ng-submit="hideKeyboard()">
+            <div class="header">
+                <div style="display: none !important;">{{resetOnShow = 'nurse'}}</div>
+                <h2 class="title">
+                    <span class="icon-breast-feeding"></span>
+                    <span data-translate>cleverbaby.app.activity.nurse.title</span>
+                </h2>
+                <a ng-click="closeActivity()" class="btn pull-left"><i class="fa fa-close"></i></a>
+                <a ng-if="modal.mode == 'add'" ng-click="submitActivityCheck()" class="btn pull-right"><i class="fa fa-check"></i></a>
+                <a ng-if="modal.mode != 'add'" ng-click="deleteActivity('nurse')" class="btn pull-right"><i class="fa fa-trash-o"></i></a>
+            </div>
+            <div class="content">
+                <div class="kotak no-border padding-top">
+                    <div class="rumah-radio">
+                        <ion-radio ng-model="timer" ng-value="false" name="timer_mode" class="xs-2 border-right tab-style" ><span data-translate>cleverbaby.app.activity.nurse.mode.manual</span></ion-radio>
+                        <ion-radio ng-model="timer" ng-value="true" name="timer_mode" class="xs-2 border-right tab-style"><span data-translate>cleverbaby.app.activity.nurse.mode.timer</span></ion-radio>
+                    </div>
+                </div>
+                <div class="kotak">
+                    <label class="default">
+                        <span class="icon-clock"></span> <span data-translate>cleverbaby.app.activity.nurse.time</span>
+                    </label>
+                    <div mobiscroll-datetime="" mobiscroll-model="modal.data.time" class-child="form-control"></div>
+                </div>
+                <div class="kotak" ng-show="manual">
+                    <label class="default" data-translate>
+                        cleverbaby.app.activity.nurse.time_left
+                    </label>
+                    <div mobiscroll-nursetime="" mobiscroll-model="modal.data.nurse_timeleft"></div>
+                </div>
+                <div class="kotak" ng-show="manual">
+                    <label class="default" data-translate>
+                        cleverbaby.app.activity.nurse.time_right
+                    </label>
+                    <div mobiscroll-nursetime="" mobiscroll-model="modal.data.nurse_timeright"></div>
+                </div>
+                <div class="kotak" ng-show="manual">
+                    <label class="default" data-translate>
+                        cleverbaby.app.activity.nurse.time_both
+                    </label>
+                    <span class="satuan">
+                        {{ getTimeMinutes(modal.data.nurse_timeboth) }} min
+                    </span>
+                </div>
+                <div class="row kotak" ng-show="timer" ng-if="modal.data.nurse_timeleft && modal.data.nurse_timeright">
+                    <div class="col text-center">
+                        {{ getTimeMinutes(modal.data.nurse_timeleft, true) }}
+                    </div>
+                    <div class="col text-center">
+                        {{ getTimeMinutes(modal.data.nurse_timeright, true) }}
+                    </div>
+                </div>
+                <div class="row kotak" ng-show="timer">
+                    <div class="col text-center">
+                        <div class="rumah-radio">
+                            <label class="border-right tab-style text-center item item-radio" ng-click="timerStart('nurse', 'left')"><div class="item-content disable-pointer-events"><span>Start Left</span></div></label>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="rumah-radio">
+                            <label class="border-right tab-style text-center item item-radio" ng-click="timerStart('nurse', 'right')"><div class="item-content disable-pointer-events"><span>Start Right</span></div></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- addpic/addnote -->
+            <div class="kotak no-border autoheight" ng-if="modal.data.note">
+                <a class="delete" ng-click="deleteNote()"><i class="fa fa-trash"></i></a>
+                <div ng-click="addNote(modal.data.note)">
+                    <label class="small" data-translate>cleverbaby.app.activity.comment.click</label>
+                    <p>{{ modal.data.note }}</p>
+                </div>
+            </div>
+
+            <div class="kotak no-border autoheight" ng-repeat="media in modal.data.media | filter:{ type: '!del'}">
+                <a class="delete" ng-click="deletePhoto(media)"><i class="fa fa-trash"></i></a>
+                <div class="thumb">
+                    <img ng-src="{{ media.displayImage | babyImage }}">
+                </div>
+            </div>
+
+            <div class="footer">
+                <a class="pull-left" ng-click="addNote()"><span class="icon-book-open"></span><span data-translate>cleverbaby.app.activity.add_note</span></a>
+                <a class="btn-mid" ng-click="saveActivity('nurse')"><i class="fa fa-check"></i> &nbsp;<span data-translate>cleverbaby.app.activity.save_close</span></a>
+                <a class="pull-right" choose-photo="captureImageOption"><span class="icon-camera"></span><span data-translate>cleverbaby.app.activity.photo</span></a>
+            </div>
+            <input type="submit" value="submit" class="hidden-submit">
+        </form>
+    </div>
+</div>

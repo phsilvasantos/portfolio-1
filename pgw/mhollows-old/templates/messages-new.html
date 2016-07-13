@@ -1,0 +1,25 @@
+<ion-view title="New message" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button-clear button back-button" ui-sref="app.messages">Cancel</button>
+  </ion-nav-buttons>
+  <ion-header-bar align-title="left" class="bar-messages-new">
+    <div class="bar bar-subheader item-input-inset">
+      <p>To:</p>
+
+      <messages-new-members></messages-new-members>
+      <a href="" ng-if="messagesNewCtrl.receivers.length > 3" class="wide">+{{ messagesNewCtrl.receivers.length - 3 }}</a>
+      <input type="search" ng-change="messagesNewCtrl.search()" ng-model="messagesNewCtrl.searchQuery">
+    </div>
+  </ion-header-bar>
+  <ion-content class="page page-messages page-messages-new has-subheader">
+    <div class="list">
+      <messages-contact-list></messages-contact-list>
+    </div>
+	</ion-content>
+  <ion-footer-bar align-title="left" class="bar-footer page-messages-new" keyboard-attach>
+    <label>
+      <input type="text" placeholder="Type Message..." ng-model="messagesNewCtrl.message" keyboard-attach ng-click="messagesNewCtrl.startChat($event)">
+      <button class="button-send">Send <i class="fa fa-send"></i></button>
+    </label>
+  </ion-footer-bar>
+</ion-view>

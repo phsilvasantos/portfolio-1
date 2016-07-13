@@ -1,0 +1,54 @@
+<ion-view hide-back-button="true" id="view-feed" cache-view="true">
+  <ion-nav-title>{{organizationName}}</ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear feedtypes-selector popover-starter" ng-click="typePopover.show($event)">
+      <em id="selected_feedtypename">All</em> <i class="icon ion-arrow-down-b"></i>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-feed">
+    <ion-refresher
+      pulling-text="Pull to refresh feeds..."
+      on-refresh="loadData(false)">
+    </ion-refresher>
+    <div class="feed-list">
+      <ul>
+        <li class="{{fd.class}}" ng-repeat="fd in feeds">
+          <a href="javascript:void(0)" ng-click="openFeed(fd)">
+            <div class="feed-content">
+              <div class="feed-media">
+                <div background-image="{{feedImage(fd)}}" class="feed-image"></div>
+              </div>
+              <div class="feed-inner">
+                <div class="feed-title">
+                  {{fd.get('title')}}
+                </div>
+                <div class="feed-subtitle" ng-show="fd.get('strapLine')">{{fd.get('strapLine')}}</div>
+              </div>
+            </div>
+            <div class="feed-detail-info">
+              <span>{{fd.get('likeCount')?fd.get('likeCount'):'No'}} Likes</span>
+              <span>{{fd.get('commentCount')?fd.get('commentCount'):'No'}} Comments</span>
+              <span>Seen by {{fd.get('commentCount')}}</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <ion-infinite-scroll on-infinite="fetchMoreFeeds()" distance="1%" ng-if="isMoreFeeds"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+
+<script id="feedtypes-popover" type="text/ng-template">
+  <ion-popover-view class="feedtypes-popover">
+    <ion-content>
+      <div class="list">
+        <a ng-click="onSelectFeedType('all', $event)" class="item">All</a>
+        <a ng-repeat="category in categories" ng-click="onSelectFeedType(category, $event)" class="item">{{category.get('name')}}</a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

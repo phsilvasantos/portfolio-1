@@ -1,0 +1,24 @@
+<ion-view title="MANAGE GAME" ng-controller="GameHomePageCtrl" cache-view="false">
+  <ion-content class="page page-listmain has-subheader">
+    <ion-list>
+      <div class="custom-item-title">
+        Choose your role
+      </div>
+      <ion-item class="item item-icon-left" ng-click="goToPage('app.create-game');">
+        <p>Organize Game</p>
+      </ion-item>
+      <ion-item class="item item-icon-left" ng-click="goToPage('app.manage-game-macro');">
+        <p>Manage Games and See Status</p>
+      </ion-item>
+      <ion-item class="item item-icon-left" ng-click="goToPage('app.roster-member');">
+        <p>See or Edit Roster</p>
+      </ion-item>
+      <ion-item class="item item-icon-left" ng-click="goToPage('app.game-specific-message');">
+        <p>Send Team Message</p>
+      </ion-item>
+      <ion-item class="item item-icon-left" ng-click="goToPage('app.edit-team');">
+        <p>Edit Team Basic Information</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,96 @@
+<ion-view title="{{title}}" hide-back-button="{{!isViewingGroup}}">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon" ng-hide="isViewingGroup"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="filterModal.show()">Sort</button>
+  </ion-nav-buttons>
+
+  <!-- a-z Slider -->
+  <div class="az-slider" ng-if="!isViewingGroup">
+    <div class="tbl"><div class="inner">
+        <a ng-click="scrollToDivider(firstLetter)" on-swipe="scrollToDivider(firstLetter)" ng-repeat="firstLetter in letters"
+           ng-class="{'disabled':!dividedMembers[firstLetter].length}">{{firstLetter}}</a>
+      </div></div>
+  </div>
+  <!-- /a-z Slider -->
+
+  <form class="searchbar">
+    <!-- <i class='icon ion-search'></i>
+    <div class="searchbar-input">
+      <input type="search" placeholder="Search by name, profile information" id="txt_search_members">
+      <a href="javascript:void(0)" class="searchbar-clear" ng-show="data.searchword" ng-click="clearSearch()"><i class='icon ion-close-circled'></i></a>
+    </div> -->
+    <div class="item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="fa fa-search placeholder-icon"></i>
+        <input type="search" placeholder="" id="txt_search_members">
+      </label>
+    </div>
+  </form>
+
+
+  <ion-content class="page page-members">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <!--<div class="groupinfo" ng-show="group.get('description')" background-image="{{group.get('thumbImage').url() || group.get('image').url()}}" ng-class="{picexist: group.get('image').url(), nodescription: !group.get('description')}">
+        {{group.get('description')}}
+      </div>-->
+
+      <div class="members-list fluid" delegate-handle="memberList">
+        <div id="{{divider}}" class="item-divider" ng-repeat-start="divider in dividers" ng-if="dividedMembers[divider].length > 0">
+          <strong>{{divider}}</strong>
+        </div>
+        
+        <div class="member-item" ng-repeat="m in members | gnMembersSearch:data.searchword | orderBy:orderBy">
+          <a ng-href="#/profile/{{m.get('profile').id}}" class="picture" 
+             background-image="{{m.get('profile').get('picture').url()}}"></a>
+          <div class="info">
+            <span class="name" ng-if="orderBy == 'firstName'"><strong>{{m.get('firstName')}}</strong> {{m.get('lastName')}}</span>
+            <span class="name" ng-if="orderBy == 'lastName'">{{m.get('firstName')}} <strong>{{m.get('lastName')}}</strong></span>
+            <a href="" class="btn-chat"><i class="svg-icon chat-text-bubble-white"></i></a>
+          </div>
+        </div>
+        
+        <div ng-repeat-end></div>
+      </div>
+
+      <!--<div class="list" delegate-handle="memberList">
+        <div id="{{divider}}" class="item item-divider" ng-repeat-start="divider in dividers" ng-if="dividedMembers[divider].length > 0">
+          <strong>{{divider}}</strong>
+        </div>
+
+        <a class="item" ng-href="#/profile/{{m.get('profile').id}}" ng-repeat="m in dividedMembers[divider]">
+          <div class="picture" background-image="{{m.get('profile').get('thumbImage').url()}}">
+          </div>
+          <h2 class="member-name">
+            <span ng-if="orderBy == 'firstName'">
+              <strong>{{m.get('firstName')}}</strong> {{m.get('lastName')}}
+            </span>
+            <span ng-if="orderBy == 'lastName'">
+              {{m.get('firstName')}} <strong>{{m.get('lastName')}}</strong>
+            </span>
+            <div class="subtitle" ng-bind-html="subtitleForMember(m)"></div>
+          </h2>
+        </a>
+        <div ng-repeat-end></div>
+      </div>-->
+    </div>
+  </ion-content>
+</ion-view>
+<script id="filter-modal-html" type="text/ng-template">
+  <div class="modal modal-filter-members">
+  <header class="bar bar-header">
+  <h1 class="title">Sort/Filter Members</h1>
+  <!-- <div class="button button-clear" ng-click="filterModal.hide()"><span class="icon ion-close"></span></div> -->
+  </header>
+  <content padding="true">
+  <div class="list sortby">
+  <div class="item item-divider">Sort By</div>
+  <ion-radio ng-model="orderBy" ng-value="'firstName'" ng-click="sortMembers('firstName')">First Name</ion-radio>
+  <ion-radio ng-model="orderBy" ng-value="'lastName'" ng-click="sortMembers('lastName')">Last Name</ion-radio>
+  <!-- <ion-radio ng-model="orderBy" ng-value="'joinDate'" ng-click="sortMembers('joinDate')">Join Date</ion-radio> -->
+  </div>
+  </content>
+  </div>
+</script>

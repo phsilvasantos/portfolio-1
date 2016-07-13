@@ -1,0 +1,55 @@
+<ion-view title="Message List">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+    <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+    </ion-refresher>    
+    <ion-list class="list list-inset">
+        <!--<div class="card">
+            <div class="item item-text-wrap">
+                Testing of Results...
+            </div>
+        </div> -->
+        <div class="card" ng-repeat="message in message_list.messages">
+            <div class="item item divider">
+                <h2 ng-repeat="msg_to_asset in message.to_asset"><i class="icon ion-model-s assertive"></i> / <i class="icon ion-person calm"></i>: {[{msg_to_asset.name }]}</h2>
+            </div>
+            <div class="item item-text-wrap">
+                <i class="icon ion-android-chat assertive"></i> {[{message.message}]}<br />
+                <p class="text-right"><small>Scheduled 
+                    <i class="icon ion-at dark">{[{message.scheduled_date.$date| date:'yyyy-MM-dd HH:mm:ss Z'}]}</i></small></p>
+                <p class="text-right"><small>Created 
+                    <i class="icon ion-at dark">
+                    {[{message.created_on.$date| date:'yyyy-MM-dd HH:mm:ss Z'}]}
+                    </i></small></p>
+                <ul>
+                    <li>
+                        Accepted? <i class="icon ion-pound balanced">{[{message.accepted}]}</i>
+                    </li>
+                </ul>
+            </div>
+            <div class="item item-text-wrap">
+                <ion-checkbox
+                    ng-model="message.delivered"
+                    ng-checked="message.delivered" 
+                    ng-change="deliver(message._id.$oid,message.delivered)">
+                    Delivered?
+                </ion-checkbox>
+            </div>
+            <div class="item tabs tabs-icon-right item-divider">
+                <a class="tab-item" ui-sref="app.messageView({ messageId: message._id.$oid})">
+                <!--<a class="tab-item" ng-click="viewOnMap(message._id.$oid,message.loc,message.message,message_list[$index]['delivered'],message.accepted)">-->
+                    <i class="icon ion-earth positive"></i>
+                    View On Map
+                </a>
+                <a class="tab-item" onclick="window.plugins.socialsharing.shareViaFacebook('Message via Facebook', null /* img */, 'https://play.google.com/store/apps/details?id=com.finder.gps.tracking' /* url */, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})"><i class="icon ion-social-facebook positive"></i></a>
+                <a class="tab-item" onclick="window.plugins.socialsharing.shareViaTwitter('Finder Tracking is awesome', null /* img */, 'https://play.google.com/store/apps/details?id=com.finder.gps.tracking' /* url */, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})"><i class="icon ion-social-twitter calm"></i></a>
+            </div>
+        </div>
+    </ion-list>
+    </ion-content>
+</ion-view>

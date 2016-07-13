@@ -1,0 +1,19 @@
+<div class="modal transparent" ng-controller="MoreRateusLikeCtrl" ng-click="">
+    <div class="wrapper more-rateus add" ng-click="$event.stopPropagation()">
+        <div class="header">
+            <h2 class="title">
+                <span data-translate>cleverbaby.app.more.rateus.like.question</span>
+            </h2>
+        </div>
+        <div class="content">
+            <div class="kotak autoheight gutter">
+                <div class="xs-2">
+                    <button class="btn small-text" ng-click="yes()">{{'cleverbaby.app.more.rateus.like.yes' | translate}}</button>
+                </div>
+                <div class="xs-2">
+                    <button class="btn small-text" ng-click="no()">{{'cleverbaby.app.more.rateus.like.no' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

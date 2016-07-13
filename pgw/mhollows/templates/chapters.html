@@ -1,0 +1,14 @@
+<ion-view view-title="Chapter" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-content class="page page-chapters">
+    <div class="chapters-list">
+      <a class="chapter-item" ng-click="gotoGroupDetail(g)" ng-repeat='g in chapters'>
+        <div background-image="{{g.get('thumbImage').url() || g.get('image').url()}}" class="avatar"></div>
+        <strong>{{g.get('name')}}</strong>
+        <em>{{g.get('memberCount')}} members</em>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

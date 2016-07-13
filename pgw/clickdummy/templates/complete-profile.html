@@ -1,0 +1,56 @@
+<ion-view view-title="Register" hide-nav-bar="true">
+  <ion-content class="page page-complete-profile">
+    
+    <h2>YAAY or NAAY?</h2>
+    
+    <div class="description">
+      Congratulations!
+      <em>Please complete your profile!</em>
+    </div>
+    
+    <form>
+      
+      <div class="photobox">
+        <input type="file" id="profile_photo_r" onchange="onProfilePhotoSelected(this)" accept="image/*">
+        <i class="icon ion-ios-camera-outline"></i>
+        <label>Add Photo</label>
+      </div>
+      
+      <div class="list list-inset form-skin1">
+        <label class="item item-input">
+          <input type="text" placeholder="Name" ng-model="data.name">
+          <i class="icon ion-ios-checkmark-empty checkmark ng-hide" ng-show="data.name"></i>
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Gender" ng-model="data.gender" readonly="readonly" ng-click="genderPopover.show($event)">
+          <i class="icon ion-ios-checkmark-empty checkmark ng-hide" ng-show="data.gender"></i>
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Birth Date" ng-model="data.birthday">
+          <i class="icon ion-ios-checkmark-empty checkmark ng-hide" ng-show="data.birthday"></i>
+        </label>
+        <label class="item item-input">
+          <input type="number" placeholder="Code we sent by e-mail" ng-model="data.code">
+          <i class="icon ion-ios-checkmark-empty checkmark ng-hide" ng-show="data.code"></i>
+        </label>
+        <div class="item item-error">
+          THIS IS AN example of an error MESSAGE*
+        </div>
+      </div>
+    </form>
+    
+    <a class="button button-transparent" href="#/introduction">Let's get started</a>
+    
+  </ion-content>
+</ion-view>
+
+<script id="gender-popover" type="text/ng-template">
+  <ion-popover-view class="gender-popover">
+    <ion-content>
+      <div class="list">
+        <a ng-click="onSelectGender('Male', $event)" class="item">Male</a>
+        <a ng-click="onSelectGender('Female', $event)" class="item">Female</a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

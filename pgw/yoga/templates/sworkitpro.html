@@ -1,0 +1,41 @@
+<ion-view title="Download Sworkit Pro" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-ios7-arrow-back" ng-click="goBack()"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header width-control promo-page">
+	  <div class="item item-avatar item-text-wrap">
+	    <img src="img/sworkitpro_logo.png">
+	    <h2>Unlock all of Sworkit Pro's additional features to take your workouts to the next level and beyond!</h2>
+	  </div>
+	  <button class="button button-block condense button-balanced nexercise-blue" ng-hide="userSettings.mfpStatus" style="padding: 0 10px" ng-click="downloadSworkitPro()">
+	          Download Sworkit Pro
+	      </button>
+	  <div class="item item-text-wrap">
+		  <h3>PRO FEATURES:</h3>
+		  <p>Save multiple custom workouts</p>
+		  <p>Adjustable interval lengths</p>
+		  <p>7-Minute Workout other bonus workouts</p>
+		  <p>Access to complete workout history</p>
+		  <p>Extra Rewards Points (US only)</p>
+		  <p>Enable/Disable Rewards</p>
+		  <p>Coming Soon to Pro Only: HD Videos and Small Equipment Exercises</p>		  
+	  </div>
+	  <ion-slide-box does-continue="true" auto-play="true" class="promo-images" style="background-color: black;" show-pager="false">
+		  <ion-slide>
+		    <div class="box sceen1"><img src="img/sworkitproapp1.png"/></div>
+		  </ion-slide>
+		  <ion-slide>
+		    <div class="box screen2"><img src="img/sworkitproapp2.png"/></div>
+		  </ion-slide>
+		  <ion-slide>
+		    <div class="box screen3"><img src="img/sworkitproapp3.png"/></div>
+		  </ion-slide>
+		  <ion-slide>
+		    <div class="box screen4"><img src="img/sworkitproapp4.png"/></div>
+		  </ion-slide>
+		  <ion-slide>
+		    <div class="box screen5"><img src="img/sworkitproapp5.png"/></div>
+		  </ion-slide>
+	  </ion-slide-box>
+  </ion-content>
+</ion-view>

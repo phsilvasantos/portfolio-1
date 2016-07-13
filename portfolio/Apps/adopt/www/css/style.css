@@ -1,0 +1,1004 @@
+/* Empty. Add your own CSS if you like */
+
+/*@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('lib/ionic/fonts/Montserrat/Montserrat-Bold.ttf');
+    url('lib/ionic/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype')
+    }
+*/
+
+/* latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat-Regular'), url(.woff2) format('lib/ionic/fonts/Montserrat-Regular.woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Montserrat-Bold'), url(.woff2) format('lib/ionic/fonts/Montserrat-Bold.woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+
+
+.login-modal .close-button .icon::before {
+    font-size: 18px !important;
+}
+
+.icon.ion-ios-arrow-back, .button.button-icon.button-clear.ion-navicon{
+    color:white;
+}
+span.back-text{
+    display:none !important;
+}
+
+html, body, div, span{
+    font-size:95%;
+}
+
+/*
+==========================================================================================
+Home Screen
+==========================================================================================
+*/
+
+
+a.home-col{
+    text-decoration:none;
+    padding:0px;
+}
+.full-image{
+    display:none;
+}
+.home-col-img{
+    display:block;
+    float:left;
+    height:65px;
+    width:55px;
+}
+.home-wrapper{
+    margin-top:44px;
+}
+.home-wrapper .top-banner{
+    margin-bottom:-5px;
+}
+
+.home-wrapper .top-banner img{
+    width:100%;
+}
+
+
+.home-col h2{
+    font-family: 'Raleway', sans-serif;
+    color:#60bbe2;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight:800;
+    letter-spacing:-1px;
+}
+.home-col p {
+    color:#444;
+    margin: 0px;
+    font-weight: 500;
+    font-size: 11px;
+}
+
+span.home-col-img.smaller img {
+    width: 80%;
+    margin-top: 10px;
+}
+span.home-col-img.others img{
+    margin-top:10px;
+    margin-left:2px;
+}
+span.home-col-img.news img{
+    margin-top:15px;
+    margin-left:-5px;
+}
+
+
+/*
+==========================================================================================
+Menu
+==========================================================================================
+*/
+.side-menu{
+    background:#444;
+}
+.menu-image {
+    margin-bottom: -5px;
+}
+
+.menu-image img{
+    height:auto;
+    width:100%;
+}
+.side-menu .item-complex .item-content{
+    background:#444;
+    color:white;
+    font-family:"Montserrat" !important;
+    text-transform:uppercase;
+    font-size:.85em;
+    font-weight:700;
+}
+ion-item.nav-item.item.item-complex {
+    border: 0px;
+}
+.nav-item i{
+    font-size:1.6em;
+}
+.side-menu .item-complex a:active {
+    color: #60bbe2;
+    border-left: 5px solid #60bbe2;
+    padding-left: 11px;
+}
+/*
+==========================================================================================
+Listing Screen
+==========================================================================================
+*/
+
+.item-content p.post-excerpt {
+    white-space: wrap;
+}
+
+.list-item.item-thumbnail-left.item.item-complex{
+    margin:-1px;
+}
+
+img.post-featured {
+    top: 0px !important;
+    left: 0px !important;
+    position: absolute;
+    max-height: 100px !important;
+    max-width: 100px !important;
+}
+
+p.post-excerpt.ng-binding {
+    display: block;
+}
+.media-list .item h2{
+    margin-top:-7px;
+}
+
+
+p.post-excerpt.ng-binding {
+    /* display: none; */
+    height: 31px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.date {
+    font-size: 11px;
+    font-weight: 200;
+    bottom: 2px;
+    position: absolute;
+}
+.media-list .item h2 {
+    margin-top: -7px;
+    width: 70%;
+    height: 20px;
+}
+h4.county {
+    top: 13px;
+    position: absolute;
+    right: 10px;
+    font-weight: 200;
+    color:#666;
+}
+h4.list-county{
+    color:#666;
+    font-weight:400;
+}
+h4.secondary-title{
+    font-weight:400;
+}
+.product-list .item h2, .media-list .item h2, .card-list .item h2, .card-view .item h2, .list-list .item h2 {
+    text-overflow: inherit;
+    white-space: normal !important;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: #3489ad;
+}
+
+.top-list-info{
+    height:40px;
+}
+.bottom-list-info{
+    height:27px;
+}
+.top-list-info .left, .bottom-list-info .left{
+    width:65%;
+    float:left;
+}
+.top-list-info .right, .bottom-list-info .right{
+    width:35%;
+    float:left;
+    text-align:right;
+}
+.bottom-list-info .left, .bottom-list-info .right{
+    margin-top:10px;
+}
+.top-list-info h3{
+    color:#60bbe2;
+}
+.post-excerpt p{
+    height:30px;
+}
+
+.post-category{
+    display:none;
+}
+.post_date {
+    font-size: 11px;
+    font-weight: 200;
+    top:30px;
+}
+.reserved{
+    color: white;
+    background: #f7971d;
+    width: 30.7%;
+    font-weight: 900;
+    position: absolute;
+    left: -25px;
+    bottom: 65px;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    -moz-transform: scale(1) rotate(-45deg);
+    -webkit-transform: scale(1) rotate(-45deg);
+    -o-transform: scale(1) rotate(-45deg);
+    -ms-transform: scale(1) rotate(-45deg);
+    transform: scale(1) rotate(-45deg);
+    overflow: hidden;
+}
+/*
+==========================================================================================
+Listing Specific - Used for style that do not follow the norm of the Listing Screen
+==========================================================================================
+*/
+
+/*
+==========================================================================================
+Single Pet Page
+==========================================================================================
+*/
+
+.pet-title{
+    min-height:40px
+}
+.pet-title h2{
+    /*color:#60bbe2;*/
+    font-weight:600;
+    font-size:1.4em;
+    letter-spacing:-1px;
+    width:80%;
+    float:left;
+    /*font-family: 'Raleway', sans-serif;*/
+    height:auto;
+    overflow:hidden;
+    padding:10px 0;
+}
+.pet-title h3{
+    /*color:#60bbe2;*/
+    font-weight:600;
+    font-size:1em;
+    letter-spacing:-1px;
+    width:20%;
+    float:left;
+    margin-top:5px;
+    /*font-family: 'Raleway', sans-serif;*/
+    padding:10px 0;
+}
+
+.reserved-inner{
+    color: white;
+    background: #f7971d;
+    width: 30.7%;
+    font-weight: 900;
+    position: absolute;
+    left: -25px;
+    top: 15px;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    -moz-transform: scale(1) rotate(-45deg);
+    -webkit-transform: scale(1) rotate(-45deg);
+    -o-transform: scale(1) rotate(-45deg);
+    -ms-transform: scale(1) rotate(-45deg);
+    transform: scale(1) rotate(-45deg);
+    overflow: hidden;
+}
+h4.county {
+    color: #222;
+}
+
+.item-complex.item-icon-right .item-content{
+    padding-right:27px;
+    padding-bottom:0px;
+}
+.item-content p{
+    white-space:normal;
+}
+.item p{
+    font-size:12px;
+    line-height:14px;
+}
+
+.item-text-wrap .ng-binding p{
+    font-size:100%;
+    color:#666;
+    line-height: 19px;
+    padding: 10px;
+}	
+
+.rescueinfo{
+    width:100%;
+}
+
+.rescueinfo-image{
+    width:100%;
+    text-align:center;
+    margin:10px 0px;
+}
+
+.rescueinfo-image img{
+    border-radius:80px;
+    border:1px solid #dadada;
+}
+
+.rescueinfo-details{
+    width:100%;
+    text-align:center;
+}
+.rescueinfo h2{
+    font-weight:500;
+    margin-bottom:20px;
+}
+/*
+==========================================================================================
+Single Pet Specific
+==========================================================================================
+*/
+
+/*
+==========================================================================================
+Slider
+==========================================================================================
+*/
+
+.pet-slider .box{
+    height:270px !important;
+    background-size:cover;
+}
+.pet-slider .box img{
+    width:100%;
+}
+.articles .pet-slider .box{
+    height:auto !important;
+    background-size:cover;
+    min-height:200px;
+}
+.slider {
+    height: 100%;
+}
+.slider-slide {
+    background-size: cover;
+    text-align: center;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    margin-bottom:-5px;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 200px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.slide-content h3 {
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.slider{
+    visibility:visible;
+}
+.slider-pager .slider-pager-page{
+    color:white;
+}
+/*
+==========================================================================================
+Modal PopUp
+==========================================================================================
+*/
+
+/*
+==========================================================================================
+Latest News List
+==========================================================================================
+*/
+
+/*
+==========================================================================================
+Latest News Post
+==========================================================================================
+*/
+
+.articles p img{
+    width:100%;
+    height:auto;
+}
+.articles .article-title h2{
+    margin: 0 0 2px 0;
+    font-size: 1.5em;
+    font-weight: 700;
+    font-family: "Roboto";
+    letter-spacing:-1px;
+    color:#444;
+}
+.articles .article-title h3{
+    margin: 0px 0 -5px 0;
+    font-size: 1em;
+    font-weight: normal;
+    font-family: "Montserrat";
+    color:#ccc;
+}
+/*
+==========================================================================================
+General Info Page
+==========================================================================================
+*/
+
+/*
+==========================================================================================
+Contact Form 7
+==========================================================================================
+*/
+
+input.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required, textarea.wpcf7-form-control.wpcf7-textarea {
+    padding: 5px;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+}
+
+.input {
+    margin-bottom: 10px;
+}
+iframe .label {
+    font-family: helvetica neue;
+    font-weight: 300;
+    color: #aaa;
+    font-size: 13px;
+    padding: 5px 0px;
+    text-transform: uppercase;
+}
+
+input.wpcf7-form-control.wpcf7-submit{
+    border-color: #145fd7;
+    background-color: #4a87ee;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0 12px;
+    min-width: 52px;
+    min-height: 47px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 42px;
+    cursor: pointer;
+    width:100%;
+}
+em, strong{
+    color:#60bbe2;
+}
+
+
+/*
+==========================================================================================
+
+==========================================================================================
+*/
+
+
+.bar.bar-stable{
+    background:#60bbe2;
+}	
+
+
+span.arrow {
+    right: 10px;
+    position: absolute;
+    margin-top: -10px;
+}
+.breed-result {
+    height: 20px;
+    margin-top: -7px;
+    margin-bottom: 1px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #3489ad;
+}
+
+.fee-result {
+    font-size: 13px;
+    font-weight: 500;
+    color: #3489ad;
+    bottom: 2px;
+    position: absolute;
+    right: 15px;
+}
+
+
+
+
+/*h3.apponly{
+        color: white;
+        background: #60bbe2;
+        border-radius: 30px 30px 30px 0px;
+        -webkit-border-radius: 30px 30px 30px 0px;
+        padding: 5px 10px;
+        font-size: 1em;
+        font-weight: 400;
+        font-family: Helvetica;
+        width: 100%;
+}*/
+h4{
+    color: #60bbe2;
+    font-weight: 900;
+    font-size: 1.7em;
+}
+
+
+
+.card-view {
+    background: #eaeaea;
+}
+.card .item:first-child{
+    padding:5px 15px 5px 15px;
+}
+
+
+
+.bar .title{
+    background:url(http://reactor.apppresser.com/damientest2/wp-content/uploads/sites/87/2014/11/app_logo1.png) no-repeat;
+    background-position:center center;
+    font-size:0px !important;
+}
+.menu-open .bar .title{
+    background:none;
+}
+h1.title{
+    font-size:0px !important;
+}
+.news .media-list .item h2{
+    width:100%;
+    height:20px;
+}
+
+
+.item-thumbnail-left, .item-thumbnail-left .item-content{
+    min-height:100px;
+    padding-top:3px;
+}
+
+.item-thumbnail-left .item-content > img:first-child{
+    top:0px;
+    left:0px;
+    max-width: 100px;
+    max-height: 100px;
+}
+.header-item .button.button-positive{
+    border-color: lightblue;
+    background-color: transparent;
+    color: #fff;
+}
+
+.pet-info{
+    padding: 5px 0px;
+    border-bottom: 1px dashed #eaeaea;
+    min-height: 30px;
+    height: auto;
+    width: 100%;
+    display: table;
+}
+.info-title{
+    font-weight:500;
+    width:50%; 
+    float:left;
+}
+.info-description{
+    color:#666; 
+    width:50%; 
+    float:left;
+}
+
+
+.card{
+    box-shadow:0px 1px 2px rgba(0, 0, 0, 0.1)
+}
+.card.pet-card{
+    margin:20px 0px 20px 0px;
+}
+.card.pet-card p{
+    padding:0px;
+}
+
+.card.article-card{
+    margin:0px 0px 0px 0px;
+}
+.card.article-card p{
+    font-family:"Roboto";
+    padding:10px 0px;
+    font-size:100%;
+}
+.card.article-card h3.apponly {
+    text-decoration: underline;
+    font-size: 1.2em;
+    margin: 30px 0px 5px 0px;
+    color:#444;
+}
+.card.article-card em, .card.article-card strong{
+    color:#444;
+}
+
+h4.list-date{
+    bottom:0px;
+    color:#666;
+    font-weight:400;
+    /*position:absolute;*/
+}
+
+
+.modal-wrapper .iframe-wrapper{
+    position:relative;
+}
+
+
+/*
+.bar-header > * {
+    margin-top: 0px !important;
+}*/
+
+.scroll-content-single{
+    top:0 !important;
+}
+/*.bar-hidden{
+  opacity: 0;
+}
+.bar{
+        border-bottom:0px;
+        }*/
+
+.has-header{
+    top:44px;
+}
+/*
+==========================================================================================
+Photo Modal
+==========================================================================================
+*/
+
+.modal-photoview {
+    background-color: #252420;
+    color: #fff; }
+.modal-photoview a {
+    color: #fff; }
+.modal-photoview .modal-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-size: 18px; }
+@media only screen and (max-width: 374px) {
+    .modal-photoview .modal-content {
+        font-size: 16px; } }
+.modal-photoview .modal-content .slider {
+    height: 100%; }
+.modal-photoview .modal-content .slider .slider-pager {
+    display: none; }
+.modal-photoview .modal-content .bottom-meta, .modal-photoview .modal-content .btn-close {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s; }
+.modal-photoview .modal-content .btn-close {
+    position: absolute;
+    z-index: 10000;
+    top: 15px;
+    right: 15px;
+    background-color: #fff;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 100px;
+    padding: 0px; }
+.modal-photoview .modal-content .btn-close * {
+    color: #000; }
+.modal-photoview .modal-content .bottom-meta {
+    position: absolute;
+    z-index: 10000;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0px; }
+.modal-photoview .modal-content .bottom-meta .caption {
+    padding: 0px; }
+.modal-photoview .modal-content .bottom-meta .caption .photo-title {
+    border-bottom: 1px solid #767576;
+    padding: 0px 15px 5px 15px;
+    margin-bottom: 5px; }
+.modal-photoview .modal-content .bottom-meta .caption .photo-subtitle {
+    padding: 0px 15px 0px 15px; }
+.modal-photoview .modal-content .bottom-meta .caption em {
+    display: block;
+    color: #fff;
+    font-size: 0.9em; }
+.modal-photoview .modal-content .bottom-meta .actions {
+    padding: 0px 15px; }
+.modal-photoview .modal-content .bottom-meta .actions .action-item {
+    float: left;
+    margin: 10px 15px 0px 0px; }
+.modal-photoview .modal-content .bottom-meta .actions .action-item label {
+    display: inline-block; }
+.modal-photoview .modal-content .bottom-meta .actions .action-item .svg-icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    float: left; }
+.modal-photoview .modal-content .bottom-meta .actions .action-item .svg-icon.like-light-white {
+    margin-top: -5px; }
+.modal-photoview .modal-content .bottom-meta .actions .action-item .svg-icon.ellipsis-h-white {
+    margin-top: -3px; }
+.modal-photoview .modal-content .bottom-meta .actions .action-item.more label {
+    font-weight: bold;
+    font-size: 20px; }
+.modal-photoview .modal-content .bottom-meta .actions .action-item.disabled .svg-icon {
+    opacity: 0.4; }
+.modal-photoview .modal-content.hide-caption .bottom-meta {
+    bottom: -300px; }
+.modal-photoview .modal-content.hide-caption .btn-close {
+    top: -100px; }
+.modal-photoview .modal-content .photo-scroller {
+    width: 100%;
+    height: 100%;
+    overflow: auto; }
+.modal-photoview .modal-content .photo-scroller .photo-table {
+    display: table;
+    width: 100%;
+    height: 100%; }
+.modal-photoview .modal-content .photo-scroller .photo-table .scroll-view {
+    position: absolute;
+    height: 100%;
+    width: 100%; }
+.modal-photoview .modal-content .photo-scroller .photo-table .scroll-view .scroll {
+    display: table;
+    position: absolute;
+    width: 100%; 
+    height: 100%;}
+.modal-photoview .modal-content .photo-scroller .photo-table .photo-cell {
+    display: table-cell;
+    vertical-align: middle; }
+.modal-photoview .modal-content .photo-scroller .photo-table .photo-cell .photo-lg {
+    width: 100%;
+    display: block; }
+.photo-box{
+    width: 100%;
+    height: 250px;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.transparent {
+    background: transparent !important;
+}
+.image-modal {
+    width: 100% !important;
+    height: 100%;
+    top: 0 !important;
+    left: 0 !important;
+}
+.fullscreen-image {
+    max-width: 100%;
+    max-height: 100%;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+/* Fix modal backdrop for smaller devices */
+@media (max-width: 679px) {
+    .active .modal-backdrop-bg {
+        opacity: .5;
+    }
+    .modal-backdrop-bg {
+        -webkit-transition: opacity 300ms ease-in-out;
+        transition: opacity 300ms ease-in-out;
+        background-color: #000;
+        opacity: 0;
+    }
+}
+
+.modal-close-btn {
+    z-index: 9999;
+}
+
+/*
+==========================================================================================
+Filter
+==========================================================================================
+*/
+.item-divider,
+.pane {
+    background-color: #ecece4;
+}
+
+.checkbox input:checked:before, 
+.checkbox input:checked + .checkbox-icon:before {
+    background: #9283ca;
+    border-color: #9283ca;
+}
+
+/**
+ * This CSS uses adjacent selectors instead of general sibling (~) selectors
+ * for ion radio that are broken in iOS 9 UIWebView.
+ *
+ * To apply the patch, include this CSS after your ionic.css include.
+ */
+.item-radio input:checked + .radio-content .item-content {
+    /* style the item content when its checked */
+    background: #f7f7f7; 
+
+}
+
+.item-radio input:checked + .radio-content .radio-icon {
+    /* show the checkmark icon when its checked */
+    visibility: visible;
+
+}
+
+
+i.icon.ion-android-arrow-back{
+    color:white;
+}
+drawer {
+    display: block;
+    margin-top: 44px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: #ffffff;
+}
+
+drawer.animate {
+    -webkit-transition: 0.4s all ease-in-out;
+    transition: 0.4s all ease-in-out;
+}
+
+drawer.left {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    box-shadow: 1px 0px 10px rgba(0,0,0,0.3);
+}
+drawer.right {
+    float: right;
+    right: 0;
+    top: 0;
+    background: transparent;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    /* box-shadow: -2px 13px 21px rgba(0,0,0,0.3); */
+}
+.right-menu-toggle {
+    background: url('../img/refineBtn.png') no-repeat !important;
+    background-position: center;
+    background-size: contain !important;
+    width: 60px;
+    height: 20px !important;
+    min-height: 20px !important;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
+.right-menu-header{
+    height:55px;
+    float: right;
+    position: initial;
+    border-color: #b7b7b7;
+    background: #fafafa;
+    width: 270px;
+    font-family: 'Montserrat', sans-serif;
+}
+.right-menu-header .button-clear{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px !important;
+}
+.right-menu-header .drawer-title{
+    width: 60%;
+    text-align: center;
+    font-size: 17pt;
+    margin: 7px 0px 0px 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+.right-menu-header .drawer-title p{
+    margin: 0px;
+    color: #444444;
+    font-family: 'Montserrat', sans-serif;
+}
+.right-menu-header .drawer-title .main-title{
+    font-size: 17pt;
+}
+.right-menu-header .drawer-title .sub-title{
+    font-size: 8pt;
+}
+.right-menu-header .buttons .button{
+    height: 50px !important;
+    min-height: 50px !important;
+    color: #444444;
+}
+.right-menu-header .buttons .button-orange{
+    color: #f3a04e;
+}
+.right-menu-header .title{
+    color: #444444;
+}
+.draw-content{
+    background: #fafafa;
+    top: 55px;
+    width: 270px;
+    float: right;
+    position: initial;
+    height: 100%;
+}
+.bet-type-list .item{
+    border-color: #ebebeb;
+    background: #fafafa;
+    padding: 12px;
+}
+.bet-type-list .input-label{
+    color: #f3a04e;
+    margin-top: 5px;
+    font-weight: bold;
+    font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+}
+.bet-type-list select{
+    border-color: #ebebeb;
+    height: 30px;
+    border-radius: 5px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #ccc;
+    background: #fff;
+}
+.filter-sticky-bar{
+    height: 20px;
+    line-height: 10px;
+    background: #000;
+    color: #fff;
+    text-align: center;
+}
+.has-filtering{
+    top:73px !important;
+}
+.no-header{
+    top:0px important;
+}

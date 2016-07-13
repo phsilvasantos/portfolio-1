@@ -1,0 +1,82 @@
+<ion-view title="Log In" ng-controller="LoginPageCtrl" cache-view="false">
+  <div class="page page-login">
+    <div class="footer-button-container">
+      <div class="button-bar">
+        <a class="button signin-button" ng-click="signInModal = true;">Sign In</a>
+        <a class="button signup-button" ng-click="signUpModal = true;">Sign Up</a>
+      </div>
+    </div>
+  </div>
+  <div class="custom-modal modal-signin" ng-show="signInModal">
+    <div class="button button-clear icon ion-ios-close" ng-click="closeSignWindow()"></div>
+    <ion-content>
+      <div class="content-container signin-content-container">      
+        <form name="myForm">
+          <div class="signin-title">Sign In</div>
+          <div class="item item-input organizate-input">
+            <div class="organizate-facebook-btn" ng-click="facebookLogin();">Sign In with Facebook</div>
+          </div>
+          <div class="or-spliter">
+            <div class="spliter-line"></div>
+            <div class="title">OR</div>
+          </div>
+          <div class="item item-input">
+            <input type="email" name="user_email" placeholder="Email Address" ng-model="userinfo.login" required/>
+          </div>
+          <div class="item item-input">
+            <input type="password" name="password" placeholder="Password" ng-model="userinfo.password" required/>
+          </div>
+          <div style="text-align: center;">
+            <div class="button organizate-orange-btn" ng-click = "login();" 
+                 ng-disabled="(myForm.user_email.$dirty && myForm.user_email.$invalid) || myForm.user_email.$error.required || myForm.user_email.$error.email ||
+                               (myForm.password.$dirty && myForm.password.$invalid) || myForm.password.$error.required">Sign In</div>
+          </div>
+        </form>          
+      </div>
+    </ion-content>
+  </div>
+  <div class="custom-modal modal-signup" ng-show="signUpModal">
+    <div class="button button-clear icon ion-ios-close" ng-click="closeSignWindow()"></div>
+    <ion-content>
+      <div class="content-container signup-content-container">
+        <form name="mySignUpForm">
+          <div class="signup-title">Sign Up</div>
+          <div class="item item-input organizate-input">
+            <div class="organizate-facebook-btn" ng-click="facebookLogin();">Sign In with Facebook</div>
+          </div>
+          <div class="or-spliter">
+            <div class="spliter-line"></div>
+            <div class="title">OR</div>
+          </div>
+          <div class="item item-input">
+            <input type="text" name="user_name" placeholder="User Name" ng-model="user.user_name" required/>
+          </div>
+          <div class="organizate-divider">
+            <div class="radiobox-container">
+              <input type="radio" name="radiog_lite" id="radiosix" class="css-checkbox" ng-model="user.gender" value = "1"/><label for="radiosix" class="css-label radGroup1">Male</label>
+            </div>
+            <div class="radiobox-container">
+              <input type="radio" name="radiog_lite" id="radioseven" class="css-checkbox" ng-model="user.gender" value = "2"/><label for="radioseven" class="css-label radGroup1">Female</label>
+            </div>
+          </div>
+          <div class="item item-input">
+            <input type="text" name="birthday" placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text')" ng-model="user.user_birthday" required/>
+          </div>
+          <div class="item item-input">
+            <input type="email" name="email" placeholder="Email Address" ng-model="user.user_email" required/>
+          </div>
+          <div class="item item-input">
+            <input type="password" name="signuppassword" placeholder="Password" ng-model="user.password" required/>
+          </div>
+          <div style="text-align: center;">
+            <div class="button organizate-green-btn" ng-click = "register();" 
+                 ng-disabled="  (mySignUpForm.email.$dirty && mySignUpForm.email.$invalid) || mySignUpForm.email.$error.required || mySignUpForm.email.$error.email ||
+                               (mySignUpForm.signuppassword.$dirty && mySignUpForm.signuppassword.$invalid) || mySignUpForm.signuppassword.$error.required ||
+                               (mySignUpForm.user_birthday.$dirty && mySignUpForm.user_birthday.$invalid) || mySignUpForm.user_birthday.$error.required ||
+                               (mySignUpForm.gender.$dirty && mySignUpForm.gender.$invalid) || mySignUpForm.gender.$error.required">Sign Up</div>
+          </div>
+        </form>          
+      </div>
+    </ion-content>
+  </div>
+</ion-view>

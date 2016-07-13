@@ -1,0 +1,43 @@
+<ion-view title="Chat" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button-clear button back-button button-icon icon ion-ios7-arrow-back" ui-sref="app.messages"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+      <button menu-toogle="right" class="button messages-room-settings-button button-clear" ng-click="messagesRoom.toggleRoomSettings()" ng-show="messages.room">Edit</button>
+  </ion-nav-buttons>
+  <ion-header-bar align-title="left" class="bar-messages-new room">
+    <div class="bar bar-subheader item-input-inset">
+      <p>To:</p> 
+      <span>{{ shared.currentConversationTopic }}</span>
+      <button class="button button-clear button-positive add-member" ng-click="messagesRoom.addMembers()">
+        <i class="icon ion-ios7-plus-outline"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="page page-messages page-messages-room auto-resize has-subheader">
+    <messages-room-conversation></messages-room-conversation>
+    <div class="item item-avatar message-item user-typing" ng-show="messagesRoom.somebodyTyping()">
+      <img ng-src="{{messagesRoom.typingUsersAvatar}}" class="messages-avatar">
+      <div class="item-head">
+        <h6>
+          {{messagesRoom.typingUsersAnounce}}
+        </h6>
+      </div>
+      <p>...</p>
+    </div>
+	</ion-content>
+  <ion-footer-bar align-title="left" class="page-messages-room keyboard-attach" keyboard-attach>
+    <i class='icon ion-camera add-image-to-message' ng-click="messagesRoom.showPhotoModal()"></i>
+    <div class="list mentions-list" ng-show="messagesRoom.showMention()">
+      <a ng-repeat="user in messagesRoom.mentionUsersList()" class="item" href="" ng-click="messagesRoom.addUserToMentions(user, angular.element().find('textarea'))">
+        <img ng-src="{{user.avatarUrl}}"><span>@{{user.firstName}} {{user.lastName}}</span>
+      </a>
+    </div>
+
+    <label>
+      <textarea class="expandable" rows="1" placeholder="Type Message..." ng-model="messagesRoom.message" ng-change="messagesRoom.messageInputChanged();" ng-click="messagesRoom.sendMessage($event)"></textarea>
+      <button class="button-send">Send <i class="fa fa-send"></i></button>
+    </label>
+
+  </ion-footer-bar>
+</ion-view>

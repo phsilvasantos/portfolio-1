@@ -1,0 +1,28 @@
+<ion-view title="Connect to Facebook">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons> 
+
+    <ion-content class="has-header">
+    <ion-list class="list list-inset">
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-social-facebook calm"></i> Connect to Facebook </br>
+                <a class="button button-outline" ng-click="connectFB()">Connect</a>
+            </div>
+            <div class="item item-text-wrap">
+                <label>{[{response}]}</label>
+
+                <a class="button button-outline" ng-click="postToFB()">Post to Facebook</a>
+            </div>
+            <!--<div class="item item-text-wrap">
+                <label>{[{share_list.shared_list}]}</label>
+                <h2 ng-repeat="asset_data in share_list.shared_list"><i class="icon ion-model-s assertive"></i> / <i class="icon ion-person calm"></i>: {[{ asset_data.loc.coordinates.0 }]} *** {[{ asset_data.loc.coordinates.1 }]}</h2>
+                <label ng-repeat="i in shares">{[{i.coordinates.0}]} and {[{i.coordinates.1}]}</label>
+                
+            </div>-->
+        </div>
+    </ion-list>
+    </ion-content>
+</ion-view>

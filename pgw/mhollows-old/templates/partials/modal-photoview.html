@@ -1,0 +1,36 @@
+<div class="modal modal-photoview">
+  <content class="modal-content">
+    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+      <ion-slide ng-repeat="photo in photoModalService.photos">
+        <div class="photo-scroller">
+          <div class="photo-table">
+            <div class="photo-cell">
+              <img ng-cache ng-src="{{photo.imageUrl}}" class="photo-lg">
+            </div>
+          </div>
+        </div>
+        <button class="btn-close" ng-click="photoModal.hide()"><i class="fa fa-close"></i></button>
+        <div class="caption">
+          <div class="photo-title" ng-show="photo.title">{{photo.title}}</div>
+          <div class="photo-subtitle">
+            <strong>{{photo.author}}</strong>
+            <em>Posted on {{photoModalService.formatDate(photo.createdAt)}}</em>
+          </div>
+        </div>
+        <div class="actions">
+          <a href="" ng-click="photoModalService.like(photo)" class="action-item" ng-if="photo.likeCount>=0">
+            <i class="svg-icon like-light-white"></i>
+            <label>{{photo.likeCount}}</label>
+          </a>
+          <a class="action-item" href="" ng-click="photoModalService.comment(photo)" ng-if="photo.commentCount>=0">
+            <i class="svg-icon comment-white"></i>
+            <label>{{photo.commentCount}}</label>
+          </a>
+          <a href="" class="action-item more" ng-click="photoActionsPopover.show($event)">
+            <i class="svg-icon ellipsis-h-white"></i>
+          </a>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </content>
+</div>

@@ -1,0 +1,41 @@
+<div ng-repeat="message in messagesRoom.allMessages | currentConversationMessages:messagesRoom.conversationId" class="message-item-wrapper">
+  <div class="item message-item {{ message.type }} item-avatar"
+       ng-class="{'user-message': messagesRoom.userIsAuthor(message.authorId), 'readed': message.readed && !messages.room, 'notification': messagesRoom.isNotification(message), 'visible': message.delivered }"
+       ng-hide="{{ message.type == 'notification' && !messages.room }}">
+
+    <a ng-href="#/profile/{{message.authorProfile.id}}"
+       background-image="{{ chatService.getAvatarById(message.authorId) }}"
+       class="messages-avatar"></a>
+
+    <!--<div class="item-head">
+      <h6 ng-hide="{{messagesRoom.shouldHideUser(message) || messagesRoom.userIsAuthor(message.authorId)}}" ng-bind-html="message.authorFullName"></h6>
+    </div>-->
+    <div class="item-head">
+      <a ng-href="#/profile/{{message.authorProfile.id}}"
+         class="author-name" ng-bind-html="chatService.getUserDisplayNameById(message.authorId)"></a>
+      <div class="message-body" ng-bind-html="message.body|nl2br" ng-if="message.body.length"></div>
+      <div class="item-time">
+        <span ng-if="message.attachedImage">File received</span>
+        {{message.timestamp | messageRoomDate}}
+        <i class="icon ion-ios-checkmark-outline message-checkmark" ng-if="message.readed"></i> 
+      </div>
+    </div>
+    <a ng-if="isPicture(message.attachedImage)"
+        photo-full-view
+        photos="[{imageUrl:message.attachedImage, createdAt:message.timestamp, author: message.authorFullName}]"
+        category="'message'">
+      <img ng-src="{{message.attachedImage}}" class="message-image">
+    </a>
+    <div ng-if="isFile(message.attachedImage)" class="filetype-icon {{getFileTypeClass(message.attachedImage)}}" style="background-color: black; color: #666" ng-click="openFile(message.attachedImage)">
+      A file was shared
+    </div>
+
+    <span class="message-delivery-in-progress" ng-hide="message.delivered">
+      <i class="icon ion-loading-c"></i>
+    </span>
+    <!-- <i class="icon ion-ios-checkmark-empty"></i> -->
+
+    <!-- <p ng-hide="message.delivered">d</p> -->
+  </div>
+  <!--<div class="conversation-date text-center" ng-if="messagesRoom.lastMessageWasHourAgo($index)" ng-bind-html="message.timestamp | messageRoomDate"></div>-->
+</div>

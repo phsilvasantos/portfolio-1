@@ -1,0 +1,34 @@
+<ion-view animation="none" cache-view="false">
+  <ion-nav-title >{{eventDetails.name}}</ion-nav-title>
+  <ion-content scroll="false" has-subheader="true" class="schedule" has-footer>
+    <!--filter at top of map START-->
+    <!-- <div class="categoryFilter row">
+      <div class="filterIcon col">
+        <i class="ion-funnel"></i>
+      </div>
+      <div class="list col">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            &nbsp;
+          </div>
+          <select ng-model="data.locationFilter" ng-change="filterLocations()">
+            <option selected value="">All Locations</option>
+            <option ng-repeat="locationCategory in locationCategories" value="{{locationCategory.name}}">{{locationCategory.asString}}</option>
+          </select>
+        </label>
+      </div>
+    </div> -->
+    <!--filter at top of map END--> 
+    <button class="button button-clear ion toggleButton icon-right" ng-click="toggleShowFavOnly()" ng-class="{'ion-android-radio-button-off' : !$root.showFavOnly, 'ion-android-checkmark-circle' : $root.showFavOnly}">
+      Show only events on my schedule
+    </button>  
+    <div class="map" id="map_canvas"></div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="">
+  <div class="button-bar">
+    <button class="button button-clear icon-left ion-calendar" nav-transition="none" ng-click="gotoPage('event-schedule', {'eventId': eventDetails.$id});">Schedule</button>
+    <!--<button class="button button-clear icon-left ion-ios-world" nav-transition="none" ng-click="gotoPage('event-arview', {'eventId': eventDetails.$id});">AR view</button>-->
+    <button class="button selected button-clear icon-left ion-ios-location">Street Map</button>
+  </div>
+</ion-footer-bar>
+</ion-view>

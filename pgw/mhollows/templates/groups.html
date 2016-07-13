@@ -1,0 +1,56 @@
+<ion-view view-title="Groups" hide-back-button="true" id="view-groups">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear grouptypes-selector popover-starter" ng-click="typePopover.show($event)"><span id="selected_typename">{{selectedCategory}}</span> <i class="icon ion-arrow-down-b"></i></button>
+  </ion-nav-buttons>
+  <ion-content class="page page-groups">
+    <div class="etabbar">
+      <a class="etab-item" ng-class="{active: listType == 'joined'}" href="javascript:void(0)"
+         ng-click="selectListType('joined')">My Groups</a>
+      <a class="etab-item" ng-class="{active: listType == 'joinable'}" href="javascript:void(0)"
+         ng-click="selectListType('joinable')">All Groups</a>
+    </div>
+
+    <div class="groups-list">
+      <ul>
+        <li ng-repeat="g in groups">
+          <div class="group-content" href="javascript:void(0)">
+            <div class="group-media" ng-click="gotoGroupDetail(g)">
+              <div background-image="{{g.get('thumbImage').url()}}" class="group-image"></div>
+            </div>
+            <div class="group-inner">
+              <div class="group-title" ng-click="gotoGroupDetail(g)">
+                {{g.get('name')}}
+              </div>
+              <div class="info-list">
+                <div class="info-item"><i class="fa fa-user"></i> {{g.get('memberCount')}} Members</div>
+                <div class="info-item" ng-if="listType=='joined'">
+                  <i class="fa fa-edit"></i> {{g.get('postCount')}} Updates
+                  <span class="badge badge-messages badge-assertive" ng-show="badgeCounter(g)">{{badgeCounter(g)}}</span>
+                </div>
+              </div>
+              <button class="btn"
+                      ng-if="listType=='joinable'"
+                      ng-disabled="g.get('status')=='pending'"
+                      ng-click="joinGroup(g, $index)">{{g.get('status')=='pending'?'Pending':'Ask to Join'}}</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </ion-content>
+</ion-view>
+
+<script id="grouptypes-popover" type="text/ng-template">
+  <ion-popover-view class="grouptypes-popover">
+  <ion-content>
+    <div class="list">
+      <a ng-click="onSelectGroupType('', $event)" class="item">All Types</a>
+      <a ng-click="onSelectGroupType(c, $event)" class="item" ng-repeat="c in groupTypes">{{pluralize(c.get('name'), 2)}}</a>
+    </div>
+  </ion-content>
+  </ion-popover-view>
+</script>

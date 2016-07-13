@@ -1,0 +1,26 @@
+<ion-view view-title="{{'cleverbaby.app.more.title' | translate}}">
+  <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('moreMainScroll')" delegate-handle="moreMainScroll">
+    <div class="wrapper-tab more-page">
+        <ion-nav-bar class="bar-positive">
+            <div class="header no-border">
+                <ion-nav-title cb-baby-drop-down></ion-nav-title>
+            </div>
+        </ion-nav-bar>
+        <ul class="list">
+            <li class="item" ng-click="go('app.inviteothers')"><span class="icon icon-user-female user-add"></span> Invite Others</li>
+            <li class="item" ng-click="go('app.activatebabyaccesspin')"><span class="icon icon-user-female user-add"></span> I have an invitation PIN</li>
+            <!-- <li class="item"><span class="icon icon-drawer"></span> Send Daily Report to Email</li> -->
+            <li class="item" ng-click="go('app.measures')"><span class="icon icon-settings"></span> {{'cleverbaby.app.more.button.changemeasureunit' | translate}}</li>
+            <li class="item" ng-click="go('app.help')"><span class="icon icon-support"></span> {{'cleverbaby.app.more.button.help' | translate}}</li>
+            <li class="item" ng-click="go('app.about')"><span class="icon icon-bubble"></span> {{'cleverbaby.app.more.button.about' | translate}}</li>
+            <li class="item" ng-click="go('app.youraccount')"><span class="icon icon-user-female"></span> {{'cleverbaby.app.more.button.youraccount' | translate}}</li>
+            <li class="item item-divider"><span class="icon icon-share"></span> {{'cleverbaby.app.more.button.share' | translate}}</li>
+            <li class="item" ng-click="tellFriend()"><span class="icon icon-bubbles"></span> {{'cleverbaby.app.more.button.tellafriend' | translate}}</li>
+            <li class="item" ng-click="likeUs()"><span class="fa fa-facebook-square"></span> {{'cleverbaby.app.more.button.likeus' | translate}}</a></li>
+            <li class="item" ng-click="go('app.followus')"><span class="fa fa-twitter-square"></span> {{'cleverbaby.app.more.button.followus' | translate}}</a></li>
+            <li class="item" ng-click="rateUs()"><span class="icon icon-star"></span> {{'cleverbaby.app.more.button.rateus' | translate}}</a></li>
+            <li class="item" ng-click="go('app.feedback')"><span class="icon icon-speech"></span> {{'cleverbaby.app.more.button.feedback' | translate}}</a></li>
+       </ul>
+    </div>
+  </ion-content>
+</ion-view>

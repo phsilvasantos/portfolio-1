@@ -1,0 +1,46 @@
+<ion-view view-title="Dogs">
+<ion-nav-back-button>
+      </ion-nav-back-button>
+    <ion-header-bar class="bar bar-subheader filter-sticky-bar">
+    {{countFilter}}
+  </ion-header-bar>
+  <ion-content>
+      
+  <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+	<ion-list>
+		<ion-item class="item-icon-right item-thumbnail-left" ng-repeat="post in posts" href="#/app/dogs/{{post.ID}}">
+			<img ng-if="post.featured_image.attachment_meta.sizes.thumbnail.url" src="{{post.featured_image.attachment_meta.sizes.thumbnail.url}}" class="alignleft" />
+			<img ng-if="!post.featured_image.attachment_meta.sizes.thumbnail.url" src="img/default-thumb.png" class="alignleft" />
+			<div class="top-list-info">
+				<span class="left">
+					<h3 ng-bind-html="post.title"></h3>
+					<h4 class="secondary-title">{{post.terms.breed[0].name}}</h4>
+				</span>
+				<span class="right">
+					<h4 class="list-county">{{post.terms.location[0].name}}</h4>
+				</span>
+			</div>
+			
+			<div class="post-excerpt" ng-bind-html="post.excerpt"></div>
+			
+			<div class="bottom-list-info">
+				<span class="left">
+					<h4 class="list-date">{{post.date | date:"MMM d, y"}}</h4>
+					<div class="reserved">{{post.reserved.reserved}}</div>
+				</span>
+				<span class="right">
+					<h4 class="list-fee">{{post.extra.fee}}</h4>
+				</span>
+			</div>
+			<i class="icon ion-chevron-right icon-accessory"></i>
+		</ion-item>
+	</ion-list>
+
+	<ion-infinite-scroll
+	ng-if="moreDataExists()"
+    on-infinite="loadMore()"
+    distance="1%">
+  </ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

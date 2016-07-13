@@ -1,0 +1,73 @@
+<ion-view title="Subscription">
+    <div class="bg-image1" id="bg"></div>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>    
+    <ion-content class="has-header">
+    <ion-list class="list list-inset">
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-document-text assertive"></i> 
+                Organization Plan Status
+            </div>
+            <div class="item item-text-wrap">
+                <label class="item">
+                    <strong>{[{organization.0.name}]}</strong>
+                    <p>{[{organization.0.address}]}</p>
+                    <p>Balance:{[{organization.0.currency}]} {[{organization.0.balance}]}</p>
+                </label>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="tel:+8801841346337">
+                    <i class="icon ion-ios7-telephone"></i>
+                    Call Now for a Deal?
+                </a>
+                
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item divider">
+                <i class="icon ion-document-text assertive"></i> 
+                Device Plans
+            </div>
+        </div>
+
+        <div class="card" ng-repeat="p in plans">
+            <div class="item item divider">
+                <i class="icon ion-document-text assertive"></i> 
+                {[{p.name}]}
+            <div class="item item-text-wrap">
+                <label class="item">
+                    <h4>This plan is priced at <span style="color:red">{[{p.currency}]} {[{p.price}]}</span>.</h4>
+                    <h4> For (Enter Qty below)</h4>
+                </label>
+                <label class="item item-input"> 
+                    <input type="number" ng-model="p.number_of_devices" ng-change="onChange(p)"></input> 
+                </label>
+                <label class="item">
+                    <h4>devices
+                            the total price is <span style="color:red">{[{p.currency}]} {[{p.number_of_devices*p.price}]}</span> and the discount is <span style="color:red">{[{p.currency}]} {[{p.total_discount}]}</span></h4></br>
+                    <h4>Final Price is: <span style="color:red">{[{p.currency}]} {[{p.final_price}]}</span></h4>
+                </label>
+                <label class="item" ng-if="!ifForeign(p.currency)">
+                    <p>This package is only for users within Bangladesh. You can pay via BKash to the number +8801823073569 from your mobile phone by dialing *247#. After making the payment please come to this page and enter the TRXaaaaabbbbb ID into the field below for the payment. If you have a larger payment, it will be shown on the balance and later on you can make the payment from the balance <strong>Pay from Balance</strong> button.</p>
+                </label>
+                <label class="item item-input" ng-if="!ifForeign(p.currency)">
+                    <input type="text" ng-model="trxid" placeholder="TRXID without TRX">
+                </label>
+            </div>
+            <div class="item item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="payBkash(p,trxid)" ng-if="!ifForeign(p.currency)">
+                    <i class="icon ion-archive positive"></i>
+                    Pay via Bkash
+                </a>
+                <a class="tab-item" ng-click="payBkashBalance(p)" ng-if="!ifForeign(p.currency)">
+                    <i class="icon ion-archive positive"></i>
+                    Pay from Balance
+                </a>
+            </div>
+        </div>
+
+    </ion-list>
+    </ion-content>
+</ion-view>

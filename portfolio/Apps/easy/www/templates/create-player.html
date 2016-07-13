@@ -1,0 +1,40 @@
+<ion-view title="CREATE NEW TEAM" ng-controller="CreatePlayerCtrl" cache-view="false">
+  <ion-content class="page page-listmain">
+    <div class="custom-item-title">
+      Access your phone contacts to import team members, or create new team members from scratch     
+    </div>
+    <ion-item class="item item-icon-left" ng-click="selectContact();">
+      <i class="icon"><img class="custom-list-icon" src="img/phone-contact-ico.png"/></i>
+      <p>Import From Phone Contacts</p>
+    </ion-item>
+    <ion-item class="item item-icon-left" ng-click="selectStratch();">
+      <i class="icon"><img class="custom-list-icon" src="img/create-scratch-ico.png"/></i>
+      <p>Create From Scratch</p>
+    </ion-item>
+    <ion-item class="item item-icon-left" ng-click="selectEmail();">
+      <i class="icon"><img class="custom-list-icon" src="img/create-email-ico.png"/></i>
+      <p>Import From Email</p>
+    </ion-item>
+    <ion-list>
+      <ion-item ng-repeat="user in contactuser" class="item card contacts-item" ng-if="user.rostername">
+        <div class="contact-item-container">
+          <div style="background:url('{{(user.photourl)?user.photourl:'img/ylblankuser.png'}}')" class ="image-contacts-adapter"></div>
+        </div>
+        <div class="contact-item-container">
+          <p class="contact-item-main">{{user.rostername}}</p>
+          <p class="contact-item-submain">{{user.email}}</p>
+        </div>
+        <div class="contact-item-container right-button-container">
+          <button class="org-custom-button button-clear con-button icon {{isMembers[user.rostername]?'ion-ios-checkmark-outline font-white-color':'ion-ios-circle-outline'}}" ng-click="selectUser(user)"></button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="organizate-footer">
+    <div class="footer-container">
+      <div class="container-footer">        
+        <div class="button button-clear footer-green-button" ng-click="createRoster();">Invite selected members to your team</div>    
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

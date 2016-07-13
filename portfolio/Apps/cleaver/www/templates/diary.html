@@ -1,0 +1,137 @@
+<ion-view>
+    <ion-content class="fixheight" has-bouncing="false" on-scroll="dynamicStatusBar('diaryMainScroll')" delegate-handle="diaryMainScroll">
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-title cb-baby-drop-down></ion-nav-title>
+            <ion-nav-buttons side="right">
+                <a class="btn" ui-sref="app.timeline"><span class="fa fa-align-left timeline"></span></a>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-slide-box>
+            <ion-slide>
+                <div class="box positive">
+                <div class="kotak autoheight di-block-center no-border di-home">
+                    <div class="home-icon botol"><i class="icon-bottle"></i></div>
+                    <div class="graph-circle-home">
+                        <div class="progress-wrapper" ng-click="etaSetting('feed')">
+                            <div class="progress" ng-if="feedEtaAvailable">{{feedEtaText}} <span >left</span></div>
+                            <div class="progress long-text" ng-if="!feedEtaAvailable" data-translate>cleverbaby.app.diary.etabottle</div>
+                            <div
+                                round-progress
+                                max="100"
+                                current="feedEtaProgress"
+                                color="{{getProgressColor(feedEtaProgress)}}"
+                                bgcolor="rgba(255,255,255,.5)"
+                                radius="28"
+                                stroke="3"
+                                semi="false"
+                                rounded="true"
+                                iterations="50"
+                                animation="easeInOutQuart">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-baby" ng-click="editBaby()"><div class="circular"><img ng-src="{{ $root.baby.displayImage | babyImage }}"></div></div>
+                    <div class="graph-circle-home">
+                        <div class="progress-wrapper" ng-click="etaSetting('diaper')">
+                            <div class="progress" ng-if="diaperEtaAvailable">{{diaperEtaText}} <span >left</span></div>
+                            <div class="progress long-text" ng-if="!diaperEtaAvailable" data-translate>cleverbaby.app.diary.etadiaper</div>
+                            <div
+                                    round-progress
+                                    max="100"
+                                    current="diaperEtaProgress"
+                                    color="{{getProgressColor(diaperEtaProgress)}}"
+                                    bgcolor="rgba(255,255,255,.5)"
+                                    radius="28"
+                                    stroke="3"
+                                    semi="false"
+                                    rounded="true"
+                                    iterations="50"
+                                    animation="easeInOutQuart">
+                                </div>
+                        </div>
+                    </div>
+                    <div class="home-icon"><i class="icon-diaper"></i></div>
+                </div>
+                <div class="baby-summary" ng-if="hasBabyAge()" ng-click="editBaby()">
+                    <span class="text-center" ng-if="babyId">{{babysAge}}</span>
+                    <span class="text-center" ng-if="babyId">{{babysWeight}} {{babysHeight}}</span>
+                </div>
+
+                <div class="baby-summary" ng-if="!hasBabyAge()" ng-click="editBaby()">
+                    <!-- no birthday and age -->
+                    <span class="text-center" data-translate>cleverbaby.app.diary.welcome</span>
+                    <span class="text-center" data-translate>cleverbaby.app.diary.tapbaby</span>
+                </div>
+
+                <div class="dayli-checklist">
+                    <div class="kotak autoheight no-border">
+                        <h3 class="text-left">DAILY CHECKLIST</h3>
+                        <div class="xs-5">
+                            <h5 class="activity nurse">{{ NurseCount }}</h5>
+                            <h5 data-translate>cleverbaby.app.diary.bar.nurses</h5>
+                        </div>
+                        <div class="xs-5">
+                            <h5 class="activity diaper">{{ DiaperCount }}</h5>
+                            <h5 data-translate>cleverbaby.app.diary.bar.change</h5>
+                        </div>
+                        <div class="xs-5">
+                            <h5 class="activity sleep">{{ SleepCount }}</h5>
+                            <h5 data-translate>cleverbaby.app.diary.bar.sleep</h5>
+                        </div>
+                        <div class="xs-5 center">
+                            <input type="checkbox" id="bath" ng-disabled="TodayBath" ng-checked="TodayBath" ng-model="today_bath" ng-change="addActivityByType('bath')">
+                            <label class="checkbox" for="bath"></label><br />
+                            <label data-translate for="bath">cleverbaby.app.diary.bar.bath</label>
+                        </div>
+                        <div class="xs-5 center">
+                            <input type="checkbox" id="play" ng-disabled="TodayPlay" ng-checked="TodayPlay" ng-model="today_play" ng-change="addActivityByType('play')">
+                            <label class="checkbox" for="play"></label><br />
+                            <label data-translate for="play">cleverbaby.app.diary.bar.play</label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box balanced">
+                    <h1>YELLOW</h1>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box assertive">
+                    <h1>PINK</h1>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+        <div class="card kartu" ng-show="showTip">
+          <div class="item item-text-wrap no-padding">
+            <div class="row no-padding-top">
+                <div class="col col-80 no-padding-top"><h2 data-translate>cleverbaby.app.diary.box1.title</h2></div>
+                <div class="col col-20 no-padding-top" style="text-align:right;">
+                    <a ng-click="hideDailyTip()"><i class="fa fa-close"></i></a>
+                </div>
+            </div>
+            <p class="justify padding" ng-click="clickTip()">{{dailyTip}}</p>
+          </div>
+        </div>
+
+        <div class="no-activities-arrow-text-con" ng-if="activities.length == 0">
+            <div data-translate class="no-activities">cleverbaby.app.diary.startAddEntry</div>
+            <div class="big-btm-arrow no-activities ion-arrow-down-c"></div>
+        </div>
+        <h3></h3>
+        <ion-list>
+            <div collection-repeat="activity in activities" collection-item-height="getElementHeight(activity, $index)" collection-item-width = "100%">
+                <h3 ng-if="showTitle(activity, $index)" class="pd activity-calendar-day" ion-affix data-affix-within-parent-with-class="timeline"> {{getCalendarDay(activity.time)}}</h3>
+                <timeline-item activity="activity" ng-class="{'is-last-activity' : nextIsTitle(activity, $index)}"></timeline-item>
+            </div>
+            <div data-translate class="no-activities" ng-if="activities.length == 0">cleverbaby.app.diary.noActivities</div>
+        </ion-list>
+        <ion-infinite-scroll
+                on-infinite="loadMore()"
+                distance="1%"
+                ng-if="canBeloadedMore">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,62 @@
+<ion-view view-title="{{pageTitle}}" hide-back-button="true" id="view-events">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon"><app-notifications-counter></app-notifications-counter></button>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-events page-events-list">
+    <ion-refresher
+      pulling-text="Pull to refresh programs..."
+      on-refresh="loadEvents(false)">
+    </ion-refresher>
+    <div class="etabbar">
+      <a class="etab-item" ng-class="{active: eventType == 'upcoming'}" href="javascript:void(0)"
+         ng-click="selectEventType('upcoming')">Upcoming</a>
+      <a class="etab-item" ng-class="{active: eventType == 'past'}" href="javascript:void(0)"
+         ng-click="selectEventType('past')">Past</a>
+    </div>
+    <div class="list-block media-list events-list">
+      <ul>
+        <li ng-repeat="event in events" ng-class="{'has-photo': event.get('image')}">
+          <a class="item-content" ng-href="#/event-detail/{{event.id}}">
+            <div class="item-media">
+              <div background-image="{{event.get('image').url()}}" class="event-image"></div>
+            </div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">{{event.get('title')}}</div>
+              </div>
+              <div class="item-subtitle clock"><i class="svg-icon clock-black"></i> {{eventUtils.displayEventDate(event.get('startAt'))}}</div>
+              <div class="item-subtitle location" ng-show="eventUtils.getLocationString(event)"><i class="svg-icon pin-black"></i> {{eventUtils.getLocationString(event)}}</div>
+            </div>
+          </a>
+          <div ng-show="event.photos.length > 0">
+            <thumbnails-list 
+              total="event.photos.length" 
+              other="event" 
+              items="event.photos"
+              item-callback="viewFullScreen"
+              more-label="'<i class=\'fa fa-camera\'></i>'"
+              more-callback="viewPhotos(event.id)"></thumbnails-list>
+            <div class="button-row">
+              <a href="" class="btn" ng-click="viewPhotos(event.id)" ng-show="eventType == 'past'">View Photos</a>
+            </div>
+          </div>
+          <div class="button-row" 
+               ng-show="!eventUtils.isAttended(event) && !eventUtils.isPast(event)">
+            <a href="#/event-register/{{event.id}}" class="btn">Will you attend?</a>
+          </div>
+          <div class="button-row {{eventUtils.getResponse(event).get('response')}}" 
+               ng-show="eventUtils.isAttended(event) && !eventUtils.isPast(event)">
+            <a class="btn" href="#/event-register/{{event.id}}">
+              <span class="response-type">
+                {{eventUtils.attendingTense(event)}}
+                <i class="svg-icon"></i>
+              </span>  
+              Update
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,14 @@
+<ion-view title="SELECT TEAM" ng-controller="PersonalManageTeamCtrl" cache-view="false" cache-view="false">
+  <ion-content class="page page-listmain">
+    <ion-list>
+      <div class="custom-item-title">
+        Select a team that you participate in to see details about your next game and the lineup when its ready!  
+      </div>
+      <ion-item class="item item-icon-left" ng-repeat="team in teaminfo track by $index" ng-if="team.name" ng-click="selectPersonalTeam(team);">
+        <i class="icon"><img class="custom-list-icon" src="img/create-team-ico.png"/></i>
+        <p>I'm in {{team.name}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+

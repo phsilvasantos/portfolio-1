@@ -1,0 +1,45 @@
+<ion-view title="Comments">
+  <ion-content class="page page-events page-event-photo-comments has-commentbox">
+    <div class="page-content">
+      <div class="comments list">
+        <div class="comment-item item">
+          <img class="avatar" src="img/example/1.jpg">
+          <span class="poster-name">Wang Kang</span>
+          This is a test comment
+          <div class="posted-date">1 day ago</div>
+        </div><!-- /.comment-item -->
+        <div class="comment-item item">
+          <img class="avatar" src="img/example/2.jpg">
+          <span class="poster-name">Wang Kang</span>
+          This is a test comment
+          <div class="posted-date">1 day ago</div>
+        </div><!-- /.comment-item -->
+        <div class="comment-item item">
+          <img class="avatar" src="img/example/3.jpg">
+          <span class="poster-name">Wang Kang</span>
+          This is a test comment
+          <div class="posted-date">1 day ago</div>
+        </div><!-- /.comment-item -->
+        <div class="comment-item item">
+          <img class="avatar" src="img/example/4.jpg">
+          <span class="poster-name">Wang Kang</span>
+          This is a test comment
+          <div class="posted-date">1 day ago</div>
+        </div><!-- /.comment-item -->
+        <div class="comment-item item">
+          <img class="avatar" src="img/example/5.jpg">
+          <span class="poster-name">Wang Kang</span>
+          This is a test comment
+          <div class="posted-date">1 day ago</div>
+        </div><!-- /.comment-item -->
+      </div>
+    </div>
+  </ion-content>
+  
+  <ion-footer-bar class="commentbox">
+    <div class="comment-textbox-wrapper">
+      <textarea type="text" id="txt_comment" ng-model="newCommentText" placeholder="Add a comment"></textarea>
+      <a href="" class="sender" ng-click="addComment()" ng-disabled="!newCommentText || !post.comments">Send <i class="fa fa-send"></i></a>
+    </div>
+  </ion-footer-bar>
+</ion-view>

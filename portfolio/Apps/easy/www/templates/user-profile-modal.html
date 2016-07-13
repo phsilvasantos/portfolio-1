@@ -1,0 +1,42 @@
+<ion-view title="" class="organizate-modal-view" cache-view="false">
+  <ion-content class="has-header" ng-click="modal.hide()">
+    <div style="text-align: center;display: block;">
+      <div style="text-align: center;margin-top: 5px;">
+        <div style="background:url('{{(rosterData.photourl)?rosterData.photourl:'img/ylblankuser.png'}}')" class ="cabbie-modal-photo-img"></div>
+      </div>
+      <div class="item organizate-userprofile-container">
+        <div class="organizate-profile-label">Name :</div>
+        <div class="organizate-profile-label">{{rosterData.rostername}}</div>
+      </div>
+      <div class="item organizate-userprofile-container">
+        <div class="organizate-profile-label">Shirt Number :</div>
+        <div class="organizate-profile-label">{{rosterData.shirtnumber}}</div>
+      </div>
+      <div class="item organizate-userprofile-container">
+        <div class="organizate-profile-label">Position :</div>
+        <div class="organizate-profile-label">{{rosterData.position}}</div>
+      </div>
+      <div class="item organizate-userprofile-container">
+        <div class="organizate-profile-label">Speciality :</div>
+        <div class="organizate-profile-label">{{rosterData.speciality}}</div>
+      </div>
+      <div class="item organizate-userprofile-container">
+        <div class="organizate-profile-label">Favored foot :</div>
+        <div class="organizate-profile-label">{{rosterData.favoredfoot}}</div>
+      </div>
+      <div class="item organizate-userprofile-container">
+        <div class="organizate-profile-label">Phone Number :</div>
+        <div class="organizate-profile-label">{{rosterData.phonenumber}}</div>
+      </div>
+      <div class="item organizate-userprofile-container">
+        <div class="organizate-profile-label">Email :</div>
+        <div class="organizate-profile-label">{{rosterData.email}}</div>
+      </div>
+      <div class="item organizate-userprofile-container">
+        <div class="organizate-profile-label">Birthday/age :</div>
+        <div class="organizate-profile-label">{{rosterData.birthday}}</div>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>

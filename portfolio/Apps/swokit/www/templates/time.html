@@ -1,0 +1,31 @@
+<ion-view title="{{thisType}}">
+  <ion-content class="has-header width-control" has-bouncing="false">
+  	 <div class="list time-select-list padding-top">
+  	   <p class="page-instructions">How many minutes?</p>
+	 	<a class="item item14 item-content" type="item-text-wrap" ng-repeat="time in times.lengths" type="item-text-wrap" href="#/app/home/{{thisCategoy}}/{{typeName}}/{{time.id}}/workout">
+      	{{time.text}}
+      	</a>
+      	<a class="item item14 item-content" type="item-text-wrap" type="item-text-wrap" ng-click="customLength()">
+      	Custom Length
+      	</a>
+        <p class="page-instructions extra-top" ng-hide="yogaSelection || sevenMinuteSelection">Advanced Timing</p>
+       <div class="item item-toggle advanced-toggle item-text-wrap " ng-hide="yogaSelection || sevenMinuteSelection">
+  	     <h2>Transition Pause</h2>
+  	     <p>Enable a 5 second pause between exercises</p>
+  	     <label class="toggle toggle-calm">
+  	       <input type="checkbox" ng-model="advancedTiming.transition" ng-click="watchTiming()">
+  	       <div class="track">
+  	         <div class="handle"></div>
+  	       </div>
+  	     </label>
+  		 </div>
+
+      <div class="item item-text-wrap no-top-border" ng-hide="yogaSelection || sevenMinuteSelection">
+         <h2>Workout description:</h2>
+         <p>Exercise for {{advancedTiming.exerciseTime}} {{advancedTiming.exerciseTime == 1 ? 'second' : 'seconds'}} with {{advancedTiming.transitionTime}} {{advancedTiming.transitionTime == 1 ? 'second' : 'seconds'}} between each exercise. Rest for {{advancedTiming.breakTime}} {{advancedTiming.breakTime == 1 ? 'second' : 'seconds'}} after {{advancedTiming.breakFreq}} {{advancedTiming.breakFreq == 1 ? 'exercise' : 'exercises'}}. Randomization is {{advancedTiming.randomizationOption ? 'on' : 'off'}}. <a ng-click="alwaysTiming()" ng-show="advancedTiming.customSet" id="edit-link">Edit</a>
+         </p>
+      </div>
+      <div class="orange-border"><a href="#/app/sworkitpro" class="unlock-pro"><i class="icon ion-locked"></i><h4>Fully customize exercise, transition, and break intervals and randomization in Sworkit Pro</h4></a></div>
+	</div>
+  </ion-content>
+</ion-view>

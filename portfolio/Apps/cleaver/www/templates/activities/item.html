@@ -1,0 +1,16 @@
+<div class="modal slide-in-up" ng-controller="newCtrl">
+  <header class="bar bar-header bar-secondary">
+    <button class="button button-clear button-primary" ng-click="close()" data-translate>
+    	cleverbaby.app.item.add.cancel
+	</button>
+    <h1 class="title" data-translate>
+    	cleverbaby.app.item.add.title
+	</h1>
+    <button class="button button-positive" ng-click="createNew()" data-translate>
+    	cleverbaby.app.item.add.done
+    </button>
+  </header>
+  <ion-content class="padding has-header">
+    <input type="text" placeholder="{{'cleverbaby.app.item.add.placeholder' | translate}}" ng-model="data.item">
+  </ion-content>
+</div>

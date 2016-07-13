@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.mobilize.MurmuringHollows" version="0.0.0">
+  <content src="index.html"/>
+  <access origin="*"/>
+  <access origin="tel:*" launch-external="yes"/>
+  <access origin="mailto:*" launch-external="yes"/>
+  <access origin="sms:*" launch-external="yes"/>
+  <preference name="ParseAppID" value="6ZRhWKAW7wMBdahiX2UvPBMfnXBcJAh76aB8srTi"/>
+  <preference name="ParseClientKey" value="c1IyQmXkNoNhcFeuSA6RZ0pEYVjaY5kkwnuyV4yg"/>
+  <preference name="ParseJsKey" value="kr2MqCiB9BjS8JP7kw4PQZz1F20BNmzkCshbvjh2"/>
+  <preference name="GoogleAnalyticsTrackerID" value="UA-55832430-1"/>
+  <preference name="FacebookAppID" value="177870095671066"/>
+  <preference name="StatusBarOverlaysWebView" value="false" />
+  <preference name="StatusBarStyle" value="default" />
+
+
+  <!-- see assets/README if you want to download these files -->
+  <platform name="ios">
+    <splash src="assets/splash.ios.Default~iphone.png" width="320" height="480"/>
+    <splash src="assets/splash.ios.Default-Portrait~ipad.png" width="768" height="1024"/>
+    <splash src="assets/splash.ios.Default-Portrait%402x~ipad.png" width="1536" height="2048"/>
+    <splash src="assets/splash.ios.Default-Landscape~ipad.png" width="1024" height="768"/>
+    <splash src="assets/splash.ios.Default-Landscape%402x~ipad.png" width="2048" height="1536"/>
+    <splash src="assets/splash.ios.Default%402x~iphone.png" width="640" height="960"/>
+    <splash src="assets/splash.ios.Default-568h%402x~iphone.png" width="640" height="1136"/>
+    <icon src="assets/icon.png"/>
+  </platform>
+  <platform name="android">
+    <splash src="assets/splash.android.drawable-port-xhdpi-screen.png" width="720" height="1280"/>
+    <splash src="assets/splash.android.drawable-port-mdpi-screen.png" width="320" height="480"/>
+    <splash src="assets/splash.android.drawable-port-ldpi-screen.png" width="200" height="320"/>
+    <splash src="assets/splash.android.drawable-port-hdpi-screen.png" width="480" height="800"/>
+    <splash src="assets/splash.android.drawable-land-xhdpi-screen.png" width="1280" height="720"/>
+    <splash src="assets/splash.android.drawable-land-mdpi-screen.png" width="480" height="320"/>
+    <splash src="assets/splash.android.drawable-land-ldpi-screen.png" width="320" height="200"/>
+    <splash src="assets/splash.android.drawable-land-hdpi-screen.png" width="800" height="480"/>
+    <icon src="assets/icon.png"/>
+  </platform>
+  
+  <name>MurmuringHollows</name>
+</widget>

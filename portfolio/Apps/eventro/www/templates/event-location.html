@@ -1,0 +1,109 @@
+<ion-view>
+<ion-nav-buttons side="right">
+  <button class="navBtn button button-icon ion-ios-information-outline ng-hide" ng-show="scheduledEvents.length > 2" ng-click="scrollToBottom()">
+  </button>
+</ion-nav-buttons>
+ <ion-nav-title>
+  {{locationObj.name || locationName}}
+ </ion-nav-title>
+  <ion-content delegate-handle="locationScroll">
+
+    <div ng-show="isOnline" ng-activity-indicator class="noAnimations activityIndicator"></div>
+
+    <div ng-cloak class="list insetList" ng-show="locationObj.name">
+
+      <!--<div class="item disabled item-divider ng-hide" ng-show="scheduledEvents.length">
+        What's on here
+      </div>-->
+
+      <ion-item disabled id="{{scheduledEvent.$id}}" class="list-inset" auto-list-divider auto-list-divider-value='{{scheduledEvent.start | date:"EEEE dd MMM yy"}}' ng-class="{'item-remove-animate': true, 'item-icon-right': false, 'highlight': isHighlighted(event.$id)}" ng-repeat="scheduledEvent in scheduledEvents" type="item-text-wrap">
+
+        <!--Start a row that will contain a star button in 1 column and the clickable event in the other -->
+
+          <div class="row noPaddingLR">
+            <div class="col rowPrefix noPaddingLR">
+              <button class="button button-clear" ng-click="toggleFavScheduledEvent(scheduledEvent)">
+                <i ng-class="{'ion-android-checkmark-circle' : isScheduledEventFavourited(scheduledEvent.$id), 'ion-android-radio-button-off' : !isScheduledEventFavourited(scheduledEvent.$id)}"></i>
+              </button>
+            </div>
+
+            <!-- clickable event to see schedule -->
+            <div class ="col" ng-click="gotoPage('event-location', {'locationId': scheduledEvent.locationId});">
+
+            <!-- first row is for the name -->
+            <div>
+              <p class="eventDate large">{{ scheduledEvent.start | date:"EEE dd MMM',' HH:mm" }} - {{ scheduledEvent.end | date:"HH:mm" }}</p>
+
+              <h2>{{scheduledEvent.name}}</h2>
+              <p class="eventCategory" style="padding-top:2px;" ng-show="scheduledEvent.category">{{ scheduledEvent.category}}</p>
+            </div>
+            <div class="scheduleDescription">
+              <p>{{scheduledEvent.description}}</p>
+            </div>
+          </div>
+        </div>
+
+      </ion-item>
+      <div disabled class="item item-divider ng-hide" ng-show="locationObj.description">
+        About this location
+      </div>
+      <ion-item ng-cloak class="disabled locationRow list-inset ng-hide" type="item-text-wrap" ng-show="locationObj.name && locationObj.description">
+        <div class="row noPaddingLR">
+          <div class="col rowPrefix ">
+            <button class="button button-icon noTouch">
+              <i class="ion-ios-location"></i>
+            </button>
+          </div>
+
+          <!-- clickable event to see schedule -->
+          <div class ="col noPadding">
+            <!-- first row is for the name -->
+            <div>
+              <h2 style="padding-top:4px;">{{locationObj.name}}</h2>  </div>
+            <div class="scheduleDescription">
+              <p>  {{locationObj.description}}</p>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+      <div disabled class="item item-divider ng-hide" ng-show="locationObj.name">
+        Contact Information
+      </div>
+      <ion-item disabled class="list-inset ng-hide" ng-show="locationObj.name">
+
+        <div class="address row">
+          <div class="col homeIcon">
+            <i class="ion-home"></i>
+          </div>
+          <div class="col">
+            <pre>{{ locationObj.address }}</pre>
+          </div>
+        </div>
+
+        <div class="row contactIcons">
+          <div class="col" ng-show="locationObj.tel">
+            <a class="button button-icon ion-ios-telephone" href="tel:{{locationObj.tel}}"></a>
+          </div>
+          <div class="col" ng-show="locationObj.email">
+            <a class="button button-icon ion-ios-email" ng-click="openEmailNatively('mailto:'+locationObj.email)" href="#"></a>
+          </div>
+          <div class="col" ng-show="locationObj.web">
+            <a class="button button-icon ion-ios-world" href="#" ng-click="openURLNatively(locationObj.web)"></a>
+          </div>
+          <div class="col">
+            <a href="" class="button button-icon ion-android-compass" ng-click="openGeoLocationNatively(locationObj.latitude, locationObj.longitude)"></a>
+          </div>
+        </div>
+
+      </ion-item>
+    </div>
+    <!-- No results from cache and offline -->
+    <div class="noResults ng-hide" ng-show="!isOnline && !scheduledEvents.length && !locationObj.name">
+      <div class="resultsMessage">
+        <i class="ion-ios-cloud-outline"></i>
+        <h2>No Network Connection</h2>
+        <p>Please connect to the internet</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

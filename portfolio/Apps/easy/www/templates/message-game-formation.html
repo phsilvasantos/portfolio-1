@@ -1,0 +1,53 @@
+<ion-view title="GAME FORMATION" ng-controller="MessageGameFormationCtrl" cache-view="false">
+  <ion-content class="page page-listmain page-game-formation has-subheader" scroll="false" style = "bottom: 0px;display: table-cell !important;">
+    <div class="custom-item-title" style="height: 90px;">
+      OK team, this is the Formation against({{templeteArr.opponentname}}) {{(templeteArr.location_name)?'on ' + templeteArr.location_name:'';}} at <span>{{templeteArr.gamedate | date:'fullDate'}}</span>
+    </div>
+    
+    <div class="formation-main">
+      <div class="gameformation-container-first">
+        <div>
+          <div class="first-title">Players</div>
+          <div direction="y" class="content-stable">            
+            <a class="button button-clear" style="min-height: 70px;" 
+               ng-repeat="user in members track by user.id">
+              <div class="contact-item-container">
+                <div style="background:url('{{(user.photourl)?user.photourl:'img/ylblankuser.png'}}');" class ="image-contacts-adapter" ng-class="{'gameformation-image-adapter-userselect':userselected[user.rostername]}">
+                  <div class="badge badge-assertive org-player-badge" ng-show="user.shirtnumber">{{user.shirtnumber}}</div>
+                </div>
+                <label class="player-name-label">{{user.rostername}}</label>
+              </div>
+            </a>
+          </div>              
+        </div>
+      </div>
+      <div class="gameformation-container-second">
+        <div class="football-field"></div>
+        <div class="team-player-info" ng-repeat="pos in positions track by $index" style="bottom: {{pos.position[0]}}%; left: {{pos.position[1]}}%;" ng-click="userModal(pos.user.roster_id)">
+          <div class="formation-item-container">
+            <div class ="gameformation-field-adapter" 
+                 ng-class="{'gameformation-field-userselect':(selectedUser&&!pos.user.rostername)}">{{(pos.user.shirtnumber)?pos.user.shirtnumber:'';}}</div>
+            <label class="player-name-label-field">{{pos.user.rostername}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="gameformation-container-third" style="margin-top: 0px;">
+        <div>
+          <div style="margin: 10px 0px; color: #aaa;height: 10px;">Sub</div>
+          <div direction="y" class="content-stable" style="overflow-x: hidden;height: 320px;">            
+            <a class="button button-clear" ng-repeat="user in members" ng-show="!tempUserFlagArr[user.id]" ng-click="userModal(user.roster_id)">
+              <div class="contact-item-container">
+                <div style="background:url('{{(user.photourl)?user.photourl:'img/ylblankuser.png'}}')" class ="gameformation-image-adapter"></div>
+              </div>
+            </a>
+          </div>  
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="custom-item-title" style="padding:  10px;margin-top: 20px;background: #fff;">
+      This is going to be a tough one, so I need both the starters and the subs to came early and get ready everyone will play so start focusing!
+    </div>
+  </ion-content>
+</ion-view>

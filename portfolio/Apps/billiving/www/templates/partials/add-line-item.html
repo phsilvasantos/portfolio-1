@@ -1,0 +1,47 @@
+<ion-view hide-back-button="true" cache-view = "false">
+  <ion-header-bar class="bar bar-header bar-dark">
+    <button class="button button-clear" ng-click="addItemModal.hide()">Cancel</button>
+    <h1 class="title">Add New Item</h1>
+    <button class="button button-clear" ng-click="addLineItem()" ng-disabled="addLineItemForm.$invalid">Save</button>
+  </ion-header-bar>
+  <ion-content class="page page-edit-client">
+    <div class="list card">
+      <div class="item item-body">
+        <ion-list>
+          <form name="$parent.addLineItemForm">
+            <ion-item class="item item-input">
+              <span class="input-label">Item ID</span>
+              <input type="text" placeholder="Enter Item ID" ng-model="lineitem.ItemId">
+              <i class="button-icon icon ion-ios-list-outline"  ng-click="selectProductsModal()" style="position: absolute; right: -5px;"></i>
+            </ion-item>
+            <ion-item class="item item-input" ng-class="{'required-option-empty':!lineitem.ItemDescription}">
+              <span class="input-label">Description</span>
+              <input type="text" placeholder="Enter Description" ng-model="lineitem.ItemDescription" required>
+            </ion-item>
+            <ion-item class="item item-input" ng-class="{'required-option-empty':!lineitem.ItemPrice}">
+              <span class="input-label">Price</span>
+              <input type="text" placeholder="Enter Price" ng-model="lineitem.ItemPrice" msp-decimal required>
+            </ion-item>
+            <ion-item class="item item-input" ng-class="{'required-option-empty':!lineitem.ItemQuantity}">
+              <span class="input-label">Quantity</span>
+              <input type="text" placeholder="Enter Quantity" ng-model="lineitem.ItemQuantity" msp-decimal required>
+            </ion-item>
+            <ion-item class="item item-input">
+              <span class="input-label">Tax1</span>
+              <select ng-options="item.Id as item.Name+' '+item.Number for item in taxes" ng-model="lineitem.TaxId1" >
+                <option value='' disabled selected>Select Tax</option>
+              </select>
+            </ion-item>
+            <ion-item class="item item-input">
+              <span class="input-label">Tax2</span>
+              <select ng-options="item.Id as item.Name+' '+item.Number for item in taxes" ng-model="lineitem.TaxId2" >
+                <option value='' disabled selected>Select Tax</option>
+              </select>
+            </ion-item>
+          </form>
+        </ion-list>
+      </div>
+      <div class="item item-divider" style="text-align: right;">Total : <span>{{currencySimbol}}</span> {{setTotal() | number:2}}</div>
+    </div>
+  </ion-content>
+</ion-view>

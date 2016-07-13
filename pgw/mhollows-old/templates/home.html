@@ -1,0 +1,63 @@
+<ion-view title="<img class='navbar-logo'>" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button home-button button-icon icon ion-navicon" ng-if="!isTestflight"></button>
+    <button class="button home-button button-icon icon ion-star" ng-click="openFeedbackForm()" ng-if="isTestflight"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a href="#/edit-profile" class="link edit-profile-link"><i class="icon ion-compose"></i></a>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-home">
+    <div class="profile-banner">
+      <a href="#/profile/{{shared.user.profile.id}}" class="avatar-container">
+        <div class='avatar' background-image="{{shared.user.profile.get('thumbImage').url()}}"></div>
+      </a>
+    </div>
+    <div class="info">
+      <strong>{{shared.user.get('name')}}</strong>
+      <em ng-show="shared.user.get('joinDate')">Member since {{shared.user.get('joinDate') | gnYear}}</em>
+    </div>
+
+    <div class="list-block home-links custom">
+      <ul>
+        <li>
+          <a href="#/chapters" class="item-link item-content">
+            <div class="item-inner">
+              <div class="item-title"><i class="sicon sicon-chapters"></i> Chapters</div>
+              <i class="sicon sicon-arrow"></i>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#/groups" class="item-link item-content">
+            <div class="item-inner">
+              <div class="item-title"><i class="sicon sicon-groups"></i> Groups</div>
+              <i class="sicon sicon-arrow"></i>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#/members" class="item-link item-content">
+            <div class="item-inner">
+              <div class="item-title"><i class="sicon sicon-mtypes"></i> Browse Members</div>
+              <i class="sicon sicon-arrow"></i>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>
+
+<script id="feedback-modal-html" type="text/ng-template">
+  <div class="modal modal-feedback">
+    <header class="bar bar-header">
+      <h1 class="title">Leave Feedback</h1>
+      <div class="button button-clear icon-left ion-chevron-left button-dark" ng-click="feedbackModal.hide()"></div>
+      <div class="button button-clear button-positive" ng-click="doneLeaveFeedback()">Done</div>
+    </header>
+    <content padding="true">
+      <textarea ng-model="data.feedbackContent"></textarea>
+    </content>
+  </div>
+</script>

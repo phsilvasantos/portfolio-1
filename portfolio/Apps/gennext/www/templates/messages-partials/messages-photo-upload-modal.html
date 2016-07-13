@@ -1,0 +1,21 @@
+<ion-modal-view class="add-members-modal">
+  <ion-header-bar class="bar-messages-new bar-stable nav-title-slide-ios7 bar bar-header nav-bar nav-title-slide-ios disable-user-behavior no-animation">
+    <div class="buttons left-buttons">
+      <button class="button-clear button back-button button-icon icon ion-ios7-close-outline" ng-click="messagesRoom.hidePhotoModal()"></button>
+    </div>
+    <h1 class="title messages-title">Upload Photo</h1>
+  </ion-header-bar>
+  <ion-content class="page page-messages page-messages-new has-subheader">
+    <button class="button button-full button-light" ng-click="messagesRoom.takePhoto()">
+        Take Photo
+    </button>  
+    <button class="button button-full button-light" ng-click="messagesRoom.useExistingPhoto()">
+        Choose Existing
+    </button> 
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-assertive">
+      <button class="button button-full button-light" ng-click="messagesRoom.hidePhotoModal()">
+        Cancel
+      </button>
+  </ion-footer-bar>
+</ion-modal-view>

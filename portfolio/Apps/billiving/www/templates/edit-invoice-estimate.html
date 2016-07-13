@@ -1,0 +1,117 @@
+<ion-view cache-view="false">
+  <ion-nav-title>
+    {{!isCreatePage?'Create':'Edit'}} {{isInvoice?'Invoice':'Estimate'}}
+  </ion-nav-title>
+  <!--<ion-nav-buttons side="left" ng-click="goToPrevious();"><i class="icon ion-ios7-arrow-back"></i></ion-nav-buttons>-->
+  <ion-nav-buttons side="right">
+    <button class="button button-clear button-icon ion-ios-download" ng-click="save()" ng-disabled="invoiceEstimateForm.$invalid"></button>
+    <button class="button button-clear button-icon ion-android-delete" ng-click="delete()" ng-disabled="invoiceEstimateForm.$invalid"></button>
+    <button class="button button-clear button-icon ion-email" ng-click="send()" ng-if="isCreatePage" ng-disabled="invoiceEstimateForm.$invalid"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="page page-edit-invoice-estimate">
+    <div class="list card is-pad">
+      <div class="item item-divider" ng-click="changeOther = !changeOther">Information<i class="button-dark icon">{{(!changeOther)?'More':'Less';}}</i></div>
+      <div class="item item-body">
+        <ion-list>
+          <form name="$parent.invoiceEstimateForm">
+            <label class="item item-input" ng-class="{'required-option-empty':!selectedInvoice.IssueDate}">
+              <span class="input-label">Issue Date</span>
+              <!--<input type="text" ng-model="selectedInvoice.VirtualIssueDate" readonly/>-->
+              <!--              <datepicker>
+                              <input ng-model="selectedInvoice.IssueDate" type="text" class="angular-datepicker-input"/>
+                            </datepicker>-->
+              <input type="date" placeholder="Issue Date" id="datepicker" ng-model="selectedInvoice.IssueDate" ng-change="dateChange()" required>
+            </label>
+            <label class="item item-input" ng-class="{'required-option-empty':(!selectedClient.displayNameForThis)}">
+              <span class="input-label">Client Name</span>
+              <input type="text" placeholder="Select Client" ng-model="selectedClient.displayNameForThis" readonly ng-click="editClient()" required>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Due</span>
+              <select ng-options="due.Value as due.Text for due in dues" ng-model="selectedInvoice.Due"></select>
+              <!--<input type="text" placeholder="Due" ng-model="selectedInvoice.Due" readonly ng-click = "editDue()">-->
+            </label>
+            <label class="item item-input" ng-show="changeOther">
+              <span class="input-label">Reference No</span>
+              <input type="text" placeholder="Reference Number" maxlength="20" ng-model="selectedInvoice.ReferenceNumber">
+            </label>
+            <label class="item item-input" ng-show="changeOther">
+              <span class="input-label">Discount</span>
+              <input type="text" placeholder="" ng-model="selectedInvoice.Discount" msp-decimal required>
+            </label>
+            <label class="item item-input" ng-show="changeOther">
+              <span class="input-label">Shipping</span>
+              <input type="text" placeholder="" ng-model="selectedInvoice.Shipping" msp-decimal required>
+            </label>
+          </form>
+        </ion-list>
+      </div>
+    </div>
+    <div class="list card is-pad">
+      <div class="item item-divider">{{isInvoice?'Invoice':'Estimate'}} Items</div>
+      <div class="item item-body">
+        <ion-list>
+          <ion-item ng-repeat="docitem in docItemList track by $index" ng-click="editLineItem($index)">
+            <div class="invoice-left-container">
+              <p class="item-main-title">{{docitem.ItemDescription}} <span ng-show="docitem.unSave">(Unsaved)</span></p>
+              <p class="item-sub-title">#{{docitem.ItemQuantity}} units @ ({{currencySimbol}}) {{docitem.ItemPrice| number:2}}</p>
+            </div>
+            <div class="invoice-right-container">
+              <h2>({{currencySimbol}}) {{docitem.ItemPrice * docitem.ItemQuantity| number:2}}</h2>
+            </div>
+            <ion-option-button class="button-balanced ion-edit ion-option-button custom-font" ng-click="editLineItem($index)"></ion-option-button>
+            <ion-option-button class="button-energized ion-close ion-option-button custom-font" ng-click="deleteLineItem($index)"></ion-option-button>
+          </ion-item>
+        </ion-list>
+        <button class="button" ng-click="addLineItemModal()">Add Line-Item</button>
+      </div>
+    </div>
+    <div class="list card is-pad">
+      <div class="item item-divider" ng-click="changeNoteBar = !changeNoteBar">
+        Notes
+        <i class="button-dark icon">{{(!changeNoteBar)?'More':'Less';}}</i>
+      </div>
+      <div class="item item-body" ng-show="changeNoteBar">
+        <ion-list>
+          <label class="item item-input">
+            <span class="input-label">Client Notes</span>
+            <input type="text" placeholder="Enter Notes" ng-model="selectedInvoice.ClientNotes">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Internal Notes</span>
+            <input type="text" placeholder="Enter Notes" ng-model="selectedInvoice.InternalNotes">
+          </label>
+        </ion-list>
+      </div>
+    </div>
+    <div class="list card is-pad">
+      <div class="item item-divider">Summary</div>
+      <div class="item item-body">
+        <ion-list>
+          <label class="item item-input" ng-show="selectedInvoice.Discount">
+            <span class="input-label">Discount</span>
+            <span class="input-label">({{currencySimbol}}) {{selectedInvoice.Discount| number:2}}</span>
+          </label>
+          <label class="item item-input" ng-show="selectedInvoice.Shipping">
+            <span class="input-label">Shipping</span>
+            <span class="input-label">({{currencySimbol}}) {{selectedInvoice.Shipping| number:2}}</span>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Subtotal</span>
+            <span class="input-label">({{currencySimbol}}) {{summaryData.subTotal| number:2}}</span>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Taxes</span>
+            <span class="input-label">({{currencySimbol}}) {{summaryData.Tax| number:2}}</span>
+          </label>
+
+          <label class="item item-input">
+            <span class="input-label">Total</span>
+            <span class="input-label">({{currencySimbol}}) {{(summaryData.Total + selectedInvoice.Shipping - selectedInvoice.Discount) | number:2}}</span>
+          </label>
+        </ion-list>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

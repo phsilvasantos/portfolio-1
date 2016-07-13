@@ -1,0 +1,91 @@
+<!--<ion-modal-view class="button-modal" ng-controller="fileUploadModalController as fileUploadModal">
+  <ion-header-bar class="bar-messages-new bar-stable bar bar-header nav-bar nav-title-slide-ios disable-user-behavior no-animation">
+    <div class="buttons left-buttons">
+      <button class="button-clear button back-button button-icon icon ion-ios-close-outline" ng-click="fileUploadModal.hideModal()"></button>
+    </div>
+    <h1 class="title messages-title">Upload File or Photo</h1>
+  </ion-header-bar>
+  <ion-content class="page page-messages page-messages-new has-subheader" ng-show="fileUploadModal.isCurrentScreen('navigation')">
+    <button class="button button-light" ng-click="fileUploadModal.takePhoto()" ng-show="fileUploadModal.shouldShowButton('camera')">
+        Take Photo
+    </button>
+    <button class="button button-light" ng-click="fileUploadModal.useExistingPhoto()"  ng-show="fileUploadModal.shouldShowButton('library')">
+        Choose Existing Photo
+    </button>
+    <button class="button button-light" ng-click="fileUploadModal.useGoogleDrive()"  ng-show="fileUploadModal.shouldShowButton('google_drive')">
+        Choose from Google Drive
+    </button>
+    <button class="button button-light" ng-click="fileUploadModal.useDropbox()"  ng-show="fileUploadModal.shouldShowButton('dropbox')">
+        Choose from Dropbox
+    </button>
+  </ion-content>
+
+  <ion-content class="page page-messages page-messages-new has-subheader" ng-show="fileUploadModal.isCurrentScreen('google_drive','dropbox')">
+    <ion-refresher
+      refreshing-text="Fetching files..."
+      on-refresh="fileUploadModal.pullToRefresh()">
+    </ion-refresher>
+    <button class="button button-light" ng-click="fileUploadModal.setScreen('navigation')">
+      Cancel
+    </button>
+    <input type="search" ng-change="fileUploadModal.search()" ng-model="fileUploadModal.searchQuery">
+
+    <div class="drive-file" ng-repeat="file in fileUploadModal.files">
+      <img class="icon" ng-src="{{file.iconLink}}">
+      <span class="file"   ng-hide="fileUploadModal.isFolder(file)" ng-click="fileUploadModal.chooseFile(file)">{{file.title}}</span>
+      <span class="folder" ng-show="fileUploadModal.isFolder(file)" ng-click="fileUploadModal.openFolder(file)">{{file.title}}</span>
+    </div>
+  </ion-content>
+</ion-modal-view>-->
+
+<ion-modal-view class="button-modal" ng-controller="fileUploadModalController as fileUploadModal">
+  <ion-header-bar class="bar-stable nav-bar">
+    <div class="buttons left-buttons">
+      <button class="button-clear button back-button" ng-click="fileUploadModal.hideModal()"
+              ng-show="!fileUploadModal.isCurrentScreen('google_drive', 'dropbox')">Close</button>
+      <button class="button-clear button back-button" ng-click="" 
+              ng-show="fileUploadModal.isCurrentScreen('google_drive', 'dropbox')">Back</button>
+    </div>
+    <h2 class="title">Upload File or Photo</h2>
+  </ion-header-bar>
+  <ion-content class="page page-messages padding no-footer" ng-hide="fileUploadModal.isCurrentScreen('google_drive', 'dropbox')">
+    <button class="button button-light" ng-click="fileUploadModal.takePhoto()" ng-show="fileUploadModal.shouldShowButton('camera')">
+      Take Photo
+    </button>
+    <button class="button button-light" ng-click="fileUploadModal.useExistingPhoto()"  ng-show="fileUploadModal.shouldShowButton('library')">
+      Choose Existing Photo
+    </button>
+    <button class="button button-light" ng-click="fileUploadModal.useGoogleDrive()"  ng-show="fileUploadModal.shouldShowButton('google_drive')">
+      Choose from Google Drive
+    </button>
+    <button class="button button-light" ng-click="fileUploadModal.useDropbox()"  ng-show="fileUploadModal.shouldShowButton('dropbox')">
+      Choose from Dropbox
+    </button>
+  </ion-content>
+  <ion-content class="page page-file-upload" ng-show="fileUploadModal.isCurrentScreen('google_drive', 'dropbox')">
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" placeholder="Search" ng-change="fileUploadModal.search()" ng-model="fileUploadModal.searchQuery">
+      </label>
+    </div>
+    <div class="list">
+      <a class="item item-icon-left" href="#" ng-repeat="file in fileUploadModal.files" ng-click="fileUploadModal.select(fileUploadModal.isFolder(file), file)">
+        <i class="icon" ng-class="{'ion-folder':fileUploadModal.isFolder(file),'ion-document':!fileUploadModal.isFolder(file)}"></i>
+        <!--<img class="icon" ng-src="{{file.iconLink}}">-->
+        {{file.title}}
+      </a>
+    </div>
+
+    <!--    <div class="drive-file" ng-repeat="file in fileUploadModal.files">
+          <img class="icon" ng-src="{{file.iconLink}}">
+          <span class="file"   ng-hide="fileUploadModal.isFolder(file)" ng-click="fileUploadModal.chooseFile(file)"><i class="svg-icon file-o"></i>{{file.title}}</span>
+          <span class="folder" ng-show="fileUploadModal.isFolder(file)" ng-click="fileUploadModal.openFolder(file)"><i class="svg-icon folder-o"></i>{{file.title}}</span>
+        </div>-->
+  </ion-content>
+  <div class="modal-footer" ng-show="fileUploadModal.isCurrentScreen('google_drive', 'dropbox')">
+    <button class="button button-light button-assertive" ng-click="fileUploadModal.setScreen('navigation')">
+      Cancel
+    </button>
+  </div>
+</ion-modal-view>

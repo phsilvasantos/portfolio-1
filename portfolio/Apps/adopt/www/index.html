@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="wpIonic">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+	
+	<link href="lib/ionic/fonts/HelveticaNeue-CondensedBlack.otf">
+	<link href="http://fonts.googleapis.com/css?family=Raleway%3A400%2C900%2C800&amp;subset=latin%2Clatin-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto%3A400%2C700%2C500%2C900&amp;subset=latin%2Cgreek" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700" rel="stylesheet" type="text/css">
+	<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ng-cordova.min.js"></script>
+    <script src="lib/angular-ios9-uiwebview.patch.js"></script>
+    <script src="lib/drawer.js"></script>
+    
+    <script src="lib/jquery.min.js"></script>
+ 
+ 	<!-- Google Analytics -->
+	<script type="text/javascript" src="lib/pg/pg-analytics.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+	
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/services.js"></script>
+    <script type="text/javascript" src="js/SocialSharing.js"></script>
+    
+  </head>
+
+  <body>
+    <ion-nav-view ng-controller="AnalyticsController"></ion-nav-view>
+  </body>
+</html>

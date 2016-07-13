@@ -1,0 +1,44 @@
+<ion-view title="{{!isEdit?'CREATE NEW GAME':'MANAGE GAME'}}" ng-controller="CreateGameCtrl" cache-view="false">
+  <ion-content class="page page-listmain page-create-game has-subheader">
+    <ion-list>
+      <div class="custom-item-title" ng-show="isEdit">
+        Access your phone contacts to import team members, or create new team members from scratch     
+      </div>
+      <ion-item class="item">
+        <span class="input-label">Scheduled Date :</span>
+        <div class="input-item-container">
+          <a class="icon ion-android-calendar"></a>
+          <input type="date" placeholder="" ng-model="date.now"/>
+        </div>        
+      </ion-item>
+      <ion-item class="item">
+        <span class="input-label">Scheduled Time :</span>
+        <div class="input-item-container">
+          <a class="icon ion-clock"></a>
+          <input type="time" placeholder="" ng-model="date.now">
+        </div>        
+      </ion-item>
+      <ion-item class="item">
+        <span class="input-label" style="float: left;">Select Location :</span>
+        <a class="icon ion-ios-location" style="width: 15px;float: left;padding-top: 8px;font-size: 15px; color: #ff7200" ng-click="setPositionFromAddress()"></a>
+        <input style="width: 40%;float: left;" type="text" placeholder="Enter Address..." ng-model="gamedetail.location_name"/>
+        <a class="icon ion-ios-search-strong" style="width: 20px;float: right;padding: 6px;font-size: 20px; color: #ff7200; margin-right: 20px;" ng-click="setPositionFromAddress()"></a>
+      </ion-item>
+      <ion-item class="item">
+        <div style="text-align: center;position: relative;">
+          <div id ="map" style="height: 160px;"></div>
+          <img class="centerMarker" src="img/marker.png"/>
+        </div>
+        <div class="button button-clear icon {{saveVenue?'ion-ios-checkmark-outline':'ion-ios-circle-outline'}} location-save-venue" 
+              ng-show="!isEdit" ng-click = "changVenue();"> Save a fixed venue for this team</div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="organizate-footer">
+    <div class="footer-container">
+      <div class="container-footer">        
+        <div class="button button-clear footer-green-button" ng-click="createGame();">{{buttonTitle}}</div>         
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

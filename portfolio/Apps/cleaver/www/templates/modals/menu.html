@@ -1,0 +1,36 @@
+<div class="modal transparent" ng-controller="MenuCtrl" ng-click="closeModal()">
+    <div class="wrapper bot">
+        <div class="kotak no-border menus">
+            <div class="xs-5 text-center">
+            	<button class="btn btn-general btn-menu nurse" ng-click="openModal('nurse')">
+            		<i class="icon-breast-feeding"></i>
+            	</button>
+                <span>Nurse</span>
+            </div>
+            <div class="xs-5 text-center">
+            	<button class="btn btn-general btn-menu bottle" ng-click="openModal('bottle')">
+            		<i class="icon-bottle"></i>
+            	</button>
+                <span>Bottle</span>
+            </div>
+            <div class="xs-5 text-center">
+            	<button class="btn btn-general btn-menu diaper" ng-click="openModal('diaper')">
+            		<i class="icon-diaper"></i>
+            	</button>
+                <span>Diaper</span>
+            </div>
+            <div class="xs-5 text-center">
+            	<button class="btn btn-general btn-menu sleep" ng-click="openModal('sleep')">
+            		<i class="icon-sleepcc"></i>
+            	</button>
+                <span>Sleep</span>
+            </div>
+            <div class="xs-5 text-center">
+                <button class="btn btn-general btn-menu more" ng-click="addMore()">
+                    <i class="icon ion-more"></i>
+                </button>
+                <span>More</span>
+            </div>
+        </div>
+    </div>
+</div>

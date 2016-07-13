@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.finder.gps.tracking" version="0.9.35" versionCode="8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Finder GPS Tracking</name>
+    <description>
+        This is the FINDER GPS Tracking Application which helps everybody to track vehicles, people and assets from anywhere and anytime, share locations with an expiry, find Hires nearby, view traffic jams and manage Car Pooling Services and Fleet Management Services.
+    </description>
+    <author email="info@finder-lbs.com" href="http://www.finder-lbs.com">
+        The Finder Team
+    </author>
+    <platform name="android">
+        <icon src="www/res/icon/android/icon-36-ldpi.png" density="ldpi" />
+        <icon src="www/res/icon/android/icon-48-mdpi.png" density="mdpi" />
+        <icon src="www/res/icon/android/icon-72-hdpi.png" density="hdpi" />
+        <icon src="www/res/icon/android/icon-96-xhdpi.png" density="xhdpi" />
+    </platform>    
+    <access origin="*" />
+    <access origin="tel:*" launch-external="yes" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
+    <plugin name="Device" value="org.apache.cordova.Device" />
+    <plugin name="Device" value="org.apache.cordova.Geolocation" />
+    <plugin name="DeviceInfo" value="com.finder.device.DeviceInfo" />
+    <plugin name="DeviceInfo" value="com.finder.device.TelephoneNumber" />
+    <plugin name="SharedPrefs" value="com.finder.sharedprefs.SharedPrefs" />
+    <plugin name="LocationInfo" value="com.finder.location.LocationInfo" />
+    <plugin name="Contacts" value="org.apache.cordova.ContactManager" />
+    <plugin name="AdMob" value="com.finder.admob.plugin.AdMob" />
+    <plugin name="Gcm" value="com.google.android.gcm.finder.app.GcmPlugin" onload="true" />
+
+    <plugin name="LaunchMyApp" value="nl.xservices.plugins.LaunchMyApp"/>
+    
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
+    <feature name="InAppBillingPlugin">
+        <param name="android-package" value="com.finder.inappbilling.InAppBillingPlugin" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="android-package" value="IonicKeyboard" onload="true" />
+    </feature>
+
+</widget>

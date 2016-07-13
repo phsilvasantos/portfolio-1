@@ -1,0 +1,51 @@
+<div class="timeline-wrapper">
+    <!-- data perday (TODAY) -->
+
+    <div class="kotak timeline-item no-border" ng-repeat="(key, activity) in orderedDateFinal">
+        <h3>{{activity.dateString}}</h3>
+        <ion-scroll class="timeline-ion-content" direction="x" overflow-scroll="1" scrollbar-x="0" scrollbar-y="0" zooming="false" delegate-handle="horizontal{{ $index }}" horizontal-scroll-fix="mainScroll" style="margin-top: -16px;">
+            <div class="data">
+                <ul class="timeline-grid">
+                    <li>6am</li>
+                    <li>9am</li>
+                    <li>12pm</li>
+                    <li>3pm</li>
+                    <li>6pm</li>
+                    <li>9pm</li>
+                    <li>12am</li>
+                    <li>3am</li>
+                </ul>
+                <ul class="timeline-data">
+                    <li class="data-activity {{fill.type}}" style="width:{{fill.percentage}}%; left: {{fill.marginLeft}}px;" ng-repeat="(key, fill) in activity.fill"></li>
+                </ul>
+            </div>
+        </ion-scroll>
+    </div>
+
+    <!-- dummy to get size -->
+    <div class="kotak timeline-item no-border" style="display: none">
+        <h3>4rd April</h3>
+        <ion-scroll class="timeline-ion-content" direction="x" overflow-scroll="1" scrollbar-x="0" scrollbar-y="0">
+            <div class="data">
+                <ul class="timeline-grid">
+                    <li>6am</li>
+                    <li>9am</li>
+                    <li>12</li>
+                    <li>3pm</li>
+                    <li>6pm</li>
+                    <li>9pm</li>
+                    <li>12</li>
+                    <li>3am</li>
+                </ul>
+                <ul class="timeline-data">
+                    <li class="data-activity" style="width:16%" ></li>
+                    <li class="data-activity sleep" style="width:10%" ></li>
+                    <li class="data-activity" style="width:6%" ></li>
+                    <li class="data-activity diapers" style="width:13%" ></li>
+                    <li class="data-activity" style="width:6%" ></li>
+                    <li class="data-activity allergy" style="width:37%" ></li>
+                </ul>
+            </div>
+        </ion-scroll>
+    </div>
+</div>

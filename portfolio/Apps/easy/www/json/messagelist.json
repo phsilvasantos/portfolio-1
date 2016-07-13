@@ -1,0 +1,65 @@
+[
+    {
+        "username": "Nikita Pavchenko",
+        "phonenum": "13244339721",
+        "message": "Next game lineup ready.",
+        "status": false,
+        "email": "nikita098@gmail.com"
+    },
+    {
+        "username": "Anatoly Pasiv",
+        "phonenum": "13244339751",
+        "message": "You have been invited to a game.",
+        "status": false,
+        "email": "pasiv098@gmail.com"
+    },
+    {
+        "username": "Tobie",
+        "phonenum": "13244339751",
+        "message": "You have been confirmed for the next game",
+        "status": true,
+        "email": "pasiv098@gmail.com"
+    },
+    {
+        "username": "Nikita Pavchenko",
+        "phonenum": "13244339721",
+        "message": "Hi animals, Let's go to next step.",
+        "status": false,
+        "email": "nikita098@gmail.com"
+    },
+    {
+        "username": "Anatoly Pasiv",
+        "phonenum": "13244339751",
+        "message": "Remember the next game on tomorrow.",
+        "status": true,
+        "email": "pasiv098@gmail.com"
+    },
+    {
+        "username": "Nikita Pavchenko",
+        "phonenum": "13244339721",
+        "message": "Welcome aboard, Please fill out your profile",
+        "status": true,
+        "email": "nikita098@gmail.com"
+    },
+    {
+        "username": "Anatoly Pasiv",
+        "phonenum": "13244339751",
+        "message": "Are you ready? Please let me know your status.",
+        "status": false,
+        "email": "pasiv098@gmail.com"
+    },
+    {
+        "username": "Nikita Pavchenko",
+        "phonenum": "13244339721",
+        "message": "Congratulate your victory",
+        "status": true,
+        "email": "nikita098@gmail.com"
+    },
+    {
+        "username": "Anatoly Pasiv",
+        "phonenum": "13244339751",
+        "message": "Hi all our members is ready, but you?",
+        "status": true,
+        "email": "pasiv098@gmail.com"
+    }
+]

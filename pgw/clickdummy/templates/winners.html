@@ -1,0 +1,22 @@
+<ion-view view-title="Winners" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-ios-close-empty" ng-click="goBack()"></button>
+  </ion-nav-buttons>
+
+  <ion-content class="page page-winners">
+    <ul class="photo-list is-category">
+      <li class="photo-list-item" ng-repeat="item in pictures">
+        <div class="image" style="background-image: url({{item.image}});"></div>
+        <div class="gradient-bottom {{item.color}}"></div>
+
+        <a class="circle yaays btn">
+          <div><strong class="clearfix">21k</strong>YAAYs</div>
+        </a>
+
+        <div class="text-wrapper">
+          <div class="title">{{item.comment}}</div>
+        </div><!-- .text-wrapper -->
+      </li>
+    </ul><!-- photo-list-->
+  </ion-content>
+</ion-view>

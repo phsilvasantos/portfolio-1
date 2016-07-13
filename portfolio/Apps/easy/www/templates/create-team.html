@@ -1,0 +1,20 @@
+<ion-view title="CREATE NEW TEAM" ng-controller="CreateTeamCtrl" cache-view="false">
+  <ion-content class="page page-listmain">
+    <ion-list>
+      <div class="custom-item-title">
+        Start filling out these basic of the team you manage   
+      </div>
+      <ion-item class="item item-input">
+        <input type="text" name="volume" placeholder="Team Name" ng-model="teamdetail.name"/>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="organizate-footer footer-create-team">
+    <div class="footer-container">
+      <div class="button button-clear create-team-skipbtn" ng-click="goToPage('app.manage-team');">Import Later</div>
+      <div class="container-footer">        
+        <div class="button button-clear footer-green-button" ng-click="createTeam();">{{buttontitle}}</div>         
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

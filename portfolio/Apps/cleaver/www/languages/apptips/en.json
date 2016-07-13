@@ -1,0 +1,17 @@
+[
+    {
+        "achievement": "facebookConnect",
+        "text":"Connect account to facebook facebook",
+        "route": "/auth/signin"
+    },
+    {
+        "achievement": "googleConnect",
+        "text":"blah blah blah google",
+        "route": "/auth/signin"
+    },
+    {
+        "achievement": "twitterConnect",
+        "text":"blah blah blah twitter",
+        "route": "/auth/signin"
+    }
+]

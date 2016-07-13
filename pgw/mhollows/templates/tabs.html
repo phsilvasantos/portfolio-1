@@ -1,0 +1,10 @@
+<div class="tabs tabbs-main tabs-icon-top hide-on-keyboard-open" ng-controller="TabsController">
+  <a nav-clear class="tab-item" 
+     ng-click="openTabItem(item.get('pageId'), item.get('name'))"
+     ng-class="{'tab-item-active':isTabActive('app.' + item.get('pageId'))}"
+     ng-repeat="item in featureSetting">
+    <i class="svg-icon menu-{{item.get('pageId')}}"></i><span class="tab-title">{{item.get('name')}}</span>
+    <group-messages-counter ng-if="item.get('pageId')==='groups'"></group-messages-counter>
+    <chat-messages-counter ng-if="item.get('pageId')==='messages'"></chat-messages-counter>
+  </a>
+</div>

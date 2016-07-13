@@ -1,0 +1,103 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?s50uqa');
+	src:url('fonts/icomoon.eot?#iefixs50uqa') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?s50uqa') format('truetype'),
+		url('fonts/icomoon.woff?s50uqa') format('woff'),
+		url('fonts/icomoon.svg?s50uqa#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-breast-pumper-line:before {
+	content: "\e608";
+}
+.icon-born:before {
+	content: "\e61a";
+}
+.icon-milestones:before {
+	content: "\e611";
+}
+.icon-diary:before {
+	content: "\e612";
+}
+.icon-temperature:before {
+	content: "\e613";
+}
+.icon-doctor:before {
+	content: "\e614";
+}
+.icon-allergy:before {
+	content: "\e615";
+}
+.icon-mood-ok:before {
+	content: "\e616";
+}
+.icon-mood-happy:before {
+	content: "\e617";
+}
+.icon-injection:before {
+	content: "\e618";
+}
+.icon-mood-sad:before {
+	content: "\e619";
+}
+.icon-banana-3:before {
+	content: "\e610";
+}
+.icon-banana:before {
+	content: "\e607";
+}
+.icon-carrot:before {
+	content: "\e60a";
+}
+.icon-medication:before {
+	content: "\e60b";
+}
+.icon-baby-growth:before {
+	content: "\e60c";
+}
+.icon-rattle-alias-0:before {
+	content: "\e60d";
+}
+.icon-breast-pump-alias:before {
+	content: "\e60e";
+}
+.icon-rattle-alias-1:before {
+	content: "\e60f";
+}
+.icon-bath:before {
+	content: "\e600";
+}
+.icon-bottle:before {
+	content: "\e601";
+}
+.icon-breast-feeding:before {
+	content: "\e602";
+}
+.icon-diaper:before {
+	content: "\e603";
+}
+.icon-rattle-alias-3:before {
+	content: "\e604";
+}
+.icon-sleepcc:before {
+	content: "\e605";
+}
+.icon-solidfood:before {
+	content: "\e606";
+}

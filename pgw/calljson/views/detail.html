@@ -1,0 +1,38 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left"><a href="#" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+        <div class="center sliding" id="detail_title"></div>
+    </div>
+</div>
+<div class="pages">
+    <!-- Page, data-page contains page name-->
+    <div data-page="detail" class="page" ng-controller="DetailController">
+        <!-- Scrollable page content-->
+        <div class="page-content">
+            <div class="details-wrapper">
+                <div class="detail-cover">
+                    <img ng-src="{{data.location.cover}}" onerror="$(this).addClass('broken');"/>
+                    <div class="detail-name">{{data.location.name}}</div>
+                </div>
+                <div class="detail-ratings">
+                    <div class="stars">
+                        <a href="#" class="star" ng-click="rate(1)"></a>
+                        <a href="#" class="star" ng-click="rate(2)"></a>
+                        <a href="#" class="star" ng-click="rate(3)"></a>
+                        <a href="#" class="star" ng-click="rate(4)"></a>
+                    </div>
+                </div>
+                <div class="detail-others">
+                    <div class="detail-message">{{data.message}}</div>
+                    <div class="detail-date">{{data.date}}</div>
+                </div>
+                <div class="detail-pic">
+                    <img ng-src="{{data.pic}}" onerror="$(this).addClass('broken');"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

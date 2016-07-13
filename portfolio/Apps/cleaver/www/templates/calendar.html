@@ -1,0 +1,41 @@
+<ion-view>
+    <ion-content has-bouncing="false" on-scroll="dynamicStatusBar('calendarMainScroll')" delegate-handle="calendarMainScroll">
+        <div class="wrapper-tab timeline">
+            <ion-nav-bar class="bar-positive">
+                <div class="header no-border">
+                    <ion-nav-title cb-baby-drop-down></ion-nav-title>
+                </div>
+            </ion-nav-bar>
+            <div ui-calendar="uiConfig.calendar" id="calendar" ng-model="eventSources"></div>
+            <div class="content-calendar" ng-if="!hasContent">
+                <p>Please select day to see activities</p>
+            </div>
+            <div class="content-calendar" ng-if="hasContent">
+                <h2>
+                    <span class="icon-calendar" title="{{selectedDay}}"></span> 
+                    {{selectedMonthName}}, {{selectedYear}}
+                </h2>
+                <p>Development Milestones</p>
+                <ion-list>
+                    <div collection-repeat="activity in activities" collection-item-height="50" collection-item-width="80%">
+                        <timeline-item activity="activity" ng-class="{'is-last-activity': $last}"></timeline-item>
+                    </div>
+                </ion-list>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+<style>
+table.fc-border-separate tr td.calendar-highlight-circle {
+    /*font-style: italic;
+    border: 1px solid #000 !important;
+    border-radius: 25px;*/
+    background: url(../img/highlight-circle.png) !important;
+    background-size: 100% 100% !important;
+}
+table.fc-border-separate tr td.calendar-highlight-circle .fc-day-number {    
+    /*border: 1px solid #000 !important;
+    border-radius: 25px;
+    */
+}
+</style>

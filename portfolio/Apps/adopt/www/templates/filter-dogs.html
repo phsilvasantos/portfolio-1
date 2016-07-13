@@ -1,0 +1,120 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+         
+      </ion-nav-buttons>
+      
+      <ion-nav-buttons side="right">
+        <button class="button button-positive" menu-toggle="right">
+        	Refine
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item nav-clear menu-close href="#/app/intro">
+          Home
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/dogs">
+          Dogs
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/cats">
+          Cats
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/others">
+          Other Pets
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/news">
+          Latest News
+        </ion-item>
+        <!--<ion-item nav-clear menu-close href="#/app/tabs">
+          Tabs
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/settings">
+          Settings
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/custom">
+          Custom Page
+        </ion-item>
+        <ion-item nav-clear menu-close ng-if="!isUserLoggedIn" ng-click="login()">
+          Login
+        </ion-item>
+        <ion-item nav-clear menu-close ng-if="isUserLoggedIn" ng-click="login()">
+          Logout
+        </ion-item>-->
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+  
+<ion-side-menu side="right">
+    <ion-header-bar class="bar-stable">
+      
+    </ion-header-bar>
+    <ion-content class="padding">
+      <div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Breed
+    </div>
+    <select>
+      <option>Blue</option>
+      <option selected>Green</option>
+      <option>Red</option>
+    </select>
+  </label>
+  
+	<br />
+	<label class="item item-input item-select">
+    <div class="input-label">
+      County
+    </div>
+    <select>
+      <option>Blue</option>
+      <option selected>Green</option>
+      <option>Red</option>
+    </select>
+  </label>
+  
+  <br />
+	<label class="item item-input item-select">
+    <div class="input-label">
+      Size
+    </div>
+    <select>
+      <option>Puppy</option>
+      <option selected>Small</option>
+      <option>Medium</option>
+      <option>Largem</option>
+    </select>
+  </label>
+  
+  <br />
+	<label class="item item-input item-select">
+    <div class="input-label">
+      Gender
+    </div>
+    <select>
+      <option>Male</option>
+      <option selected>Female</option>
+      <option>Mixed</option>
+    </select>
+  </label>
+</div>
+    </ion-content>
+  </ion-side-menu>
+  
+</ion-side-menus>

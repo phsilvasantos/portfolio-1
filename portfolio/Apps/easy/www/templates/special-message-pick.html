@@ -1,0 +1,14 @@
+<ion-view title="MESSAGE PICK" ng-controller="SpecialMessagePickCtrl">
+  <ion-content class="page page-listmain has-subheader">
+    <div class="organizate-detail-description">
+      Hi, you have been picked to play for <b>{{selectedTeamName}}</b> <br/>
+      
+    </div>
+    
+    <div class="organizate-detail-description">{{selectedMessage.message_title}}</div>
+    <div class="organizate-message-description" >
+      {{selectedMessage.message_content}}
+    </div>
+    <div class="organizate-detail-description">Coach<br/><b>{{selectedTeamName}}</b></div>
+  </ion-content>
+</ion-view>

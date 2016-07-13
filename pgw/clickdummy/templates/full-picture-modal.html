@@ -1,0 +1,24 @@
+<ion-modal-view class="full-picture-modal" ng-controller="FullPictureModalCtrl">
+  <ion-content scroll="false">
+    <div class="image" style="background-image: url({{service.picture.image}})" ng-click="clickImage($event)">
+      <div class="gradient gradient-top {{service.picture.color}}"></div>
+      <div class="gradient gradient-bottom"></div>
+      <div class="info" href="#/profile/{{service.profile.id}}">
+        <img class="circle avatar" ng-src="{{service.profile.avatar}}" />
+        <a class="user-info">
+          <div class="name">{{service.profile.name}}</div>
+          <div class="counters">
+            <span class="space-right">{{service.profile.yaays}} YAAYs</span>
+            <span>{{service.profile.followers}} Follower</span>
+          </div>
+        </a>
+        <button class="button follow-button" ng-click="toggleFollow()" ng-class="{followed:service.profile.followed}">{{service.profile.followed?'Unfollow':'Follow'}}</button>
+      </div>
+
+      <div class="comment">
+        {{service.picture.comment}}
+      </div>
+      <div class="copyright">via YAAYorNAAY.com</div>
+    </div>
+  </ion-content>
+</ion-modal-view>

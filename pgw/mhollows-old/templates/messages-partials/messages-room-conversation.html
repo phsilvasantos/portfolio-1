@@ -1,0 +1,30 @@
+<div ng-repeat="message in messagesRoom.allMessages | currentConversationMessages:messagesRoom.conversationId" class="message-item-wrapper">
+  <div class="item message-item {{ message.type }} item-avatar" 
+       ng-class="{'user-message': messagesRoom.userIsAuthor(message.authorId), 'readed': message.readed && !messages.room, 'notification': messagesRoom.isNotification(message), 'visible': message.delivered }" 
+       ng-hide="{{ message.type == 'notification' && !messages.room }}">
+
+    <div background-image="{{ message.authorAvatarUrl }}" class="messages-avatar"></div>
+
+    <!--<div class="item-head">
+      <h6 ng-hide="{{messagesRoom.shouldHideUser(message) || messagesRoom.userIsAuthor(message.authorId)}}" ng-bind-html="message.authorFullName"></h6>
+    </div>-->
+    <div class="item-head">
+      <div class="author-name" ng-bind-html="message.authorFullName"></div>
+      <div class="message-body" ng-bind-html="message.body" ng-if="message.body.length"></div>
+      <div class="item-time">
+        <span ng-if="message.attachedImage">File received</span>
+        {{message.timestamp | messageRoomDate}}
+      </div>
+    </div>
+
+    <div ng-if="message.attachedImage"><img ng-src="{{message.attachedImage}}" class="message-image"></div>
+      
+    <span class="message-delivery-in-progress" ng-hide="message.delivered">
+      <i class="icon ion-loading-c"></i>
+    </span>
+    <!-- <i class="icon ion-ios7-checkmark-empty"></i> -->
+
+    <!-- <p ng-hide="message.delivered">d</p> -->
+  </div>
+  <!--<div class="conversation-date text-center" ng-if="messagesRoom.lastMessageWasHourAgo($index)" ng-bind-html="message.timestamp | messageRoomDate"></div>-->
+</div>

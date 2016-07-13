@@ -1,0 +1,19 @@
+<ion-modal-view class="delete-conversation-modal">
+  <ion-header-bar class="bar-stable nav-bar">
+    <div class="buttons left-buttons">
+      <button class="button-clear button back-button" ng-click="closeDeleteRoomModal()">Cancel</button>
+    </div>
+    <h2 class="title">Delete Conversation</h2>
+  </ion-header-bar>
+  <ion-content class="page page-messages padding">
+    <p>
+      This will permanently delete the conversation history. Hiding a conversation will just remove it from your list but archive your messages.
+    </p>
+    <button class="button button-assertive" ng-click="deleteConversation()">
+      Delete Conversation
+    </button>
+    <button class="button button-light" ng-click="hideConversation()">
+      Hide Conversation
+    </button>
+  </ion-content>
+</ion-modal-view>
